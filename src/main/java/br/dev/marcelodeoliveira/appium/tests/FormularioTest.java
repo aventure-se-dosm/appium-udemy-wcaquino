@@ -16,19 +16,24 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
+import br.dev.marcelodeoliveira.appium.tests.model.pages.BasePage;
+import br.dev.marcelodeoliveira.appium.tests.model.pages.FormularioPage;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.remote.MobileCapabilityType;
 
 public class FormularioTest extends BaseTest {
 
-
+	FormularioPage page;
+	
 	@Before
 	public void setupTest() {
 		setDefaultCapabilities();
 		addCapability(MobileCapabilityType.APP,
 				"C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_2_0.apk");
 		setupDriver();
+		this.page = new FormularioPage();
+		
 	}
 
 	@Test
@@ -93,7 +98,6 @@ public class FormularioTest extends BaseTest {
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
