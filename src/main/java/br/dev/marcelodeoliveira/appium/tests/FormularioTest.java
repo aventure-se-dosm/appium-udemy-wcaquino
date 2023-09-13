@@ -37,8 +37,9 @@ public class FormularioTest {
 		desiredCapabilities.setCapability("noReset", "false");
 		desiredCapabilities.setCapability(MobileCapabilityType.APP,
 
-				//TODO: make the absolutePath transparent for the user, once relative paths haven't worked yet.
-	"C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_2_0.apk");
+				// TODO: make the absolutePath transparent for the user, once relative paths
+				// haven't worked yet.
+				"C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_2_0.apk");
 
 	}
 
@@ -46,14 +47,13 @@ public class FormularioTest {
 
 		this.driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"),
 				getDesiredCapabilities());
-		
+
 		driver.manage().timeouts().implicitlyWait(10l, TimeUnit.SECONDS);
 	}
-	
+
 	private boolean isDriverNull() {
 		return this.driver == null;
 	}
-
 
 	private AndroidDriver<MobileElement> getDriver() throws MalformedURLException {
 		return this.driver;
@@ -106,27 +106,27 @@ public class FormularioTest {
 				.xpath(String.format("//android.widget.CheckedTextView[@text='%s']", spinnerGameConsoleOption)));
 		option.click();
 
-		MobileElement sliderSwitch;
-		sliderSwitch = driver.findElement(MobileBy.AccessibilityId("switch"));
-		if (sliderSwitch.getAttribute("checked").equals("true")) sliderSwitch.click();
+		MobileElement switchHour;
+		switchHour = driver.findElement(MobileBy.AccessibilityId("switch"));
+		if (switchHour.getAttribute("checked").equals("true"))
+			switchHour.click();
 
-		MobileElement checkBok;
-		checkBok = driver.findElement(MobileBy.AccessibilityId("check"));
-		if (checkBok.getAttribute("checked").equals("false")) checkBok.click();
+		MobileElement chkHour;
+		chkHour = driver.findElement(MobileBy.AccessibilityId("check"));
+		if (chkHour.getAttribute("checked").equals("false"))
+			chkHour.click();
 
 		Assert.assertEquals(txtName, nameField.getText());
-		Assert.assertEquals(sliderSwitch.getAttribute("checked"), "false");
-		Assert.assertEquals(checkBok.getAttribute("checked"), "true");
+		Assert.assertEquals(switchHour.getAttribute("checked"), "false");
+		Assert.assertEquals(chkHour.getAttribute("checked"), "true");
 		Assert.assertEquals(txtName, nameField.getText());
 
 		finishTest();
 	}
 
-
 	@After
 	public void finishTest() {
 		driver.quit();
 	}
-
 
 }
