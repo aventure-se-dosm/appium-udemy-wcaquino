@@ -1,9 +1,10 @@
 package br.dev.marcelodeoliveira.appium.tests;
 
-import static br.dev.marcelodeoliveira.appium.tests.DriverFactory.*;
+import static br.dev.marcelodeoliveira.appium.core.DriverFactory.killDriver;
+import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setDefaultCapabilities;
+import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setupDriver;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
 
 public class BaseTest {
@@ -13,7 +14,6 @@ public class BaseTest {
 		setDefaultCapabilities();
 		setupDriver();
 	}
-	
 	
 	@After
 	public  void resetApp() {

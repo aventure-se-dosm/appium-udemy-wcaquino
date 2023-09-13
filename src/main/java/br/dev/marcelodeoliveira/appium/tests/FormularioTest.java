@@ -1,10 +1,10 @@
 
 package br.dev.marcelodeoliveira.appium.tests;
 
-import static br.dev.marcelodeoliveira.appium.tests.DriverFactory.addCapability;
-import static br.dev.marcelodeoliveira.appium.tests.DriverFactory.getDriver;
-import static br.dev.marcelodeoliveira.appium.tests.DriverFactory.setDefaultCapabilities;
-import static br.dev.marcelodeoliveira.appium.tests.DriverFactory.setupDriver;
+import static br.dev.marcelodeoliveira.appium.core.DriverFactory.addCapability;
+import static br.dev.marcelodeoliveira.appium.core.DriverFactory.getDriver;
+import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setDefaultCapabilities;
+import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setupDriver;
 
 import java.net.MalformedURLException;
 import java.util.Arrays;
@@ -22,49 +22,6 @@ import io.appium.java_client.remote.MobileCapabilityType;
 
 public class FormularioTest extends BaseTest {
 
-//	private AndroidDriver<MobileElement> driver = null;
-//	private DesiredCapabilities desiredCapabilities;
-//
-//	@Before
-//	public void setupTest() throws MalformedURLException {
-//		setupDesiredCapabilities();
-//		setupDriver();
-//	}
-//
-//	void setupDesiredCapabilities() {
-//		this.desiredCapabilities = new DesiredCapabilities();
-//
-//		desiredCapabilities.setCapability("platformName", "Android");
-//		desiredCapabilities.setCapability("deviceName", "emulator-5554");
-//		desiredCapabilities.setCapability("automationName", "uiautomator2");
-//		desiredCapabilities.setCapability("fullReset", "false");
-//		desiredCapabilities.setCapability("noReset", "false");
-//		desiredCapabilities.setCapability(MobileCapabilityType.APP,
-//
-//				// TODO: make the absolutePath transparent for the user, once relative paths
-//				// haven't worked yet.
-//				"C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_2_0.apk");
-//
-//	}
-//
-//	private void setupDriver() throws MalformedURLException {
-//
-//		this.driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"),
-//				getDesiredCapabilities());
-//
-//		driver.manage().timeouts().implicitlyWait(10l, TimeUnit.SECONDS);
-//	}
-//
-//
-//	private AndroidDriver<MobileElement> getDriver() throws MalformedURLException {
-//		return this.driver;
-//	}
-//
-//	private DesiredCapabilities getDesiredCapabilities() {
-//		if (desiredCapabilities == null)
-//			setupDesiredCapabilities();
-//		return desiredCapabilities;
-//	}
 
 	@Before
 	public void setupTest() {
@@ -93,7 +50,10 @@ public class FormularioTest extends BaseTest {
 
 	@Test
 	public void deveIteragirSwitchEScheckbox() throws MalformedURLException {
-
+		MobileElement formularioOption;
+		formularioOption = getDriver().findElement(MobileBy.xpath("//android.widget.TextView[@text='Formulário']"));
+		formularioOption.click();
+		
 		MobileElement switchHour;
 		switchHour = getDriver().findElement(MobileBy.AccessibilityId("switch"));
 		if (switchHour.getAttribute("checked").equals("true"))

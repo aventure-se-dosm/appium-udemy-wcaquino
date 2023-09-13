@@ -1,7 +1,9 @@
 package br.dev.marcelodeoliveira.appium.tests;
 
-import static br.dev.marcelodeoliveira.appium.tests.DriverFactory.*;
-
+import static br.dev.marcelodeoliveira.appium.core.DriverFactory.addCapability;
+import static br.dev.marcelodeoliveira.appium.core.DriverFactory.getDriver;
+import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setDefaultCapabilities;
+import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setupDriver;
 
 import java.net.MalformedURLException;
 
@@ -10,7 +12,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.remote.MobileCapabilityType;
 
 public class CalculadoraTest extends BaseTest {
 	@Before
@@ -39,8 +40,8 @@ public class CalculadoraTest extends BaseTest {
 		MobileElement el6 = (MobileElement) getDriver()
 				.findElementById("com.google.android.calculator:id/result_final");
 
-		//it fails: their references don't point to the same object;
-		// Assert.assertSame(el2, el4); 
+		// it fails: their references don't point to the same object;
+		// Assert.assertSame(el2, el4);
 		Assert.assertEquals(el2, el4);
 		Assert.assertEquals(el2.getAttribute("content-desc"), "2", el2.getAttribute("content-desc"));
 		Assert.assertEquals(el3.getAttribute("content-desc"), "mais", el3.getAttribute("content-desc"));
