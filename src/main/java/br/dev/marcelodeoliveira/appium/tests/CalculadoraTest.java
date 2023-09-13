@@ -34,16 +34,16 @@ public class CalculadoraTest {
                driver.manage().timeouts().implicitlyWait(10L,  TimeUnit.SECONDS);
 
 
-               MobileElement el2 = (MobileElement) driver.findElementByAccessibilityId("2");
+               MobileElement el2 = (MobileElement) driver.findElementById("com.google.android.calculator:id/digit_2");
                el2.click();
                
-               MobileElement el3 = (MobileElement) driver.findElementByAccessibilityId("plus");
+               MobileElement el3 = (MobileElement) driver.findElementById("com.google.android.calculator:id/op_add");
                
                el3.click();
-               MobileElement el4 = (MobileElement) driver.findElementByAccessibilityId("2");
+               MobileElement el4 = (MobileElement) driver.findElementById("com.google.android.calculator:id/digit_2");
                
                el4.click();
-               MobileElement el5 = (MobileElement) driver.findElementByAccessibilityId("equals");
+               MobileElement el5 = (MobileElement) driver.findElementById("com.google.android.calculator:id/eq");
                               
                el5.click();
                MobileElement el6 = (MobileElement) driver.findElement(MobileBy.id("com.google.android.calculator:id/result_final"));
@@ -51,9 +51,9 @@ public class CalculadoraTest {
                //Assert.assertSame(el2, el4); //fail: their references don't point to the same object;
                Assert.assertEquals(el2, el4);
                Assert.assertEquals(el2.getAttribute("content-desc"), "2", el2.getAttribute("content-desc")); 
-               Assert.assertEquals(el3.getAttribute("content-desc"), "plus", el3.getAttribute("content-desc"));
+               Assert.assertEquals(el3.getAttribute("content-desc"), "mais", el3.getAttribute("content-desc"));
                Assert.assertEquals(el4.getAttribute("content-desc"), "2", el4.getAttribute("content-desc"));
-               Assert.assertEquals(el5.getAttribute("content-desc"), "equals", el5.getAttribute("content-desc"));
+               Assert.assertEquals(el5.getAttribute("content-desc"), "igual", el5.getAttribute("content-desc"));
                Assert.assertEquals(el6.getAttribute("content-desc"), "4", el6.getText());
                
                driver.quit();

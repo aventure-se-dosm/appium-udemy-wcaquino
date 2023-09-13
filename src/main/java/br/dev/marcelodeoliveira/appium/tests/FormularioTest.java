@@ -3,8 +3,10 @@ package br.dev.marcelodeoliveira.appium.tests;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -53,9 +55,6 @@ public class FormularioTest {
 		driver.manage().timeouts().implicitlyWait(10l, TimeUnit.SECONDS);
 	}
 
-	private boolean isDriverNull() {
-		return this.driver == null;
-	}
 
 	private AndroidDriver<MobileElement> getDriver() throws MalformedURLException {
 		return this.driver;
@@ -129,25 +128,39 @@ public class FormularioTest {
 	@Test
 	public void deveResolverDesafio() {
 
-		By txtFormulario = MobileBy.xpath("//android.widget.TextView[@text='Formulário']");
-		By txtName =  MobileBy.AccessibilityId("nome");
-		By spinner =  MobileBy.AccessibilityId("console");
-		By menuGame =  MobileBy.xpath(String.format("//android.widget.CheckedTextView[@text='%s']", "Nintendo Switch"));
-		By switchHour =  MobileBy.AccessibilityId("switch");
-		By chkDate = MobileBy.AccessibilityId("check");
-		By btnSalvar =   MobileBy.xpath("//android.widget.TextView[@text='SALVAR']");
-		By allVisibleText =  MobileBy.className("android.widget.TextView");
-		
-		List<MobileElement> listTxtWidgetText = null;
+		final String TXT_USER_NAME = "Wagnão";
 
-		 driver.findElement(txtFormulario).click();
-		 driver.findElement(txtName).sendKeys("Wagnão");
-		 driver.findElement(spinner).click();
-		 driver.findElement(menuGame).click();
-		 driver.findElement(switchHour).click();
-		 driver.findElement(chkDate).click();
-		 driver.findElement(btnSalvar).click(); 
-		 
+		By txtFormulario = MobileBy.xpath("//android.widget.TextView[@text='Formulário']");
+		By txtName = MobileBy.AccessibilityId("nome");
+		By spinner = MobileBy.AccessibilityId("console");
+		By menuGame = MobileBy.xpath(String.format("//android.widget.CheckedTextView[@text='%s']", "Nintendo Switch"));
+		By switchHour = MobileBy.AccessibilityId("switch");
+		By chkDate = MobileBy.AccessibilityId("check");
+		By btnSalvar = MobileBy.xpath("//android.widget.TextView[@text='SALVAR']");
+		By allVisibleText = MobileBy.className("android.widget.TextView");
+
+		driver.findElement(txtFormulario).click();
+		;
+		driver.findElement(txtName).sendKeys(TXT_USER_NAME);
+		driver.findElement(spinner).click();
+		driver.findElement(menuGame).click();
+		driver.findElement(switchHour).click();
+		driver.findElement(chkDate).click();
+		driver.findElement(btnSalvar).click();
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		List<String> listTxtWidgetTextString = driver.findElements(allVisibleText).stream().map(elem -> elem.getText())
+				.filter(s -> s.contains(": ")).collect(Collectors.toList());
+
+		Assert.assertTrue(
+				listTxtWidgetTextString.containsAll(Arrays.asList("Nome: ".concat(TXT_USER_NAME), "Console: switch",
+						"Slider: 25", "Switch: Off", "Checkbox: Marcado", "Data: 01/01/2000", "Hora: 12:00")));
+
 	}
 
 	@After
