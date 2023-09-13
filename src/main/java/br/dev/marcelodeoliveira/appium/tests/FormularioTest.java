@@ -3,12 +3,14 @@ package br.dev.marcelodeoliveira.appium.tests;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import io.appium.java_client.MobileBy;
@@ -111,17 +113,41 @@ public class FormularioTest {
 		if (switchHour.getAttribute("checked").equals("true"))
 			switchHour.click();
 
-		MobileElement chkHour;
-		chkHour = driver.findElement(MobileBy.AccessibilityId("check"));
-		if (chkHour.getAttribute("checked").equals("false"))
-			chkHour.click();
+		MobileElement chkDate;
+		chkDate = driver.findElement(MobileBy.AccessibilityId("check"));
+		if (chkDate.getAttribute("checked").equals("false"))
+			chkDate.click();
 
 		Assert.assertEquals(txtName, nameField.getText());
 		Assert.assertEquals(switchHour.getAttribute("checked"), "false");
-		Assert.assertEquals(chkHour.getAttribute("checked"), "true");
+		Assert.assertEquals(chkDate.getAttribute("checked"), "true");
 		Assert.assertEquals(txtName, nameField.getText());
 
 		finishTest();
+	}
+
+	@Test
+	public void deveResolverDesafio() {
+
+		By txtFormulario = MobileBy.xpath("//android.widget.TextView[@text='Formulário']");
+		By txtName =  MobileBy.AccessibilityId("nome");
+		By spinner =  MobileBy.AccessibilityId("console");
+		By menuGame =  MobileBy.xpath(String.format("//android.widget.CheckedTextView[@text='%s']", "Nintendo Switch"));
+		By switchHour =  MobileBy.AccessibilityId("switch");
+		By chkDate = MobileBy.AccessibilityId("check");
+		By btnSalvar =   MobileBy.xpath("//android.widget.TextView[@text='SALVAR']");
+		By allVisibleText =  MobileBy.className("android.widget.TextView");
+		
+		List<MobileElement> listTxtWidgetText = null;
+
+		 driver.findElement(txtFormulario).click();
+		 driver.findElement(txtName).sendKeys("Wagnão");
+		 driver.findElement(spinner).click();
+		 driver.findElement(menuGame).click();
+		 driver.findElement(switchHour).click();
+		 driver.findElement(chkDate).click();
+		 driver.findElement(btnSalvar).click(); 
+		 
 	}
 
 	@After
