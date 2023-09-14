@@ -1,17 +1,41 @@
 package br.dev.marcelodeoliveira.appium.tests.model.pages;
 
-import org.openqa.selenium.support.PageFactory;
-
-import br.dev.marcelodeoliveira.appium.core.DriverFactory;
+import io.appium.java_client.MobileElement;
 
 public class BasePage {
 
-	protected void pageInit(Class<? extends BasePage> pageClass) {
-		PageFactory.initElements(DriverFactory.getDriver(), pageClass);
+	BasePage() {
 	}
 
-	public BasePage() {
-		//pageInit(this.getClass());
+	protected void click(MobileElement element) {
+		element.click();
 	}
 
+	protected void writeText(MobileElement element, String text) {
+		element.sendKeys(text);
+	}
+
+	protected String getText(MobileElement element) {
+		return element.getText();
+	}
+
+	protected boolean isElementSelected(MobileElement elem) {
+		return elem.isSelected();
+	}
+
+	public void changeElementState(MobileElement element, boolean status) {
+		if (isElementChecked(element) != status) {
+			click(element);
+		}
+	}
+
+	public String getAttribute(MobileElement element, String attrubute) {
+		return element.getAttribute(attrubute);
+	}
+
+	public boolean isElementChecked(MobileElement element) {
+		String s = element.getAttribute("checked");
+		boolean b = Boolean.parseBoolean(s);
+		return b;
+	}
 }

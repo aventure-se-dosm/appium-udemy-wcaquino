@@ -1,35 +1,44 @@
 package br.dev.marcelodeoliveira.appium.tests.model.pages;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import org.junit.Assert;
+import org.openqa.selenium.support.PageFactory;
+
+import br.dev.marcelodeoliveira.appium.core.DriverFactory;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidBy;
 import io.appium.java_client.pagefactory.AndroidFindAll;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
-public class FormularioPage extends BasePage{
-	
+public class FormularioPage extends BasePage {
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Formul·rio']")
-	MobileElement formulario;
+	public FormularioPage() {
+		PageFactory.initElements(new AppiumFieldDecorator(DriverFactory.getDriver()), this);
+	}
+
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Formul√°rio']")
+	private MobileElement formulario;
 
 	@AndroidFindBy(accessibility = "nome")
-	MobileElement txtName;
+	private MobileElement txtName;
 
 	@AndroidFindBy(accessibility = "console")
-	MobileElement spinner;
+	private MobileElement spinner;
 
 	@AndroidFindBy(accessibility = "check")
-	MobileElement chkDate;
+	private MobileElement chkDate;
 
 	@AndroidFindBy(accessibility = "switch")
-	MobileElement switchHour;
+	private MobileElement switchHour;
 
-	@AndroidFindBy(xpath = "//android.widget.CheckedTextView[@text='Nintendo Switch']")
-	MobileElement menuGame;
+	@AndroidFindBy(xpath = "//android.widget.CheckedTextView")
+	private List<MobileElement> menuGameConsoles;
 
-	@AndroidFindBy(xpath = "//android.widget.CheckedTextView[@text='Salvar']")
-	MobileElement btnSalvar;
+	@AndroidFindBy(accessibility = "save")
+	private MobileElement btnSalvar;
 
 	@AndroidFindAll(value = { @AndroidBy(xpath = "//android.widget.TextView") })
 	List<MobileElement> listAllTextView;
@@ -54,8 +63,17 @@ public class FormularioPage extends BasePage{
 		return switchHour;
 	}
 
-	public MobileElement getMenuGame() {
-		return menuGame;
+	public MobileElement getMenuGame(String console) {
+		return getMenuGameConsoles()
+				.stream()
+				.filter(e -> e.getText().equalsIgnoreCase(console))
+				.findFirst()
+				.get();
+	}
+
+	private List<MobileElement> getMenuGameConsoles() {
+		// TODO Auto-generated method stub
+		return menuGameConsoles;
 	}
 
 	public MobileElement getBtnSalvar() {
@@ -64,6 +82,56 @@ public class FormularioPage extends BasePage{
 
 	public List<MobileElement> getListAllTextView() {
 		return listAllTextView;
+	}
+
+	public void clicaFormulario() {
+
+		click(getFormulario());
+	}
+
+	public void escreveNome(String txtNameString) {
+		writeText(getTxtName(), txtNameString);
+	}
+
+	public void mudaSwitch(boolean status) {
+		changeElementState(getSwitchHour(), status);
+		Assert.assertEquals(true, isSwitchSelected());
+
+	}
+
+	public void mudaCheckbox(boolean status) {
+		changeElementState(getChkDate(), status);
+	}
+
+	public boolean isCheckboxSelected() {
+		return isElementChecked(getChkDate());
+	}
+
+	public boolean isSwitchSelected() {
+		return isElementChecked(switchHour);
+	}
+
+	public void salvarForm() {
+
+		click(getBtnSalvar());
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void selecionaConsole(String selectedGameConsole) {
+		click(getSpinner());
+		click(getMenuGame(selectedGameConsole));
+	}
+	
+	public List<String> getAllFormResponse(){
+		return  getListAllTextView().stream()
+				.map(elem -> elem.getText())
+				.filter(s -> ((String) s).contains(": "))
+				.collect(Collectors.toList());
 	}
 
 }

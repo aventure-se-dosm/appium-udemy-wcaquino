@@ -51,7 +51,6 @@ public class DriverFactory {
 			driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), getCapabilities());
 			driver.manage().timeouts().implicitlyWait(10L, TimeUnit.SECONDS);
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
