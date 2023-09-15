@@ -1,17 +1,33 @@
 package br.dev.marcelodeoliveira.appium.tests.model.pages;
 
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import br.dev.marcelodeoliveira.appium.core.DriverFactory;
 import io.appium.java_client.MobileElement;
 
 public class BasePage {
 
+	WebDriverWait wait;
+	
+	
+
 	BasePage() {
+		wait = new WebDriverWait(DriverFactory.getDriver(), 10L);
 	}
 
-	protected void click(MobileElement element) {
+	protected void click(WebElement element) {
+		waitUntilWebElementToBeVisible(element);
 		element.click();
 	}
 
+	protected void waitUntilWebElementToBeVisible(WebElement element) {
+		wait.until(ExpectedConditions.visibilityOf(element));
+	}
+
 	protected void writeText(MobileElement element, String text) {
+		waitUntilWebElementToBeVisible(element);
 		element.sendKeys(text);
 	}
 

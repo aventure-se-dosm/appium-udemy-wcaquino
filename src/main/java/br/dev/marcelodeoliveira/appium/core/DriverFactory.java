@@ -16,7 +16,7 @@ public class DriverFactory {
 	public void setupTest() {
 		setupDriver();
 	}
-	
+
 	private static DesiredCapabilities getCapabilities() {
 		if (isdesiredCapabilitiesNull()) {
 			setDefaultCapabilities();
@@ -34,7 +34,7 @@ public class DriverFactory {
 		desiredCapabilities.setCapability("platformName", "Android");
 		desiredCapabilities.setCapability("deviceName", "emulator-5554");
 		desiredCapabilities.setCapability("automationName", "uiautomator2");
-		desiredCapabilities.setCapability("noReset", false);
+		desiredCapabilities.setCapability("noReset", true);
 		desiredCapabilities.setCapability("fullReset", false);
 	}
 
@@ -67,11 +67,7 @@ public class DriverFactory {
 			getDriver().quit();
 		setDriverNull();
 	}
-	public static void tearDown() {
-		if (!isDriverNull())
-			getDriver().resetApp();
-		setDriverNull();
-	}
+
 
 	private static void setDriverNull() {
 		driver = null;
