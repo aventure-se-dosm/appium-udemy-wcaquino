@@ -1,132 +1,70 @@
 
 package br.dev.marcelodeoliveira.appium.tests;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.concurrent.TimeUnit;
+import static br.dev.marcelodeoliveira.appium.core.DriverFactory.addCapability;
+import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setDefaultCapabilities;
+import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setupDriver;
 
-import org.junit.After;
+import java.net.MalformedURLException;
+import java.util.Arrays;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
-import io.appium.java_client.MobileBy;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
+import br.dev.marcelodeoliveira.appium.tests.model.pages.FormularioPage;
 import io.appium.java_client.remote.MobileCapabilityType;
 
-public class FormularioTest {
+public class FormularioTest extends BaseTest {
 
-	private AndroidDriver<MobileElement> driver = null;
-	private DesiredCapabilities desiredCapabilities;
+	FormularioPage page;
 
 	@Before
-	public void setupTest() throws MalformedURLException {
-		setupDesiredCapabilities();
+	public void setupTest() {
+		setDefaultCapabilities();
+		addCapability(MobileCapabilityType.APP,
+				"C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_2_0.apk");
 		setupDriver();
-	}
+		this.page = new FormularioPage();
 
-	void setupDesiredCapabilities() {
-		this.desiredCapabilities = new DesiredCapabilities();
-
-		desiredCapabilities.setCapability("platformName", "Android");
-		desiredCapabilities.setCapability("deviceName", "emulator-5554");
-		desiredCapabilities.setCapability("automationName", "uiautomator2");
-		desiredCapabilities.setCapability("fullReset", "false");
-		desiredCapabilities.setCapability("noReset", "false");
-		desiredCapabilities.setCapability(MobileCapabilityType.APP,
-
-				//TODO: make the absolutePath transparent for the user, once relative paths haven't worked yet.
-	"C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_2_0.apk");
-
-	}
-
-	private void setupDriver() throws MalformedURLException {
-
-		this.driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"),
-				getDesiredCapabilities());
-		
-		driver.manage().timeouts().implicitlyWait(10l, TimeUnit.SECONDS);
-	}
-	
-	private boolean isDriverNull() {
-		return this.driver == null;
-	}
-
-
-	private AndroidDriver<MobileElement> getDriver() throws MalformedURLException {
-		return this.driver;
-	}
-
-	private DesiredCapabilities getDesiredCapabilities() {
-		if (desiredCapabilities == null)
-			setupDesiredCapabilities();
-		return desiredCapabilities;
 	}
 
 	@Test
 	public void devePreencherCampoTeste() throws MalformedURLException {
 
 		String txtName = "Wagner";
-
-		// somewhat verbose
-		MobileElement formularioOption;
-		formularioOption = driver.findElement(MobileBy.xpath("//android.widget.TextView[@text='Formul·rio']"));
-		formularioOption.click();
-
-		MobileElement nameField;
-		nameField = driver.findElement(MobileBy.xpath("//android.widget.EditText[@content-desc='nome']"));
-		nameField.sendKeys(txtName);
-		Assert.assertEquals(txtName, nameField.getText());
-
-		getDriver().quit();
+		page.clicaFormulario();
+		page.escreveNome(txtName);
 	}
 
 	@Test
 	public void deveIteragirSwitchEScheckbox() throws MalformedURLException {
 
-		String txtName = "Wagner";
-		String spinnerGameConsoleOption = "PS4";
-
-		MobileElement formularioOption;
-		formularioOption = driver.findElement(MobileBy.xpath("//android.widget.TextView[@text='Formul·rio']"));
-		formularioOption.click();
-
-		MobileElement nameField;
-		nameField = driver.findElement(MobileBy.AccessibilityId("nome"));
-		nameField.sendKeys(txtName);
-
-		MobileElement spinner;
-		spinner = driver.findElement(MobileBy.xpath("//android.widget.Spinner[@content-desc='console']"));
-		spinner.click();
-
-		MobileElement option;
-		option = driver.findElement(MobileBy
-				.xpath(String.format("//android.widget.CheckedTextView[@text='%s']", spinnerGameConsoleOption)));
-		option.click();
-
-		MobileElement sliderSwitch;
-		sliderSwitch = driver.findElement(MobileBy.AccessibilityId("switch"));
-		if (sliderSwitch.getAttribute("checked").equals("true")) sliderSwitch.click();
-
-		MobileElement checkBok;
-		checkBok = driver.findElement(MobileBy.AccessibilityId("check"));
-		if (checkBok.getAttribute("checked").equals("false")) checkBok.click();
-
-		Assert.assertEquals(txtName, nameField.getText());
-		Assert.assertEquals(sliderSwitch.getAttribute("checked"), "false");
-		Assert.assertEquals(checkBok.getAttribute("checked"), "true");
-		Assert.assertEquals(txtName, nameField.getText());
-
-		finishTest();
+		page.clicaFormulario();
+		page.mudaSwitch(true);
+		page.mudaCheckbox(true);
+		Assert.assertTrue(page.isCheckboxSelected());
+		Assert.assertEquals(true, page.isSwitchSelected());
 	}
 
+	@Test
+	public void deveResolverDesafio() {
 
-	@After
-	public void finishTest() {
-		driver.quit();
+		final String TXT_USER_NAME = "Wagn√£o";
+		final String TXT_SELECTED_GAME_CONSOLE = "Nintendo Switch";
+		final Boolean statusSwitchHourSelected = true;
+		final Boolean statusChkDaterSeleced = false;
+
+		page.clicaFormulario();
+		page.escreveNome(TXT_USER_NAME);
+		page.selecionaConsole(TXT_SELECTED_GAME_CONSOLE);
+		page.mudaSwitch(statusSwitchHourSelected);
+		page.mudaCheckbox(statusChkDaterSeleced);
+		page.salvarForm();
+
+		Assert.assertTrue(
+				page.getAllFormResponse().containsAll(Arrays.asList("Nome: ".concat(TXT_USER_NAME), "Console: switch",
+						"Slider: 25", "Switch: On", "Checkbox: Desabilitado", "Data: 01/01/2000", "Hora: 12:00")));
+
 	}
-
-
 }
