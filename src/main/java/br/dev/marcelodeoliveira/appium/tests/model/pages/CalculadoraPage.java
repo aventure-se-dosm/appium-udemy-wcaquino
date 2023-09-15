@@ -1,17 +1,10 @@
 package br.dev.marcelodeoliveira.appium.tests.model.pages;
 
-import org.openqa.selenium.support.PageFactory;
-
 import br.dev.marcelodeoliveira.appium.core.DriverFactory;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
 public class CalculadoraPage extends BasePage {
-
-	public CalculadoraPage() {
-		PageFactory.initElements(new AppiumFieldDecorator(DriverFactory.getDriver()), this);
-	}
 
 	@AndroidFindBy(id = "com.google.android.calculator:id/op_add")
 	private MobileElement btnAdd;
@@ -47,7 +40,7 @@ public class CalculadoraPage extends BasePage {
 	}
 
 	private void selectNumber(Integer a) {
-		if(a < 0) {
+		if (a < 0) {
 			pressMinus();
 			a = invertNumber(a);
 		}

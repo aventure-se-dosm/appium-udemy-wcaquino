@@ -4,38 +4,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.junit.Assert;
-import org.openqa.selenium.support.PageFactory;
 
-import br.dev.marcelodeoliveira.appium.core.DriverFactory;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidBy;
 import io.appium.java_client.pagefactory.AndroidFindAll;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
 public class FormularioPage extends BasePage {
 
-	public FormularioPage() {
-		PageFactory.initElements(new AppiumFieldDecorator(DriverFactory.getDriver()), this);
-	}
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Formulário']")
-	private MobileElement formulario;
 	@AndroidFindBy(xpath = "//android.widget.TextView[starts-with(@text, 'Nome: ')]")
 	private MobileElement lblName;
-//	@AndroidFindBy(xpath = "//android.widget.TextView[starts-with(@text, 'Console: ')]")
-//	private MobileElement lblConsole;
-//	@AndroidFindBy(xpath = "//android.widget.TextView[starts-with(@text, 'Nome: ')]")
-//	private MobileElement lbl;
-//	@AndroidFindBy(xpath = "//android.widget.TextView[starts-with(@text, 'Nome: ')]")
-//	private MobileElement lbl;
-//	@AndroidFindBy(xpath = "//android.widget.TextView[starts-with(@text, 'Nome: ')]")
-//	private MobileElement lbl;
-//	@AndroidFindBy(xpath = "//android.widget.TextView[starts-with(@text, 'Nome: ')]")
-//	private MobileElement lbl;
-//	@AndroidFindBy(xpath = "//android.widget.TextView[starts-with(@text, 'Nome: ')]")
-//	private MobileElement lbl;
-	
+
 	private MobileElement getLblName() {
 		return lblName;
 	}
@@ -57,24 +37,20 @@ public class FormularioPage extends BasePage {
 
 	@AndroidFindBy(accessibility = "save")
 	private MobileElement btnSalvar;
-	
+
 	@AndroidFindBy(xpath = "//*[@text='SALVAR DEMORADO']")
 	private MobileElement btnSalvarDemorado;
 
 	@AndroidFindAll(value = { @AndroidBy(xpath = "//android.widget.TextView") })
-		List<MobileElement> listAllTextView;
+	List<MobileElement> listAllTextView;
 
-
-		// TODO Auto-generated method stub
-	
-		
-		private MobileElement getBtnSalvarDemorado() {		
-			return btnSalvarDemorado;
-		} 
-
-	public MobileElement getFormulario() {
-		return formulario;
+	private MobileElement getBtnSalvarDemorado() {
+		return btnSalvarDemorado;
 	}
+
+//	public MobileElement getFormulario() {
+//		return formulario;
+//	}
 
 	public MobileElement getTxtName() {
 		return txtName;
@@ -97,7 +73,7 @@ public class FormularioPage extends BasePage {
 	}
 
 	private List<MobileElement> getMenuGameConsoles() {
-		// TODO Auto-generated method stub
+
 		return menuGameConsoles;
 	}
 
@@ -109,10 +85,6 @@ public class FormularioPage extends BasePage {
 		return listAllTextView;
 	}
 
-	public void clicaFormulario() {
-
-		click(getFormulario());
-	}
 
 	public void escreveNome(String txtNameString) {
 		writeText(getTxtName(), txtNameString);
@@ -158,5 +130,4 @@ public class FormularioPage extends BasePage {
 				.collect(Collectors.toList());
 	}
 
-	
 }

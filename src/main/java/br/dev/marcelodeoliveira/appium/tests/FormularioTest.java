@@ -13,11 +13,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.dev.marcelodeoliveira.appium.tests.model.pages.FormularioPage;
+import br.dev.marcelodeoliveira.appium.tests.model.pages.MenuPage;
 import io.appium.java_client.remote.MobileCapabilityType;
 
 public class FormularioTest extends BaseTest {
 
-	FormularioPage page;
+	MenuPage menuPage;
+	FormularioPage formularioPage;
 
 	@Before
 	public void setupTest() {
@@ -25,7 +27,10 @@ public class FormularioTest extends BaseTest {
 		addCapability(MobileCapabilityType.APP,
 				"C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_2_0.apk");
 		setupDriver();
-		this.page = new FormularioPage();
+//		refresh();
+		
+		this.formularioPage = new FormularioPage();
+		this.menuPage = new MenuPage();
 
 	}
 
@@ -33,31 +38,31 @@ public class FormularioTest extends BaseTest {
 	public void devePreencherCampoTeste() throws MalformedURLException {
 
 		String txtName = "Wagner";
-		page.clicaFormulario();
-		page.escreveNome(txtName);
+		menuPage.clicaFormulario();
+		formularioPage.escreveNome(txtName);
 		
 	}
 
 	@Test
 	public void deveIteragirSwitchEScheckbox() throws MalformedURLException {
 
-		page.clicaFormulario();
-		page.mudaSwitch(true);
-		page.mudaCheckbox(true);
-		Assert.assertTrue(page.isCheckboxSelected());
-		Assert.assertEquals(true, page.isSwitchSelected());
+		menuPage.clicaFormulario();
+		formularioPage.mudaSwitch(true);
+		formularioPage.mudaCheckbox(true);
+		Assert.assertTrue(formularioPage.isCheckboxSelected());
+		Assert.assertEquals(true, formularioPage.isSwitchSelected());
 	}
 	
 	@Test
 	public void deveCadastrarNomeDemorado() throws MalformedURLException {
 
 		final String TXT_USER_NAME = "Wagnão";
-		page.clicaFormulario();
-		page.escreveNome(TXT_USER_NAME);
-		page.salvarFormDemorado();
+		menuPage.clicaFormulario();
+		formularioPage.escreveNome(TXT_USER_NAME);
+		formularioPage.salvarFormDemorado();
 		
 		Assert.assertTrue(
-				page.getAllFormResponse().containsAll(Arrays.asList(
+				formularioPage.getAllFormResponse().containsAll(Arrays.asList(
 						"Nome: ".concat(TXT_USER_NAME),
 						//"Console: switch",
 						"Slider: 25", 
@@ -76,15 +81,15 @@ public class FormularioTest extends BaseTest {
 		final Boolean statusSwitchHourSelected = true;
 		final Boolean statusChkDaterSeleced = false;
 
-		page.clicaFormulario();
-		page.escreveNome(TXT_USER_NAME);
-		page.selecionaConsole(TXT_SELECTED_GAME_CONSOLE);
-		page.mudaSwitch(statusSwitchHourSelected);
-		page.mudaCheckbox(statusChkDaterSeleced);
-		page.salvarForm();
+		menuPage.clicaFormulario();
+		formularioPage.escreveNome(TXT_USER_NAME);
+		formularioPage.selecionaConsole(TXT_SELECTED_GAME_CONSOLE);
+		formularioPage.mudaSwitch(statusSwitchHourSelected);
+		formularioPage.mudaCheckbox(statusChkDaterSeleced);
+		formularioPage.salvarForm();
 
 		Assert.assertTrue(
-				page.getAllFormResponse().containsAll(Arrays.asList("Nome: ".concat(TXT_USER_NAME), "Console: switch",
+				formularioPage.getAllFormResponse().containsAll(Arrays.asList("Nome: ".concat(TXT_USER_NAME), "Console: switch",
 						"Slider: 25", "Switch: On", "Checkbox: Desabilitado", "Data: 01/01/2000", "Hora: 12:00")));
 
 	}

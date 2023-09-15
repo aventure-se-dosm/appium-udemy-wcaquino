@@ -4,12 +4,15 @@ import static br.dev.marcelodeoliveira.appium.core.DriverFactory.killDriver;
 import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setDefaultCapabilities;
 import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setupDriver;
 
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.TestName;
 
-public class BaseTest {
+import br.dev.marcelodeoliveira.appium.core.DriverFactory;
+
+public abstract class BaseTest {
 
 	@Rule
 	public TestName testName = new TestName();
@@ -18,6 +21,11 @@ public class BaseTest {
 	public void setupTest() {
 		setDefaultCapabilities();
 		setupDriver();
+	}
+
+	@After
+	public void resetApp() {
+		DriverFactory.tearDown();
 	}
 
 	@AfterClass
