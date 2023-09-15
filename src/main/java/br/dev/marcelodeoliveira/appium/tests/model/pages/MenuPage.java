@@ -7,14 +7,27 @@ public class MenuPage extends BasePage {
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Formulário']")
 	private MobileElement formulario;
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Splash']")
+	private MobileElement splash;
 
 	public MobileElement getFormulario() {
 		return formulario;
 	}
 
-	public void clicaFormulario() {
+	public MobileElement getSplash() {
+		return splash;
+	}
 
+	public void clicaFormulario() {
 		click(getFormulario());
+	}
+
+	public void clicaSplash() {
+		click(getSplash());
+	}
+
+	public boolean isMenuVisible() {
+		return isElementVisible(getFormulario());
 	}
 
 }
