@@ -12,20 +12,23 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 public abstract class BasePage {
 
 	WebDriverWait wait;
-	
+
 	public BasePage() {
-	PageFactory.initElements(new AppiumFieldDecorator(DriverFactory.getDriver()), this);
-	wait = new WebDriverWait(DriverFactory.getDriver(), 10L);
-}
-	
+		PageFactory.initElements(new AppiumFieldDecorator(DriverFactory.getDriver()), this);
+		wait = new WebDriverWait(DriverFactory.getDriver(), 10L);
+	}
 
 	protected void click(WebElement element) {
 		waitUntilWebElementToBeVisible(element);
 		element.click();
 	}
 
-	protected void waitUntilWebElementToBeVisible(WebElement element) {
-		wait.until(ExpectedConditions.visibilityOf(element));
+	protected boolean waitUntilWebElementToBeVisible(WebElement element) {
+		return wait.until(ExpectedConditions.visibilityOf(element)) != null;
+	}
+
+	protected boolean waitUntilWebElementToBeInvisible(WebElement element) {
+		return wait.until(ExpectedConditions.invisibilityOf(element));
 	}
 
 	protected void writeText(MobileElement element, String text) {
@@ -56,5 +59,9 @@ public abstract class BasePage {
 		String s = element.getAttribute("checked");
 		boolean b = Boolean.parseBoolean(s);
 		return b;
+	}
+
+	public boolean isElementVisible(MobileElement element) {
+		return element.isDisplayed();
 	}
 }

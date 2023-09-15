@@ -27,8 +27,7 @@ public class FormularioTest extends BaseTest {
 		addCapability(MobileCapabilityType.APP,
 				"C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_2_0.apk");
 		setupDriver();
-//		refresh();
-		
+
 		this.formularioPage = new FormularioPage();
 		this.menuPage = new MenuPage();
 
@@ -40,7 +39,7 @@ public class FormularioTest extends BaseTest {
 		String txtName = "Wagner";
 		menuPage.clicaFormulario();
 		formularioPage.escreveNome(txtName);
-		
+
 	}
 
 	@Test
@@ -52,7 +51,7 @@ public class FormularioTest extends BaseTest {
 		Assert.assertTrue(formularioPage.isCheckboxSelected());
 		Assert.assertEquals(true, formularioPage.isSwitchSelected());
 	}
-	
+
 	@Test
 	public void deveCadastrarNomeDemorado() throws MalformedURLException {
 
@@ -60,17 +59,9 @@ public class FormularioTest extends BaseTest {
 		menuPage.clicaFormulario();
 		formularioPage.escreveNome(TXT_USER_NAME);
 		formularioPage.salvarFormDemorado();
-		
-		Assert.assertTrue(
-				formularioPage.getAllFormResponse().containsAll(Arrays.asList(
-						"Nome: ".concat(TXT_USER_NAME),
-						//"Console: switch",
-						"Slider: 25", 
-						//"Switch: On",
-						//"Checkbox: Desabilitado",
-						"Data: 01/01/2000", "Hora: 12:00")));
-		
-		
+
+		Assert.assertTrue(formularioPage.getAllFormResponse().containsAll(
+				Arrays.asList("Nome: ".concat(TXT_USER_NAME), "Slider: 25", "Data: 01/01/2000", "Hora: 12:00")));
 	}
 
 	@Test
@@ -88,9 +79,9 @@ public class FormularioTest extends BaseTest {
 		formularioPage.mudaCheckbox(statusChkDaterSeleced);
 		formularioPage.salvarForm();
 
-		Assert.assertTrue(
-				formularioPage.getAllFormResponse().containsAll(Arrays.asList("Nome: ".concat(TXT_USER_NAME), "Console: switch",
-						"Slider: 25", "Switch: On", "Checkbox: Desabilitado", "Data: 01/01/2000", "Hora: 12:00")));
+		Assert.assertTrue(formularioPage.getAllFormResponse()
+				.containsAll(Arrays.asList("Nome: ".concat(TXT_USER_NAME), "Console: switch", "Slider: 25",
+						"Switch: On", "Checkbox: Desabilitado", "Data: 01/01/2000", "Hora: 12:00")));
 
 	}
 }
