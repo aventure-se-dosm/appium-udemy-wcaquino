@@ -47,7 +47,16 @@ public class CalculadoraPage extends BasePage {
 	}
 
 	private void selectNumber(Integer a) {
+		if(a < 0) {
+			pressMinus();
+			a = invertNumber(a);
+		}
 		click(DriverFactory.getDriver().findElementByAccessibilityId(a.toString()));
+	}
+
+	private Integer invertNumber(Integer a) {
+		a = -a;
+		return a;
 	}
 
 	private void pressAdd() {
@@ -63,7 +72,7 @@ public class CalculadoraPage extends BasePage {
 		return btnMinus;
 	}
 
-	private void pressTimes() {
+	private void pressMult() {
 		click(getBtnTimes());
 	}
 
@@ -106,20 +115,35 @@ public class CalculadoraPage extends BasePage {
 		click(getBtnEquals());
 	}
 
-	private MobileElement getBtnPercent() {
-		return btnPercent;
-	}
-
-	private MobileElement getBtndel() {
-		return btndel;
-	}
-
-	private MobileElement getBtnClear() {
-		return btnClear;
-	}
-
 	public String getResult() {
 		return getText(getLblResult());
+	}
+
+	public void simpleSub(int a, int b) {
+		selectNumber(a);
+		pressMinus();
+		selectNumber(b);
+		pressEquals();
+	}
+
+	public void simpleMult(int a, int b) {
+		selectNumber(a);
+		pressMult();
+		selectNumber(b);
+		pressEquals();
+	}
+
+	public void simpleDiv(int a, int b) {
+		selectNumber(a);
+		pressDividedTo();
+		selectNumber(b);
+		pressEquals();
+	}
+
+	public void simpleSqrt(int a) {
+		pressSqrt();
+		selectNumber(a);
+		pressEquals();
 	}
 
 }
