@@ -21,6 +21,24 @@ public class FormularioPage extends BasePage {
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Formulário']")
 	private MobileElement formulario;
+	@AndroidFindBy(xpath = "//android.widget.TextView[starts-with(@text, 'Nome: ')]")
+	private MobileElement lblName;
+//	@AndroidFindBy(xpath = "//android.widget.TextView[starts-with(@text, 'Console: ')]")
+//	private MobileElement lblConsole;
+//	@AndroidFindBy(xpath = "//android.widget.TextView[starts-with(@text, 'Nome: ')]")
+//	private MobileElement lbl;
+//	@AndroidFindBy(xpath = "//android.widget.TextView[starts-with(@text, 'Nome: ')]")
+//	private MobileElement lbl;
+//	@AndroidFindBy(xpath = "//android.widget.TextView[starts-with(@text, 'Nome: ')]")
+//	private MobileElement lbl;
+//	@AndroidFindBy(xpath = "//android.widget.TextView[starts-with(@text, 'Nome: ')]")
+//	private MobileElement lbl;
+//	@AndroidFindBy(xpath = "//android.widget.TextView[starts-with(@text, 'Nome: ')]")
+//	private MobileElement lbl;
+	
+	private MobileElement getLblName() {
+		return lblName;
+	}
 
 	@AndroidFindBy(accessibility = "nome")
 	private MobileElement txtName;
@@ -39,9 +57,20 @@ public class FormularioPage extends BasePage {
 
 	@AndroidFindBy(accessibility = "save")
 	private MobileElement btnSalvar;
+	
+	@AndroidFindBy(xpath = "//*[@text='SALVAR DEMORADO']")
+	private MobileElement btnSalvarDemorado;
 
 	@AndroidFindAll(value = { @AndroidBy(xpath = "//android.widget.TextView") })
-	List<MobileElement> listAllTextView;
+		List<MobileElement> listAllTextView;
+
+
+		// TODO Auto-generated method stub
+	
+		
+		private MobileElement getBtnSalvarDemorado() {		
+			return btnSalvarDemorado;
+		} 
 
 	public MobileElement getFormulario() {
 		return formulario;
@@ -64,11 +93,7 @@ public class FormularioPage extends BasePage {
 	}
 
 	public MobileElement getMenuGame(String console) {
-		return getMenuGameConsoles()
-				.stream()
-				.filter(e -> e.getText().equalsIgnoreCase(console))
-				.findFirst()
-				.get();
+		return getMenuGameConsoles().stream().filter(e -> e.getText().equalsIgnoreCase(console)).findFirst().get();
 	}
 
 	private List<MobileElement> getMenuGameConsoles() {
@@ -114,11 +139,12 @@ public class FormularioPage extends BasePage {
 	public void salvarForm() {
 
 		click(getBtnSalvar());
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		waitUntilWebElementToBeVisible(getLblName());
+	}
+
+	public void salvarFormDemorado() {
+		click(getBtnSalvarDemorado());
+		waitUntilWebElementToBeVisible(getLblName());
 
 	}
 
@@ -126,12 +152,11 @@ public class FormularioPage extends BasePage {
 		click(getSpinner());
 		click(getMenuGame(selectedGameConsole));
 	}
-	
-	public List<String> getAllFormResponse(){
-		return  getListAllTextView().stream()
-				.map(elem -> elem.getText())
-				.filter(s -> ((String) s).contains(": "))
+
+	public List<String> getAllFormResponse() {
+		return getListAllTextView().stream().map(elem -> elem.getText()).filter(s -> ((String) s).contains(": "))
 				.collect(Collectors.toList());
 	}
 
+	
 }

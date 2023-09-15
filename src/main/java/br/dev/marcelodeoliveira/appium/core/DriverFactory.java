@@ -16,7 +16,7 @@ public class DriverFactory {
 	public void setupTest() {
 		setupDriver();
 	}
-	
+
 	private static DesiredCapabilities getCapabilities() {
 		if (isdesiredCapabilitiesNull()) {
 			setDefaultCapabilities();
@@ -49,7 +49,7 @@ public class DriverFactory {
 	public static void setupDriver() {
 		try {
 			driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), getCapabilities());
-			driver.manage().timeouts().implicitlyWait(10L, TimeUnit.SECONDS);
+			driver.manage().timeouts().implicitlyWait(5L, TimeUnit.SECONDS);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
@@ -67,6 +67,7 @@ public class DriverFactory {
 			getDriver().quit();
 		setDriverNull();
 	}
+
 
 	private static void setDriverNull() {
 		driver = null;

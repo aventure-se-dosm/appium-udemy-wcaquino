@@ -35,6 +35,7 @@ public class FormularioTest extends BaseTest {
 		String txtName = "Wagner";
 		page.clicaFormulario();
 		page.escreveNome(txtName);
+		
 	}
 
 	@Test
@@ -45,6 +46,26 @@ public class FormularioTest extends BaseTest {
 		page.mudaCheckbox(true);
 		Assert.assertTrue(page.isCheckboxSelected());
 		Assert.assertEquals(true, page.isSwitchSelected());
+	}
+	
+	@Test
+	public void deveCadastrarNomeDemorado() throws MalformedURLException {
+
+		final String TXT_USER_NAME = "Wagnão";
+		page.clicaFormulario();
+		page.escreveNome(TXT_USER_NAME);
+		page.salvarFormDemorado();
+		
+		Assert.assertTrue(
+				page.getAllFormResponse().containsAll(Arrays.asList(
+						"Nome: ".concat(TXT_USER_NAME),
+						//"Console: switch",
+						"Slider: 25", 
+						//"Switch: On",
+						//"Checkbox: Desabilitado",
+						"Data: 01/01/2000", "Hora: 12:00")));
+		
+		
 	}
 
 	@Test
