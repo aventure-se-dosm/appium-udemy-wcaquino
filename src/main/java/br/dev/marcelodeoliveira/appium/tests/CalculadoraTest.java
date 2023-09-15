@@ -51,7 +51,7 @@ public class CalculadoraTest extends BaseTest {
 	@Test
 	public void calculadoraDivisaoTest() throws MalformedURLException {
 		page.simpleDiv(6, 9);
-		Assert.assertTrue(page.getResult().equals("0,6666666666666") || page.getResult().equals("0.6666666666666"));
+		Assert.assertTrue(page.getResult().replace('.', ',').equals("0,6666666666666"));
 	}
 
 	@Test

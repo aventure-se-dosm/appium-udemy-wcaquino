@@ -1,21 +1,23 @@
 package br.dev.marcelodeoliveira.appium.tests.model.pages;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import br.dev.marcelodeoliveira.appium.core.DriverFactory;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
-public class BasePage {
+public abstract class BasePage {
 
 	WebDriverWait wait;
 	
+	public BasePage() {
+	PageFactory.initElements(new AppiumFieldDecorator(DriverFactory.getDriver()), this);
+	wait = new WebDriverWait(DriverFactory.getDriver(), 10L);
+}
 	
-
-	BasePage() {
-		wait = new WebDriverWait(DriverFactory.getDriver(), 10L);
-	}
 
 	protected void click(WebElement element) {
 		waitUntilWebElementToBeVisible(element);
@@ -50,6 +52,7 @@ public class BasePage {
 	}
 
 	public boolean isElementChecked(MobileElement element) {
+		waitUntilWebElementToBeVisible(element);
 		String s = element.getAttribute("checked");
 		boolean b = Boolean.parseBoolean(s);
 		return b;

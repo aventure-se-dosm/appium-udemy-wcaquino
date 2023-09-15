@@ -30,8 +30,11 @@ public class EvidenceManager {
 	}
 
 	private static File getNewEvidenceFile(String methodName) {
-		// String methodName = testName.getMethodName();
-		return new File(DEFAULT_EVIDENCE_LOCATION + methodName + DEFAULT_EVIDENCE_FORMAT);
+		return new File(getDefaultEvidencePath(methodName));
+	}
+
+	private static String getDefaultEvidencePath(String methodName) {
+		return DEFAULT_EVIDENCE_LOCATION + methodName + DEFAULT_EVIDENCE_FORMAT;
 	}
 
 }
