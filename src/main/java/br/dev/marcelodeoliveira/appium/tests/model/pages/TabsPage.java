@@ -14,7 +14,8 @@ public class TabsPage extends BasePage {
 	MobileElement lblAba2;
 
 	private String selectAndReturnTabContent(MobileElement tab, MobileElement content) {
-		if (!isElementSelected(tab)) click(tab);
+		if (!isElementSelected(tab))
+			click(tab);
 		return getText(content);
 	}
 
