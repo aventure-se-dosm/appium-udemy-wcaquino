@@ -9,6 +9,8 @@ public class MenuPage extends BasePage {
 	private MobileElement formulario;
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Splash']")
 	private MobileElement splash;
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Abas']")
+	private MobileElement abas;
 
 	public MobileElement getFormulario() {
 		return formulario;
@@ -28,6 +30,14 @@ public class MenuPage extends BasePage {
 
 	public boolean isMenuVisible() {
 		return isElementVisible(getFormulario());
+	}
+
+	public void clicaAbas() {
+		click(getAbas());
+	}
+
+	private MobileElement getAbas() {
+		return abas;
 	}
 
 }
