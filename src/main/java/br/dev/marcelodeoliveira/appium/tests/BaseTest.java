@@ -23,10 +23,6 @@ public abstract class BaseTest {
 		setupDriver();
 	}
 
-	@After
-	public void resetApp() {
-		DriverFactory.tearDown();
-	}
 
 	@AfterClass
 	public static void finishTest() {

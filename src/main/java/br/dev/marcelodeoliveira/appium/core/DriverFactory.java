@@ -34,6 +34,7 @@ public class DriverFactory {
 		desiredCapabilities.setCapability("deviceName", "emulator-5554");
 		desiredCapabilities.setCapability("automationName", "uiautomator2");
 		desiredCapabilities.setCapability("fullReset", false);
+		desiredCapabilities.setCapability("noReset", true);
 	}
 
 	private static boolean isDriverNull() {
@@ -45,6 +46,7 @@ public class DriverFactory {
 	}
 
 	public static void setupDriver() {
+		driver = null;
 		try {
 			driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), getCapabilities());
 		} catch (MalformedURLException e) {
@@ -67,11 +69,6 @@ public class DriverFactory {
 
 	private static void setDriverNull() {
 		driver = null;
-	}
-
-	public static void tearDown() {
-		if (!isDriverNull())
-			getDriver().resetApp();
 	}
 
 }
