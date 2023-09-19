@@ -9,12 +9,18 @@ public class MenuPage extends BasePage {
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Formulário']")
 	private MobileElement formulario;
+	
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Splash']")
 	private MobileElement splash;
+	
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Abas']")
 	private MobileElement abas;
+	
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Alertas']")
 	private WebElement alertas;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Accordion']")
+	private WebElement accordion;
 
 	public MobileElement getFormulario() {
 		return formulario;
@@ -49,8 +55,14 @@ public class MenuPage extends BasePage {
 	}
 
 	private WebElement getAlertas() {
-		// TODO Auto-generated method stub
 		return alertas;
 	}
 
+	public void clicaAccordion() {
+		click(getAccordion());
+	}
+
+	private WebElement getAccordion() {
+		return accordion;
+	}
 }
