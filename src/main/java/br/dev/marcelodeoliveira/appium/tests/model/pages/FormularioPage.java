@@ -48,9 +48,6 @@ public class FormularioPage extends BasePage {
 		return btnSalvarDemorado;
 	}
 
-//	public MobileElement getFormulario() {
-//		return formulario;
-//	}
 
 	public MobileElement getTxtName() {
 		return txtName;
@@ -105,7 +102,7 @@ public class FormularioPage extends BasePage {
 	}
 
 	public boolean isSwitchSelected() {
-		return isElementChecked(switchHour);
+		return isElementChecked(getSwitchHour());
 	}
 
 	public void salvarForm() {

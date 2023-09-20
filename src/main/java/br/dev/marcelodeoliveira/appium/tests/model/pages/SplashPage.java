@@ -14,6 +14,10 @@ public class SplashPage extends BasePage {
 		return txtSplash;
 	}
 
+	public Object getSplashText() {
+		return getTxtSplash().getText();
+	}
+
 	public boolean isSplashExibido() {
 		try {
 			waitUntilWebElementToBeVisible(getTxtSplash());
@@ -30,9 +34,5 @@ public class SplashPage extends BasePage {
 		} catch (TimeoutException e) {
 			return false;
 		}
-	}
-
-	public Object getSplashText() {
-		return getTxtSplash().getText();
 	}
 }

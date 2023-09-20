@@ -48,7 +48,7 @@ public class DriverFactory {
 	public static void setupDriver() {
 		driver = null;
 		try {
-			driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), getCapabilities());
+			driver = new AndroidDriver<MobileElement>(new URL("http:/0.0.0.0:4723/wd/hub"), getCapabilities());
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}

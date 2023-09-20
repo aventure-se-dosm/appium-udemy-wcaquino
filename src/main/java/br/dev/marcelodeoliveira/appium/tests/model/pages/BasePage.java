@@ -1,20 +1,20 @@
 package br.dev.marcelodeoliveira.appium.tests.model.pages;
 
+import static br.dev.marcelodeoliveira.appium.core.DriverFactory.getDriver;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import br.dev.marcelodeoliveira.appium.core.DriverFactory;
-
-import static br.dev.marcelodeoliveira.appium.core.DriverFactory.getDriver;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
+import br.dev.marcelodeoliveira.appium.core.enums.MobileElementAttribute;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.functions.ExpectedCondition;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
 public abstract class BasePage {
@@ -30,34 +30,34 @@ public abstract class BasePage {
 		waitUntilWebElementToBeVisible(element);
 		element.click();
 	}
-	
 
-	
-	
-	protected MobileElement getMobileElementByXpathAndTxt(String formatXpath, Object ...value){
+	protected MobileElement getMobileElementByXpathAndTxt(String formatXpath, Object... value) {
 		return getDriver().findElementByXPath(String.format(formatXpath, value));
 	}
-	
-	protected MobileElement getElement(By by){
+
+	protected MobileElement getElement(By by) {
 		return getDriver().findElement(by);
 	}
 
 	protected boolean waitUntilWebElementToBeVisible(WebElement element) {
 		return wait.until(ExpectedConditions.visibilityOf(element)) != null;
 	}
+	protected boolean waitUntilWebElementListToBeVisible(List<MobileElement> listElement) {
+		return wait.until(ExpectedConditions.visibilityOfAllElements(listElement.stream().map(elem -> (MobileElement)elem).collect(Collectors.toList()))) != null;
+	}
 
 	protected boolean waitUntilWebElementToBeInvisible(WebElement element) {
 		return wait.until(ExpectedConditions.invisibilityOf(element));
 	}
 
-	protected void writeText(MobileElement element, String text) {
+	protected void writeText(MobileElement element, Object text) {
 		waitUntilWebElementToBeVisible(element);
-		element.sendKeys(text);
+		element.sendKeys(text.toString());
 	}
 
 	protected String getText(MobileElement element) {
 		waitUntilWebElementToBeVisible(element);
-				return element.getText();
+		return element.getText();
 	}
 
 	protected boolean isElementSelected(MobileElement elem) {
@@ -65,12 +65,14 @@ public abstract class BasePage {
 	}
 
 	public void changeElementState(MobileElement element, boolean status) {
+		waitUntilWebElementToBeVisible(element);
 		if (isElementChecked(element) != status) {
 			click(element);
 		}
 	}
 
 	public String getAttribute(MobileElement element, String attrubute) {
+		waitUntilWebElementToBeVisible(element);
 		return element.getAttribute(attrubute);
 	}
 
@@ -81,16 +83,21 @@ public abstract class BasePage {
 		return b;
 	}
 
-	public boolean isElementVisible(MobileElement element) {
+
+	protected boolean isElementVisible(MobileElement element) {
 		return element.isDisplayed();
 	}
 
-	protected  void clickByText(String param, String value) {
-		click(getElement(MobileBy.xpath(String.format(param+"[@text='%s']", value))));
+	protected void clickByText(String param, String value) {
+		click(getElement(MobileBy.xpath(String.format(param + "[@text='%s']", value))));
 	}
 
 	public List<WebElement> getMobileElements(By by) {
-		// TODO Auto-generated method stub
 		return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(by));
-	};
+	}
+
+	public String getAssertionMessage(Object expectedValue, Object actualValue) {
+		return String.format("expected: %s,  actual: %s", expectedValue.toString(), actualValue.toString());
+	}
+
 }
