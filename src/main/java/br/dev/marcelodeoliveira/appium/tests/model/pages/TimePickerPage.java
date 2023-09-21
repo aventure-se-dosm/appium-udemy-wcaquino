@@ -14,25 +14,20 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 public class TimePickerPage extends BasePage {
 
 	@AndroidFindBy(xpath = "//*[@content-desc='switch']/following-sibling::*[2]/android.widget.TextView")
-	MobileElement lblTime;
+	private MobileElement lblTime;
 	@AndroidFindBy(id = "android:id/button1")
-	MobileElement btnOk;
+	private MobileElement btnOk;
 	@AndroidFindBy(id = "android:id/button2")
-	MobileElement btnCancel;
+	private MobileElement btnCancel;
 	@AndroidFindBy(id = "android:id/toggle_mode")
-	MobileElement btnKeyboardInput;
+	private MobileElement btnKeyboardInput;
 	@AndroidFindBy(id = "android:id/input_hour")
-	MobileElement txtHour;
+	private MobileElement txtHour;
 	@AndroidFindBy(id = "android:id/input_minute")
-	MobileElement txtMinute;
-
+	private MobileElement txtMinute;
 
 	private MobileElement getBtnOk() {
 		return btnOk;
-	}
-
-	private MobileElement getBtnCancel() {
-		return btnCancel;
 	}
 
 	private MobileElement getLblTime() {

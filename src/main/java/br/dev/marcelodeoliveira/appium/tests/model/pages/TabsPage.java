@@ -6,13 +6,13 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 public class TabsPage extends BasePage {
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text = 'Aba 1']")
-	MobileElement aba1;
+	private MobileElement aba1;
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text = 'Aba 2']")
-	MobileElement aba2;
+	private MobileElement aba2;
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text = 'Este é o conteúdo da Aba 1']")
-	MobileElement lblAba1;
+	private MobileElement lblAba1;
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text = 'Este é o conteúdo da Aba 2']")
-	MobileElement lblAba2;
+	private MobileElement lblAba2;
 
 	private MobileElement getAba1() {
 		return aba1;

@@ -6,9 +6,9 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 public class AccordionPage extends BasePage {
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Opção 1']")
-	MobileElement btnOpcao1;
+	private MobileElement btnOpcao1;
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Opção 1']/../../following-sibling::android.view.ViewGroup/android.widget.TextView")
-	MobileElement txtOpcao1;
+	private MobileElement txtOpcao1;
 
 	private MobileElement getTxtOpcao1() {
 		return txtOpcao1;

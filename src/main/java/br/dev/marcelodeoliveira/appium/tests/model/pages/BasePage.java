@@ -11,10 +11,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import br.dev.marcelodeoliveira.appium.core.enums.MobileElementAttribute;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.functions.ExpectedCondition;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
 public abstract class BasePage {
@@ -42,8 +40,10 @@ public abstract class BasePage {
 	protected boolean waitUntilWebElementToBeVisible(WebElement element) {
 		return wait.until(ExpectedConditions.visibilityOf(element)) != null;
 	}
+
 	protected boolean waitUntilWebElementListToBeVisible(List<MobileElement> listElement) {
-		return wait.until(ExpectedConditions.visibilityOfAllElements(listElement.stream().map(elem -> (MobileElement)elem).collect(Collectors.toList()))) != null;
+		return wait.until(ExpectedConditions.visibilityOfAllElements(
+				listElement.stream().map(elem -> (MobileElement) elem).collect(Collectors.toList()))) != null;
 	}
 
 	protected boolean waitUntilWebElementToBeInvisible(WebElement element) {
@@ -82,7 +82,6 @@ public abstract class BasePage {
 		boolean b = Boolean.parseBoolean(s);
 		return b;
 	}
-
 
 	protected boolean isElementVisible(MobileElement element) {
 		return element.isDisplayed();
