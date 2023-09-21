@@ -34,7 +34,6 @@ public class TabsTest extends BaseTest {
 		String lblAba1 = "Este é o conteúdo da Aba 1";
 		String lblAba2 = "Este é o conteúdo da Aba 2";
 
-		// Acessar menu abas
 		menuPage.clicaAbas();
 
 		Assert.assertEquals(tabsPage.getlblAba1Txt(), lblAba1);

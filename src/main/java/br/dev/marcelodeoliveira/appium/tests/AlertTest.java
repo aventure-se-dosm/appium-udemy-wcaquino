@@ -26,7 +26,6 @@ public class AlertTest extends BaseTest {
 
 		this.alertPage = new AlertPage();
 		this.menuPage = new MenuPage();
-
 	}
 
 	@Test

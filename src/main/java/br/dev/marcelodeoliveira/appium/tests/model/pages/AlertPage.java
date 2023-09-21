@@ -46,6 +46,10 @@ public class AlertPage extends BasePage {
 		return btnAlertaConfirm;
 	}
 
+	public String getMsgTxt() {
+		return getText(getMsgMessage());
+	}
+
 	public String clicaConfirmar() {
 		click(getAlertaConfirmar());
 		return getMsgTxt();
@@ -61,17 +65,13 @@ public class AlertPage extends BasePage {
 		return getMsgTxt();
 	}
 
-	public String getMsgTxt() {
-		return getText(getMsgMessage());
+	public String clicaAlertNegar() {
+		click(getAlertaNegar());
+		return getMsgTxt();
 	}
 
 	public void sairAlert() {
 		click(getSair());
-	}
-
-	public String clicaAlertNegar() {
-		click(getAlertaNegar());
-		return getMsgTxt();
 	}
 
 }

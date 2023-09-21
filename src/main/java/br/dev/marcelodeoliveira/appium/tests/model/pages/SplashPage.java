@@ -8,10 +8,14 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 public class SplashPage extends BasePage {
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Splash!']")
-	MobileElement txtSplash;
+	private MobileElement txtSplash;
 
 	public MobileElement getTxtSplash() {
 		return txtSplash;
+	}
+
+	public Object getSplashText() {
+		return getTxtSplash().getText();
 	}
 
 	public boolean isSplashExibido() {
@@ -30,9 +34,5 @@ public class SplashPage extends BasePage {
 		} catch (TimeoutException e) {
 			return false;
 		}
-	}
-
-	public Object getSplashText() {
-		return getTxtSplash().getText();
 	}
 }
