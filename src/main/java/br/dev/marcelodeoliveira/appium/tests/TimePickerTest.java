@@ -9,7 +9,6 @@ import java.time.format.DateTimeFormatter;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import br.dev.marcelodeoliveira.appium.tests.model.pages.MenuPage;
@@ -19,7 +18,6 @@ import io.appium.java_client.remote.MobileCapabilityType;
 public class TimePickerTest extends BaseTest {
 	private TimePickerPage timePickerPage;
 	private MenuPage menuPage;
-	//private final DateTimeFormatter DEFAULT_HOUR_MINUTE_PATTERN = DateTimeFormatter.ofPattern("HH:mm");
 
 	@Before
 	public void setupTest() {
@@ -37,7 +35,7 @@ public class TimePickerTest extends BaseTest {
 
 		final Integer hour = 15;
 		final Integer minute = 50;
-		Assert.assertTrue(minute%5 == 0);
+		Assert.assertTrue(minute % 5 == 0);
 		menuPage.clicaFormulario();
 		timePickerPage.selecionaHoraSimples(hour, minute);
 		timePickerPage.clicaOk();
@@ -45,7 +43,6 @@ public class TimePickerTest extends BaseTest {
 				timePickerPage.getHoraTxt());
 	}
 
-	
 	@Test
 	public void deveAlterarHoraEMinutoPorValorInserido() {
 
@@ -58,5 +55,5 @@ public class TimePickerTest extends BaseTest {
 		Assert.assertEquals(LocalTime.of(hour, minute).format(DateTimeFormatter.ofPattern("HH:mm")),
 				timePickerPage.getHoraTxt());
 	}
-	
+
 }

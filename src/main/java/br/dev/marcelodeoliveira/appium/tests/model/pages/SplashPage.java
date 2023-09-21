@@ -8,7 +8,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 public class SplashPage extends BasePage {
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Splash!']")
-	MobileElement txtSplash;
+	private MobileElement txtSplash;
 
 	public MobileElement getTxtSplash() {
 		return txtSplash;

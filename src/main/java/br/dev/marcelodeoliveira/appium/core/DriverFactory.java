@@ -34,7 +34,7 @@ public class DriverFactory {
 		desiredCapabilities.setCapability("deviceName", "emulator-5554");
 		desiredCapabilities.setCapability("automationName", "uiautomator2");
 		desiredCapabilities.setCapability("fullReset", false);
-		desiredCapabilities.setCapability("noReset", true);
+		desiredCapabilities.setCapability("noReset", false);
 	}
 
 	private static boolean isDriverNull() {
