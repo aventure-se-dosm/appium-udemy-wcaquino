@@ -29,7 +29,7 @@ public class SplashPage extends BasePage {
 
 	public boolean aguardaSplashSumir() {
 		try {
-			waitUntilWebElementToBeInvisible(getTxtSplash());
+			waitUntilMobileElementToBeInvisible(getTxtSplash());
 			return true;
 		} catch (TimeoutException e) {
 			return false;

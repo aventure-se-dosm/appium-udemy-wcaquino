@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -13,7 +14,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.appium.java_client.touch.offset.PointOption;
 
 public abstract class BasePage {
 
@@ -29,6 +32,11 @@ public abstract class BasePage {
 		element.click();
 	}
 
+	public void tap(Integer x, Integer y) {
+
+		new TouchAction<>(getDriver()).tap(PointOption.point(x, y)).perform();
+	}
+
 	protected MobileElement getMobileElementByXpathAndTxt(String formatXpath, Object... value) {
 		return getDriver().findElementByXPath(String.format(formatXpath, value));
 	}
@@ -40,13 +48,23 @@ public abstract class BasePage {
 	protected boolean waitUntilWebElementToBeVisible(WebElement element) {
 		return wait.until(ExpectedConditions.visibilityOf(element)) != null;
 	}
+	protected boolean waitUntilMobileElementToBeVisible(MobileElement element) {
+		return wait.until(ExpectedConditions.visibilityOf(element)) != null;
+	}
 
-	protected boolean waitUntilWebElementListToBeVisible(List<MobileElement> listElement) {
+	protected boolean waitUntilMobileElementListToBeVisible(List<MobileElement> listElement) {
 		return wait.until(ExpectedConditions.visibilityOfAllElements(
 				listElement.stream().map(elem -> (MobileElement) elem).collect(Collectors.toList()))) != null;
 	}
 
-	protected boolean waitUntilWebElementToBeInvisible(WebElement element) {
+	protected boolean waitUntilMobileElementToBeInvisible(MobileElement element) {
+		try {
+			if (!element.isDisplayed()) {
+				return true;
+			}
+		} catch (NoSuchElementException exp) {
+			return true;
+		}
 		return wait.until(ExpectedConditions.invisibilityOf(element));
 	}
 
