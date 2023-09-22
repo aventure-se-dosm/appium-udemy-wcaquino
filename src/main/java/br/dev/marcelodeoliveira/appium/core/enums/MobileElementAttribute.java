@@ -2,7 +2,7 @@ package br.dev.marcelodeoliveira.appium.core.enums;
 
 import java.util.Arrays;
 
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.exec.util.StringUtils;
 
 public enum MobileElementAttribute {
 
@@ -13,13 +13,13 @@ public enum MobileElementAttribute {
 	public String getName() {
 		return hyphenized();
 	}
-	
+
 	public String hyphenized() {
 		return this.name().toLowerCase().replace("_", "-");
 	}
 
 	public String camelCased() {
-		return Arrays.asList(this.name().toLowerCase().split("_")).stream().map(str -> StringUtils.capitalize(str))
+		return Arrays.asList(this.name().toLowerCase().split("_")).stream().map( str -> StringUtils.capitalize(str))
 				.reduce((x, y) -> x.concat(y)).get();
 	}
 

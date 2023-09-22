@@ -45,6 +45,25 @@ public class AlertTest extends BaseTest {
 
 		Assert.assertEquals("Confirmado", alertPage.getMsgTxt());
 		Assert.assertEquals("Confirma a operação?", msg);
+		alertPage.clicaOk();
+
+	}
+
+	@Test
+	public void deveClicarForaDoAlertSimplesEMensagemDesaparecer() {
+		menuPage.clicaAlertas();
+		String msg = alertPage.clicaAlertSimples();
+		alertPage.clicaOk();
+		Assert.assertEquals("Pode clicar no OK ou fora da caixa para sair", msg);
+		Assert.assertTrue(alertPage.isAlertInvisibleOrAbsent());
+	}
+	@Test
+	public void deveClicarForaDoAlertRestritivoEMensagemPermanecer() {
+		menuPage.clicaAlertas();
+		String msg = alertPage.clicaAlertRestritivo();
+		Assert.assertEquals("Não pode clicar fora, apenas no SAIR", msg);
+		Assert.assertTrue(alertPage.isAlertPresent());
+		alertPage.clicaOk();
 	}
 
 }

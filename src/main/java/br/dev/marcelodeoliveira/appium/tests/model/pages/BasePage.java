@@ -5,8 +5,11 @@ import static br.dev.marcelodeoliveira.appium.core.DriverFactory.getDriver;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.lang.model.element.Element;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -116,5 +119,53 @@ public abstract class BasePage {
 	public String getAssertionMessage(Object expectedValue, Object actualValue) {
 		return String.format("expected: %s,  actual: %s", expectedValue.toString(), actualValue.toString());
 	}
+	
+	//***********************************Screen and Element Utils*************************************************
 
+	protected int getElementInteractableXAxisRange(MobileElement element) {
+		return getElementCenter(element).getX();
+		//return getLocation(element).getX();
+	}
+	
+	protected int getElementInteractableYAxisRange(MobileElement element) {
+		return getElementCenter(element).getY();
+		//return getLocation(element).getY();
+	}
+	
+	protected Point getLocation (MobileElement element) {
+		return element.getLocation();
+	}
+
+	protected Point getElementCenter(MobileElement element) {
+		return element.getCenter();
+	}
+	
+	
+	protected int getHeight(WebElement element) {
+		return element.getRect().getHeight();
+	}
+
+	protected int getWidth(WebElement element) {
+		return element.getRect().getWidth();
+	}
+
+	private int getRectX(WebElement element) {
+		return element.getRect().getX();
+	}
+
+	private int getRectY(WebElement element) {
+		return element.getRect().getY();
+	}
+	
+	public Point getSlidInteractableXbyPercentage(MobileElement slid, Integer percents) {
+		return new Point(getMaximumX(slid)*percentageOf(percents).intValue(), getElementInteractableYAxisRange(slid));
+	}
+
+	private Float percentageOf(Integer percents) {
+		return percents/100f;
+	}
+
+	private int getMaximumX(MobileElement slid) {
+		return getLocation(slid).getX()+getWidth(slid);
+	}
 }

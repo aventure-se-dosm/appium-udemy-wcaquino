@@ -1,7 +1,5 @@
 package br.dev.marcelodeoliveira.appium.tests.model.pages;
 
-import org.openqa.selenium.WebElement;
-
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 
@@ -20,10 +18,10 @@ public class AlertPage extends BasePage {
 	private MobileElement msgMessage;
 
 	@AndroidFindBy(id = "android:id/button1")
-	private MobileElement sair;
+	private MobileElement btnAlertSair;
 
 	@AndroidFindBy(id = "android:id/button1")
-	private MobileElement ok;
+	private MobileElement btnAlertOk;
 
 	@AndroidFindBy(id = "android:id/button2")
 	private MobileElement alertaConfirmar;
@@ -50,8 +48,12 @@ public class AlertPage extends BasePage {
 		return msgMessage;
 	}
 
-	private MobileElement getSair() {
-		return sair;
+	private MobileElement getBtnAlertOk() {
+		return btnAlertOk;
+	}
+
+	private MobileElement getBtnAlertSair() {
+		return btnAlertSair;
 	}
 
 	private MobileElement getAlertaConfirmar() {
@@ -95,17 +97,15 @@ public class AlertPage extends BasePage {
 	}
 
 	public void sairAlert() {
-		click(getSair());
+		click(getBtnAlertSair());
 	}
 
 	public void clicaOk() {
-		click(getOk());
+		click(getBtnAlertOk());
 	}
-	public void clicaSair() {
-		click(getSair());	}
 
-	private WebElement getOk() {
-		return ok;
+	public void clicaSair() {
+		click(getBtnAlertSair());
 	}
 
 	private MobileElement getAlertFrame() {
