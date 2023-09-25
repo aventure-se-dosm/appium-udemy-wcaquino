@@ -113,7 +113,7 @@ public class AlertPage extends BasePage {
 	}
 
 	public boolean isAlertPresent() {
-		return waitUntilMobileElementToBeVisible(getAlertFrame());
+		return waitUntilElementToBeVisible(getAlertFrame());
 	}
 
 	public boolean isAlertInvisibleOrAbsent() {

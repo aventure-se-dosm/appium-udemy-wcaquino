@@ -5,7 +5,9 @@ import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setDefaultCapab
 import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setupDriver;
 
 import org.junit.Before;
+import org.junit.Test;
 
+import br.dev.marcelodeoliveira.appium.tests.model.pages.FormularioPage;
 import br.dev.marcelodeoliveira.appium.tests.model.pages.MenuPage;
 import br.dev.marcelodeoliveira.appium.tests.model.pages.SeekBarPage;
 import io.appium.java_client.remote.MobileCapabilityType;
@@ -14,6 +16,7 @@ public class SeekBarTest extends BaseTest {
 
 	MenuPage menuPage;
 	SeekBarPage seekBarPage;
+	private FormularioPage formularioPage;
 
 	@Override
 	@Before
@@ -25,7 +28,19 @@ public class SeekBarTest extends BaseTest {
 		setupDriver();
 
 		this.menuPage = new MenuPage();
+		this.formularioPage = new FormularioPage();
 		this.seekBarPage = new SeekBarPage();
+	}
+	
+	@Test
+	public void moveSeekBar() {
+		//"porcentagem" que não inclui zero... noventa-e-nove-avagem
+		//quero o valor 50 -> preciso andar 59 passos
+		Float porcentagem = 0.10f;
+		menuPage.clicaFormulario();
+		seekBarPage.moveSeekBarParaPorcentagemEscolhida(porcentagem);
+		//seekBarPage.tapByPercentage(porcentagem);
+		formularioPage.salvarForm();
 	}
 
 }

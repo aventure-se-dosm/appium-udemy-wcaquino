@@ -12,11 +12,17 @@ public abstract class BaseTest {
 	@Rule
 	public TestName testName = new TestName();
 
-	@Before
+	@Before ()
 	public abstract void setupTest();
 
 	@AfterClass
 	public static void finishTest() {
+		try {
+			Thread.sleep(6000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		killDriver();
 	}
 

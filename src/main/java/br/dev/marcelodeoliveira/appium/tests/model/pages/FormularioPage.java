@@ -108,12 +108,12 @@ public class FormularioPage extends BasePage {
 	public void salvarForm() {
 
 		click(getBtnSalvar());
-		waitUntilWebElementToBeVisible(getLblName());
+		waitUntilWebElementToBeVisibleAndItsNotNull(getLblName());
 	}
 
 	public void salvarFormDemorado() {
 		click(getBtnSalvarDemorado());
-		waitUntilWebElementToBeVisible(getLblName());
+		waitUntilWebElementToBeVisibleAndItsNotNull(getLblName());
 
 	}
 

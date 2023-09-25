@@ -2,7 +2,13 @@ package br.dev.marcelodeoliveira.appium.core.enums;
 
 import java.util.Arrays;
 
-import org.apache.commons.exec.util.StringUtils;
+import org.apache.commons.lang3.StringUtils;
+
+
+
+
+
+
 
 public enum MobileElementAttribute {
 

@@ -20,7 +20,7 @@ public class SplashPage extends BasePage {
 
 	public boolean isSplashExibido() {
 		try {
-			waitUntilWebElementToBeVisible(getTxtSplash());
+			waitUntilWebElementToBeVisibleAndItsNotNull(getTxtSplash());
 			return true;
 		} catch (TimeoutException e) {
 			return false;
