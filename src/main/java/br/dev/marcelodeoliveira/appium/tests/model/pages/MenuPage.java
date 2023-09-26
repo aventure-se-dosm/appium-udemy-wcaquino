@@ -37,6 +37,9 @@ public class MenuPage extends BasePage {
 	@AndroidFindBy(xpath = "//android.widget.Button[@resource-id='android:id/button1']")
 	private MobileElement btnOk;
 
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Swipe']")
+	private MobileElement swipe;
+
 	private MobileElement getAlertMessage() {
 		return alertMessage;
 	}
@@ -76,6 +79,10 @@ public class MenuPage extends BasePage {
 		return splash;
 	}
 
+	private WebElement getSwipe() {
+		return swipe;
+	}
+
 	public void clicaFormulario() {
 		click(getFormulario());
 	}
@@ -105,7 +112,7 @@ public class MenuPage extends BasePage {
 	}
 	public void clicaOpcaoEscondida() {
 		waitUntilWebElementToBeVisibleAndItsNotNull(getFormulario());
-		scroll(0.9, 0.2);
+		scroll(0.9f, 0.2f);
 		click(getOpcaoEscondida());
 	}
 
@@ -120,5 +127,10 @@ public class MenuPage extends BasePage {
 		click(getBtnOk());
 	}
 
+	public void clickSwipe() {
+		click(getSwipe());	
+	}
+
+	
 
 }

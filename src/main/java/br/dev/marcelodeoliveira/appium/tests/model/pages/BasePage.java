@@ -20,9 +20,7 @@ import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import io.appium.java_client.touch.LongPressOptions;
 import io.appium.java_client.touch.WaitOptions;
-import io.appium.java_client.touch.offset.ElementOption;
 import io.appium.java_client.touch.offset.PointOption;
 
 public abstract class BasePage {
@@ -63,26 +61,67 @@ public abstract class BasePage {
 		return getDriver().manage().window().getSize();
 	}
 
-	public void scroll(Double pctInicio, Double pctFim) {
+	public void scroll(Float pctInicio, Float pctFim) {
 		int x = getWindowWidth() / 2;
 		int startY = (int) (getWindowHeight() * pctInicio);
 		int endY = (int) (getWindowHeight() * pctFim);
 
 		new TouchAction<>(getDriver()).press(PointOption.point(new Point(x, startY)))
 				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-				.moveTo(PointOption.point(new Point(x, endY))).release().perform();
+				.moveTo(PointOption.point(new Point(x, endY)))
+				.release()
+				.perform();
+	}
+	
+	protected void scrollUp(Float pctInicio, Float pctFim) {
+		if (pctInicio > pctFim) {
+			scroll(pctInicio, pctFim);
+		} else {
+			scroll(pctFim, pctInicio);
+		}
+	}
+	
+	protected void scrollDown(Float pctInicio, Float pctFim) {
+		if (pctInicio < pctFim) {
+			scroll(pctInicio, pctFim);
+		} else {
+			scroll(pctFim, pctInicio);
+		}
 	}
 
-	protected void swipe(Double pctInicio, Double pctFim, WebElement element) {
-		new TouchAction<>(getDriver())
-				.longPress(LongPressOptions.longPressOptions().withElement(ElementOption.element(element)))
-				// TODO
-				.moveTo(PointOption.point(0, 0)).release().perform();
+	protected void swipe(Float pctInicio, Float pctFim) {
+
+		int y = getWindowHeight() / 2;
+		int startX = (int) (getWindowWidth() * pctInicio);
+		int endX = (int) (getWindowWidth() * pctFim);
+
+		new TouchAction<>(getDriver()).press(PointOption.point(new Point(startX, y)))
+				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
+				.moveTo(PointOption.point(new Point(endX, y)))
+				.release()
+				.perform();
+
+	}
+
+	protected void swipeLeft(Float pctInicio, Float pctFim) {
+		if (pctInicio > pctFim) {
+			swipe(pctInicio, pctFim);
+		} else {
+			swipe(pctFim, pctInicio);
+		}
+	}
+	
+	public void swipeRight(Float pctInicio, Float pctFim) {
+		if (pctInicio < pctFim) {
+			swipe(pctInicio, pctFim);
+		} else {
+			swipe(pctFim, pctInicio);
+		}
 	}
 
 	protected void scrollToElement(WebElement element) {
 		int WindowHeight = getWindowHeight();
-		Assert.assertEquals(WindowHeight, 1794);
+		 Assert.assertEquals(WindowHeight, 1794);
 	}
 
 	protected void longClick(Integer x, Integer y) {
@@ -97,7 +136,8 @@ public abstract class BasePage {
 	}
 
 	protected MobileElement getElement(By by) {
-		return getDriver().findElement(by);
+		//return //getDriver().findElement(by);
+		return (getDriver().findElement(by));
 	}
 
 	protected MobileElement getElement(MobileElement element) {
@@ -106,6 +146,12 @@ public abstract class BasePage {
 
 	protected boolean waitUntilWebElementToBeVisibleAndItsNotNull(WebElement element) {
 		return wait.until(ExpectedConditions.visibilityOf(element)) != null;
+	}
+	protected boolean waitUntilWebElementToBeVisibleAndItsNotNull(By by) {
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(by)) != null;
+	}
+	protected WebElement waitUntilWebElementToBeVisible(By by) {
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
 	}
 
 	protected WebElement waitUntilElementToBeVisible(WebElement element) {
@@ -116,9 +162,14 @@ public abstract class BasePage {
 		return (MobileElement) wait.until(ExpectedConditions.visibilityOf(element));
 	}
 
-	protected boolean waitUntilElementListToBeVisible(List<MobileElement> listElement) {
+	protected List<WebElement> waitUntilElementListToBeVisible(List<WebElement> listAllTextView) {
 		return wait.until(ExpectedConditions.visibilityOfAllElements(
-				listElement.stream().map(elem -> (MobileElement) elem).collect(Collectors.toList()))) != null;
+				listAllTextView.stream().map(elem -> (MobileElement) elem).collect(Collectors.toList())));
+	}
+
+	protected boolean waitUntilElementListToBeVisibleAndNotNull(List<WebElement> listAllTextView) {
+		return wait.until(ExpectedConditions.visibilityOfAllElements(
+				listAllTextView.stream().map(elem -> (MobileElement) elem).collect(Collectors.toList()))) != null;
 	}
 
 	protected boolean waitUntilMobileElementToBeInvisible(MobileElement element) {
@@ -137,9 +188,9 @@ public abstract class BasePage {
 		element.sendKeys(text.toString());
 	}
 
-	protected String getText(MobileElement element) {
-		waitUntilWebElementToBeVisibleAndItsNotNull(element);
-		return element.getText();
+	protected String getText(WebElement elem) {
+		waitUntilWebElementToBeVisibleAndItsNotNull(elem);
+		return elem.getText();
 	}
 
 	protected boolean isElementSelected(MobileElement elem) {
@@ -258,4 +309,10 @@ public abstract class BasePage {
 	public void clickByPoint(Point point) {
 		tap(point);
 	}
+	
+	public boolean isTextPresent(String txtValue) {
+		// TODO Auto-generated method stub
+		return getElement(By.xpath(String.format("//*[@text='%s']", txtValue))) != null;
+	}
+
 }
