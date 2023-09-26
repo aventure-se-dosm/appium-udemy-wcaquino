@@ -39,7 +39,6 @@ public class FormularioTest extends BaseTest {
 		String txtName = "Wagner";
 		menuPage.clicaFormulario();
 		formularioPage.escreveNome(txtName);
-
 	}
 
 	@Test
