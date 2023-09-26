@@ -3,12 +3,15 @@ package br.dev.marcelodeoliveira.appium.tests.model.pages;
 
 
 import org.junit.Assert;
-
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.pagefactory.AndroidFindBy;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Point;
+
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.touch.offset.PointOption;
+
+import static br.dev.marcelodeoliveira.appium.core.DriverFactory.getDriver;
 
 public class SeekBarPage extends BasePage {
 
@@ -23,64 +26,48 @@ public class SeekBarPage extends BasePage {
 	private MobileElement currentExtentionBar, BarCursor;
 	
 	private MobileElement getSeekBar() {
-		waitUntilElementToBeVisible(seekBar);
-		return seekBar;
+		return (MobileElement) waitUntilElementToBeVisible(seekBar);
+
 	}
 
 	
 	public MobileElement getCurrentExtentionBar() {
-		return getSeekBar().findElement(By.xpath("./android.view.ViewGroup[3]"));
+		return getSeekBar().findElement(By.xpath(".//android.view.ViewGroup[@index='3']"));
 
 	}
 	
 	public MobileElement getBarCursor() {
-		return getSeekBar().findElement(By.xpath("./android.view.ViewGroup[1]"));
+		return getSeekBar().findElement(By.xpath(".//android.view.ViewGroup[@index='1']"));
 	}
 	public void moveSeekBarParaPorcentagemEscolhida(Float porcentagem) {
 		
-		int maxCurrentBarLength = getWidth(getFullExtentionBar()) - getWidth(getBarCursor());
-		Assert.assertTrue(maxCurrentBarLength == (1080-54));
-//		if (startsWith1) {
-//			Assert.assertTrue(porcentagem > 0f || porcentagem < 1f);
-//			porcentagem /= (0.99f);
-//			porcentagem /= (0.99f);
-//		} else {
-//			Assert.assertTrue(porcentagem >= 0f || porcentagem < 1f);
-//		}
-//		max
+		//TODO: REFATORE NA DEV
+		int cursorSquareEdgeMeasure = getWidth(getBarCursor());
+		int maxCurrentBarLength = getWidth(getFullExtentionBar()) -cursorSquareEdgeMeasure;
+		int x_ponto;
+		int y_ponto;
+		 
+		Assert.assertEquals(String.format("Expected: %d, Actual: %d",  maxCurrentBarLength, 1080-cursorSquareEdgeMeasure), maxCurrentBarLength, (1027));
+		Assert.assertEquals(String.format("Expected: %d, Actual: %d", 53, cursorSquareEdgeMeasure), 53, cursorSquareEdgeMeasure);
 		
+		//desde que a "porcentagem" não inclui zero, temos na verdade 99 faixas, e devemos fazer esta transformação:
+		porcentagem -= 0.01f;
+		porcentagem /= 0.99f;
+				
 		
+		x_ponto = (int) ((maxCurrentBarLength)*porcentagem) + cursorSquareEdgeMeasure -1;
+		y_ponto = (int) (getElementInteractableYAxisRange(getSeekBar())  -1);
 		
+		tap(new Point(x_ponto, y_ponto));
 		
-//		//hardcoda o TouchActions aqui pra ver se funfa e depois abstrai pfv
-// new TouchAction<>(getDriver())
-//				.press(PointOption.point(getElementCenter(getSeekBar()))
-//						.wait(500)
 
 	}
 
 	private MobileElement getFullExtentionBar() {
 		// TODO Auto-generated method stub
-		waitUntilElementToBeVisible(super.getNestedElement(getSeekBar(), By.xpath(".//android.view.ViewGroup[2]")));
-		return getSeekBar().findElement(By.xpath(".//android.view.ViewGroup[2]"));
+		MobileElement m = (MobileElement)getNestedElement(getSeekBar(), By.xpath(".//android.view.ViewGroup[@index='2']"));
+		Assert.assertEquals(m.getSize().width, 1080);
+		return m;
+		
 	}
-
-
-
-	public void tapByPercentage(Float porcentagem) {
-		// this percentage doesn't include zero"
-		int x, y;
-		//porcentagem -= 0.01f;
-		//porcentagem /= (0.99f);
-		Point pointToClick = new Point(
-				x = getSeekBar().getLocation().getX()
-				
-				+(int)((float)(getWidth(getSeekBar())*porcentagem)),
-				
-				y = getElementInteractableYAxisRange(seekBar));
-		tap(pointToClick);
-		System.out.println(pointToClick);
-
-	}
-
 }

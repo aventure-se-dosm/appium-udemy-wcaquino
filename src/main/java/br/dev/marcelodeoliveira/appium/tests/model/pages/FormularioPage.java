@@ -126,5 +126,10 @@ public class FormularioPage extends BasePage {
 		return getListAllTextView().stream().map(elem -> elem.getText()).filter(s -> ((String) s).contains(": "))
 				.collect(Collectors.toList());
 	}
+	public String getFormResponseAttribute(String attribute) {
+		return getAllFormResponse() .stream().map(s -> s.toLowerCase()).filter(s -> ((String) s).contains(attribute.toLowerCase()+": "))
+				.findAny().get();
+				
+	}
 
 }

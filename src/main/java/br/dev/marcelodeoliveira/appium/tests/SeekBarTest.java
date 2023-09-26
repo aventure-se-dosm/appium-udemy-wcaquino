@@ -4,6 +4,7 @@ import static br.dev.marcelodeoliveira.appium.core.DriverFactory.addCapability;
 import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setDefaultCapabilities;
 import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setupDriver;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -31,16 +32,15 @@ public class SeekBarTest extends BaseTest {
 		this.formularioPage = new FormularioPage();
 		this.seekBarPage = new SeekBarPage();
 	}
-	
+
 	@Test
 	public void moveSeekBar() {
-		//"porcentagem" que não inclui zero... noventa-e-nove-avagem
-		//quero o valor 50 -> preciso andar 59 passos
-		Float porcentagem = 0.10f;
+		Float porcentagem = 0.76f;
 		menuPage.clicaFormulario();
 		seekBarPage.moveSeekBarParaPorcentagemEscolhida(porcentagem);
-		//seekBarPage.tapByPercentage(porcentagem);
 		formularioPage.salvarForm();
+		String resp = formularioPage.getFormResponseAttribute("Slider");
+		Assert.assertTrue(resp, resp.contains(Integer.toString((int) (porcentagem * 100f))));
 	}
 
 }
