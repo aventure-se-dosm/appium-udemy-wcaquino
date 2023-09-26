@@ -24,6 +24,30 @@ public class MenuPage extends BasePage {
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Cliques']")
 	private MobileElement cliques;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='android:id/message']")
+	private MobileElement alertMessage;
+
+	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='android:id/alertTitle']")
+	private MobileElement alertTitle;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Opção bem escondida']")
+	private MobileElement opcaoEscondida;
+
+	@AndroidFindBy(xpath = "//android.widget.Button[@resource-id='android:id/button1']")
+	private MobileElement btnOk;
+
+	private MobileElement getAlertMessage() {
+		return alertMessage;
+	}
+
+	private MobileElement getAlertTitle() {
+		return alertTitle;
+	}
+
+	private MobileElement getBtnOk() {
+		return btnOk;
+	}
 
 	public MobileElement getFormulario() {
 		return formulario;
@@ -40,7 +64,14 @@ public class MenuPage extends BasePage {
 	private WebElement getAlertas() {
 		return alertas;
 	}
+	
+	private WebElement getCliques() {
+		return cliques;
+	}
 
+	private MobileElement getOpcaoEscondida() {
+		return opcaoEscondida;
+	}
 	public MobileElement getSplash() {
 		return splash;
 	}
@@ -70,13 +101,24 @@ public class MenuPage extends BasePage {
 	}
 
 	public void clicaCliques() {
-		// TODO Auto-generated method stub
 		click(getCliques());
 	}
-
-	private WebElement getCliques() {
-		// TODO Auto-generated method stub
-		return cliques;
+	public void clicaOpcaoEscondida() {
+		waitUntilWebElementToBeVisibleAndItsNotNull(getFormulario());
+		scroll(0.9, 0.2);
+		click(getOpcaoEscondida());
 	}
+
+	public String getAlertMessageTxt() {
+		return getText(getAlertMessage());
+	}
+	public String getAlertTitleTxt() {
+		return getText(getAlertTitle());
+	}
+
+	public void clicaAlertOk() {
+		click(getBtnOk());
+	}
+
 
 }

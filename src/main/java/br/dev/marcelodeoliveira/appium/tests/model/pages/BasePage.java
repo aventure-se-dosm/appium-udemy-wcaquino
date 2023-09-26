@@ -6,6 +6,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoSuchElementException;
@@ -68,18 +69,23 @@ public abstract class BasePage {
 		int endY = (int) (getWindowHeight() * pctFim);
 
 		new TouchAction<>(getDriver()).press(PointOption.point(new Point(x, startY)))
-				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
+				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
 				.moveTo(PointOption.point(new Point(x, endY))).release().perform();
 	}
 
-	public void swipe(Double pctInicio, Double pctFim, WebElement element) {
+	protected void swipe(Double pctInicio, Double pctFim, WebElement element) {
 		new TouchAction<>(getDriver())
 				.longPress(LongPressOptions.longPressOptions().withElement(ElementOption.element(element)))
 				// TODO
 				.moveTo(PointOption.point(0, 0)).release().perform();
 	}
 
-	public void longClick(Integer x, Integer y) {
+	protected void scrollToElement(WebElement element) {
+		int WindowHeight = getWindowHeight();
+		Assert.assertEquals(WindowHeight, 1794);
+	}
+
+	protected void longClick(Integer x, Integer y) {
 		longClick(new Point(x, y));
 //		new TouchAction<>(getDriver()).longPress(PointOption.point(x, y))
 //				// .waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
@@ -229,8 +235,7 @@ public abstract class BasePage {
 	}
 
 	public void longClick(Point center) {
-		new TouchAction<>(getDriver()).longPress(PointOption.point(center))
-				.release().perform();
+		new TouchAction<>(getDriver()).longPress(PointOption.point(center)).release().perform();
 
 	}
 
@@ -248,5 +253,9 @@ public abstract class BasePage {
 
 	public void slowDoubleClick(Point elementCenter) {
 		doubleClick(elementCenter, LONG_CLICK_WAIT);
+	}
+
+	public void clickByPoint(Point point) {
+		tap(point);
 	}
 }
