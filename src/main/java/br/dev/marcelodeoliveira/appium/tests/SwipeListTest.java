@@ -4,6 +4,8 @@ import static br.dev.marcelodeoliveira.appium.core.DriverFactory.addCapability;
 import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setDefaultCapabilities;
 import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setupDriver;
 
+import org.junit.Test;
+
 import br.dev.marcelodeoliveira.appium.tests.model.pages.MenuPage;
 import br.dev.marcelodeoliveira.appium.tests.model.pages.SwipeListPage;
 import io.appium.java_client.remote.MobileCapabilityType;
@@ -26,18 +28,18 @@ public class SwipeListTest extends BaseTest {
 		menuPage.clicaSwipeList();
 	}
 
-	
+	@Test
 	public void desafioSwipeListTest() {
 		
-		
-		
 		//	swipeLeft ( op1 )
-		
-		//	verificar op1+
+		swipeListPage.swipeEsquerda("1", "POSITIVO");
+		Assert.assertTrue(swipeListPage.isTextoCoerente("1"));
 		//	swipeLeft( op4 )
+		swipeListPage.swipeEsquerda("4");
 		//	clicar ( op4 -)
 		//	verificar op4-
 		//	swipeRight ( op5 )
+		swipeListPage.swipeDireita("5");
 		//	//clicar (op5)?
 		//	verificar op5
 	}

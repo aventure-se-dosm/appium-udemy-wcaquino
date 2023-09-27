@@ -73,9 +73,9 @@ public abstract class BasePage {
 	public Dimension getWindowDimension() {
 		return getDriver().manage().window().getSize();
 	}
-	
-	Point getWindowCenter(){
-		return new Point(getWindowWidth()/2, getWindowHeight()/2);
+
+	Point getWindowCenter() {
+		return new Point(getWindowWidth() / 2, getWindowHeight() / 2);
 	}
 
 	protected void scroll(Float pctInicio, Float pctFim) {
@@ -114,7 +114,18 @@ public abstract class BasePage {
 
 	protected void swipe(Float pctInicio, Float pctFim) {
 
+		swipe(getDefaultPoint().getY(), pctInicio, pctFim);
 		int y = getWindowCenter().getY();
+		int startX = (int) (getWindowWidth() * pctInicio);
+		int endX = (int) (getWindowWidth() * pctFim);
+
+		new TouchAction<>(getDriver()).press(PointOption.point(new Point(startX, y)))
+				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
+				.moveTo(PointOption.point(new Point(endX, y))).release().perform();
+	}
+
+	protected void swipe(Integer middleY, Float pctInicio, Float pctFim) {
+		int y = middleY;
 		int startX = (int) (getWindowWidth() * pctInicio);
 		int endX = (int) (getWindowWidth() * pctFim);
 
@@ -132,10 +143,26 @@ public abstract class BasePage {
 	}
 
 	public void swipeRight(Float pctInicio, Float pctFim) {
-		if (pctInicio < pctFim) {
-			swipe(pctInicio, pctFim);
+		swipeRight(getDefaultPoint().getY(), pctInicio, pctFim);
+	}
+
+	protected void swipeLeft(Integer y, Float pctInicio, Float pctFim) {
+		if (pctInicio > pctFim) {
+		swipe(y, pctInicio, pctFim);
 		} else {
-			swipe(pctFim, pctInicio);
+		swipe(y, pctFim, pctInicio);
+	}
+}
+
+	private Point getDefaultPoint() {
+		return getWindowCenter();
+	}
+
+	public void swipeRight(Integer y, Float pctInicio, Float pctFim) {
+		if (pctInicio < pctFim) {
+			swipe(y, pctInicio, pctFim);
+		} else {
+			swipe(y, pctFim, pctInicio);
 		}
 	}
 
@@ -153,9 +180,10 @@ public abstract class BasePage {
 	}
 
 	protected MobileElement getElement(By by) {
-
-		return (getDriver().findElement(by));
+		return (MobileElement)waitUntilWebElementToBeVisible(by);
 	}
+
+
 
 	protected MobileElement getElement(MobileElement element) {
 		return waitUntilElementToBeVisible(element);
@@ -323,10 +351,19 @@ public abstract class BasePage {
 	}
 
 	public void swipeRight() {
-		swipeRight(MIN_AXIS_MOVING_VALUE, MAX_AXIS_MOVING_VALUE);
+		swipeRight(getDefaultPoint().y, MIN_AXIS_MOVING_VALUE, MAX_AXIS_MOVING_VALUE);
 	}
+
+	public void swipeRight(Point point) {
+		swipeRight(point.getY(), MIN_AXIS_MOVING_VALUE, MAX_AXIS_MOVING_VALUE);
+	}
+
 	public void swipeLeft() {
-		swipeLeft(MIN_AXIS_MOVING_VALUE, MAX_AXIS_MOVING_VALUE);
+		swipeLeft(getDefaultPoint().y, MIN_AXIS_MOVING_VALUE, MAX_AXIS_MOVING_VALUE);
+	}
+
+	public void swipeLeft(Point point) {
+		swipeLeft(point.getY(), MIN_AXIS_MOVING_VALUE, MAX_AXIS_MOVING_VALUE);
 	}
 
 }
