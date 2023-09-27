@@ -145,10 +145,13 @@ public abstract class BasePage {
 	}
 
 	protected boolean waitUntilWebElementToBeVisibleAndItsNotNull(WebElement element) {
-		return wait.until(ExpectedConditions.visibilityOf(element)) != null;
+		boolean b =  wait.until(ExpectedConditions.visibilityOf(element)) != null;
+		
+		return b;
 	}
 	protected boolean waitUntilWebElementToBeVisibleAndItsNotNull(By by) {
-		return wait.until(ExpectedConditions.visibilityOfElementLocated(by)) != null;
+		boolean b  = wait.until(ExpectedConditions.visibilityOfElementLocated(by)) != null;
+		return b;
 	}
 	protected WebElement waitUntilWebElementToBeVisible(By by) {
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
@@ -311,8 +314,7 @@ public abstract class BasePage {
 	}
 	
 	public boolean isTextPresent(String txtValue) {
-		// TODO Auto-generated method stub
-		return getElement(By.xpath(String.format("//*[@text='%s']", txtValue))) != null;
+		return waitUntilWebElementToBeVisibleAndItsNotNull(By.xpath(String.format("//*[@text='%s']", txtValue)));
 	}
 
 }

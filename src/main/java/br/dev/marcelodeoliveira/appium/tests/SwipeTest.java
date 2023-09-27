@@ -29,46 +29,25 @@ public class SwipeTest extends BaseTest {
 
 	@Test
 	public void deveTestarSwipe() {
-		// acessar menu
-		menuPage.clickSwipe();		
 
-		//verificar texto À esquerda
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-//		Assert.assertTrue(swipePage.isTextPresent("Mova a tela para"));
-//		Assert.assertTrue(swipePage.isTextPresent("a esquerda"));
+		menuPage.clickSwipe();
+		Assert.assertTrue(swipePage.isTextPresent("Mova a tela para"));
+		Assert.assertTrue(swipePage.isTextPresent("a esquerda"));
 
-		//swipe à direita
+		swipePage.swipeLeft();
+		Assert.assertTrue(swipePage.isTextPresent("E veja se"));
+		Assert.assertTrue(swipePage.isTextPresent("você consegue"));
+
+		swipePage.clicaBtnDir();
+		Assert.assertTrue(swipePage.isTextPresent("Chegar até o fim!"));
 		swipePage.swipeRight();
 
-		//verificar texto "E vejo se"
-		//Assert.assertTrue(swipePage.isTextPresent("E veja se"));
+		Assert.assertTrue(swipePage.isTextPresent("E veja se"));
+		Assert.assertTrue(swipePage.isTextPresent("você consegue"));
 
-		//clicar botão direito
-		swipePage.clicaBtnDir();
-		
-		//verificar texto "você consegue"
-//		Assert.assertTrue(swipePage.isTextPresent("você consegue"));
-		
-		//clicar botão direito
-		swipePage.clicaBtnDir();
-		//verificar texto "Chegar até o fim"
-	//	Assert.assertTrue(swipePage.isTextPresent("Chegar até o fim"));
+		swipePage.clicaBtnEsq();
+		Assert.assertTrue(swipePage.isTextPresent("a esquerda"));
 
-		//swipe esquerda
-		swipePage.swipeLeft();
-		
-		//clicar botão esquerdo
-		swipePage.clicaBtnEsq();
-		swipePage.clicaBtnEsq();
-		//verificar texto À esquerda
-		//Assert.assertTrue(swipePage.isTextPresent("a esquerda"));
-		
-		
 	}
 
 }
