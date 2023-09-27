@@ -37,7 +37,7 @@ public class DatePickerTest extends BaseTest {
 		LocalDate oldDate;
 		
 		menuPage.clicaFormulario();
-		oldDate = LocalDate.parse(datePickerPage.getLblDateText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));//.format(DateTimeFormatter.ofPattern("dd/MM/YYYY"));
+		oldDate = LocalDate.parse(datePickerPage.getLblDateText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 		datePickerPage.clicaData();
 		datePickerPage.escolheDia(diaSelecionado);
 		datePickerPage.clicaOk();

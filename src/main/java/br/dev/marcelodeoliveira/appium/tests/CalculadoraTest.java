@@ -28,10 +28,14 @@ public class CalculadoraTest extends BaseTest {
 		addCapability("appActivity", "com.android.calculator2.Calculator");
 		setupDriver();
 		this.page = new CalculadoraPage();
+		
 	}
 
 	@Test
 	public void calculadoraSomaTest() throws MalformedURLException {
+		page.getWindowDimension();
+	
+	
 		page.simpleSum(2, 2);
 		Assert.assertEquals(page.getResult(), "4");
 	}

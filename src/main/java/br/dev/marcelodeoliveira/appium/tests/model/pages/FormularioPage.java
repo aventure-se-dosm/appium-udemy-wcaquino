@@ -108,12 +108,12 @@ public class FormularioPage extends BasePage {
 	public void salvarForm() {
 
 		click(getBtnSalvar());
-		waitUntilWebElementToBeVisible(getLblName());
+		waitUntilWebElementToBeVisibleAndItsNotNull(getLblName());
 	}
 
 	public void salvarFormDemorado() {
 		click(getBtnSalvarDemorado());
-		waitUntilWebElementToBeVisible(getLblName());
+		waitUntilWebElementToBeVisibleAndItsNotNull(getLblName());
 
 	}
 
@@ -125,6 +125,11 @@ public class FormularioPage extends BasePage {
 	public List<String> getAllFormResponse() {
 		return getListAllTextView().stream().map(elem -> elem.getText()).filter(s -> ((String) s).contains(": "))
 				.collect(Collectors.toList());
+	}
+	public String getFormResponseAttribute(String attribute) {
+		return getAllFormResponse() .stream().map(s -> s.toLowerCase()).filter(s -> ((String) s).contains(attribute.toLowerCase()+": "))
+				.findAny().get();
+				
 	}
 
 }
