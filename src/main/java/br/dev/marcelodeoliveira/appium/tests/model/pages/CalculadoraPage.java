@@ -9,9 +9,6 @@ public class CalculadoraPage extends BasePage {
 	@AndroidFindBy(id = "com.google.android.calculator:id/op_add")
 	private MobileElement btnAdd;
 
-	@AndroidFindBy(id = "com.google.android.calculator:id/action_bar_root")
-	private MobileElement calcRoot;
-
 	@AndroidFindBy(id = "com.google.android.calculator:id/eq")
 	private MobileElement btnEquals;
 
@@ -23,17 +20,21 @@ public class CalculadoraPage extends BasePage {
 
 	@AndroidFindBy(id = "com.google.android.calculator:id/op_mul")
 	private MobileElement btnTimes;
+
 	@AndroidFindBy(id = "com.google.android.calculator:id/op_div")
 	private MobileElement btnDividedTo;
+	
 	@AndroidFindBy(id = "com.google.android.calculator:id/op_pct")
 	private MobileElement btnPercent;
+	
 	@AndroidFindBy(id = "com.google.android.calculator:id/op_sqrt")
 	private MobileElement btnSqrt;
+	
 	@AndroidFindBy(id = "com.google.android.calculator:id/del")
 	private MobileElement btndel;
+
 	@AndroidFindBy(id = "com.google.android.calculator:id/clr")
 	private MobileElement btnClear;
-
 	
 	
 	public void simpleSum(Integer a, Integer b) {
@@ -107,10 +108,6 @@ public class CalculadoraPage extends BasePage {
 
 	private MobileElement getLblResult() {
 		return lblResult;
-	}
-	
-	private MobileElement getRoot() {
-		return calcRoot;
 	}
 	
 	private void pressEquals() {

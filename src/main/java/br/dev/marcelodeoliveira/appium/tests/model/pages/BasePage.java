@@ -26,8 +26,10 @@ import io.appium.java_client.touch.offset.PointOption;
 public abstract class BasePage {
 
 	WebDriverWait wait;
-	private final Integer NO_WAIT = 0;
-	private final Integer LONG_CLICK_WAIT = 1000;
+	protected final Integer NO_WAIT = 0;
+	protected final Integer LONG_CLICK_WAIT = 1000;
+	protected static final Float MIN_AXIS_MOVING_VALUE = 0.1F;
+	protected static final Float MAX_AXIS_MOVING_VALUE = 0.9F;
 
 	public BasePage() {
 		PageFactory.initElements(new AppiumFieldDecorator(getDriver()), this);
@@ -42,8 +44,12 @@ public abstract class BasePage {
 	}
 
 	protected void click(WebElement element) {
-		waitUntilWebElementToBeVisibleAndItsNotNull(element);
+		waitUntilWebElementToBeVisibleAndItsNotNullForClick(element);
 		element.click();
+	}
+
+	private void waitUntilWebElementToBeVisibleAndItsNotNullForClick(WebElement element) {
+		wait.withTimeout(Duration.ofSeconds(3)).until(ExpectedConditions.visibilityOf(element));
 	}
 
 	public void tap(Integer x, Integer y) {
@@ -67,9 +73,13 @@ public abstract class BasePage {
 	public Dimension getWindowDimension() {
 		return getDriver().manage().window().getSize();
 	}
+	
+	Point getWindowCenter(){
+		return new Point(getWindowWidth()/2, getWindowHeight()/2);
+	}
 
-	public void scroll(Float pctInicio, Float pctFim) {
-		int x = getWindowWidth() / 2;
+	protected void scroll(Float pctInicio, Float pctFim) {
+		int x = getWindowCenter().getX();
 		int startY = (int) (getWindowHeight() * pctInicio);
 		int endY = (int) (getWindowHeight() * pctFim);
 
@@ -79,14 +89,6 @@ public abstract class BasePage {
 	}
 
 	protected void scrollUp(Float pctInicio, Float pctFim) {
-		if (pctInicio > pctFim) {
-			scroll(pctInicio, pctFim);
-		} else {
-			scroll(pctFim, pctInicio);
-		}
-	}
-
-	protected void scrollDown(Float pctInicio, Float pctFim) {
 		if (pctInicio < pctFim) {
 			scroll(pctInicio, pctFim);
 		} else {
@@ -94,16 +96,31 @@ public abstract class BasePage {
 		}
 	}
 
+	protected void scrollDown(Float pctInicio, Float pctFim) {
+		if (pctInicio > pctFim) {
+			scroll(pctInicio, pctFim);
+		} else {
+			scroll(pctFim, pctInicio);
+		}
+	}
+
+	protected void scrollDown() {
+		scrollDown(MIN_AXIS_MOVING_VALUE, MAX_AXIS_MOVING_VALUE);
+	}
+
+	protected void scrollUp() {
+		scrollUp(MIN_AXIS_MOVING_VALUE, MAX_AXIS_MOVING_VALUE);
+	}
+
 	protected void swipe(Float pctInicio, Float pctFim) {
 
-		int y = getWindowHeight() / 2;
+		int y = getWindowCenter().getY();
 		int startX = (int) (getWindowWidth() * pctInicio);
 		int endX = (int) (getWindowWidth() * pctFim);
 
 		new TouchAction<>(getDriver()).press(PointOption.point(new Point(startX, y)))
-				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(300)))
+				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
 				.moveTo(PointOption.point(new Point(endX, y))).release().perform();
-
 	}
 
 	protected void swipeLeft(Float pctInicio, Float pctFim) {
@@ -303,6 +320,13 @@ public abstract class BasePage {
 
 	public boolean isTextPresent(String txtValue) {
 		return waitUntilWebElementToBeVisibleAndItsNotNull(By.xpath(String.format("//*[@text='%s']", txtValue)));
+	}
+
+	public void swipeRight() {
+		swipeRight(MIN_AXIS_MOVING_VALUE, MAX_AXIS_MOVING_VALUE);
+	}
+	public void swipeLeft() {
+		swipeLeft(MIN_AXIS_MOVING_VALUE, MAX_AXIS_MOVING_VALUE);
 	}
 
 }

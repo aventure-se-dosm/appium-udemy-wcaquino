@@ -34,12 +34,12 @@ public class SwipePage extends BasePage {
 		return icoSlideToTheRight;
 	}
 
-	public void swipeRight() {
-		swipeRight(0.2f, 0.9f);
+	public void swipeToTheRight() {
+		swipeLeft();
 	}
 
-	public void swipeLeft() {
-		swipeLeft(0.2f, 0.9f);
+	public void swipeToTheLeft() {
+		swipeRight();
 	}
 
 	public void clicaBtnDir() {

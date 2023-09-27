@@ -24,13 +24,13 @@ public class MenuPage extends BasePage {
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Cliques']")
 	private MobileElement cliques;
-	
+
 	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='android:id/message']")
 	private MobileElement alertMessage;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='android:id/alertTitle']")
 	private MobileElement alertTitle;
-	
+
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Opção bem escondida']")
 	private MobileElement opcaoEscondida;
 
@@ -40,20 +40,15 @@ public class MenuPage extends BasePage {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Swipe']")
 	private MobileElement swipe;
 
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Swipe List']")
+	private WebElement swipeList;
+
 	private MobileElement getAlertMessage() {
 		return alertMessage;
 	}
 
 	private MobileElement getAlertTitle() {
 		return alertTitle;
-	}
-
-	private MobileElement getBtnOk() {
-		return btnOk;
-	}
-
-	public MobileElement getFormulario() {
-		return formulario;
 	}
 
 	private MobileElement getAbas() {
@@ -67,20 +62,33 @@ public class MenuPage extends BasePage {
 	private WebElement getAlertas() {
 		return alertas;
 	}
-	
+
+	private MobileElement getBtnOk() {
+		return btnOk;
+	}
+
 	private WebElement getCliques() {
 		return cliques;
+	}
+
+	public MobileElement getFormulario() {
+		return formulario;
 	}
 
 	private MobileElement getOpcaoEscondida() {
 		return opcaoEscondida;
 	}
+
 	public MobileElement getSplash() {
 		return splash;
 	}
 
 	private WebElement getSwipe() {
 		return swipe;
+	}
+
+	private WebElement getSwipeList() {
+		return swipeList;
 	}
 
 	public void clicaFormulario() {
@@ -110,15 +118,17 @@ public class MenuPage extends BasePage {
 	public void clicaCliques() {
 		click(getCliques());
 	}
+
 	public void clicaOpcaoEscondida() {
 		waitUntilWebElementToBeVisibleAndItsNotNull(getFormulario());
-		scroll(0.9f, 0.2f);
+		scrollDown();
 		click(getOpcaoEscondida());
 	}
 
 	public String getAlertMessageTxt() {
 		return getText(getAlertMessage());
 	}
+
 	public String getAlertTitleTxt() {
 		return getText(getAlertTitle());
 	}
@@ -128,9 +138,12 @@ public class MenuPage extends BasePage {
 	}
 
 	public void clickSwipe() {
-		click(getSwipe());	
+		click(getSwipe());
 	}
 
-	
+	public void clicaSwipeList() {
+		scrollDown();
+		click(getSwipeList());
+	}
 
 }

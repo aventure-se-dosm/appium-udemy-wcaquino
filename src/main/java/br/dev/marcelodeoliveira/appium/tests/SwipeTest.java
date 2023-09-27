@@ -46,7 +46,6 @@ public class SwipeTest extends BaseTest {
 
 		swipePage.clicaBtnEsq();
 		Assert.assertTrue(swipePage.isTextPresent("a esquerda"));
-
 	}
 
 }
