@@ -23,6 +23,7 @@ public class FormularioTest extends BaseTest {
 
 	@Before
 	public void setupTest() {
+
 		setDefaultCapabilities();
 		addCapability(MobileCapabilityType.APP,
 				"C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_2_0.apk");
@@ -30,21 +31,19 @@ public class FormularioTest extends BaseTest {
 
 		this.formularioPage = new FormularioPage();
 		this.menuPage = new MenuPage();
-
+		menuPage.clicaFormulario();
 	}
 
 	@Test
 	public void devePreencherCampoTeste() throws MalformedURLException {
 
 		String txtName = "Wagner";
-		menuPage.clicaFormulario();
 		formularioPage.escreveNome(txtName);
 	}
 
 	@Test
 	public void deveIteragirSwitchEScheckbox() throws MalformedURLException {
 
-		menuPage.clicaFormulario();
 		formularioPage.mudaSwitch(true);
 		formularioPage.mudaCheckbox(true);
 		Assert.assertTrue(formularioPage.isCheckboxSelected());
@@ -55,7 +54,7 @@ public class FormularioTest extends BaseTest {
 	public void deveCadastrarNomeDemorado() throws MalformedURLException {
 
 		final String TXT_USER_NAME = "Wagnão";
-		menuPage.clicaFormulario();
+
 		formularioPage.escreveNome(TXT_USER_NAME);
 		formularioPage.salvarFormDemorado();
 
@@ -71,7 +70,6 @@ public class FormularioTest extends BaseTest {
 		final Boolean statusSwitchHourSelected = true;
 		final Boolean statusChkDaterSeleced = false;
 
-		menuPage.clicaFormulario();
 		formularioPage.escreveNome(TXT_USER_NAME);
 		formularioPage.selecionaConsole(TXT_SELECTED_GAME_CONSOLE);
 		formularioPage.mudaSwitch(statusSwitchHourSelected);
@@ -81,6 +79,5 @@ public class FormularioTest extends BaseTest {
 		Assert.assertTrue(formularioPage.getAllFormResponse()
 				.containsAll(Arrays.asList("Nome: ".concat(TXT_USER_NAME), "Console: switch", "Slider: 25",
 						"Switch: On", "Checkbox: Desabilitado", "Data: 01/01/2000", "Hora: 12:00")));
-
 	}
 }
