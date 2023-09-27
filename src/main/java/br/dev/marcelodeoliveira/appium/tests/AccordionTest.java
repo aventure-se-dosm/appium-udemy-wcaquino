@@ -30,11 +30,11 @@ public class AccordionTest extends BaseTest {
 
 	@Test
 	public void deveIteragirComAccordionOpcao1() {
-		// Acessar o Menu;
+	
 		menuPage.clicaAccordion();
-		// Clicar Opção 1
+	
 		accordionPage.getSelectOption1();
-		// Verificar texto da opção 1
+	
 		Assert.assertEquals("Esta é a descrição da opção 1", accordionPage.getTxtOpcao1Txt());
 
 	}

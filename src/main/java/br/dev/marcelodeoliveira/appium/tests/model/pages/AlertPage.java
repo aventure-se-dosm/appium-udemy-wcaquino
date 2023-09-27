@@ -84,10 +84,8 @@ public class AlertPage extends BasePage {
 	}
 
 	public String clicaAlertSimples() {
-		click(getBtnAlertaSimples());
-		// TODO: randomOutsideAreaTap(MobileElement frame (xpath =
-		// //*[resource-id="android:id/content"]/../../*)
-		tap(100, 100); // provisory
+		click(getBtnAlertaSimples());	
+		tap(100, 100); //provisory;
 		return getMsgTxt();
 	}
 

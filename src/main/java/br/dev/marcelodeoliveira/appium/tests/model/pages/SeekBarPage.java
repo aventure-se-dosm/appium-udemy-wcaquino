@@ -38,9 +38,6 @@ public class SeekBarPage extends BasePage {
 				maxCurrentBarLength, (1027));
 		Assert.assertEquals(String.format("Expected: %d, Actual: %d", 53, cursorSquareEdgeMeasure), 53,
 				cursorSquareEdgeMeasure);
-
-		// desde que a "porcentagem" não inclui zero, temos na verdade 99 faixas, e
-		// devemos fazer esta transformação:
 		porcentagem -= 0.01f;
 		porcentagem /= 0.99f;
 

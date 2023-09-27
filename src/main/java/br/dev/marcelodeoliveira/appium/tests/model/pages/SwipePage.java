@@ -25,28 +25,6 @@ public class SwipePage extends BasePage {
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='›']")
 	private MobileElement icoSlideToTheRight;
-	
-	
-
-	private MobileElement getTxtTela1_1() {
-		return txtTela1_1;
-	}
-
-	private MobileElement getTxtTela1_2() {
-		return txtTela1_2;
-	}
-
-	private MobileElement getTxtTela2_1() {
-		return txtTela2_1;
-	}
-
-	private MobileElement getTxtTela2_2() {
-		return txtTela2_2;
-	}
-
-	private MobileElement getTxtTela3_1() {
-		return txtTela3_1;
-	}
 
 	private MobileElement getIcoSlideToTheLeft() {
 		return icoSlideToTheLeft;
@@ -56,10 +34,10 @@ public class SwipePage extends BasePage {
 		return icoSlideToTheRight;
 	}
 
-	
 	public void swipeRight() {
 		swipeRight(0.25f, 0.75f);
 	}
+
 	public void swipeLeft() {
 		swipeLeft(0.25f, 0.75f);
 	}
@@ -67,12 +45,9 @@ public class SwipePage extends BasePage {
 	public void clicaBtnDir() {
 		click(getIcoSlideToTheRight());
 	}
-	
+
 	public void clicaBtnEsq() {
-		click(getIcoSlideToTheLeft());		
+		click(getIcoSlideToTheLeft());
 	}
 
-
-	
-	
 }

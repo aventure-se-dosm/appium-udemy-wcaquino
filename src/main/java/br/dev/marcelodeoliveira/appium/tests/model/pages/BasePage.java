@@ -68,11 +68,9 @@ public abstract class BasePage {
 
 		new TouchAction<>(getDriver()).press(PointOption.point(new Point(x, startY)))
 				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-				.moveTo(PointOption.point(new Point(x, endY)))
-				.release()
-				.perform();
+				.moveTo(PointOption.point(new Point(x, endY))).release().perform();
 	}
-	
+
 	protected void scrollUp(Float pctInicio, Float pctFim) {
 		if (pctInicio > pctFim) {
 			scroll(pctInicio, pctFim);
@@ -80,7 +78,7 @@ public abstract class BasePage {
 			scroll(pctFim, pctInicio);
 		}
 	}
-	
+
 	protected void scrollDown(Float pctInicio, Float pctFim) {
 		if (pctInicio < pctFim) {
 			scroll(pctInicio, pctFim);
@@ -97,9 +95,7 @@ public abstract class BasePage {
 
 		new TouchAction<>(getDriver()).press(PointOption.point(new Point(startX, y)))
 				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
-				.moveTo(PointOption.point(new Point(endX, y)))
-				.release()
-				.perform();
+				.moveTo(PointOption.point(new Point(endX, y))).release().perform();
 
 	}
 
@@ -110,7 +106,7 @@ public abstract class BasePage {
 			swipe(pctFim, pctInicio);
 		}
 	}
-	
+
 	public void swipeRight(Float pctInicio, Float pctFim) {
 		if (pctInicio < pctFim) {
 			swipe(pctInicio, pctFim);
@@ -121,14 +117,11 @@ public abstract class BasePage {
 
 	protected void scrollToElement(WebElement element) {
 		int WindowHeight = getWindowHeight();
-		 Assert.assertEquals(WindowHeight, 1794);
+		Assert.assertEquals(WindowHeight, 1794);
 	}
 
 	protected void longClick(Integer x, Integer y) {
 		longClick(new Point(x, y));
-//		new TouchAction<>(getDriver()).longPress(PointOption.point(x, y))
-//				// .waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
-//				.release().perform();
 	}
 
 	protected MobileElement getMobileElementByXpathAndTxt(String formatXpath, Object... value) {
@@ -136,7 +129,7 @@ public abstract class BasePage {
 	}
 
 	protected MobileElement getElement(By by) {
-		//return //getDriver().findElement(by);
+	
 		return (getDriver().findElement(by));
 	}
 
@@ -145,14 +138,16 @@ public abstract class BasePage {
 	}
 
 	protected boolean waitUntilWebElementToBeVisibleAndItsNotNull(WebElement element) {
-		boolean b =  wait.until(ExpectedConditions.visibilityOf(element)) != null;
-		
+		boolean b = wait.until(ExpectedConditions.visibilityOf(element)) != null;
+
 		return b;
 	}
+
 	protected boolean waitUntilWebElementToBeVisibleAndItsNotNull(By by) {
-		boolean b  = wait.until(ExpectedConditions.visibilityOfElementLocated(by)) != null;
+		boolean b = wait.until(ExpectedConditions.visibilityOfElementLocated(by)) != null;
 		return b;
 	}
+
 	protected WebElement waitUntilWebElementToBeVisible(By by) {
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
 	}
@@ -235,17 +230,17 @@ public abstract class BasePage {
 		return String.format("expected: %s,  actual: %s", expectedValue.toString(), actualValue.toString());
 	}
 
-	// ***********************************Screen and Element
-	// Utils*************************************************
+
+
 
 	protected int getElementInteractableXAxisRange(MobileElement element) {
 		return getElementCenter(element).getX();
-		// return getLocation(element).getX();
+	
 	}
 
 	protected int getElementInteractableYAxisRange(MobileElement element) {
 		return getElementCenter(element).getY();
-		// return getLocation(element).getY();
+	
 	}
 
 	protected Point getLocation(MobileElement element) {
@@ -262,14 +257,6 @@ public abstract class BasePage {
 
 	protected int getWidth(WebElement element) {
 		return element.getRect().getWidth();
-	}
-
-	private int getRectX(WebElement element) {
-		return element.getRect().getX();
-	}
-
-	private int getRectY(WebElement element) {
-		return element.getRect().getY();
 	}
 
 	public Point getSlidInteractableXbyPercentage(MobileElement slid, Integer percents) {
@@ -312,7 +299,7 @@ public abstract class BasePage {
 	public void clickByPoint(Point point) {
 		tap(point);
 	}
-	
+
 	public boolean isTextPresent(String txtValue) {
 		return waitUntilWebElementToBeVisibleAndItsNotNull(By.xpath(String.format("//*[@text='%s']", txtValue)));
 	}
