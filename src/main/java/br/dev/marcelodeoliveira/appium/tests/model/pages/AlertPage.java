@@ -1,9 +1,12 @@
 package br.dev.marcelodeoliveira.appium.tests.model.pages;
 
+import org.openqa.selenium.Point;
+
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 
 public class AlertPage extends BasePage {
+
 
 	@AndroidFindBy(xpath = "//android.widget.Button[@resource-id='idButtonTest']")
 	public MobileElement btnAlertaSimples;
@@ -85,8 +88,12 @@ public class AlertPage extends BasePage {
 
 	public String clicaAlertSimples() {
 		click(getBtnAlertaSimples());	
-		tap(100, 100); //provisory;
+		tap(getOuterAlertReasonablePoint());
 		return getMsgTxt();
+	}
+
+	private Point getOuterAlertReasonablePoint() {
+		return new Point(100, 100);
 	}
 
 	public String clicaAlertNegar() {
