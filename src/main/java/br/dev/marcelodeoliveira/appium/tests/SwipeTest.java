@@ -41,7 +41,6 @@ public class SwipeTest extends BaseTest {
 		swipePage.clicaBtnDir();
 		Assert.assertTrue(swipePage.isTextPresent("Chegar até o fim!"));
 		swipePage.swipeRight();
-
 		Assert.assertTrue(swipePage.isTextPresent("E veja se"));
 		Assert.assertTrue(swipePage.isTextPresent("você consegue"));
 

@@ -32,6 +32,13 @@ public abstract class BasePage {
 	public BasePage() {
 		PageFactory.initElements(new AppiumFieldDecorator(getDriver()), this);
 		wait = new WebDriverWait(getDriver(), 10L);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	protected void click(WebElement element) {
@@ -94,7 +101,7 @@ public abstract class BasePage {
 		int endX = (int) (getWindowWidth() * pctFim);
 
 		new TouchAction<>(getDriver()).press(PointOption.point(new Point(startX, y)))
-				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
+				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(300)))
 				.moveTo(PointOption.point(new Point(endX, y))).release().perform();
 
 	}
@@ -129,7 +136,7 @@ public abstract class BasePage {
 	}
 
 	protected MobileElement getElement(By by) {
-	
+
 		return (getDriver().findElement(by));
 	}
 
@@ -138,14 +145,11 @@ public abstract class BasePage {
 	}
 
 	protected boolean waitUntilWebElementToBeVisibleAndItsNotNull(WebElement element) {
-		boolean b = wait.until(ExpectedConditions.visibilityOf(element)) != null;
-
-		return b;
+		return wait.until(ExpectedConditions.visibilityOf(element)) != null;
 	}
 
 	protected boolean waitUntilWebElementToBeVisibleAndItsNotNull(By by) {
-		boolean b = wait.until(ExpectedConditions.visibilityOfElementLocated(by)) != null;
-		return b;
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(by)) != null;
 	}
 
 	protected WebElement waitUntilWebElementToBeVisible(By by) {
@@ -230,17 +234,14 @@ public abstract class BasePage {
 		return String.format("expected: %s,  actual: %s", expectedValue.toString(), actualValue.toString());
 	}
 
-
-
-
 	protected int getElementInteractableXAxisRange(MobileElement element) {
 		return getElementCenter(element).getX();
-	
+
 	}
 
 	protected int getElementInteractableYAxisRange(MobileElement element) {
 		return getElementCenter(element).getY();
-	
+
 	}
 
 	protected Point getLocation(MobileElement element) {

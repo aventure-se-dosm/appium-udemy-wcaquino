@@ -9,6 +9,9 @@ public class CalculadoraPage extends BasePage {
 	@AndroidFindBy(id = "com.google.android.calculator:id/op_add")
 	private MobileElement btnAdd;
 
+	@AndroidFindBy(id = "com.google.android.calculator:id/action_bar_root")
+	private MobileElement calcRoot;
+
 	@AndroidFindBy(id = "com.google.android.calculator:id/eq")
 	private MobileElement btnEquals;
 
@@ -31,6 +34,8 @@ public class CalculadoraPage extends BasePage {
 	@AndroidFindBy(id = "com.google.android.calculator:id/clr")
 	private MobileElement btnClear;
 
+	
+	
 	public void simpleSum(Integer a, Integer b) {
 
 		selectNumber(a);
@@ -103,7 +108,11 @@ public class CalculadoraPage extends BasePage {
 	private MobileElement getLblResult() {
 		return lblResult;
 	}
-
+	
+	private MobileElement getRoot() {
+		return calcRoot;
+	}
+	
 	private void pressEquals() {
 		click(getBtnEquals());
 	}

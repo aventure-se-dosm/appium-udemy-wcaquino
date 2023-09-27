@@ -28,7 +28,7 @@ public class DatePickerPage extends BasePage {
 	}
 
 	private MobileElement getBtnDate() {
-		return getBtnDate();
+		return btnDate;
 	}
 
 	public String getLblDateText() {
@@ -36,7 +36,7 @@ public class DatePickerPage extends BasePage {
 	}
 
 	private List<MobileElement> getListBtnDias() {
-		return getListBtnDias();
+		return listBtnDias;
 	}
 
 	public void clicaData() {

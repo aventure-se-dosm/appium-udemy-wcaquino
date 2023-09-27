@@ -35,11 +35,11 @@ public class SwipePage extends BasePage {
 	}
 
 	public void swipeRight() {
-		swipeRight(0.25f, 0.75f);
+		swipeRight(0.2f, 0.9f);
 	}
 
 	public void swipeLeft() {
-		swipeLeft(0.25f, 0.75f);
+		swipeLeft(0.2f, 0.9f);
 	}
 
 	public void clicaBtnDir() {
