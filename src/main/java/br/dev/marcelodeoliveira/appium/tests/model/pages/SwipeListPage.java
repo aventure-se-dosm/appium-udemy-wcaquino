@@ -19,7 +19,6 @@ public class SwipeListPage extends BasePage {
 			this.signal = signal;
 		};
 
-		// como ocultar?
 		public String getsignal() {
 			return this.signal;
 		}
@@ -33,8 +32,7 @@ public class SwipeListPage extends BasePage {
 		}
 
 		public static List<String> getValues() {
-			return Arrays.asList(Signal.values()).stream()
-					.map(signal -> signal.getsignal())
+			return Arrays.asList(Signal.values()).stream().map(signal -> signal.getsignal())
 					.collect(Collectors.toList());
 		}
 	}
@@ -47,8 +45,9 @@ public class SwipeListPage extends BasePage {
 	}
 
 	private String getOptionSignalFrame(String index, String signal) {
-		return String.format("//android.widget.TextView[contains(@text, 'Opção %s')]/../../following-sibling::*//*[@text='%s']"
-				,index, signal);
+		return String.format(
+				"//android.widget.TextView[contains(@text, 'Opção %s')]/../../following-sibling::*//*[@text='%s']",
+				index, signal);
 	}
 
 	private String getOptionAndSignalBaseXpath(String index, String signal) {
@@ -60,11 +59,7 @@ public class SwipeListPage extends BasePage {
 	}
 
 	private MobileElement getOptElelmByXpath(String index) {
-//		try {
-//			Thread.sleep(500);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
+
 		return getElement(By.xpath(getSwipeBarXpathByIndex(index)));
 	}
 
@@ -80,21 +75,22 @@ public class SwipeListPage extends BasePage {
 	}
 
 	private void clickByIndexAndsignal(String index, String signal) {
-	
-			Signal s = Signal.getValueOf(signal);
-			switch (s) {
-				case POSITIVO: {
-					//provisory: get a proper offset by the itself element dimensions.
-					tap(getElement(By.xpath(getOptionSignalFrame(index, Signal.POSITIVO.getsignalBetweenBrackets()))).getLocation().moveBy(10, 1));
-					break;
-				}
-				case NEGATIVO: {				
-					click(getElement(By.xpath(getOptionSignalFrame(index, Signal.NEGATIVO.getsignalBetweenBrackets()))));
-					break;
-				}
-			}
-		
+
+		Signal s = Signal.getValueOf(signal);
+		switch (s) {
+		case POSITIVO: {
+			// provisory: get a proper offset by the itself element dimensions.
+			tap(getElement(By.xpath(getOptionSignalFrame(index, Signal.POSITIVO.getsignalBetweenBrackets())))
+					.getLocation().moveBy(10, 1));
+			break;
 		}
+		case NEGATIVO: {
+			click(getElement(By.xpath(getOptionSignalFrame(index, Signal.NEGATIVO.getsignalBetweenBrackets()))));
+			break;
+		}
+		}
+
+	}
 
 	public String swipeDireita(String index) {
 		swipeRight(getOptElelmByXpath(index).getCenter());

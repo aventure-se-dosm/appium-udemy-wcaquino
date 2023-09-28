@@ -1,7 +1,10 @@
 package br.dev.marcelodeoliveira.appium.tests.model.pages;
 
+import java.sql.DriverManager;
+
 import org.openqa.selenium.WebElement;
 
+import br.dev.marcelodeoliveira.appium.core.DriverFactory;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 
@@ -43,6 +46,9 @@ public class MenuPage extends BasePage {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Swipe List']")
 	private WebElement swipeList;
 
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Drag and drop']")
+	private WebElement dragAndDrop;
+
 	private MobileElement getAlertMessage() {
 		return alertMessage;
 	}
@@ -69,6 +75,10 @@ public class MenuPage extends BasePage {
 
 	private WebElement getCliques() {
 		return cliques;
+	}
+
+	private WebElement getDragAndDrop() {
+		return this.dragAndDrop;
 	}
 
 	public MobileElement getFormulario() {
@@ -144,6 +154,11 @@ public class MenuPage extends BasePage {
 	public void clicaSwipeList() {
 		scrollDown();
 		click(getSwipeList());
+	}
+
+	public void clicaDragAndDrop() {
+		scrollDown();
+		click(getDragAndDrop());
 	}
 
 }
