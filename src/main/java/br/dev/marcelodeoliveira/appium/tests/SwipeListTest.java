@@ -4,6 +4,7 @@ import static br.dev.marcelodeoliveira.appium.core.DriverFactory.addCapability;
 import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setDefaultCapabilities;
 import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setupDriver;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import br.dev.marcelodeoliveira.appium.tests.model.pages.MenuPage;
@@ -23,24 +24,28 @@ public class SwipeListTest extends BaseTest {
 		setupDriver();
 		this.menuPage = new MenuPage();
 		this.swipeListPage = new SwipeListPage();
-		
-		//	clicar 'SwipeList'
+
+		// clicar 'SwipeList'
 		menuPage.clicaSwipeList();
 	}
 
 	@Test
 	public void desafioSwipeListTest() {
-		
-		//	swipeLeft ( op1 )
-		swipeListPage.swipeEsquerda("1", "POSITIVO");
-		Assert.assertTrue(swipeListPage.isTextoCoerente("1"));
-		//	swipeLeft( op4 )
-		swipeListPage.swipeEsquerda("4");
-		//	clicar ( op4 -)
-		//	verificar op4-
-		//	swipeRight ( op5 )
-		swipeListPage.swipeDireita("5");
-		//	//clicar (op5)?
-		//	verificar op5
+
+		// swipeLeft ( op1 )
+		String swipeText;
+		swipeText = swipeListPage.swipeEsquerdaComCliqueNoSinal("1", "POSITIVO");
+		Assert.assertEquals("Opção 1 (+)", swipeText);
+		Assert.assertEquals("Opção 1 (+)", swipeText);
+		// swipeLeft( op4 )
+		// clicar ( op4 -)
+		// verificar op4-
+		swipeText = swipeListPage.swipeEsquerdaComCliqueNoSinal("4", "NEGATIVO");
+		Assert.assertEquals("Opção 4 (-)", swipeText);
+		// swipeRight ( op5 )
+		// //clicar (op5)?
+		// verificar op5
+		swipeText = swipeListPage.swipeDireita("5");
+		Assert.assertEquals("Opção 5", swipeText);
 	}
 }

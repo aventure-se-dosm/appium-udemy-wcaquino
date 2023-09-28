@@ -1,5 +1,9 @@
 package br.dev.marcelodeoliveira.appium.tests.model.pages;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.openqa.selenium.By;
 
 import io.appium.java_client.MobileElement;
@@ -27,20 +31,28 @@ public class SwipeListPage extends BasePage {
 		public static Signal getValueOf(String signal) {
 			return Signal.valueOf(signal.toUpperCase());
 		}
+
+		public static List<String> getValues() {
+			return Arrays.asList(Signal.values()).stream()
+					.map(signal -> signal.getsignal())
+					.collect(Collectors.toList());
+		}
 	}
 
 //	private String getOptByXpath(Integer index) {
 //		return getOptByXpath(index.toString());
 //	}
-	private String getOptionXpath(String index) {
+	private String getSwipeBarXpathByIndex(String index) {
 		return String.format("//android.widget.TextView[contains(@text, 'Opção %s')]", index);
 	}
+
 	private String getOptionSignalFrame(String index, String signal) {
-		return String.format("//android.widget.TextView[contains(@text, 'Opção %s')]/following-sibling::*[@text='%s']", index, signal);
+		return String.format("//android.widget.TextView[contains(@text, 'Opção %s')]/../../following-sibling::*//*[@text='%s']"
+				,index, signal);
 	}
 
-	private String getOptionAndSignalBaseXpath(String index) {
-		return ("//android.widget.TextView[contains(@text, 'Opção %s (%s)')]");
+	private String getOptionAndSignalBaseXpath(String index, String signal) {
+		return String.format("//android.widget.TextView[contains(@text, 'Opção %s %s')]", index, signal);
 	}
 
 	private String getSignalXpath() {
@@ -48,36 +60,45 @@ public class SwipeListPage extends BasePage {
 	}
 
 	private MobileElement getOptElelmByXpath(String index) {
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		return getElement(By.xpath(getOptionXpath(index)));
+//		try {
+//			Thread.sleep(500);
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+		return getElement(By.xpath(getSwipeBarXpathByIndex(index)));
 	}
 
-	public void swipeEsquerda(String index, String signal) {
+	public String swipeEsquerdaComCliqueNoSinal(String index, String signal) {
+
 		swipeLeft(getOptElelmByXpath(index).getCenter());
 		clickByIndexAndsignal(index, signal);
+		return getSwipeBarText(index);
+	}
+
+	public String getSwipeBarText(String index) {
+		return getText(getElement(By.xpath(getSwipeBarXpathByIndex(index))));
 	}
 
 	private void clickByIndexAndsignal(String index, String signal) {
-		switch (Signal.getValueOf(signal)) {
-			case POSITIVO: {
-				click(getElement(getOptElelmByXpath(index)));
-				break;
+	
+			Signal s = Signal.getValueOf(signal);
+			switch (s) {
+				case POSITIVO: {
+					//provisory: get a proper offset by the itself element dimensions.
+					tap(getElement(By.xpath(getOptionSignalFrame(index, Signal.POSITIVO.getsignalBetweenBrackets()))).getLocation().moveBy(10, 1));
+					break;
+				}
+				case NEGATIVO: {				
+					click(getElement(By.xpath(getOptionSignalFrame(index, Signal.NEGATIVO.getsignalBetweenBrackets()))));
+					break;
+				}
 			}
-			case NEGATIVO: {
-				
-				break;
-			}
+		
 		}
-		;
 
-	}
-
-	public void swipeDireita(String index, String signal) {
+	public String swipeDireita(String index) {
 		swipeRight(getOptElelmByXpath(index).getCenter());
+		return getSwipeBarText(index);
 	}
 
 }
