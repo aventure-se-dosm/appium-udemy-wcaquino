@@ -3,6 +3,7 @@ package br.dev.marcelodeoliveira.appium.tests;
 import static br.dev.marcelodeoliveira.appium.core.DriverFactory.addCapability;
 import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setDefaultCapabilities;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,7 +17,6 @@ public class WebViewTest  {
 	private MenuPage menuPage;
 	private WebViewPage webViewPage;
 
-	//@Override
 	@Before
 	public void setupTest() {
 		setDefaultCapabilities();
@@ -25,20 +25,19 @@ public class WebViewTest  {
 		addCapability("fullReset", true);
 		addCapability("noReset", false);
 		DriverFactory.setupDriver();
-		//DriverFactory.setupWebDriver();
-
 		this.menuPage = new MenuPage();
 		this.webViewPage = new WebViewPage();
 
 		menuPage.acessarSeuBarrigaHibrido();
-		webViewPage.setEmail();
- 
 	}
 
 	
 	@Test
 	public void deveLogarSeuBarriga() {
-		webViewPage.setEmail();
+		webViewPage.setEmail("automation.mrkolv@gmail.com");
+		webViewPage.setSenha("123!");
+		webViewPage.entrar();
+		Assert.assertTrue(webViewPage.getWelcomeLabel().contains("Bem vindo, "));
 	}
 
 }
