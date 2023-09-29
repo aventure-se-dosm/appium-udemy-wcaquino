@@ -1,10 +1,7 @@
 package br.dev.marcelodeoliveira.appium.tests.model.pages;
 
-import java.sql.DriverManager;
-
 import org.openqa.selenium.WebElement;
 
-import br.dev.marcelodeoliveira.appium.core.DriverFactory;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 

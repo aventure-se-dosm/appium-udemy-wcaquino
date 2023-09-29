@@ -3,6 +3,7 @@ package br.dev.marcelodeoliveira.appium.tests.model.pages;
 import static br.dev.marcelodeoliveira.appium.core.DriverFactory.getDriver;
 
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,12 +21,14 @@ import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.appium.java_client.touch.LongPressOptions;
 import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.ElementOption;
 import io.appium.java_client.touch.offset.PointOption;
 
 public abstract class BasePage {
 
-	WebDriverWait wait;
+	protected WebDriverWait wait;
 	protected final Integer NO_WAIT = 0;
 	protected final Integer LONG_CLICK_WAIT = 1000;
 	protected static final Float MIN_AXIS_MOVING_VALUE = 0.1F;
@@ -211,8 +214,9 @@ public abstract class BasePage {
 
 	protected List<WebElement> waitUntilElementListToBeVisible(List<WebElement> listAllTextView) {
 		return wait.until(ExpectedConditions.visibilityOfAllElements(
-				listAllTextView.stream().map(elem -> (MobileElement) elem).collect(Collectors.toList())));
+				listAllTextView));
 	}
+	
 
 	protected boolean waitUntilElementListToBeVisibleAndNotNull(List<WebElement> listAllTextView) {
 		return wait.until(ExpectedConditions.visibilityOfAllElements(
@@ -296,6 +300,9 @@ public abstract class BasePage {
 	protected Point getElementCenter(MobileElement element) {
 		return waitUntilElementToBeVisible(element).getCenter();
 	}
+	protected Point getElementCenter(WebElement element) {
+		return getElementCenter( (MobileElement) element);
+	}
 
 	protected int getHeight(WebElement element) {
 		return element.getRect().getHeight();
@@ -365,5 +372,20 @@ public abstract class BasePage {
 	public void swipeLeft(Point point) {
 		swipeLeft(point.getY(), MIN_AXIS_MOVING_VALUE, MAX_AXIS_MOVING_VALUE);
 	}
+	
+	
+	public void drag (WebElement origin, WebElement end) {
+		//waitUntilElementListToBeVisible(origin, end);
+		new TouchAction<>(getDriver())
+		.longPress(ElementOption.element(origin))
+		.moveTo(ElementOption.element(end))
+		.release()
+		.perform();
+		
+	}
 
+	public void waitUntilElementListToBeVisible(WebElement...elements ) {
+		waitUntilElementListToBeVisible(Arrays.asList(elements));
+		
+	}
 }

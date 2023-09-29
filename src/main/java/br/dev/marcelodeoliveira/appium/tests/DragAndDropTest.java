@@ -39,27 +39,19 @@ public class DragAndDropTest extends BaseTest {
 
 	}
 
-	
-
 	@Test
 	public void deveEfetuarDragAndDrop() {
 
-		// Verificar estado inicial --> Então suponha que não muda! Deve estar _as it
-		// comes_
 		assertArrayEquals(dragAndDropPage.getExpectedInitialState(), dragAndDropPage.getCurrentState());
-		/**
-		 * sep char <= '|';
-		 * 
-		 * expecJoinedStr = "Esta|é uma lista|Drag em Drop!|Faça um clique longo,|e
-		 * arraste para|qualquer local desejado."
-		 */
-		// Arrastar "Esta" para e "arrasta para"
 
-		// Verificar estado intermediario
+		dragAndDropPage.drag("Esta", "e arraste para");
 
-		// Arrastar "Faça um clique longo" para "é uma lista"
+		assertArrayEquals(dragAndDropPage.getExpectedIntermediateState(), dragAndDropPage.getCurrentState());
 
-		// Verificar estado final
+		dragAndDropPage.drag("Faça um clique longo,", "é uma lista");
+
+		assertArrayEquals(dragAndDropPage.getExpectedFinalState(), dragAndDropPage.getCurrentState());
+
 	}
 
 }
