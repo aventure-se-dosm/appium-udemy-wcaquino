@@ -375,7 +375,7 @@ public abstract class BasePage {
 	
 	
 	public void drag (WebElement origin, WebElement end) {
-		//waitUntilElementListToBeVisible(origin, end);
+		
 		new TouchAction<>(getDriver())
 		.longPress(ElementOption.element(origin))
 		.moveTo(ElementOption.element(end))
@@ -385,7 +385,6 @@ public abstract class BasePage {
 	}
 
 	public void waitUntilElementListToBeVisible(WebElement...elements ) {
-		waitUntilElementListToBeVisible(Arrays.asList(elements));
-		
+		waitUntilElementListToBeVisible(Arrays.asList(elements));	
 	}
 }

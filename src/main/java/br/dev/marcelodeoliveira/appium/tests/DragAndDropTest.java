@@ -24,7 +24,7 @@ public class DragAndDropTest extends BaseTest {
 		setDefaultCapabilities();
 		addCapability(MobileCapabilityType.APP,
 				"C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_2_0.apk");
-		setupDriver();
+		//setupDriver();
 		this.menuPage = new MenuPage();
 		this.dragAndDropPage = new DragAndDropPage();
 		/**

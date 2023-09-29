@@ -46,6 +46,9 @@ public class MenuPage extends BasePage {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Drag and drop']")
 	private WebElement dragAndDrop;
 
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='SeuBarriga Híbrido']")
+	private WebElement seuBarrigaHibrido;
+
 	private MobileElement getAlertMessage() {
 		return alertMessage;
 	}
@@ -84,6 +87,10 @@ public class MenuPage extends BasePage {
 
 	private MobileElement getOpcaoEscondida() {
 		return opcaoEscondida;
+	}
+	
+ 	private WebElement getSeuBarrigaHibrido() {
+		return seuBarrigaHibrido;
 	}
 
 	public MobileElement getSplash() {
@@ -158,4 +165,7 @@ public class MenuPage extends BasePage {
 		click(getDragAndDrop());
 	}
 
+	public void acessarSeuBarrigaHibrido() {
+		click(getSeuBarrigaHibrido());		
+	}
 }
