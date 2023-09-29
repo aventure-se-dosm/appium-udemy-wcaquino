@@ -23,19 +23,17 @@ public class DragAndDropPage extends BasePage {
 		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	// @AndroidBy(xpath = "//android.widget.TextView[contains(text(),'Esta')]")
 	By flagElementBy = By.xpath("//android.widget.TextView[@text='Esta']");
 
 	@AndroidFindAll(@AndroidBy(xpath = "//android.widget.TextView[contains(text(),'')]"))
 	List<WebElement> ListAllMovableTxt;
 
 	private List<WebElement> getListAllMovableElements() {
-		// waitUntilWebElementToBeVisibleAndItsNotNull(flagElementBy);
+	
 		return waitUntilElementListToBeVisible(ListAllMovableTxt);
 	}
 
@@ -73,7 +71,6 @@ public class DragAndDropPage extends BasePage {
 
 	public void drag(String elemOriginTxt, String elemDestinationTxt) {
 		drag(getMovableElement(elemOriginTxt), getMovableElement(elemDestinationTxt));
-
 	}
 
 	private WebElement getMovableElement(String elemName) {

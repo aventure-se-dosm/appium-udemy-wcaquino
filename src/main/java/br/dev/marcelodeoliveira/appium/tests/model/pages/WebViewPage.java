@@ -28,19 +28,17 @@ public class WebViewPage {
 	}
 
 	private void permissionContinue() {
-		getDriver().findElement(By.xpath("//*[@resource-id='com.android.permissioncontroller:id/continue_button']")).click();		
+		getDriver().findElement(By.xpath("//*[@resource-id='com.android.permissioncontroller:id/continue_button']"))
+				.click();
 	}
 
 	public void switchToWebContext() {
-
 		Set<String> contextSet = getDriver().getContextHandles();
 		contextSet.stream().forEach(System.out::println);
 		getDriver().context((String) contextSet.toArray()[1]);
 	}
 
 	public void setEmail(String email) {
-
-		//switchToWebContext();
 		WebElement txtEmail = getWebDriver().findElement(By.xpath("//*[@id='email']"));
 		txtEmail.sendKeys(email);
 	}

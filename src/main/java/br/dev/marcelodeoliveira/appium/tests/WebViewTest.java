@@ -23,8 +23,7 @@ public class WebViewTest extends BaseTest {
 		setDefaultCapabilities();
 		addCapability(MobileCapabilityType.APP,
 				"C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_1_2.apk");
-	//	addCapability("fullReset", true);
-	//	addCapability("noReset", true);
+	
 		addCapability("appWaitPackage", "com.google.android.permissioncontroller");
 		addCapability("appWaitActivity", "com.android.packageinstaller.permission.ui.ReviewPermissionsActivity");
 		DriverFactory.setupDriver();
@@ -42,11 +41,5 @@ public class WebViewTest extends BaseTest {
 		webViewPage.entrar();
 		Assert.assertTrue(webViewPage.getWelcomeLabel().contains("Bem vindo, "));
 	}
-//	
-//	@After
-//	public void finishTest()
-//	{
-//		DriverFactory.killDriver();
-//	}
 
 }
