@@ -50,13 +50,13 @@ public class SwipeListPage extends BasePage {
 				index, signal);
 	}
 
-	private String getOptionAndSignalBaseXpath(String index, String signal) {
-		return String.format("//android.widget.TextView[contains(@text, 'Opção %s %s')]", index, signal);
-	}
-
-	private String getSignalXpath() {
-		return ("//android.widget.TextView[contains(@text, '(%s)')]");
-	}
+//	private String getOptionAndSignalBaseXpath(String index, String signal) {
+//		return String.format("//android.widget.TextView[contains(@text, 'Opção %s %s')]", index, signal);
+//	}
+//
+//	private String getSignalXpath() {
+//		return ("//android.widget.TextView[contains(@text, '(%s)')]");
+//	}
 
 	private MobileElement getOptElelmByXpath(String index) {
 

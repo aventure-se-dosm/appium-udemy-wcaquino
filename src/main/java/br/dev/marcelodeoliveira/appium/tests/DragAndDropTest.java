@@ -2,10 +2,7 @@ package br.dev.marcelodeoliveira.appium.tests;
 
 import static br.dev.marcelodeoliveira.appium.core.DriverFactory.addCapability;
 import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setDefaultCapabilities;
-import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setupDriver;
 import static org.junit.Assert.assertArrayEquals;
-
-import java.util.List;
 
 import org.junit.Test;
 
@@ -17,14 +14,13 @@ public class DragAndDropTest extends BaseTest {
 
 	private DragAndDropPage dragAndDropPage;
 	private MenuPage menuPage;
-	private List<String> ctxDragNDrop;
 
 	@Override
 	public void setupTest() {
 		setDefaultCapabilities();
 		addCapability(MobileCapabilityType.APP,
 				"C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_2_0.apk");
-		//setupDriver();
+		// setupDriver();
 		this.menuPage = new MenuPage();
 		this.dragAndDropPage = new DragAndDropPage();
 		/**

@@ -21,7 +21,6 @@ import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import io.appium.java_client.touch.LongPressOptions;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.ElementOption;
 import io.appium.java_client.touch.offset.PointOption;
@@ -151,11 +150,11 @@ public abstract class BasePage {
 
 	protected void swipeLeft(Integer y, Float pctInicio, Float pctFim) {
 		if (pctInicio > pctFim) {
-		swipe(y, pctInicio, pctFim);
+			swipe(y, pctInicio, pctFim);
 		} else {
-		swipe(y, pctFim, pctInicio);
+			swipe(y, pctFim, pctInicio);
+		}
 	}
-}
 
 	private Point getDefaultPoint() {
 		return getWindowCenter();
@@ -183,10 +182,8 @@ public abstract class BasePage {
 	}
 
 	protected MobileElement getElement(By by) {
-		return (MobileElement)waitUntilWebElementToBeVisible(by);
+		return (MobileElement) waitUntilWebElementToBeVisible(by);
 	}
-
-
 
 	protected MobileElement getElement(MobileElement element) {
 		return waitUntilElementToBeVisible(element);
@@ -213,10 +210,8 @@ public abstract class BasePage {
 	}
 
 	protected List<WebElement> waitUntilElementListToBeVisible(List<WebElement> listAllTextView) {
-		return wait.until(ExpectedConditions.visibilityOfAllElements(
-				listAllTextView));
+		return wait.until(ExpectedConditions.visibilityOfAllElements(listAllTextView));
 	}
-	
 
 	protected boolean waitUntilElementListToBeVisibleAndNotNull(List<WebElement> listAllTextView) {
 		return wait.until(ExpectedConditions.visibilityOfAllElements(
@@ -300,8 +295,9 @@ public abstract class BasePage {
 	protected Point getElementCenter(MobileElement element) {
 		return waitUntilElementToBeVisible(element).getCenter();
 	}
+
 	protected Point getElementCenter(WebElement element) {
-		return getElementCenter( (MobileElement) element);
+		return getElementCenter((MobileElement) element);
 	}
 
 	protected int getHeight(WebElement element) {
@@ -372,19 +368,15 @@ public abstract class BasePage {
 	public void swipeLeft(Point point) {
 		swipeLeft(point.getY(), MIN_AXIS_MOVING_VALUE, MAX_AXIS_MOVING_VALUE);
 	}
-	
-	
-	public void drag (WebElement origin, WebElement end) {
-		
-		new TouchAction<>(getDriver())
-		.longPress(ElementOption.element(origin))
-		.moveTo(ElementOption.element(end))
-		.release()
-		.perform();
-		
+
+	public void drag(WebElement origin, WebElement end) {
+
+		new TouchAction<>(getDriver()).longPress(ElementOption.element(origin)).moveTo(ElementOption.element(end))
+				.release().perform();
+
 	}
 
-	public void waitUntilElementListToBeVisible(WebElement...elements ) {
-		waitUntilElementListToBeVisible(Arrays.asList(elements));	
+	public void waitUntilElementListToBeVisible(WebElement... elements) {
+		waitUntilElementListToBeVisible(Arrays.asList(elements));
 	}
 }
