@@ -10,11 +10,11 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.dev.marcelodeoliveira.appium.tests.model.pages.CalculadoraPage;
+import br.dev.marcelodeoliveira.appium.tests.logic.CalculadoraLogic;
 
 public class CalculadoraTest extends BaseTest {
 
-	CalculadoraPage page;
+	CalculadoraLogic calculadoraLogic;
 	private final String APP_NEGATIVE_SIGN_CHAR = "−";
 
 	private String negative(String number) {
@@ -27,41 +27,40 @@ public class CalculadoraTest extends BaseTest {
 		addCapability("appPackage", "com.google.android.calculator");
 		addCapability("appActivity", "com.android.calculator2.Calculator");
 		setupDriver();
-		this.page = new CalculadoraPage();
-		
+		this.calculadoraLogic = new CalculadoraLogic();
+
 	}
 
 	@Test
 	public void calculadoraSomaTest() throws MalformedURLException {
-		page.getWindowDimension();
-	
-	
-		page.simpleSum(2, 2);
-		Assert.assertEquals(page.getResult(), "4");
+		calculadoraLogic.getWindowDimension();
+
+		calculadoraLogic.simpleSum(2, 2);
+		Assert.assertEquals(calculadoraLogic.getResult(), "4");
 	}
 
 	@Test
 	public void calculadoraMenosTest() throws MalformedURLException {
-		page.simpleSub(6, 9);
-		Assert.assertEquals(page.getResult(), negative("3"));
+		calculadoraLogic.simpleSub(6, 9);
+		Assert.assertEquals(calculadoraLogic.getResult(), negative("3"));
 	}
 
 	@Test
 	public void calculadoraVezesTest() throws MalformedURLException {
-		page.simpleMult(5, -7);
-		Assert.assertEquals(negative("35"), page.getResult());
+		calculadoraLogic.simpleMult(5, -7);
+		Assert.assertEquals(negative("35"), calculadoraLogic.getResult());
 	}
 
 	@Test
 	public void calculadoraDivisaoTest() throws MalformedURLException {
-		page.simpleDiv(6, 9);
-		Assert.assertTrue(page.getResult().replace('.', ',').equals("0,6666666666666"));
+		calculadoraLogic.simpleDiv(6, 9);
+		Assert.assertTrue(calculadoraLogic.getResult().replace('.', ',').equals("0,6666666666666"));
 	}
 
 	@Test
 	public void calculadoraRaizQuadradaTest() throws MalformedURLException {
-		page.simpleSqrt(7);
-		Assert.assertEquals("2,6457513110645", page.getResult());
+		calculadoraLogic.simpleSqrt(7);
+		Assert.assertEquals("2,6457513110645", calculadoraLogic.getResult());
 	}
 
 }

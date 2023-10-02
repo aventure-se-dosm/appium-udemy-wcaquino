@@ -1,12 +1,9 @@
 package br.dev.marcelodeoliveira.appium.tests.model.pages;
 
-import org.openqa.selenium.Point;
-
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 
 public class AlertPage extends BasePage {
-
 
 	@AndroidFindBy(xpath = "//android.widget.Button[@resource-id='idButtonTest']")
 	public MobileElement btnAlertaSimples;
@@ -67,67 +64,8 @@ public class AlertPage extends BasePage {
 		return alertaNegar;
 	}
 
-	public String getMsgTxt() {
-		return getText(getMsgMessage());
-	}
-
-	public String clicaConfirmar() {
-		click(getAlertaConfirmar());
-		return getMsgTxt();
-	}
-
-	public String clicaNegar() {
-		click(getAlertaNegar());
-		return getMsgTxt();
-	}
-
-	public String clicaAlertConfirm() {
-		click(getBtnAlertaConfirm());
-		return getMsgTxt();
-	}
-
-	public String clicaAlertSimples() {
-		click(getBtnAlertaSimples());	
-		tap(getOuterAlertReasonablePoint());
-		return getMsgTxt();
-	}
-
-	public Point getOuterAlertReasonablePoint() {
-		return new Point(100, 100);
-	}
-
-	public String clicaAlertNegar() {
-		click(getAlertaNegar());
-		return getMsgTxt();
-	}
-
-	public void sairAlert() {
-		click(getBtnAlertSair());
-	}
-
-	public void clicaOk() {
-		click(getBtnAlertOk());
-	}
-
-	public void clicaSair() {
-		click(getBtnAlertSair());
-	}
-
 	public MobileElement getAlertFrame() {
 		return alertFrame;
-	}
-
-	public boolean isAlertPresent() {
-		return waitUntilWebElementToBeVisibleAndItsNotNull(getAlertFrame());
-	}
-
-	public boolean isAlertInvisibleOrAbsent() {
-		return waitUntilMobileElementToBeInvisible(getAlertFrame());
-	}
-
-	public String clicaAlertRestritivo() {
-		click(getBtnAlertaRestritivo());
-		return getMsgTxt();
 	}
 
 }

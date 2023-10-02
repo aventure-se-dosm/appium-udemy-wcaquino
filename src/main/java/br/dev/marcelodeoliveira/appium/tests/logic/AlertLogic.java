@@ -7,66 +7,8 @@ import br.dev.marcelodeoliveira.appium.tests.model.pages.BasePage;
 
 public class AlertLogic extends BaseLogic {
 
-//	@AndroidFindBy(xpath = "//android.widget.Button[@resource-id='idButtonTest']")
-//	public MobileElement btnAlertaSimples;
-//
-//	@AndroidFindBy(xpath = "//android.widget.Button[@resource-id='idButtonTest2']")
-//	private MobileElement btnAlertaRestritivo;
-//
-//	@AndroidFindBy(xpath = "//android.widget.Button[@resource-id='idButtonTest3']")
-//	private MobileElement btnAlertaConfirm;
-//
-//	@AndroidFindBy(id = "android:id/message")
-//	private MobileElement msgMessage;
-//
-//	@AndroidFindBy(id = "android:id/button1")
-//	private MobileElement btnAlertSair;
-//
-//	@AndroidFindBy(id = "android:id/button1")
-//	private MobileElement btnAlertOk;
-//
-//	@AndroidFindBy(id = "android:id/button2")
-//	private MobileElement alertaConfirmar;
-//
-//	@AndroidFindBy(id = "android:id/button1")
-//	private MobileElement alertaNegar;
-//
-//	@AndroidFindBy(id = "android:id/parentPanel")
-//	private MobileElement alertFrame;
 
 	private AlertPage page;
-
-//	private MobileElement getBtnAlertaConfirm() {
-//		return btnAlertaConfirm;
-//	}
-//
-//	private MobileElement getBtnAlertaRestritivo() {
-//		return btnAlertaRestritivo;
-//	}
-//
-//	private MobileElement getBtnAlertaSimples() {
-//		return btnAlertaSimples;
-//	}
-//
-//	private MobileElement getMsgMessage() {
-//		return msgMessage;
-//	}
-//
-//	private MobileElement getBtnAlertOk() {
-//		return btnAlertOk;
-//	}
-//
-//	private MobileElement getBtnAlertSair() {
-//		return btnAlertSair;
-//	}
-//
-//	private MobileElement getAlertaConfirmar() {
-//		return alertaConfirmar;
-//	}
-//
-//	private MobileElement getAlertaNegar() {
-//		return alertaNegar;
-//	}
 
 	public String getMsgTxt() {
 		return getText(page.getMsgMessage());
@@ -89,11 +31,12 @@ public class AlertLogic extends BaseLogic {
 
 	public String clicaAlertSimples() {
 		click(page.getBtnAlertaSimples());
-		tap(page.getOuterAlertReasonablePoint());
+		tap(getOuterAlertReasonablePoint());
 		return getMsgTxt();
 	}
 
-	private Point getOuterAlertReasonablePoint() {
+	public Point getOuterAlertReasonablePoint() {
+		//provisory
 		return new Point(100, 100);
 	}
 

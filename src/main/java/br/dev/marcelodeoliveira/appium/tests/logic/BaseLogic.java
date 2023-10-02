@@ -36,6 +36,15 @@ public abstract class BaseLogic {
 		setupPages();
 	}
 
+//	public MobileElement getOptElelmByXpath(String index) {
+//
+//		return getElement(By.xpath(getSwipeBarXpathByIndex(index)));
+//	}
+//
+//	public String getSwipeBarText(String index) {
+//		return getText(getElement(By.xpath(getSwipeBarXpathByIndex(index))));
+//	}
+//	
 	protected abstract void setupPages(BasePage... pages);
 
 	protected void click(WebElement element) {
@@ -48,12 +57,10 @@ public abstract class BaseLogic {
 	}
 
 	public void tap(Integer x, Integer y) {
-
 		new TouchAction<>(getDriver()).tap(PointOption.point(x, y)).perform();
 	}
 
 	public void tap(Point p) {
-
 		new TouchAction<>(getDriver()).tap(PointOption.point(p)).perform();
 	}
 
@@ -366,7 +373,6 @@ public abstract class BaseLogic {
 
 		new TouchAction<>(getDriver()).longPress(ElementOption.element(origin)).moveTo(ElementOption.element(end))
 				.release().perform();
-
 	}
 
 	public void waitUntilElementListToBeVisible(WebElement... elements) {

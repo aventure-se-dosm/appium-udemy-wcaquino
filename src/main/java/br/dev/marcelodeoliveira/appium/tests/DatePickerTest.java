@@ -11,13 +11,13 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.dev.marcelodeoliveira.appium.tests.logic.DatePickerLogic;
 import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
-import br.dev.marcelodeoliveira.appium.tests.model.pages.DatePickerPage;
 import io.appium.java_client.remote.MobileCapabilityType;
 
 public class DatePickerTest extends BaseTest {
 	MenuLogic menuLogic;
-	DatePickerPage datePickerPage;
+	DatePickerLogic datePickerLogic;
 
 	@Before
 	public void setupTest() {
@@ -27,7 +27,7 @@ public class DatePickerTest extends BaseTest {
 		setupDriver();
 
 		this.menuLogic = new MenuLogic();
-		this.datePickerPage = new DatePickerPage();
+		this.datePickerLogic = new DatePickerLogic();
 
 	}
 	
@@ -37,13 +37,13 @@ public class DatePickerTest extends BaseTest {
 		LocalDate oldDate;
 		
 		menuLogic.clicaFormulario();
-		oldDate = LocalDate.parse(datePickerPage.getLblDateText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-		datePickerPage.clicaData();
-		datePickerPage.escolheDia(diaSelecionado);
-		datePickerPage.clicaOk();
+		oldDate = LocalDate.parse(datePickerLogic.getLblDateText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		datePickerLogic.clicaData();
+		datePickerLogic.escolheDia(diaSelecionado);
+		datePickerLogic.clicaOk();
 		Assert.assertEquals(
 				LocalDate.of(oldDate.getYear(), oldDate.getMonth(), diaSelecionado).format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
-				datePickerPage.getLblDateText());
+				datePickerLogic.getLblDateText());
 	}
 		
 }

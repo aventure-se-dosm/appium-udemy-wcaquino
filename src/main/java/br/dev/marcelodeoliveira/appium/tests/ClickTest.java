@@ -7,15 +7,15 @@ import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setupDriver;
 import org.junit.Assert;
 import org.junit.Test;
 
+import br.dev.marcelodeoliveira.appium.tests.logic.ClickLogic;
 import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
-import br.dev.marcelodeoliveira.appium.tests.model.pages.ClickPage;
 import io.appium.java_client.remote.MobileCapabilityType;
 
 
 public class ClickTest extends BaseTest {
 
 	private MenuLogic menuLogic;
-	private ClickPage clickPage;
+	private ClickLogic clickLogic;
 
 	@Override
 	public void setupTest() {
@@ -26,26 +26,26 @@ public class ClickTest extends BaseTest {
 		setupDriver();
 
 		this.menuLogic = new MenuLogic();
-		this.clickPage = new ClickPage();	
+		this.clickLogic = new ClickLogic();	
 		menuLogic.clicaCliques();
 	}
 	
 	@Test
 	public void deveFazerUmCliqueLongo() {
-		clickPage.cliqueLongo();
-		Assert.assertTrue(clickPage.getDisplayContent().equalsIgnoreCase("Clique Longo"));
+		clickLogic.cliqueLongo();
+		Assert.assertTrue(clickLogic.getDisplayContent().equalsIgnoreCase("Clique Longo"));
 		
 	}
 	@Test
 	public void deveFazerUmCliqueDuploRapido() {
-		clickPage.cliqueDuploRapido();
-		Assert.assertTrue(clickPage.getDisplayContent().equalsIgnoreCase("Duplo Clique"));
+		clickLogic.cliqueDuploRapido();
+		Assert.assertTrue(clickLogic.getDisplayContent().equalsIgnoreCase("Duplo Clique"));
 	}
 	
 	@Test
 	public void deveFazerUmCliqueDuploLento() {
-		clickPage.cliqueDuploLento();
-		Assert.assertTrue(clickPage.getDisplayContent().equalsIgnoreCase("Duplo Clique Lento"));
+		clickLogic.cliqueDuploLento();
+		Assert.assertTrue(clickLogic.getDisplayContent().equalsIgnoreCase("Duplo Clique Lento"));
 	}
 
 }

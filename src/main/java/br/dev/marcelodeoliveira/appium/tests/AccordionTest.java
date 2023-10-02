@@ -8,13 +8,12 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.dev.marcelodeoliveira.appium.tests.logic.AccordionLogic;
 import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
-import br.dev.marcelodeoliveira.appium.tests.model.pages.AccordionPage;
 import io.appium.java_client.remote.MobileCapabilityType;
 
-
 public class AccordionTest extends BaseTest {
-	private AccordionPage accordionPage;
+	private AccordionLogic accordionLogic;
 	private MenuLogic menuLogic;
 
 	@Before
@@ -24,18 +23,18 @@ public class AccordionTest extends BaseTest {
 				"C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_2_0.apk");
 		setupDriver();
 
-		this.accordionPage = new AccordionPage();
+		this.accordionLogic = new AccordionLogic();
 		this.menuLogic = new MenuLogic();
 	}
 
 	@Test
 	public void deveIteragirComAccordionOpcao1() {
-	
+
 		menuLogic.clicaAccordion();
-	
-		accordionPage.getSelectOption1();
-	
-		Assert.assertEquals("Esta é a descrição da opção 1", accordionPage.getTxtOpcao1Txt());
+
+		accordionLogic.getSelectOption1();
+
+		Assert.assertEquals("Esta é a descrição da opção 1", accordionLogic.getTxtOpcao1Txt());
 
 	}
 

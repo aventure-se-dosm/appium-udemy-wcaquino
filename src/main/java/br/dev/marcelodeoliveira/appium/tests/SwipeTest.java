@@ -8,13 +8,13 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
-import br.dev.marcelodeoliveira.appium.tests.model.pages.SwipePage;
+import br.dev.marcelodeoliveira.appium.tests.logic.SwipeLogic;
 import io.appium.java_client.remote.MobileCapabilityType;
 
 public class SwipeTest extends BaseTest {
 
 	private MenuLogic menuLogic;
-	private SwipePage swipePage;
+	private SwipeLogic swipeLogic;
 
 	@Override
 	public void setupTest() {
@@ -23,7 +23,7 @@ public class SwipeTest extends BaseTest {
 				"C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_2_0.apk");
 		setupDriver();
 		this.menuLogic = new MenuLogic();
-		this.swipePage = new SwipePage();
+		this.swipeLogic = new SwipeLogic();
 
 	}
 
@@ -31,21 +31,21 @@ public class SwipeTest extends BaseTest {
 	public void deveTestarSwipe() {
 
 		menuLogic.clickSwipe();
-		Assert.assertTrue(swipePage.isTextPresent("Mova a tela para"));
-		Assert.assertTrue(swipePage.isTextPresent("a esquerda"));
+		Assert.assertTrue(swipeLogic.isTextPresent("Mova a tela para"));
+		Assert.assertTrue(swipeLogic.isTextPresent("a esquerda"));
 
-		swipePage.swipeLeft();
-		Assert.assertTrue(swipePage.isTextPresent("E veja se"));
-		Assert.assertTrue(swipePage.isTextPresent("você consegue"));
+		swipeLogic.swipeLeft();
+		Assert.assertTrue(swipeLogic.isTextPresent("E veja se"));
+		Assert.assertTrue(swipeLogic.isTextPresent("você consegue"));
 
-		swipePage.clicaBtnDir();
-		Assert.assertTrue(swipePage.isTextPresent("Chegar até o fim!"));
-		swipePage.swipeRight();
-		Assert.assertTrue(swipePage.isTextPresent("E veja se"));
-		Assert.assertTrue(swipePage.isTextPresent("você consegue"));
+		swipeLogic.clicaBtnDir();
+		Assert.assertTrue(swipeLogic.isTextPresent("Chegar até o fim!"));
+		swipeLogic.swipeRight();
+		Assert.assertTrue(swipeLogic.isTextPresent("E veja se"));
+		Assert.assertTrue(swipeLogic.isTextPresent("você consegue"));
 
-		swipePage.clicaBtnEsq();
-		Assert.assertTrue(swipePage.isTextPresent("a esquerda"));
+		swipeLogic.clicaBtnEsq();
+		Assert.assertTrue(swipeLogic.isTextPresent("a esquerda"));
 	}
 
 }

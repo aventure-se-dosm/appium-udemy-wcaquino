@@ -5,31 +5,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Point;
 
 import br.dev.marcelodeoliveira.appium.tests.model.pages.BasePage;
+import br.dev.marcelodeoliveira.appium.tests.model.pages.SeekBarPage;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.pagefactory.AndroidFindBy;
 
 public class SeekBarLogic extends BaseLogic {
 
-	@AndroidFindBy(accessibility = "slid")
-	private MobileElement seekBar;
-
-	private MobileElement getSeekBar() {
-		return (MobileElement) waitUntilElementToBeVisible(seekBar);
-	}
-
-	public MobileElement getCurrentExtentionBar() {
-		return getSeekBar().findElement(By.xpath(".//android.view.ViewGroup[@index='3']"));
-
-	}
-
-	public MobileElement getBarCursor() {
-		return getSeekBar().findElement(By.xpath(".//android.view.ViewGroup[@index='1']"));
-	}
+	private SeekBarPage page;
 
 	public void moveSeekBarParaPorcentagemEscolhida(Float porcentagem) {
 
-		// TODO: REFATORE NA DEV
-		int cursorSquareEdgeMeasure = getWidth(getBarCursor());
+		// TODO: Further refactoring opportunity
+		int cursorSquareEdgeMeasure = getWidth(page.getBarCursor());
 		int maxCurrentBarLength = getWidth(getFullExtentionBar()) - cursorSquareEdgeMeasure;
 		int x_ponto;
 		int y_ponto;
@@ -43,15 +29,16 @@ public class SeekBarLogic extends BaseLogic {
 		porcentagem /= 0.99f;
 
 		x_ponto = (int) ((maxCurrentBarLength) * porcentagem) + cursorSquareEdgeMeasure - 1;
-		y_ponto = (int) (getElementInteractableYAxisRange(getSeekBar()) - 1);
+		y_ponto = (int) (getElementInteractableYAxisRange(page.getSeekBar()) - 1);
 
 		tap(new Point(x_ponto, y_ponto));
 
 	}
 
-	private MobileElement getFullExtentionBar() {
+	// TODO: Use baseLogic methods for cetting nested elements from another one.
+	public MobileElement getFullExtentionBar() {
 
-		MobileElement m = (MobileElement) getNestedElement(getSeekBar(),
+		MobileElement m = (MobileElement) getNestedElement(page.getSeekBar(),
 				By.xpath(".//android.view.ViewGroup[@index='2']"));
 		Assert.assertEquals(m.getSize().width, 1080);
 		return m;
@@ -59,8 +46,8 @@ public class SeekBarLogic extends BaseLogic {
 
 	@Override
 	protected void setupPages(BasePage... pages) {
-		// TODO Auto-generated method stub
-		
+		this.page = new SeekBarPage();
+
 	}
 
 }

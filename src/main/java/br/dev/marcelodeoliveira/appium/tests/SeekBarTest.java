@@ -8,16 +8,16 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.dev.marcelodeoliveira.appium.tests.logic.FormularioLogic;
 import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
-import br.dev.marcelodeoliveira.appium.tests.model.pages.FormularioPage;
-import br.dev.marcelodeoliveira.appium.tests.model.pages.SeekBarPage;
+import br.dev.marcelodeoliveira.appium.tests.logic.SeekBarLogic;
 import io.appium.java_client.remote.MobileCapabilityType;
 
 public class SeekBarTest extends BaseTest {
 
 	MenuLogic menuLogic;
-	SeekBarPage seekBarPage;
-	private FormularioPage formularioPage;
+	SeekBarLogic seekBarLogic;
+	private FormularioLogic formularioLogic;
 
 	@Override
 	@Before
@@ -29,17 +29,17 @@ public class SeekBarTest extends BaseTest {
 		setupDriver();
 
 		this.menuLogic = new MenuLogic();
-		this.formularioPage = new FormularioPage();
-		this.seekBarPage = new SeekBarPage();
+		this.formularioLogic = new FormularioLogic();
+		this.seekBarLogic = new SeekBarLogic();
 	}
 
 	@Test
 	public void moveSeekBar() {
 		Float porcentagem = 0.76f;
 		menuLogic.clicaFormulario();
-		seekBarPage.moveSeekBarParaPorcentagemEscolhida(porcentagem);
-		formularioPage.salvarForm();
-		String resp = formularioPage.getFormResponseAttribute("Slider");
+		seekBarLogic.moveSeekBarParaPorcentagemEscolhida(porcentagem);
+		formularioLogic.salvarForm();
+		String resp = formularioLogic.getFormResponseAttribute("Slider");
 		Assert.assertTrue(resp, resp.contains(Integer.toString((int) (porcentagem * 100f))));
 	}
 

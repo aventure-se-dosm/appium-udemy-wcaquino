@@ -33,21 +33,21 @@ public class SwipePage extends BasePage {
 	public MobileElement getIcoSlideToTheRight() {
 		return icoSlideToTheRight;
 	}
-
-	public void swipeToTheRight() {
-		swipeLeft();
-	}
-
-	public void swipeToTheLeft() {
-		swipeRight();
-	}
-
-	public void clicaBtnDir() {
-		click(getIcoSlideToTheRight());
-	}
-
-	public void clicaBtnEsq() {
-		click(getIcoSlideToTheLeft());
-	}
+//
+//	public void swipeToTheRight() {
+//		swipeLeft();
+//	}
+//
+//	public void swipeToTheLeft() {
+//		swipeRight();
+//	}
+//
+//	public void clicaBtnDir() {
+//		click(getIcoSlideToTheRight());
+//	}
+//
+//	public void clicaBtnEsq() {
+//		click(getIcoSlideToTheLeft());
+//	}
 
 }

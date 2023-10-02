@@ -12,14 +12,14 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.dev.marcelodeoliveira.appium.tests.logic.FormularioLogic;
 import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
-import br.dev.marcelodeoliveira.appium.tests.model.pages.FormularioPage;
 import io.appium.java_client.remote.MobileCapabilityType;
 
 public class FormularioTest extends BaseTest {
 
 	MenuLogic menuLogic;
-	FormularioPage formularioPage;
+	FormularioLogic formularioLogic;
 
 	@Before
 	public void setupTest() {
@@ -29,7 +29,7 @@ public class FormularioTest extends BaseTest {
 				"C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_2_0.apk");
 		setupDriver();
 
-		this.formularioPage = new FormularioPage();
+		this.formularioLogic = new FormularioLogic();
 		this.menuLogic = new MenuLogic();
 		menuLogic.clicaFormulario();
 	}
@@ -38,16 +38,16 @@ public class FormularioTest extends BaseTest {
 	public void devePreencherCampoTeste() throws MalformedURLException {
 
 		String txtName = "Wagner";
-		formularioPage.escreveNome(txtName);
+		formularioLogic.escreveNome(txtName);
 	}
 
 	@Test
 	public void deveIteragirSwitchEScheckbox() throws MalformedURLException {
 
-		formularioPage.mudaSwitch(true);
-		formularioPage.mudaCheckbox(true);
-		Assert.assertTrue(formularioPage.isCheckboxSelected());
-		Assert.assertEquals(true, formularioPage.isSwitchSelected());
+		formularioLogic.mudaSwitch(true);
+		formularioLogic.mudaCheckbox(true);
+		Assert.assertTrue(formularioLogic.isCheckboxSelected());
+		Assert.assertEquals(true, formularioLogic.isSwitchSelected());
 	}
 
 	@Test
@@ -55,10 +55,10 @@ public class FormularioTest extends BaseTest {
 
 		final String TXT_USER_NAME = "Wagnão";
 
-		formularioPage.escreveNome(TXT_USER_NAME);
-		formularioPage.salvarFormDemorado();
+		formularioLogic.escreveNome(TXT_USER_NAME);
+		formularioLogic.salvarFormDemorado();
 
-		Assert.assertTrue(formularioPage.getAllFormResponse().containsAll(
+		Assert.assertTrue(formularioLogic.getAllFormResponse().containsAll(
 				Arrays.asList("Nome: ".concat(TXT_USER_NAME), "Slider: 25", "Data: 01/01/2000", "Hora: 12:00")));
 	}
 
@@ -70,13 +70,13 @@ public class FormularioTest extends BaseTest {
 		final Boolean statusSwitchHourSelected = true;
 		final Boolean statusChkDaterSeleced = false;
 
-		formularioPage.escreveNome(TXT_USER_NAME);
-		formularioPage.selecionaConsole(TXT_SELECTED_GAME_CONSOLE);
-		formularioPage.mudaSwitch(statusSwitchHourSelected);
-		formularioPage.mudaCheckbox(statusChkDaterSeleced);
-		formularioPage.salvarForm();
+		formularioLogic.escreveNome(TXT_USER_NAME);
+		formularioLogic.selecionaConsole(TXT_SELECTED_GAME_CONSOLE);
+		formularioLogic.mudaSwitch(statusSwitchHourSelected);
+		formularioLogic.mudaCheckbox(statusChkDaterSeleced);
+		formularioLogic.salvarForm();
 
-		Assert.assertTrue(formularioPage.getAllFormResponse()
+		Assert.assertTrue(formularioLogic.getAllFormResponse()
 				.containsAll(Arrays.asList("Nome: ".concat(TXT_USER_NAME), "Console: switch", "Slider: 25",
 						"Switch: On", "Checkbox: Desabilitado", "Data: 01/01/2000", "Hora: 12:00")));
 	}

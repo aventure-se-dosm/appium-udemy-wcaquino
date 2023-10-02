@@ -9,12 +9,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
-import br.dev.marcelodeoliveira.appium.tests.model.pages.SplashPage;
+import br.dev.marcelodeoliveira.appium.tests.logic.SplashLogic;
 import io.appium.java_client.remote.MobileCapabilityType;
 
 public class SplashTest extends BaseTest {
 
-	private SplashPage splashPage;
+	private SplashLogic splashLogic;
 	private MenuLogic menuLogic;
 
 	@Before
@@ -25,16 +25,16 @@ public class SplashTest extends BaseTest {
 		setupDriver();
 
 		menuLogic = new MenuLogic();
-		splashPage = new SplashPage();
+		splashLogic = new SplashLogic();
 	}
 
 	@Test
 	public void deveAguardarSplashSumir() {
 		menuLogic.clicaSplash();
-		splashPage.isSplashExibido();
-		Assert.assertEquals("Splash!", splashPage.getSplashText());
+		splashLogic.isSplashExibido();
+		Assert.assertEquals("Splash!", splashLogic.getSplashText());
 
-		splashPage.aguardaSplashSumir();
+		splashLogic.aguardaSplashSumir();
 
 		Assert.assertTrue(menuLogic.isMenuVisible());
 

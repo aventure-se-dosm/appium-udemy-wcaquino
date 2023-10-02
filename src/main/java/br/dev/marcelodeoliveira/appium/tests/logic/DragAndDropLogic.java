@@ -1,6 +1,7 @@
 package br.dev.marcelodeoliveira.appium.tests.logic;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.junit.Assert;
@@ -36,13 +37,19 @@ public class DragAndDropLogic extends BaseLogic {
 
 	public String[] getCurrentState() {
 
-		waitUntilWebElementToBeVisible(page.getFlagElementBy());
+		//page.getFlagElementBy();
 
-		ArrayList<String> labels = (ArrayList<String>) waitUntilElementListToBeVisible(page.getListAllMovableElements())
+		ArrayList<String> labels = (ArrayList<String>) waitUntilElementListToBeVisible(getListAllMovableElements())
 				.stream().map(elem -> getText(elem).toString()).collect(Collectors.toList());
 
 		Assert.assertTrue(labels.size() > 0);
 		return labels.toArray(new String[labels.size()]);
+	}
+
+	//should be abstracted to a wait-and-return the List when all of its desired elements are displayed at that time.
+	private List<WebElement> getListAllMovableElements() {
+		waitUntilElementToBeVisible(page.getFlagElementBy());
+		return page.getListAllMovableElements();
 	}
 
 	public void drag(String elemOriginTxt, String elemDestinationTxt) {
@@ -51,9 +58,17 @@ public class DragAndDropLogic extends BaseLogic {
 
 	private WebElement getMovableElement(String elemName) {
 
+		// TODO: stream processings should be better on BaseLogic as proper individual
+		// methods!
 		return page.getListAllMovableElements().stream().filter(elem -> elem.getAttribute("text").equals(elemName))
 				.findAny().get();
 	}
+
+//	private WebElement getMovableElement(String elemName) {
+//
+//		return getListAllMovableElements().stream().filter(elem -> elem.getAttribute("text").equals(elemName)).findAny()
+//				.get();
+//	}
 
 	@Override
 	protected void setupPages(BasePage... pages) {

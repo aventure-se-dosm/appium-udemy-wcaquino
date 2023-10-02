@@ -6,13 +6,13 @@ import static org.junit.Assert.assertArrayEquals;
 
 import org.junit.Test;
 
+import br.dev.marcelodeoliveira.appium.tests.logic.DragAndDropLogic;
 import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
-import br.dev.marcelodeoliveira.appium.tests.model.pages.DragAndDropPage;
 import io.appium.java_client.remote.MobileCapabilityType;
 
 public class DragAndDropTest extends BaseTest {
 
-	private DragAndDropPage dragAndDropPage;
+	private DragAndDropLogic dragAndDropLogic;
 	private MenuLogic menuLogic;
 
 	@Override
@@ -22,7 +22,7 @@ public class DragAndDropTest extends BaseTest {
 				"C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_2_0.apk");
 		// setupDriver();
 		this.menuLogic = new MenuLogic();
-		this.dragAndDropPage = new DragAndDropPage();
+		this.dragAndDropLogic = new DragAndDropLogic();
 		/**
 		 * 
 		 * //setupCtxDragNDrop(); //
@@ -38,15 +38,15 @@ public class DragAndDropTest extends BaseTest {
 	@Test
 	public void deveEfetuarDragAndDrop() {
 
-		assertArrayEquals(dragAndDropPage.getExpectedInitialState(), dragAndDropPage.getCurrentState());
+		assertArrayEquals(dragAndDropLogic.getExpectedInitialState(), dragAndDropLogic.getCurrentState());
 
-		dragAndDropPage.drag("Esta", "e arraste para");
+		dragAndDropLogic.drag("Esta", "e arraste para");
 
-		assertArrayEquals(dragAndDropPage.getExpectedIntermediateState(), dragAndDropPage.getCurrentState());
+		assertArrayEquals(dragAndDropLogic.getExpectedIntermediateState(), dragAndDropLogic.getCurrentState());
 
-		dragAndDropPage.drag("Faça um clique longo,", "é uma lista");
+		dragAndDropLogic.drag("Faça um clique longo,", "é uma lista");
 
-		assertArrayEquals(dragAndDropPage.getExpectedFinalState(), dragAndDropPage.getCurrentState());
+		assertArrayEquals(dragAndDropLogic.getExpectedFinalState(), dragAndDropLogic.getCurrentState());
 
 	}
 

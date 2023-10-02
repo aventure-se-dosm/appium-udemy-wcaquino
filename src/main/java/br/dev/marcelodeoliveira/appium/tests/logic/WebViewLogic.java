@@ -10,11 +10,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import br.dev.marcelodeoliveira.appium.tests.model.pages.BasePage;
+import br.dev.marcelodeoliveira.appium.tests.model.pages.WebViewPage;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
-public class WebViewLogic {
+public class WebViewLogic extends BaseLogic{
 
 	protected WebDriverWait wait;
+	private WebViewPage page;
 
 	public WebViewLogic() {
 		PageFactory.initElements(new AppiumFieldDecorator(getDriver()), this);
@@ -24,6 +27,7 @@ public class WebViewLogic {
 	}
 
 	private void clickOkPopUp() {
+		click(page.getOkPopUp());
 		getDriver().findElement(By.xpath("//*[@resource-id='android:id/button1']")).click();
 	}
 
@@ -56,5 +60,10 @@ public class WebViewLogic {
 	public String getWelcomeLabel() {
 		WebElement lblAlerta = getWebDriver().findElement(By.xpath("//*[@role='alert']"));
 		return lblAlerta.getText();
+	}
+
+	@Override
+	protected void setupPages(BasePage... pages) {
+		this.page = new WebViewPage();
 	}
 }

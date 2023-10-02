@@ -25,7 +25,6 @@ public class SwipeListTest extends BaseTest {
 		this.menuLogic = new MenuLogic();
 		this.swipeListLogic = new SwipeListLogic();
 
-		// clicar 'SwipeList'
 		menuLogic.clicaSwipeList();
 	}
 

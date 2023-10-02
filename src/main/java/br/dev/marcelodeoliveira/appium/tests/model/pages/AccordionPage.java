@@ -17,17 +17,17 @@ public class AccordionPage extends BasePage {
 	public MobileElement getBtnOpcao1() {
 		return btnOpcao1;
 	}
-
-	public String getTxtOpcao1Txt() {
-		return getText(getTxtOpcao1());
-	}
-
-	public void getSelectOption1() {
-		click(getBtnOpcao1());
-	}
-
-	public String getAccordion1Text() {
-		return getText(getTxtOpcao1());
-	}
+//
+//	public String getTxtOpcao1Txt() {
+//		return getText(getTxtOpcao1());
+//	}
+//
+//	public void getSelectOption1() {
+//		click(getBtnOpcao1());
+//	}
+//
+//	public String getAccordion1Text() {
+//		return getText(getTxtOpcao1());
+//	}
 
 }
