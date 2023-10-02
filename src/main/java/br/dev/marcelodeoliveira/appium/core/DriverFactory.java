@@ -9,6 +9,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.remote.MobileCapabilityType;
 
 public class DriverFactory {
 	private static AndroidDriver<MobileElement> androidDriver;
@@ -36,8 +37,21 @@ public class DriverFactory {
 		desiredCapabilities.setCapability("platformName", "Android");
 		desiredCapabilities.setCapability("deviceName", "emulator-5554");
 		desiredCapabilities.setCapability("automationName", "uiautomator2");
-		desiredCapabilities.setCapability("fullReset", false);
-		desiredCapabilities.setCapability("noReset", false);
+	}
+
+	public static void setAppAndAllowAppPermissionCapabilities() {
+		addCapability(MobileCapabilityType.APP,
+				"C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_1_2.apk");
+		addCapability("appWaitPackage", "com.google.android.permissioncontroller");
+		addCapability("appWaitActivity", "com.android.packageinstaller.permission.ui.ReviewPermissionsActivity");
+	}
+
+	public static void setAppAndAllowAppPermissionCapabilities(String version) {
+	version = 				"C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_"
+	+(version.replace(".","_")
+	+".apk"
+	);
+		addCapability(MobileCapabilityType.APP,version);
 		addCapability("appWaitPackage", "com.google.android.permissioncontroller");
 		addCapability("appWaitActivity", "com.android.packageinstaller.permission.ui.ReviewPermissionsActivity");
 	}
@@ -45,6 +59,7 @@ public class DriverFactory {
 	private static boolean isDriverNull() {
 		return androidDriver == null;
 	}
+
 	private static boolean isWebDriverNull() {
 		return webDriver == null;
 	}
@@ -69,6 +84,7 @@ public class DriverFactory {
 		}
 		return androidDriver;
 	}
+
 	public static AndroidDriver<MobileElement> getWebDriver() {
 		if (isDriverNull()) {
 			setupDriver();
@@ -80,8 +96,10 @@ public class DriverFactory {
 		if (!isDriverNull())
 			androidDriver.quit();
 		setDriverNull();
-		
-	}	public static void killWebDriver() {
+
+	}
+
+	public static void killWebDriver() {
 		if (!isWebDriverNull())
 			webDriver.quit();
 		setWebDriverNull();
@@ -90,6 +108,7 @@ public class DriverFactory {
 	private static void setDriverNull() {
 		androidDriver = null;
 	}
+
 	private static void setWebDriverNull() {
 		webDriver = null;
 	}

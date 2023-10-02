@@ -7,13 +7,11 @@ import br.dev.marcelodeoliveira.appium.tests.logic.FormularioLogic;
 import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
 import br.dev.marcelodeoliveira.appium.tests.logic.SeekBarLogic;
 
-public class SeekBarTest extends CTAppiumBaseTest {
+public class SeekBarTest extends CTAppiumBaseTestVersionable {
 
 	MenuLogic menuLogic;
 	SeekBarLogic seekBarLogic;
 	private FormularioLogic formularioLogic;
-
-
 
 	@Test
 	public void moveSeekBar() {

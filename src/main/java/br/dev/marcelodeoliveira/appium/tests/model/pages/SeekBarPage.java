@@ -8,15 +8,16 @@ public class SeekBarPage extends BasePage {
 	@AndroidFindBy(accessibility = "slid")
 	private MobileElement seekBar;
 
-	@AndroidFindBy(accessibility = "\".//android.view.ViewGroup[@index='1']")
+	@AndroidFindBy(accessibility = "//*[@content-desc='slid']//android.view.ViewGroup[@index='1']")
 	private MobileElement barCursor;
-	@AndroidFindBy(accessibility = "\".//android.view.ViewGroup[@index='3']")
+	@AndroidFindBy(accessibility = "//*[@content-desc='slid']//android.view.ViewGroup[@index='3']")
 	private MobileElement currentExtentionBar;
+	
+	
+	//*[@content-desc='slid']/
 
 	public MobileElement getSeekBar() {
-
 		return seekBar;
-
 	}
 
 	public MobileElement getCurrentExtentionBar() {

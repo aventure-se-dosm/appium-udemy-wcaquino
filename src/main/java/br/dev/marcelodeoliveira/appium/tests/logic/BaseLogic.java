@@ -34,30 +34,20 @@ public abstract class BaseLogic {
 	protected static final Float MAX_AXIS_MOVING_VALUE = 0.9F;
 
 	public BaseLogic() {
+		wait = new WebDriverWait(getDriver(), 15l);
 		setupPages();
-		wait = new WebDriverWait(getDriver(), 0);
 	}
 
-//	public MobileElement getOptElelmByXpath(String index) {
-//
-//		return getElement(By.xpath(getSwipeBarXpathByIndex(index)));
-//	}
-//
-//	public String getSwipeBarText(String index) {
-//		return getText(getElement(By.xpath(getSwipeBarXpathByIndex(index))));
-//	}
-//	
 	@Before
 	protected abstract void setupPages(BasePage... pages);
 
 	protected void click(WebElement element) {
-		//wait = new WebDriverWait(getDriver(), 0);
 		waitUntilWebElementToBeVisibleAndItsNotNullForClick(element);
 		element.click();
 	}
 
 	private void waitUntilWebElementToBeVisibleAndItsNotNullForClick(WebElement element) {
-		wait.withTimeout(Duration.ofSeconds(3)).until(ExpectedConditions.visibilityOf(element));
+		wait.withTimeout(Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(element));
 	}
 
 	public void tap(Integer x, Integer y) {
@@ -379,8 +369,8 @@ public abstract class BaseLogic {
 				.release().perform();
 	}
 
-	public void waitUntilElementListToBeVisible(WebElement... elements) {
-		waitUntilElementListToBeVisible(Arrays.asList(elements));
+	public List<WebElement> waitUntilElementListToBeVisible(WebElement... elements) {
+		return waitUntilElementListToBeVisible(Arrays.asList(elements));
 	}
 
 }

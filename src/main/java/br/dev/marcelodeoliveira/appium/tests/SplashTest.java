@@ -18,16 +18,13 @@ public class SplashTest extends CTAppiumBaseTest {
 		menuLogic.clicaSplash();
 		splashLogic.isSplashExibido();
 		Assert.assertEquals("Splash!", splashLogic.getSplashText());
-
 		splashLogic.aguardaSplashSumir();
-
 		Assert.assertTrue(menuLogic.isMenuVisible());
 
 	}
 
 	@Override
 	protected void setupLogic() {
-		// TODO Auto-generated method stub
 		menuLogic = new MenuLogic();
 		splashLogic = new SplashLogic();
 	}

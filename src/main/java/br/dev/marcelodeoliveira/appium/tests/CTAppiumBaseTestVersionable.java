@@ -1,8 +1,8 @@
 package br.dev.marcelodeoliveira.appium.tests;
 
+import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setAppAndAllowAppPermissionCapabilities;
 import static br.dev.marcelodeoliveira.appium.core.DriverFactory.getDriver;
 import static br.dev.marcelodeoliveira.appium.core.DriverFactory.killDriver;
-import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setAppAndAllowAppPermissionCapabilities;
 import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setDefaultCapabilities;
 
 import java.util.concurrent.TimeUnit;
@@ -13,7 +13,7 @@ import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.By;
 
-public abstract class CTAppiumBaseTest {
+public abstract class CTAppiumBaseTestVersionable {
 
 	@Rule
 	public TestName testName = new TestName();
@@ -29,9 +29,9 @@ public abstract class CTAppiumBaseTest {
 
 	private void setupCTAppProperCapabilities() {
 
-		setAppAndAllowAppPermissionCapabilities();
+		setAppAndAllowAppPermissionCapabilities("1.2");
 		try {
-			// Thread.sleep(3000);
+			Thread.sleep(3000);
 
 			getDriver().findElement(By.xpath("//*[@resource-id='com.android.permissioncontroller:id/continue_button']"))
 					.click();
