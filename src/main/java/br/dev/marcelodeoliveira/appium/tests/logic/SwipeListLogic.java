@@ -42,6 +42,7 @@ public class SwipeListLogic extends BaseLogic {
 	private SwipeListPage page;
 
 	public String swipeEsquerdaComCliqueNoSinal(String index, String signal) {
+
 		swipeLeft(getOptElelmByXpath(index).getCenter());
 		clickByIndexAndsignal(index, signal);
 		return getSwipeBarText(index);

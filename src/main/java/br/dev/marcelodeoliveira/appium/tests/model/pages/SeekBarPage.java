@@ -7,6 +7,7 @@ public class SeekBarPage extends BasePage {
 
 	@AndroidFindBy(accessibility = "slid")
 	private MobileElement seekBar;
+
 	@AndroidFindBy(accessibility = "\".//android.view.ViewGroup[@index='1']")
 	private MobileElement barCursor;
 	@AndroidFindBy(accessibility = "\".//android.view.ViewGroup[@index='3']")
@@ -14,21 +15,16 @@ public class SeekBarPage extends BasePage {
 
 	public MobileElement getSeekBar() {
 
-		// return (MobileElement) waitUntilElementToBeVisible(seekBar);
 		return seekBar;
 
 	}
 
 	public MobileElement getCurrentExtentionBar() {
 		return currentExtentionBar;
-		// return
-		// getSeekBar().findElement(By.xpath(".//android.view.ViewGroup[@index='3']"));
 	}
 
 	public MobileElement getBarCursor() {
 		return barCursor;
-		// return
-		// getSeekBar().findElement(By.xpath(".//android.view.ViewGroup[@index='1']"));
 	}
 
 //	public void moveSeekBarParaPorcentagemEscolhida(Float porcentagem) {
