@@ -22,6 +22,8 @@ public class SwipeLogic extends BaseLogic {
 	public void clicaBtnEsq() {
 		click(page.getIcoSlideToTheLeft());
 	}
+	
+	
 
 	@Override
 	protected void setupPages(BasePage... pages) {

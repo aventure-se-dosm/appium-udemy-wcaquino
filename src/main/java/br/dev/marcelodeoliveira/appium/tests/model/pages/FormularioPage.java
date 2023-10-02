@@ -77,54 +77,6 @@ public class FormularioPage extends BasePage {
 		return listAllTextView;
 	}
 
-//	public void escreveNome(String txtNameString) {
-//		writeText(getTxtName(), txtNameString);
-//	}
-//
-//	public void mudaSwitch(boolean status) {
-//		changeElementState(getSwitchHour(), status);
-//		Assert.assertEquals(true, isSwitchSelected());
-//
-//	}
-//
-//	public void mudaCheckbox(boolean status) {
-//		changeElementState(getChkDate(), status);
-//	}
-//
-//	public boolean isCheckboxSelected() {
-//		return isElementChecked(getChkDate());
-//	}
-//
-//	public boolean isSwitchSelected() {
-//		return isElementChecked(getSwitchHour());
-//	}
-//
-//	public void salvarForm() {
-//
-//		click(getBtnSalvar());
-//		waitUntilWebElementToBeVisibleAndItsNotNull(getLblName());
-//	}
-//
-//	public void salvarFormDemorado() {
-//		click(getBtnSalvarDemorado());
-//		waitUntilWebElementToBeVisibleAndItsNotNull(getLblName());
-//
-//	}
-//
-//	public void selecionaConsole(String selectedGameConsole) {
-//		click(getSpinner());
-//		click(getMenuGame(selectedGameConsole));
-//	}
-//
-//	public List<String> getAllFormResponse() {
-//		return getListAllTextView().stream().map(elem -> elem.getText()).filter(s -> ((String) s).contains(": "))
-//				.collect(Collectors.toList());
-//	}
 
-//	public String getFormResponseAttribute(String attribute) {
-//		return getAllFormResponse().stream().map(s -> s.toLowerCase())
-//				.filter(s -> ((String) s).contains(attribute.toLowerCase() + ": ")).findAny().get();
-//
-//	}
 
 }

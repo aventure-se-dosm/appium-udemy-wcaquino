@@ -26,6 +26,13 @@ public abstract class BasePage {
 		}
 
 	}
+	
+	public String getElementByXpathPattern(String xpathPattern, Object...values) {
+		return String.format(xpathPattern, values);
+//		return String.format(
+//				"//android.widget.TextView[contains(@text, 'Opção %s')]/../../following-sibling::*//*[@text='%s']",
+//				index, signal);
+	}
 //
 //	protected void click(WebElement element) {
 //		waitUntilWebElementToBeVisibleAndItsNotNullForClick(element);
