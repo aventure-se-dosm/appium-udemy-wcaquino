@@ -14,7 +14,7 @@ import br.dev.marcelodeoliveira.appium.tests.model.pages.BasePage;
 import br.dev.marcelodeoliveira.appium.tests.model.pages.WebViewPage;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
-public class WebViewLogic extends BaseLogic{
+public class WebViewLogic extends BaseLogic {
 
 	protected WebDriverWait wait;
 	private WebViewPage page;

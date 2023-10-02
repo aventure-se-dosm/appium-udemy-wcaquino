@@ -1,5 +1,9 @@
 package br.dev.marcelodeoliveira.appium.tests.model.pages;
 
+import org.openqa.selenium.By;
+
+import io.appium.java_client.MobileElement;
+
 public class SwipeListPage extends BasePage {
 
 	// THIS PARTICULAR PAGE DEMANDS DYNAMISM FOR GATHERING ELEMENTS

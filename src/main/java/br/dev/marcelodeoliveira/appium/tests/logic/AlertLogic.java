@@ -7,7 +7,6 @@ import br.dev.marcelodeoliveira.appium.tests.model.pages.BasePage;
 
 public class AlertLogic extends BaseLogic {
 
-
 	private AlertPage page;
 
 	public String getMsgTxt() {
@@ -36,7 +35,9 @@ public class AlertLogic extends BaseLogic {
 	}
 
 	public Point getOuterAlertReasonablePoint() {
-		//provisory
+
+		// provisory
+
 		return new Point(100, 100);
 	}
 

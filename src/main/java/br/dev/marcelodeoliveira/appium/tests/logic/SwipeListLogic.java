@@ -46,6 +46,7 @@ public class SwipeListLogic extends BaseLogic {
 		swipeLeft(getOptElelmByXpath(index).getCenter());
 		clickByIndexAndsignal(index, signal);
 		return getSwipeBarText(index);
+
 	}
 
 	private void clickByIndexAndsignal(String index, String signal) {
@@ -62,7 +63,9 @@ public class SwipeListLogic extends BaseLogic {
 			break;
 		}
 		case NEGATIVO: {
+
 			click(getElement(By.xpath(page.getOptionSignalFrame(index, Signal.NEGATIVO.getsignalBetweenBrackets()))));
+
 			break;
 		}
 		}

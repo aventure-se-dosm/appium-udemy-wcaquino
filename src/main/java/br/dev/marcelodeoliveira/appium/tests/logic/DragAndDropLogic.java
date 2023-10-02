@@ -37,7 +37,7 @@ public class DragAndDropLogic extends BaseLogic {
 
 	public String[] getCurrentState() {
 
-		//page.getFlagElementBy();
+		// page.getFlagElementBy();
 
 		ArrayList<String> labels = (ArrayList<String>) waitUntilElementListToBeVisible(getListAllMovableElements())
 				.stream().map(elem -> getText(elem).toString()).collect(Collectors.toList());
@@ -46,7 +46,8 @@ public class DragAndDropLogic extends BaseLogic {
 		return labels.toArray(new String[labels.size()]);
 	}
 
-	//should be abstracted to a wait-and-return the List when all of its desired elements are displayed at that time.
+	// should be abstracted to a wait-and-return the List when all of its desired
+	// elements are displayed at that time.
 	private List<WebElement> getListAllMovableElements() {
 		waitUntilElementToBeVisible(page.getFlagElementBy());
 		return page.getListAllMovableElements();
@@ -60,6 +61,7 @@ public class DragAndDropLogic extends BaseLogic {
 
 		// TODO: stream processings should be better on BaseLogic as proper individual
 		// methods!
+
 		return page.getListAllMovableElements().stream().filter(elem -> elem.getAttribute("text").equals(elemName))
 				.findAny().get();
 	}

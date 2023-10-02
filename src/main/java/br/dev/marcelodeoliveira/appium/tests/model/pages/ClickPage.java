@@ -39,24 +39,4 @@ public class ClickPage extends BasePage {
 	public MobileElement getDisplay() {
 		return display;
 	}
-//
-//	public void cliqueLongo() {
-//		click(getBtnLimpar());
-//		longClick(getElementCenter(getBtnCliqueLongo()));
-//	}
-//
-//	public String getDisplayContent() {
-//		return getText(getDisplay());
-//	}
-//
-//	public void cliqueDuploRapido() {
-//		click(getBtnLimpar());
-//		doubleClick(getElementCenter(getBtnCliqueDuploRapido()));
-//	}
-//
-//	public void cliqueDuploLento() {
-//		click(getBtnLimpar());
-//		slowDoubleClick(getElementCenter(getBtnCliqueDuploLento()));
-//	}
-
 }
