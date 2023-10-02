@@ -1,32 +1,16 @@
 package br.dev.marcelodeoliveira.appium.tests;
 
-import static br.dev.marcelodeoliveira.appium.core.DriverFactory.addCapability;
-import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setDefaultCapabilities;
-import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setupDriver;
-
 import org.junit.Assert;
 import org.junit.Test;
 
 import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
 import br.dev.marcelodeoliveira.appium.tests.logic.SwipeListLogic;
-import io.appium.java_client.remote.MobileCapabilityType;
 
-public class SwipeListTest extends BaseTest {
+public class SwipeListTest extends CTAppiumBaseTest {
 
 	private SwipeListLogic swipeListLogic;
 	private MenuLogic menuLogic;
 
-	@Override
-	public void setupTest() {
-		setDefaultCapabilities();
-		addCapability(MobileCapabilityType.APP,
-				"C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_2_0.apk");
-		setupDriver();
-		this.menuLogic = new MenuLogic();
-		this.swipeListLogic = new SwipeListLogic();
-
-		menuLogic.clicaSwipeList();
-	}
 
 	@Test
 	public void desafioSwipeListTest() {
@@ -46,5 +30,15 @@ public class SwipeListTest extends BaseTest {
 		// verificar op5
 		swipeText = swipeListLogic.swipeDireita("5");
 		Assert.assertEquals("Opção 5", swipeText);
+	}
+
+	@Override
+	protected void setupLogic() {
+		// TODO Auto-generated method stub
+		
+		this.menuLogic = new MenuLogic();
+		this.swipeListLogic = new SwipeListLogic();
+
+		menuLogic.clicaSwipeList();
 	}
 }

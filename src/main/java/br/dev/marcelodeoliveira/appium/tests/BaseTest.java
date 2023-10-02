@@ -12,7 +12,7 @@ public abstract class BaseTest {
 	@Rule
 	public TestName testName = new TestName();
 
-	@Before ()
+	@Before 
 	public abstract void setupTest();
 
 	@After

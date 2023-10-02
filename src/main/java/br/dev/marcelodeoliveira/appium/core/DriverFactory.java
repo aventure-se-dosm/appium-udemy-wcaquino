@@ -38,6 +38,8 @@ public class DriverFactory {
 		desiredCapabilities.setCapability("automationName", "uiautomator2");
 		desiredCapabilities.setCapability("fullReset", false);
 		desiredCapabilities.setCapability("noReset", false);
+		addCapability("appWaitPackage", "com.google.android.permissioncontroller");
+		addCapability("appWaitActivity", "com.android.packageinstaller.permission.ui.ReviewPermissionsActivity");
 	}
 
 	private static boolean isDriverNull() {

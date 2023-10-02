@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoSuchElementException;
@@ -34,6 +35,7 @@ public abstract class BaseLogic {
 
 	public BaseLogic() {
 		setupPages();
+		wait = new WebDriverWait(getDriver(), 0);
 	}
 
 //	public MobileElement getOptElelmByXpath(String index) {
@@ -45,9 +47,11 @@ public abstract class BaseLogic {
 //		return getText(getElement(By.xpath(getSwipeBarXpathByIndex(index))));
 //	}
 //	
+	@Before
 	protected abstract void setupPages(BasePage... pages);
 
 	protected void click(WebElement element) {
+		//wait = new WebDriverWait(getDriver(), 0);
 		waitUntilWebElementToBeVisibleAndItsNotNullForClick(element);
 		element.click();
 	}

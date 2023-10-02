@@ -1,5 +1,7 @@
 package br.dev.marcelodeoliveira.appium.tests.logic;
 
+import org.junit.Before;
+
 import br.dev.marcelodeoliveira.appium.tests.model.pages.AccordionPage;
 import br.dev.marcelodeoliveira.appium.tests.model.pages.BasePage;
 
@@ -20,6 +22,7 @@ public class AccordionLogic extends BaseLogic {
 	}
 
 	@Override
+	@Before
 	protected void setupPages(BasePage... pages) {
 		this.page = new AccordionPage();
 	}

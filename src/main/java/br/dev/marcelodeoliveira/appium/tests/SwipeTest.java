@@ -1,36 +1,28 @@
 package br.dev.marcelodeoliveira.appium.tests;
 
-import static br.dev.marcelodeoliveira.appium.core.DriverFactory.addCapability;
-import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setDefaultCapabilities;
-import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setupDriver;
-
 import org.junit.Assert;
 import org.junit.Test;
 
 import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
 import br.dev.marcelodeoliveira.appium.tests.logic.SwipeLogic;
-import io.appium.java_client.remote.MobileCapabilityType;
 
-public class SwipeTest extends BaseTest {
+public class SwipeTest extends CTAppiumBaseTest {
 
 	private MenuLogic menuLogic;
 	private SwipeLogic swipeLogic;
 
-	@Override
-	public void setupTest() {
-		setDefaultCapabilities();
-		addCapability(MobileCapabilityType.APP,
-				"C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_2_0.apk");
-		setupDriver();
-		this.menuLogic = new MenuLogic();
-		this.swipeLogic = new SwipeLogic();
-
-	}
+//	@Override
+//	public void setupTest() {
+//		setDefaultCapabilities();
+//		addCapability(MobileCapabilityType.APP,
+//				"C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_2_0.apk");
+//		setupDriver();
+//
+//	}
 
 	@Test
 	public void deveTestarSwipe() {
 
-		menuLogic.clickSwipe();
 		Assert.assertTrue(swipeLogic.isTextPresent("Mova a tela para"));
 		Assert.assertTrue(swipeLogic.isTextPresent("a esquerda"));
 
@@ -46,6 +38,14 @@ public class SwipeTest extends BaseTest {
 
 		swipeLogic.clicaBtnEsq();
 		Assert.assertTrue(swipeLogic.isTextPresent("a esquerda"));
+	}
+
+	@Override
+	protected void setupLogic() {
+		// TODO Auto-generated method stub
+		this.menuLogic = new MenuLogic();
+		this.swipeLogic = new SwipeLogic();
+		menuLogic.clickSwipe();
 	}
 
 }

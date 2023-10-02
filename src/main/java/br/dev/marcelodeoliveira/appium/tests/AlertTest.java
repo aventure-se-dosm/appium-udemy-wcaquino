@@ -1,32 +1,17 @@
 package br.dev.marcelodeoliveira.appium.tests;
 
-import static br.dev.marcelodeoliveira.appium.core.DriverFactory.addCapability;
-import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setDefaultCapabilities;
-import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setupDriver;
-
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import br.dev.marcelodeoliveira.appium.tests.logic.AlertLogic;
-import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
-import io.appium.java_client.remote.MobileCapabilityType;;
+import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;;
 
-public class AlertTest extends BaseTest {
+public class AlertTest extends CTAppiumBaseTest {
 
 	private AlertLogic alertLogic;
 	private MenuLogic menuLogic;
 
-	@Before
-	public void setupTest() {
-		setDefaultCapabilities();
-		addCapability(MobileCapabilityType.APP,
-				"C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_2_0.apk");
-		setupDriver();
 
-		this.alertLogic = new AlertLogic();
-		this.menuLogic = new MenuLogic();
-	}
 
 	@Test
 	public void deveTestarAlertaConfirmNegar() {
@@ -64,6 +49,14 @@ public class AlertTest extends BaseTest {
 		Assert.assertEquals("Não pode clicar fora, apenas no SAIR", msg);
 		Assert.assertTrue(alertLogic.isAlertPresent());
 		alertLogic.clicaOk();
+	}
+
+	@Override
+	protected void setupLogic() {
+		// TODO Auto-generated method stub
+		this.alertLogic = new AlertLogic();
+		this.menuLogic = new MenuLogic();
+		
 	}
 
 }
