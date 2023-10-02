@@ -1,80 +1,41 @@
 package br.dev.marcelodeoliveira.appium.tests.logic;
 
-import java.util.List;
-
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import br.dev.marcelodeoliveira.appium.core.enums.MobileElementAttribute;
 import br.dev.marcelodeoliveira.appium.tests.model.pages.BasePage;
 import br.dev.marcelodeoliveira.appium.tests.model.pages.TimePickerPage;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.pagefactory.AndroidFindBy;
 
 public class TimePickerLogic extends BaseLogic {
 
-	@AndroidFindBy(xpath = "//*[@content-desc='switch']/following-sibling::*[2]/android.widget.TextView")
-	private MobileElement lblTime;
-	@AndroidFindBy(id = "android:id/button1")
-	private MobileElement btnOk;
-	@AndroidFindBy(id = "android:id/button2")
-	private MobileElement btnCancel;
-	@AndroidFindBy(id = "android:id/toggle_mode")
-	private MobileElement btnKeyboardInput;
-	@AndroidFindBy(id = "android:id/input_hour")
-	private MobileElement txtHour;
-	@AndroidFindBy(id = "android:id/input_minute")
-	private MobileElement txtMinute;
-
-	private MobileElement getBtnOk() {
-		return btnOk;
-	}
-
-	private MobileElement getLblTime() {
-		return lblTime;
-	}
-
-	private MobileElement getBtnKeyboardInput() {
-		return btnKeyboardInput;
-	}
-
-	private MobileElement getTxtHour() {
-		return txtHour;
-	}
-
-	private MobileElement getTxtMinute() {
-		return txtMinute;
-	}
-
-	private By listRdbHourMinute = By.xpath("//*[@resource-id='android:id/radial_picker']/*");
 	private TimePickerPage page;
 
-	private By getListRdbHourMinute() {
-		return listRdbHourMinute;
-	}
+//	private By listRdbHourMinute = By.xpath("//*[@resource-id='android:id/radial_picker']/*");
+//	private TimePickerPage page;
+//
+//	private By getListRdbHourMinute() {
+//		return listRdbHourMinute;
+//	}
 
-	public MobileElement getHora(Integer hour) {
-		return getMobileElementTextByAttribute(getListRdbHourMinute(), MobileElementAttribute.CONTENT_DESC, hour);
-	}
+//	public MobileElement getHora(Integer hour) {
+//		return getMobileElementTextByAttribute(getListRdbHourMinute(), MobileElementAttribute.CONTENT_DESC, hour);
+//	}
 
-	private MobileElement getMobileElementTextByAttribute(By by, MobileElementAttribute attribute, Object value) {
-		List<WebElement> listElem = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(by));
-		return (MobileElement) listElem.stream()
-				.filter(elem -> elem.getAttribute(attribute.getName()).equals(value.toString())).findFirst().get();
-	}
+//	private MobileElement getMobileElementTextByAttribute(By by, MobileElementAttribute attribute, Object value) {
+//		List<WebElement> listElem = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(by));
+//		return (MobileElement) listElem.stream()
+//				.filter(elem -> elem.getAttribute(attribute.getName()).equals(value.toString())).findFirst().get();
+//	}
 
-	public MobileElement getMinuto(Integer minuto) {
-		return getMobileElementTextByAttribute(getListRdbHourMinute(), MobileElementAttribute.CONTENT_DESC, minuto);
-	}
+//	public MobileElement getMinuto(Integer minuto) {
+//		return getMobileElementTextByAttribute(getListRdbHourMinute(), MobileElementAttribute.CONTENT_DESC, minuto);
+//	}
 
 	public Object getHoraTxt(Integer hora) {
-		return super.getText(getHora(hora));
+		return super.getText(page.getHora(hora));
 	}
 
 	public Object getMinutoTxt(Integer minuto) {
-		return super.getText(getMinuto(minuto));
+		return super.getText(page.getMinuto(minuto));
 	}
 
 	public void selecionaHora(Integer hour, Integer minute) {
@@ -103,7 +64,7 @@ public class TimePickerLogic extends BaseLogic {
 	}
 
 	public String getHoraTxt() {
-		return getText(getLblTime());
+		return getText(page.getLblTime());
 	}
 
 	public void clicaOk() {

@@ -12,7 +12,6 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 
 public class FormularioPage extends BasePage {
 
-
 	@AndroidFindBy(xpath = "//android.widget.TextView[starts-with(@text, 'Nome: ')]")
 	private MobileElement lblName;
 
@@ -48,7 +47,6 @@ public class FormularioPage extends BasePage {
 		return btnSalvarDemorado;
 	}
 
-
 	public MobileElement getTxtName() {
 		return txtName;
 	}
@@ -81,7 +79,6 @@ public class FormularioPage extends BasePage {
 	public List<MobileElement> getListAllTextView() {
 		return listAllTextView;
 	}
-
 
 	public void escreveNome(String txtNameString) {
 		writeText(getTxtName(), txtNameString);
@@ -126,10 +123,11 @@ public class FormularioPage extends BasePage {
 		return getListAllTextView().stream().map(elem -> elem.getText()).filter(s -> ((String) s).contains(": "))
 				.collect(Collectors.toList());
 	}
+
 	public String getFormResponseAttribute(String attribute) {
-		return getAllFormResponse() .stream().map(s -> s.toLowerCase()).filter(s -> ((String) s).contains(attribute.toLowerCase()+": "))
-				.findAny().get();
-				
+		return getAllFormResponse().stream().map(s -> s.toLowerCase())
+				.filter(s -> ((String) s).contains(attribute.toLowerCase() + ": ")).findAny().get();
+
 	}
 
 }

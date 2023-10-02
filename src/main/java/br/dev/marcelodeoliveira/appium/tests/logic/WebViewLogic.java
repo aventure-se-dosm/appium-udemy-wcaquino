@@ -10,11 +10,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import br.dev.marcelodeoliveira.appium.tests.model.pages.WebViewPage;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
 public class WebViewLogic {
 
 	protected WebDriverWait wait;
+	private WebViewPage page;
 
 	public WebViewLogic() {
 		PageFactory.initElements(new AppiumFieldDecorator(getDriver()), this);
@@ -24,6 +26,7 @@ public class WebViewLogic {
 	}
 
 	private void clickOkPopUp() {
+		click(page.getOkPopUp());
 		getDriver().findElement(By.xpath("//*[@resource-id='android:id/button1']")).click();
 	}
 

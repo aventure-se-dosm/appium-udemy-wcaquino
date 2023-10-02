@@ -48,12 +48,10 @@ public abstract class BaseLogic {
 	}
 
 	public void tap(Integer x, Integer y) {
-
 		new TouchAction<>(getDriver()).tap(PointOption.point(x, y)).perform();
 	}
 
 	public void tap(Point p) {
-
 		new TouchAction<>(getDriver()).tap(PointOption.point(p)).perform();
 	}
 
@@ -366,7 +364,6 @@ public abstract class BaseLogic {
 
 		new TouchAction<>(getDriver()).longPress(ElementOption.element(origin)).moveTo(ElementOption.element(end))
 				.release().perform();
-
 	}
 
 	public void waitUntilElementListToBeVisible(WebElement... elements) {

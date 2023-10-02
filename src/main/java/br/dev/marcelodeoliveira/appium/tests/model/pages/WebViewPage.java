@@ -7,6 +7,7 @@ import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -15,6 +16,42 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 public class WebViewPage {
 
 	protected WebDriverWait wait;
+	
+	@FindBy(xpath="//*[@resource-id='android:id/button1']")
+	private WebElement okPopUp;
+	@FindBy(xpath="//*[@resource-id='com.android.permissioncontroller:id/continue_button']")
+	private WebElement btnContinue;
+	@FindBy(id="email")
+	private WebElement txtEmail;
+	@FindBy(id="senha")
+	private WebElement txtSenha;
+	@FindBy(xpath="//*[text()='Entrar']")
+	private WebElement btnEntrar;
+
+
+	public WebDriverWait getWait() {
+		return wait;
+	}
+
+	public WebElement getOkPopUp() {
+		return okPopUp;
+	}
+
+	public WebElement getBtnContinue() {
+		return btnContinue;
+	}
+
+	public WebElement getTxtEmail() {
+		return txtEmail;
+	}
+
+	public WebElement getTxtSenha() {
+		return txtSenha;
+	}
+
+	public WebElement getBtnEntrar() {
+		return btnEntrar;
+	}
 
 	public WebViewPage() {
 		PageFactory.initElements(new AppiumFieldDecorator(getDriver()), this);
@@ -24,12 +61,14 @@ public class WebViewPage {
 	}
 
 	private void clickOkPopUp() {
-		getDriver().findElement(By.xpath("//*[@resource-id='android:id/button1']")).click();
+		click(getOkPopUp());
+		//getDriver().findElement(By.xpath("//*[@resource-id='android:id/button1']")).click();
 	}
 
 	private void permissionContinue() {
-		getDriver().findElement(By.xpath("//*[@resource-id='com.android.permissioncontroller:id/continue_button']"))
-				.click();
+		click(getBtnContinue());
+//		getDriver().findElement(By.xpath("//*[@resource-id='com.android.permissioncontroller:id/continue_button']"))
+//				.click();
 	}
 
 	public void switchToWebContext() {

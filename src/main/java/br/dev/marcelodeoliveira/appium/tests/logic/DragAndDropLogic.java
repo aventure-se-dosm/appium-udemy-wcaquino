@@ -51,6 +51,7 @@ public class DragAndDropLogic extends BaseLogic {
 
 	private WebElement getMovableElement(String elemName) {
 
+		//TODO: stream processings should be better on BaseLogic as proper individual methods!
 		return page.getListAllMovableElements().stream().filter(elem -> elem.getAttribute("text").equals(elemName))
 				.findAny().get();
 	}

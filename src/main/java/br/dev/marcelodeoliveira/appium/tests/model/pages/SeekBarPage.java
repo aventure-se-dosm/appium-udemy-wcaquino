@@ -12,7 +12,7 @@ public class SeekBarPage extends BasePage {
 	@AndroidFindBy(accessibility = "slid")
 	private MobileElement seekBar;
 
-	private MobileElement getSeekBar() {
+	public MobileElement getSeekBar() {
 		return (MobileElement) waitUntilElementToBeVisible(seekBar);
 	}
 
@@ -48,7 +48,7 @@ public class SeekBarPage extends BasePage {
 
 	}
 
-	private MobileElement getFullExtentionBar() {
+	public MobileElement getFullExtentionBar() {
 
 		MobileElement m = (MobileElement) getNestedElement(getSeekBar(),
 				By.xpath(".//android.view.ViewGroup[@index='2']"));

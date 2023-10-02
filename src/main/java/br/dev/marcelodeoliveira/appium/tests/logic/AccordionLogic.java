@@ -22,7 +22,6 @@ public class AccordionLogic extends BaseLogic {
 	@Override
 	protected void setupPages(BasePage... pages) {
 		this.page = new AccordionPage();
-
 	}
 
 }

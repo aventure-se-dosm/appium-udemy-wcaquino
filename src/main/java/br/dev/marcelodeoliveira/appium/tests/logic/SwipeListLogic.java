@@ -8,7 +8,6 @@ import org.openqa.selenium.By;
 
 import br.dev.marcelodeoliveira.appium.tests.model.pages.BasePage;
 import br.dev.marcelodeoliveira.appium.tests.model.pages.SwipeListPage;
-import io.appium.java_client.MobileElement;
 
 public class SwipeListLogic extends BaseLogic {
 
@@ -41,41 +40,11 @@ public class SwipeListLogic extends BaseLogic {
 
 	private SwipeListPage page;
 
-//	private String getOptByXpath(Integer index) {
-//		return getOptByXpath(index.toString());
-//	}
-	private String getSwipeBarXpathByIndex(String index) {
-		return String.format("//android.widget.TextView[contains(@text, 'Opção %s')]", index);
-	}
-
-	private String getOptionSignalFrame(String index, String signal) {
-		return String.format(
-				"//android.widget.TextView[contains(@text, 'Opção %s')]/../../following-sibling::*//*[@text='%s']",
-				index, signal);
-	}
-
-//	private String getOptionAndSignalBaseXpath(String index, String signal) {
-//		return String.format("//android.widget.TextView[contains(@text, 'Opção %s %s')]", index, signal);
-//	}
-//
-//	private String getSignalXpath() {
-//		return ("//android.widget.TextView[contains(@text, '(%s)')]");
-//	}
-
-	private MobileElement getOptElelmByXpath(String index) {
-
-		return getElement(By.xpath(getSwipeBarXpathByIndex(index)));
-	}
-
 	public String swipeEsquerdaComCliqueNoSinal(String index, String signal) {
 
-		swipeLeft(getOptElelmByXpath(index).getCenter());
+		swipeLeft(page.getOptElelmByXpath(index).getCenter());
 		clickByIndexAndsignal(index, signal);
-		return getSwipeBarText(index);
-	}
-
-	public String getSwipeBarText(String index) {
-		return getText(getElement(By.xpath(getSwipeBarXpathByIndex(index))));
+		return page.getSwipeBarText(index);
 	}
 
 	private void clickByIndexAndsignal(String index, String signal) {
@@ -84,12 +53,16 @@ public class SwipeListLogic extends BaseLogic {
 		switch (s) {
 		case POSITIVO: {
 			// provisory: get a proper offset by the itself element dimensions.
-			tap(getElement(By.xpath(getOptionSignalFrame(index, Signal.POSITIVO.getsignalBetweenBrackets())))
+			// TODO: Refactor it! Those elements could be better and clearly described; and
+			// gathered by simpler ways.
+			// Seize the new layer Logic separated from Page's.
+			tap(getElement(By.xpath(page.getOptionSignalFrame(index, Signal.POSITIVO.getsignalBetweenBrackets())))
 					.getLocation().moveBy(10, 1));
 			break;
 		}
 		case NEGATIVO: {
-			click(page.getElement(By.xpath(getOptionSignalFrame(index, Signal.NEGATIVO.getsignalBetweenBrackets()))));
+			click(page.getElement(
+					By.xpath(page.getOptionSignalFrame(index, Signal.NEGATIVO.getsignalBetweenBrackets()))));
 			break;
 		}
 		}
@@ -97,14 +70,14 @@ public class SwipeListLogic extends BaseLogic {
 	}
 
 	public String swipeDireita(String index) {
-		swipeRight(getOptElelmByXpath(index).getCenter());
-		return getSwipeBarText(index);
+		swipeRight(page.getOptElelmByXpath(index).getCenter());
+		return page.getSwipeBarText(index);
 	}
 
 	@Override
 	protected void setupPages(BasePage... pages) {
 		this.page = new SwipeListPage();
-		
+
 	}
 
 }

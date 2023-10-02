@@ -45,7 +45,7 @@ public class CalculadoraPage extends BasePage {
 		pressEquals();
 	}
 
-	private void selectNumber(Integer a) {
+	public void selectNumber(Integer a) {
 		if (a < 0) {
 			pressMinus();
 			a = invertNumber(a);
@@ -53,64 +53,64 @@ public class CalculadoraPage extends BasePage {
 		click(DriverFactory.getDriver().findElementByAccessibilityId(a.toString()));
 	}
 
-	private Integer invertNumber(Integer a) {
+	public Integer invertNumber(Integer a) {
 		a = -a;
 		return a;
 	}
 
-	private void pressAdd() {
+	public void pressAdd() {
 		click(getBtnAdd());
 	}
 
-	private void pressMinus() {
+	public void pressMinus() {
 		click(getBtnMinus());
 	}
 
-	private MobileElement getBtnMinus() {
+	public MobileElement getBtnMinus() {
 
 		return btnMinus;
 	}
 
-	private void pressMult() {
+	public void pressMult() {
 		click(getBtnTimes());
 	}
 
-	private MobileElement getBtnTimes() {
+	public MobileElement getBtnTimes() {
 
 		return btnTimes;
 	}
 
-	private void pressDividedTo() {
+	public void pressDividedTo() {
 		click(getBtnDividedTo());
 	}
 
-	private MobileElement getBtnDividedTo() {
+	public MobileElement getBtnDividedTo() {
 
 		return btnDividedTo;
 	}
 
-	private void pressSqrt() {
+	public void pressSqrt() {
 		click(getBtnSqrt());
 	}
 
-	private MobileElement getBtnSqrt() {
+	public MobileElement getBtnSqrt() {
 
 		return btnSqrt;
 	}
 
-	private MobileElement getBtnAdd() {
+	public MobileElement getBtnAdd() {
 		return btnAdd;
 	}
 
-	private MobileElement getBtnEquals() {
+	public MobileElement getBtnEquals() {
 		return btnEquals;
 	}
 
-	private MobileElement getLblResult() {
+	public MobileElement getLblResult() {
 		return lblResult;
 	}
 	
-	private void pressEquals() {
+	public void pressEquals() {
 		click(getBtnEquals());
 	}
 

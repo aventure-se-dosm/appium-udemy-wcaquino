@@ -35,7 +35,7 @@ public class ClickPage extends BasePage {
 		return btlLimpar;
 	}
 
-	private MobileElement getDisplay() {
+	public MobileElement getDisplay() {
 		return getElement(By.xpath("//*[@text='Clique duplo']/following-sibling::*"));
 	}
 
