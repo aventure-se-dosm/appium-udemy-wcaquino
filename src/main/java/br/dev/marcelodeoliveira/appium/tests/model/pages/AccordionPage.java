@@ -10,11 +10,11 @@ public class AccordionPage extends BasePage {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Opção 1']/../../following-sibling::android.view.ViewGroup/android.widget.TextView")
 	private MobileElement txtOpcao1;
 
-	private MobileElement getTxtOpcao1() {
+	public MobileElement getTxtOpcao1() {
 		return txtOpcao1;
 	}
 
-	private MobileElement getBtnOpcao1() {
+	public MobileElement getBtnOpcao1() {
 		return btnOpcao1;
 	}
 

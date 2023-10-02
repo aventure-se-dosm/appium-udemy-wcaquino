@@ -11,12 +11,12 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
 import br.dev.marcelodeoliveira.appium.tests.model.pages.DatePickerPage;
-import br.dev.marcelodeoliveira.appium.tests.model.pages.MenuPage;
 import io.appium.java_client.remote.MobileCapabilityType;
 
 public class DatePickerTest extends BaseTest {
-	MenuPage menuPage;
+	MenuLogic menuLogic;
 	DatePickerPage datePickerPage;
 
 	@Before
@@ -26,7 +26,7 @@ public class DatePickerTest extends BaseTest {
 				"C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_2_0.apk");
 		setupDriver();
 
-		this.menuPage = new MenuPage();
+		this.menuLogic = new MenuLogic();
 		this.datePickerPage = new DatePickerPage();
 
 	}
@@ -36,7 +36,7 @@ public class DatePickerTest extends BaseTest {
 		Integer diaSelecionado = 5;
 		LocalDate oldDate;
 		
-		menuPage.clicaFormulario();
+		menuLogic.clicaFormulario();
 		oldDate = LocalDate.parse(datePickerPage.getLblDateText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 		datePickerPage.clicaData();
 		datePickerPage.escolheDia(diaSelecionado);

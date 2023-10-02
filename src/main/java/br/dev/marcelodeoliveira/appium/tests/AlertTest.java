@@ -8,14 +8,14 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
 import br.dev.marcelodeoliveira.appium.tests.model.pages.AlertPage;
-import br.dev.marcelodeoliveira.appium.tests.model.pages.MenuPage;
 import io.appium.java_client.remote.MobileCapabilityType;;
 
 public class AlertTest extends BaseTest {
 
 	private AlertPage alertPage;
-	private MenuPage menuPage;
+	private MenuLogic menuLogic;
 
 	@Before
 	public void setupTest() {
@@ -25,12 +25,12 @@ public class AlertTest extends BaseTest {
 		setupDriver();
 
 		this.alertPage = new AlertPage();
-		this.menuPage = new MenuPage();
+		this.menuLogic = new MenuLogic();
 	}
 
 	@Test
 	public void deveTestarAlertaConfirmNegar() {
-		menuPage.clicaAlertas();
+		menuLogic.clicaAlertas();
 		alertPage.clicaAlertConfirm();
 		alertPage.clicaAlertNegar();
 
@@ -39,7 +39,7 @@ public class AlertTest extends BaseTest {
 
 	@Test
 	public void deveTestarAlertaConfirm() {
-		menuPage.clicaAlertas();
+		menuLogic.clicaAlertas();
 		String msg = alertPage.clicaAlertConfirm();
 		alertPage.clicaConfirmar();
 
@@ -51,7 +51,7 @@ public class AlertTest extends BaseTest {
 
 	@Test
 	public void deveClicarForaDoAlertSimplesEMensagemDesaparecer() {
-		menuPage.clicaAlertas();
+		menuLogic.clicaAlertas();
 		String msg = alertPage.clicaAlertSimples();
 		alertPage.clicaOk();
 		Assert.assertEquals("Pode clicar no OK ou fora da caixa para sair", msg);
@@ -59,7 +59,7 @@ public class AlertTest extends BaseTest {
 	}
 	@Test
 	public void deveClicarForaDoAlertRestritivoEMensagemPermanecer() {
-		menuPage.clicaAlertas();
+		menuLogic.clicaAlertas();
 		String msg = alertPage.clicaAlertRestritivo();
 		Assert.assertEquals("Não pode clicar fora, apenas no SAIR", msg);
 		Assert.assertTrue(alertPage.isAlertPresent());

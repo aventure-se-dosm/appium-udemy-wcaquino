@@ -19,19 +19,19 @@ public class ClickPage extends BasePage {
 	@AndroidFindBy(xpath = "//*[@text='Limpar']")
 	private MobileElement btlLimpar;
 
-	private MobileElement getBtnCliqueLongo() {
+	public MobileElement getBtnCliqueLongo() {
 		return btnCliqueLongo;
 	}
 
-	private MobileElement getBtnCliqueDuploRapido() {
+	public MobileElement getBtnCliqueDuploRapido() {
 		return getElement(btnCliqueDuploRapido);
 	}
 
-	private MobileElement getBtnCliqueDuploLento() {
+	public MobileElement getBtnCliqueDuploLento() {
 		return btnCliqueDuploLento;
 	}
 
-	private MobileElement getBtnLimpar() {
+	public MobileElement getBtnLimpar() {
 		return btlLimpar;
 	}
 

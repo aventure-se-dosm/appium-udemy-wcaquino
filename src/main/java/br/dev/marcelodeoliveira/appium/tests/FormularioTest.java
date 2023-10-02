@@ -12,13 +12,13 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
 import br.dev.marcelodeoliveira.appium.tests.model.pages.FormularioPage;
-import br.dev.marcelodeoliveira.appium.tests.model.pages.MenuPage;
 import io.appium.java_client.remote.MobileCapabilityType;
 
 public class FormularioTest extends BaseTest {
 
-	MenuPage menuPage;
+	MenuLogic menuLogic;
 	FormularioPage formularioPage;
 
 	@Before
@@ -30,8 +30,8 @@ public class FormularioTest extends BaseTest {
 		setupDriver();
 
 		this.formularioPage = new FormularioPage();
-		this.menuPage = new MenuPage();
-		menuPage.clicaFormulario();
+		this.menuLogic = new MenuLogic();
+		menuLogic.clicaFormulario();
 	}
 
 	@Test

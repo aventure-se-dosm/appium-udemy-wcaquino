@@ -7,13 +7,13 @@ import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setupDriver;
 import org.junit.Assert;
 import org.junit.Test;
 
-import br.dev.marcelodeoliveira.appium.tests.model.pages.MenuPage;
+import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
 import br.dev.marcelodeoliveira.appium.tests.model.pages.SwipePage;
 import io.appium.java_client.remote.MobileCapabilityType;
 
 public class SwipeTest extends BaseTest {
 
-	private MenuPage menuPage;
+	private MenuLogic menuLogic;
 	private SwipePage swipePage;
 
 	@Override
@@ -22,7 +22,7 @@ public class SwipeTest extends BaseTest {
 		addCapability(MobileCapabilityType.APP,
 				"C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_2_0.apk");
 		setupDriver();
-		this.menuPage = new MenuPage();
+		this.menuLogic = new MenuLogic();
 		this.swipePage = new SwipePage();
 
 	}
@@ -30,7 +30,7 @@ public class SwipeTest extends BaseTest {
 	@Test
 	public void deveTestarSwipe() {
 
-		menuPage.clickSwipe();
+		menuLogic.clickSwipe();
 		Assert.assertTrue(swipePage.isTextPresent("Mova a tela para"));
 		Assert.assertTrue(swipePage.isTextPresent("a esquerda"));
 

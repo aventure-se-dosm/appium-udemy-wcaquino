@@ -6,14 +6,14 @@ import static org.junit.Assert.assertArrayEquals;
 
 import org.junit.Test;
 
+import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
 import br.dev.marcelodeoliveira.appium.tests.model.pages.DragAndDropPage;
-import br.dev.marcelodeoliveira.appium.tests.model.pages.MenuPage;
 import io.appium.java_client.remote.MobileCapabilityType;
 
 public class DragAndDropTest extends BaseTest {
 
 	private DragAndDropPage dragAndDropPage;
-	private MenuPage menuPage;
+	private MenuLogic menuLogic;
 
 	@Override
 	public void setupTest() {
@@ -21,7 +21,7 @@ public class DragAndDropTest extends BaseTest {
 		addCapability(MobileCapabilityType.APP,
 				"C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_2_0.apk");
 		// setupDriver();
-		this.menuPage = new MenuPage();
+		this.menuLogic = new MenuLogic();
 		this.dragAndDropPage = new DragAndDropPage();
 		/**
 		 * 
@@ -31,7 +31,7 @@ public class DragAndDropTest extends BaseTest {
 		 */
 		// Acessar menu
 		// --- clicar "Drag and drop"
-		menuPage.clicaDragAndDrop();
+		menuLogic.clicaDragAndDrop();
 
 	}
 

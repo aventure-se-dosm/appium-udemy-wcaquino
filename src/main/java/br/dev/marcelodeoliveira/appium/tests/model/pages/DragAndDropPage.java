@@ -32,7 +32,7 @@ public class DragAndDropPage extends BasePage {
 	@AndroidFindAll(@AndroidBy(xpath = "//android.widget.TextView[contains(text(),'')]"))
 	List<WebElement> ListAllMovableTxt;
 
-	private List<WebElement> getListAllMovableElements() {
+	public List<WebElement> getListAllMovableElements() {
 	
 		return waitUntilElementListToBeVisible(ListAllMovableTxt);
 	}
@@ -77,6 +77,11 @@ public class DragAndDropPage extends BasePage {
 
 		return getListAllMovableElements().stream().filter(elem -> elem.getAttribute("text").equals(elemName)).findAny()
 				.get();
+	}
+
+	public By getFlagElementBy() {
+		// TODO Auto-generated method stub
+		return this.flagElementBy;
 	}
 
 }

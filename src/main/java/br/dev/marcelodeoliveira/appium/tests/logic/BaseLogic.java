@@ -1,4 +1,4 @@
-package br.dev.marcelodeoliveira.appium.tests.model.pages;
+package br.dev.marcelodeoliveira.appium.tests.logic;
 
 import static br.dev.marcelodeoliveira.appium.core.DriverFactory.getDriver;
 
@@ -13,19 +13,18 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import br.dev.marcelodeoliveira.appium.tests.model.pages.BasePage;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.ElementOption;
 import io.appium.java_client.touch.offset.PointOption;
 
-public abstract class BasePage {
+public abstract class BaseLogic {
 
 	protected WebDriverWait wait;
 	protected final Integer NO_WAIT = 0;
@@ -33,17 +32,11 @@ public abstract class BasePage {
 	protected static final Float MIN_AXIS_MOVING_VALUE = 0.1F;
 	protected static final Float MAX_AXIS_MOVING_VALUE = 0.9F;
 
-	public BasePage() {
-		PageFactory.initElements(new AppiumFieldDecorator(getDriver()), this);
-		wait = new WebDriverWait(getDriver(), 15L);
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+	public BaseLogic() {
+		setupPages();
 	}
+
+	protected abstract void setupPages(BasePage... pages);
 
 	protected void click(WebElement element) {
 		waitUntilWebElementToBeVisibleAndItsNotNullForClick(element);
@@ -181,7 +174,7 @@ public abstract class BasePage {
 		return getDriver().findElementByXPath(String.format(formatXpath, value));
 	}
 
-	public MobileElement getElement(By by) {
+	protected MobileElement getElement(By by) {
 		return (MobileElement) waitUntilWebElementToBeVisible(by);
 	}
 
@@ -292,7 +285,7 @@ public abstract class BasePage {
 		return element.getLocation();
 	}
 
-	public Point getElementCenter(MobileElement element) {
+	protected Point getElementCenter(MobileElement element) {
 		return waitUntilElementToBeVisible(element).getCenter();
 	}
 
@@ -379,4 +372,5 @@ public abstract class BasePage {
 	public void waitUntilElementListToBeVisible(WebElement... elements) {
 		waitUntilElementListToBeVisible(Arrays.asList(elements));
 	}
+
 }

@@ -35,35 +35,35 @@ public class AlertPage extends BasePage {
 	@AndroidFindBy(id = "android:id/parentPanel")
 	private MobileElement alertFrame;
 
-	private MobileElement getBtnAlertaConfirm() {
+	public MobileElement getBtnAlertaConfirm() {
 		return btnAlertaConfirm;
 	}
 
-	private MobileElement getBtnAlertaRestritivo() {
+	public MobileElement getBtnAlertaRestritivo() {
 		return btnAlertaRestritivo;
 	}
 
-	private MobileElement getBtnAlertaSimples() {
+	public MobileElement getBtnAlertaSimples() {
 		return btnAlertaSimples;
 	}
 
-	private MobileElement getMsgMessage() {
+	public MobileElement getMsgMessage() {
 		return msgMessage;
 	}
 
-	private MobileElement getBtnAlertOk() {
+	public MobileElement getBtnAlertOk() {
 		return btnAlertOk;
 	}
 
-	private MobileElement getBtnAlertSair() {
+	public MobileElement getBtnAlertSair() {
 		return btnAlertSair;
 	}
 
-	private MobileElement getAlertaConfirmar() {
+	public MobileElement getAlertaConfirmar() {
 		return alertaConfirmar;
 	}
 
-	private MobileElement getAlertaNegar() {
+	public MobileElement getAlertaNegar() {
 		return alertaNegar;
 	}
 
@@ -92,7 +92,7 @@ public class AlertPage extends BasePage {
 		return getMsgTxt();
 	}
 
-	private Point getOuterAlertReasonablePoint() {
+	public Point getOuterAlertReasonablePoint() {
 		return new Point(100, 100);
 	}
 
@@ -113,7 +113,7 @@ public class AlertPage extends BasePage {
 		click(getBtnAlertSair());
 	}
 
-	private MobileElement getAlertFrame() {
+	public MobileElement getAlertFrame() {
 		return alertFrame;
 	}
 

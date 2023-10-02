@@ -11,13 +11,13 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.dev.marcelodeoliveira.appium.tests.model.pages.MenuPage;
+import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
 import br.dev.marcelodeoliveira.appium.tests.model.pages.TimePickerPage;
 import io.appium.java_client.remote.MobileCapabilityType;
 
 public class TimePickerTest extends BaseTest {
 	private TimePickerPage timePickerPage;
-	private MenuPage menuPage;
+	private MenuLogic menuLogic;
 
 	@Before
 	public void setupTest() {
@@ -26,7 +26,7 @@ public class TimePickerTest extends BaseTest {
 				"C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_2_0.apk");
 		setupDriver();
 
-		this.menuPage = new MenuPage();
+		this.menuLogic = new MenuLogic();
 		this.timePickerPage = new TimePickerPage();
 	}
 
@@ -36,7 +36,7 @@ public class TimePickerTest extends BaseTest {
 		final Integer hour = 15;
 		final Integer minute = 50;
 		Assert.assertTrue(minute % 5 == 0);
-		menuPage.clicaFormulario();
+		menuLogic.clicaFormulario();
 		timePickerPage.selecionaHoraSimples(hour, minute);
 		timePickerPage.clicaOk();
 		Assert.assertEquals(LocalTime.of(hour, minute).format(DateTimeFormatter.ofPattern("HH:mm")),
@@ -49,7 +49,7 @@ public class TimePickerTest extends BaseTest {
 		final Integer hour = 15;
 		final Integer minute = 39;
 
-		menuPage.clicaFormulario();
+		menuLogic.clicaFormulario();
 		timePickerPage.selecionaHora(hour, minute);
 		timePickerPage.clicaOk();
 		Assert.assertEquals(LocalTime.of(hour, minute).format(DateTimeFormatter.ofPattern("HH:mm")),

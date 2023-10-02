@@ -16,7 +16,7 @@ public class FormularioPage extends BasePage {
 	@AndroidFindBy(xpath = "//android.widget.TextView[starts-with(@text, 'Nome: ')]")
 	private MobileElement lblName;
 
-	private MobileElement getLblName() {
+	public MobileElement getLblName() {
 		return lblName;
 	}
 
@@ -44,7 +44,7 @@ public class FormularioPage extends BasePage {
 	@AndroidFindAll(value = { @AndroidBy(xpath = "//android.widget.TextView") })
 	List<MobileElement> listAllTextView;
 
-	private MobileElement getBtnSalvarDemorado() {
+	public MobileElement getBtnSalvarDemorado() {
 		return btnSalvarDemorado;
 	}
 
@@ -69,7 +69,7 @@ public class FormularioPage extends BasePage {
 		return getMenuGameConsoles().stream().filter(e -> e.getText().equalsIgnoreCase(console)).findFirst().get();
 	}
 
-	private List<MobileElement> getMenuGameConsoles() {
+	public List<MobileElement> getMenuGameConsoles() {
 
 		return menuGameConsoles;
 	}

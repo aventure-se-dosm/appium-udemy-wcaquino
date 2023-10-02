@@ -1,4 +1,4 @@
-package br.dev.marcelodeoliveira.appium.tests.model.pages;
+package br.dev.marcelodeoliveira.appium.tests.logic;
 
 import java.util.List;
 
@@ -8,10 +8,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import br.dev.marcelodeoliveira.appium.core.enums.MobileElementAttribute;
+import br.dev.marcelodeoliveira.appium.tests.model.pages.BasePage;
+import br.dev.marcelodeoliveira.appium.tests.model.pages.TimePickerPage;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 
-public class TimePickerPage extends BasePage {
+public class TimePickerLogic extends BaseLogic {
 
 	@AndroidFindBy(xpath = "//*[@content-desc='switch']/following-sibling::*[2]/android.widget.TextView")
 	private MobileElement lblTime;
@@ -26,27 +28,28 @@ public class TimePickerPage extends BasePage {
 	@AndroidFindBy(id = "android:id/input_minute")
 	private MobileElement txtMinute;
 
-	public MobileElement getBtnOk() {
+	private MobileElement getBtnOk() {
 		return btnOk;
 	}
 
-	public MobileElement getLblTime() {
+	private MobileElement getLblTime() {
 		return lblTime;
 	}
 
-	public MobileElement getBtnKeyboardInput() {
+	private MobileElement getBtnKeyboardInput() {
 		return btnKeyboardInput;
 	}
 
-	public MobileElement getTxtHour() {
+	private MobileElement getTxtHour() {
 		return txtHour;
 	}
 
-	public MobileElement getTxtMinute() {
+	private MobileElement getTxtMinute() {
 		return txtMinute;
 	}
 
 	private By listRdbHourMinute = By.xpath("//*[@resource-id='android:id/radial_picker']/*");
+	private TimePickerPage page;
 
 	private By getListRdbHourMinute() {
 		return listRdbHourMinute;
@@ -75,10 +78,10 @@ public class TimePickerPage extends BasePage {
 	}
 
 	public void selecionaHora(Integer hour, Integer minute) {
-		click(getLblTime());
-		click(getBtnKeyboardInput());
-		writeText(getTxtHour(), hour.toString());
-		writeText(getTxtMinute(), minute.toString());
+		click(page.getLblTime());
+		click(page.getBtnKeyboardInput());
+		writeText(page.getTxtHour(), hour.toString());
+		writeText(page.getTxtMinute(), minute.toString());
 
 	}
 
@@ -86,9 +89,9 @@ public class TimePickerPage extends BasePage {
 		int roundMinute = roundBy5(minute);
 		System.out.println(minute);
 		Assert.assertTrue(super.getAssertionMessage(50, roundMinute), 50 == roundMinute);
-		click(getLblTime());
-		click(getHora(hour));
-		click(getMinuto(minute));
+		click(page.getLblTime());
+		click(page.getHora(hour));
+		click(page.getMinuto(minute));
 
 	}
 
@@ -104,7 +107,13 @@ public class TimePickerPage extends BasePage {
 	}
 
 	public void clicaOk() {
-		click(getBtnOk());
+		click(page.getBtnOk());
+	}
+
+	@Override
+	protected void setupPages(BasePage... pages) {
+		this.page = new TimePickerPage();
+
 	}
 
 }

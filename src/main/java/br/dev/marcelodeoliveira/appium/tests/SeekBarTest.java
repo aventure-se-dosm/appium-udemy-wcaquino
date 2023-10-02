@@ -8,14 +8,14 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
 import br.dev.marcelodeoliveira.appium.tests.model.pages.FormularioPage;
-import br.dev.marcelodeoliveira.appium.tests.model.pages.MenuPage;
 import br.dev.marcelodeoliveira.appium.tests.model.pages.SeekBarPage;
 import io.appium.java_client.remote.MobileCapabilityType;
 
 public class SeekBarTest extends BaseTest {
 
-	MenuPage menuPage;
+	MenuLogic menuLogic;
 	SeekBarPage seekBarPage;
 	private FormularioPage formularioPage;
 
@@ -28,7 +28,7 @@ public class SeekBarTest extends BaseTest {
 				"C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_2_0.apk");
 		setupDriver();
 
-		this.menuPage = new MenuPage();
+		this.menuLogic = new MenuLogic();
 		this.formularioPage = new FormularioPage();
 		this.seekBarPage = new SeekBarPage();
 	}
@@ -36,7 +36,7 @@ public class SeekBarTest extends BaseTest {
 	@Test
 	public void moveSeekBar() {
 		Float porcentagem = 0.76f;
-		menuPage.clicaFormulario();
+		menuLogic.clicaFormulario();
 		seekBarPage.moveSeekBarParaPorcentagemEscolhida(porcentagem);
 		formularioPage.salvarForm();
 		String resp = formularioPage.getFormResponseAttribute("Slider");

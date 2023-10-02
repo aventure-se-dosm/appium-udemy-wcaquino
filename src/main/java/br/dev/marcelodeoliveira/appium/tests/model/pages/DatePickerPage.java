@@ -23,11 +23,11 @@ public class DatePickerPage extends BasePage {
 	@AndroidFindBy(id = "android:id/button2")
 	private MobileElement btnCancelar;
 
-	private WebElement getBtnOk() {
+	public WebElement getBtnOk() {
 		return btnOk;
 	}
 
-	private MobileElement getBtnDate() {
+	public MobileElement getBtnDate() {
 		return btnDate;
 	}
 
@@ -35,7 +35,7 @@ public class DatePickerPage extends BasePage {
 		return getText(getBtnDate());
 	}
 
-	private List<MobileElement> getListBtnDias() {
+	public List<MobileElement> getListBtnDias() {
 		return listBtnDias;
 	}
 

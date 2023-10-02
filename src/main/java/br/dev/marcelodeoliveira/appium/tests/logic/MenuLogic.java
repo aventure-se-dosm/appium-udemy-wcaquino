@@ -1,11 +1,13 @@
-package br.dev.marcelodeoliveira.appium.tests.model.pages;
+package br.dev.marcelodeoliveira.appium.tests.logic;
 
 import org.openqa.selenium.WebElement;
 
+import br.dev.marcelodeoliveira.appium.tests.model.pages.BasePage;
+import br.dev.marcelodeoliveira.appium.tests.model.pages.MenuPage;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 
-public class MenuPage extends BasePage {
+public class MenuLogic extends BaseLogic {
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Formulário']")
 	private MobileElement formulario;
@@ -49,35 +51,37 @@ public class MenuPage extends BasePage {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='SeuBarriga Híbrido']")
 	private WebElement seuBarrigaHibrido;
 
-	public MobileElement getAlertMessage() {
+	private MenuPage page;
+
+	private MobileElement getAlertMessage() {
 		return alertMessage;
 	}
 
-	public MobileElement getAlertTitle() {
+	private MobileElement getAlertTitle() {
 		return alertTitle;
 	}
 
-	public MobileElement getAbas() {
+	private MobileElement getAbas() {
 		return abas;
 	}
 
-	public WebElement getAccordion() {
+	private WebElement getAccordion() {
 		return accordion;
 	}
 
-	public WebElement getAlertas() {
+	private WebElement getAlertas() {
 		return alertas;
 	}
 
-	public MobileElement getBtnOk() {
+	private MobileElement getBtnOk() {
 		return btnOk;
 	}
 
-	public WebElement getCliques() {
+	private WebElement getCliques() {
 		return cliques;
 	}
 
-	public WebElement getDragAndDrop() {
+	private WebElement getDragAndDrop() {
 		return this.dragAndDrop;
 	}
 
@@ -85,11 +89,11 @@ public class MenuPage extends BasePage {
 		return formulario;
 	}
 
-	public MobileElement getOpcaoEscondida() {
+	private MobileElement getOpcaoEscondida() {
 		return opcaoEscondida;
 	}
 
-	public WebElement getSeuBarrigaHibrido() {
+	private WebElement getSeuBarrigaHibrido() {
 		return seuBarrigaHibrido;
 	}
 
@@ -97,12 +101,81 @@ public class MenuPage extends BasePage {
 		return splash;
 	}
 
-	public WebElement getSwipe() {
+	private WebElement getSwipe() {
 		return swipe;
 	}
 
-	public WebElement getSwipeList() {
+	private WebElement getSwipeList() {
 		return swipeList;
 	}
 
+	public void clicaFormulario() {
+		click(page.getFormulario());
+	}
+
+	public void clicaSplash() {
+		click(page.getSplash());
+	}
+
+	public boolean isMenuVisible() {
+		return isElementVisible(getFormulario());
+	}
+
+	public void clicaAbas() {
+		click(page.getAbas());
+	}
+
+	public void clicaAlertas() {
+		click(page.getAlertas());
+	}
+
+	public void clicaAccordion() {
+		click(page.getAccordion());
+	}
+
+	public void clicaCliques() {
+		click(page.getCliques());
+	}
+
+	public void clicaOpcaoEscondida() {
+		waitUntilWebElementToBeVisibleAndItsNotNull(page.getFormulario());
+		scrollDown();
+		click(page.getOpcaoEscondida());
+	}
+
+	public String getAlertMessageTxt() {
+		return getText(getAlertMessage());
+	}
+
+	public String getAlertTitleTxt() {
+		return getText(getAlertTitle());
+	}
+
+	public void clicaAlertOk() {
+		click(page.getBtnOk());
+	}
+
+	public void clickSwipe() {
+		click(page.getSwipe());
+	}
+
+	public void clicaSwipeList() {
+		scrollDown();
+		click(page.getSwipeList());
+	}
+
+	public void clicaDragAndDrop() {
+		scrollDown();
+		click(page.getDragAndDrop());
+	}
+
+	public void acessarSeuBarrigaHibrido() {
+		click(page.getSeuBarrigaHibrido());
+	}
+
+	@Override
+	protected void setupPages(BasePage... pages) {
+		this.page = new MenuPage();
+
+	}
 }
