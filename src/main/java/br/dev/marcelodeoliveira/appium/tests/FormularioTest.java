@@ -14,7 +14,7 @@ public class FormularioTest extends CTAppiumBaseTest {
 
 	MenuLogic menuLogic;
 	FormularioLogic formularioLogic;
-
+	final String TXT_USER_NAME = "Wagnão";
 
 
 	@Test
@@ -22,7 +22,10 @@ public class FormularioTest extends CTAppiumBaseTest {
 
 		String txtName = "Wagner";
 		formularioLogic.escreveNome(txtName);
+		Assert.assertEquals(formularioLogic.writtenName(), txtName);
 	}
+
+
 
 	@Test
 	public void deveIteragirSwitchEScheckbox() throws MalformedURLException {
@@ -36,13 +39,13 @@ public class FormularioTest extends CTAppiumBaseTest {
 	@Test
 	public void deveCadastrarNomeDemorado() throws MalformedURLException {
 
-		final String TXT_USER_NAME = "Wagnão";
+		
 
 		formularioLogic.escreveNome(TXT_USER_NAME);
 		formularioLogic.salvarFormDemorado();
 
 		Assert.assertTrue(formularioLogic.getAllFormResponse().containsAll(
-				Arrays.asList("Nome: ".concat(TXT_USER_NAME), "Slider: 25", "Data: 01/01/2000", "Hora: 12:00")));
+				Arrays.asList("Nome: ".concat(TXT_USER_NAME), "Slider: 25", "Data: 01/01/2000", "Hora: 06:00")));
 	}
 
 	@Test
@@ -61,7 +64,7 @@ public class FormularioTest extends CTAppiumBaseTest {
 
 		Assert.assertTrue(formularioLogic.getAllFormResponse()
 				.containsAll(Arrays.asList("Nome: ".concat(TXT_USER_NAME), "Console: switch", "Slider: 25",
-						"Switch: On", "Checkbox: Desabilitado", "Data: 01/01/2000", "Hora: 12:00")));
+						"Switch: On", "Checkbox: Desabilitado", "Data: 01/01/2000", "Hora: 06:00")));
 	}
 
 	@Override

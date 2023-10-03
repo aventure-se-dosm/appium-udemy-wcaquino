@@ -1,5 +1,6 @@
 package br.dev.marcelodeoliveira.appium.tests.logic;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,7 +15,6 @@ public class FormularioLogic extends BaseLogic {
 	private FormularioPage page;
 
 	public MobileElement getMenuGame(String console) {
-		//TODO: stream processings should be better on BaseLogic as proper individual methods!
 		return page.getMenuGameConsoles().stream().filter(e -> e.getText().equalsIgnoreCase(console)).findFirst().get();
 	}
 
@@ -22,6 +22,11 @@ public class FormularioLogic extends BaseLogic {
 		writeText(page.getTxtName(), txtNameString);
 	}
 
+	public boolean getResponseTuplesIfPresent(String ... values) {
+		return getAllFormResponse().containsAll(
+				Arrays.asList(values));
+	}
+	
 	public void mudaSwitch(boolean status) {
 		changeElementState(page.getSwitchHour(), status);
 		Assert.assertEquals(true, isSwitchSelected());
@@ -72,6 +77,10 @@ public class FormularioLogic extends BaseLogic {
 	@Override
 	protected void setupPages(BasePage... pages) {
 		this.page = new FormularioPage();
+	}
+
+	public String writtenName() {
+		return getText(page.getTxtName());
 	}
 
 }
