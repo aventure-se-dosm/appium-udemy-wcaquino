@@ -5,13 +5,14 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 
 public class AlertPage extends BasePage {
 
-	@AndroidFindBy(xpath = "//android.widget.Button[@resource-id='idButtonTest']")
+	@AndroidFindBy(xpath = "//android.widget.Button[1]")
+//  @AndroidFindBy(id = "idButtonTest")
 	public MobileElement btnAlertaSimples;
 
-	@AndroidFindBy(xpath = "//android.widget.Button[@resource-id='idButtonTest2']")
+	@AndroidFindBy(xpath = "//android.widget.Button[2]")
 	private MobileElement btnAlertaRestritivo;
 
-	@AndroidFindBy(xpath = "//android.widget.Button[@resource-id='idButtonTest3']")
+	@AndroidFindBy(xpath = "//android.widget.Button[3]")
 	private MobileElement btnAlertaConfirm;
 
 	@AndroidFindBy(id = "android:id/message")

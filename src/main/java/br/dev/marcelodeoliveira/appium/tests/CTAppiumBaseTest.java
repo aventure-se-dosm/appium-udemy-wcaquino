@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.By;
@@ -18,20 +19,25 @@ public abstract class CTAppiumBaseTest {
 	@Rule
 	public TestName testName = new TestName();
 
-	@Before
-	public void setupTest() {
+	@BeforeClass
+	public static void setupTest() {
 
 		setDefaultCapabilities();
-		setupCTAppProperCapabilities();
-		;
-		setupLogic();
+//		setupCTAppProperCapabilities();
+//		setupLogic();
 	};
+
+	@Before
+	public void setupProperTestCapabilities() {
+		setupCTAppProperCapabilities();
+		setupLogic();
+	}
 
 	private void setupCTAppProperCapabilities() {
 
 		setAppAndAllowAppPermissionCapabilities();
 		try {
-			// Thread.sleep(3000);
+			//Thread.sleep(3000);
 
 			getDriver().findElement(By.xpath("//*[@resource-id='com.android.permissioncontroller:id/continue_button']"))
 					.click();

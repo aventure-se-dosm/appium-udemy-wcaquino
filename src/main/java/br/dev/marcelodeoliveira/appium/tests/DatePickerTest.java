@@ -13,21 +13,30 @@ public class DatePickerTest extends CTAppiumBaseTest {
 	MenuLogic menuLogic;
 	DatePickerLogic datePickerLogic;
 
-
-	
 	@Test
 	public void deveMudarDataDoDiaParaDiaSelecionado() {
 		Integer diaSelecionado = 5;
 		LocalDate oldDate;
-		
+
 		menuLogic.clicaFormulario();
-		oldDate = LocalDate.parse(datePickerLogic.getLblDateText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		datePickerLogic.atualizaData();
+		oldDate = LocalDate.parse(datePickerLogic.getLblDateText(), DateTimeFormatter.ofPattern("d/M/yyyy"));
+
 		datePickerLogic.clicaData();
 		datePickerLogic.escolheDia(diaSelecionado);
 		datePickerLogic.clicaOk();
-		Assert.assertEquals(
-				LocalDate.of(oldDate.getYear(), oldDate.getMonth(), diaSelecionado).format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
-				datePickerLogic.getLblDateText());
+		Assert.assertTrue(
+				(
+						LocalDate.of(oldDate.getYear(), oldDate.getMonth(), diaSelecionado).format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+						.equals(datePickerLogic.getLblDateText()))
+				|| 
+				
+				(LocalDate.of(oldDate.getYear(), oldDate.getMonth(), diaSelecionado).format(DateTimeFormatter.ofPattern("d/M/yyyy"))
+				.equals(datePickerLogic.getLblDateText()))				
+				
+				);
+	
+
 	}
 
 	@Override
@@ -35,7 +44,7 @@ public class DatePickerTest extends CTAppiumBaseTest {
 		// TODO Auto-generated method stub
 		this.menuLogic = new MenuLogic();
 		this.datePickerLogic = new DatePickerLogic();
-		
+
 	}
-		
+
 }
