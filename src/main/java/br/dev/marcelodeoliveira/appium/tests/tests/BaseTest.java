@@ -1,4 +1,4 @@
-package br.dev.marcelodeoliveira.appium.tests;
+package br.dev.marcelodeoliveira.appium.tests.tests;
 
 import static br.dev.marcelodeoliveira.appium.core.DriverFactory.killDriver;
 

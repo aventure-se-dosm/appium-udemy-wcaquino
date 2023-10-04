@@ -1,4 +1,4 @@
-package br.dev.marcelodeoliveira.appium.tests;
+package br.dev.marcelodeoliveira.appium.tests.tests;
 
 import org.junit.Assert;
 import org.junit.Test;

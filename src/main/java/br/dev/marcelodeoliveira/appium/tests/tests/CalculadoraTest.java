@@ -1,6 +1,8 @@
-package br.dev.marcelodeoliveira.appium.tests;
+package br.dev.marcelodeoliveira.appium.tests.tests;
 
-import static br.dev.marcelodeoliveira.appium.core.DriverFactory.*;
+import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setDefaultCapabilitiesCalc;
+import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setupDriver;
+
 import java.net.MalformedURLException;
 
 import org.junit.Assert;

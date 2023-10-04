@@ -1,4 +1,4 @@
-package br.dev.marcelodeoliveira.appium.tests;
+package br.dev.marcelodeoliveira.appium.tests.tests;
 
 import static org.junit.Assert.assertArrayEquals;
 

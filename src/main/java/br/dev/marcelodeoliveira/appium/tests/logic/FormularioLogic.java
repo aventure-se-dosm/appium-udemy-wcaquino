@@ -83,4 +83,8 @@ public class FormularioLogic extends BaseLogic {
 		return getText(page.getTxtName());
 	}
 
+	public String getCurrentHourLabel() {
+		return getText(page.getLblHourAndMinutes());
+	}
+
 }

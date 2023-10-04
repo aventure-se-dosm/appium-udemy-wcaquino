@@ -21,8 +21,8 @@ public class WebViewLogic extends BaseLogic {
 
 
 	public void switchToWebContext() {
-	//	Set<String> contextSet = getDriver().getContextHandles();
-		//contextSet.stream().forEach(System.out::println);
+		Set<String> contextSet = getDriver().getContextHandles();
+		contextSet.stream().forEach(System.out::println);
 		getDriver().context((String) getDriver().getContextHandles().toArray()[1]);
 	}
 

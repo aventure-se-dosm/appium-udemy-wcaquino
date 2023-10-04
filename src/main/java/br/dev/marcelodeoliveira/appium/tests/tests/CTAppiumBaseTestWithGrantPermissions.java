@@ -1,11 +1,9 @@
-package br.dev.marcelodeoliveira.appium.tests;
+package br.dev.marcelodeoliveira.appium.tests.tests;
 
 import static br.dev.marcelodeoliveira.appium.core.DriverFactory.getDriver;
 import static br.dev.marcelodeoliveira.appium.core.DriverFactory.killDriver;
 import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setAppAndAllowAppPermissionCapabilities;
 import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setDefaultCapabilities;
-
-import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
 import org.junit.Before;

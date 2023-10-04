@@ -27,6 +27,12 @@ public class FormularioPage extends BasePage {
 
 	@AndroidFindBy(accessibility = "switch")
 	private MobileElement switchHour;
+	@AndroidFindBy(id = "android:id/hours")
+	private MobileElement lblHours;
+	@AndroidFindBy(id = "android:id/minutes")
+	private MobileElement lblMinutes;
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, ':00')]")
+	private MobileElement lblHourAndMinutes;
 
 	@AndroidFindBy(xpath = "//android.widget.CheckedTextView")
 	private List<MobileElement> menuGameConsoles;
@@ -46,6 +52,9 @@ public class FormularioPage extends BasePage {
 
 	public MobileElement getTxtName() {
 		return txtName;
+	}
+	public MobileElement getLblHourAndMinutes() {
+		return lblHourAndMinutes;
 	}
 
 	public MobileElement getSpinner() {

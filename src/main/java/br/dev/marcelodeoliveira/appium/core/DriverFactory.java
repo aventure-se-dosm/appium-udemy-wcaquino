@@ -61,9 +61,9 @@ public class DriverFactory {
 	}
 
 	public static void setAppAndAllowAppPermissionCapabilities(String version) {
-		version = "C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_"
+		String app_path_version = "C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_"
 				+ (version.replace(".", "_") + ".apk");
-		addCapability(MobileCapabilityType.APP, version);
+		addCapability(MobileCapabilityType.APP, app_path_version);
 		if (version.equals("1.2")) {
 			addCapability("appWaitPackage", "com.google.android.permissioncontroller");
 			addCapability("appWaitActivity", "com.android.packageinstaller.permission.ui.ReviewPermissionsActivity");

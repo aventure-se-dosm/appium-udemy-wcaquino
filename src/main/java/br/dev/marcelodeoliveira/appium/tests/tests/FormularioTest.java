@@ -1,5 +1,5 @@
 
-package br.dev.marcelodeoliveira.appium.tests;
+package br.dev.marcelodeoliveira.appium.tests.tests;
 
 import java.net.MalformedURLException;
 import java.util.Arrays;
@@ -10,12 +10,11 @@ import org.junit.Test;
 import br.dev.marcelodeoliveira.appium.tests.logic.FormularioLogic;
 import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
 
-public class FormularioTest extends CTAppiumBaseTestVersionable{
+public class FormularioTest extends CTAppiumBaseTestVersionable {
 
 	MenuLogic menuLogic;
 	FormularioLogic formularioLogic;
 	final String TXT_USER_NAME = "Wagnão";
-
 
 	@Test
 	public void devePreencherCampoTeste() throws MalformedURLException {
@@ -24,8 +23,6 @@ public class FormularioTest extends CTAppiumBaseTestVersionable{
 		formularioLogic.escreveNome(txtName);
 		Assert.assertEquals(formularioLogic.writtenName(), txtName);
 	}
-
-
 
 	@Test
 	public void deveIteragirSwitchEScheckbox() throws MalformedURLException {
@@ -39,13 +36,15 @@ public class FormularioTest extends CTAppiumBaseTestVersionable{
 	@Test
 	public void deveCadastrarNomeDemorado() throws MalformedURLException {
 
-		
-
+		// TODO: after: FormModel
+		// String selectedHour = formularioLogic.getCurrentHourLabel();
 		formularioLogic.escreveNome(TXT_USER_NAME);
 		formularioLogic.salvarFormDemorado();
 
-		Assert.assertTrue(formularioLogic.getAllFormResponse().containsAll(
-				Arrays.asList("Nome: ".concat(TXT_USER_NAME), "Slider: 25", "Data: 01/01/2000", "Hora: 06:00")));
+		Assert.assertTrue(
+				// formularioLogic.getAllFormResponse().toString(),
+				formularioLogic.getAllFormResponse().containsAll(Arrays.asList("Nome: ".concat(TXT_USER_NAME),
+						"Slider: 25", "Data: 01/01/2000", "Hora: ".concat(formularioLogic.getCurrentHourLabel()))));
 	}
 
 	@Test
@@ -63,8 +62,16 @@ public class FormularioTest extends CTAppiumBaseTestVersionable{
 		formularioLogic.salvarForm();
 
 		Assert.assertTrue(formularioLogic.getAllFormResponse()
-				.containsAll(Arrays.asList("Nome: ".concat(TXT_USER_NAME), "Console: switch", "Slider: 25",
-						"Switch: On", "Checkbox: Desabilitado", "Data: 01/01/2000", "Hora: 06:00")));
+				.containsAll(Arrays.asList(
+						"Nome: ".concat(TXT_USER_NAME), 
+						"Console: switch",
+						"Slider: 25",
+						"Switch: On",
+						"Checkbox: Desabilitado",
+						"Data: 01/01/2000",
+						"Hora: ".concat(formularioLogic.getCurrentHourLabel()))
+				)
+		);
 	}
 
 	@Override
@@ -74,6 +81,6 @@ public class FormularioTest extends CTAppiumBaseTestVersionable{
 		this.formularioLogic = new FormularioLogic();
 		this.menuLogic = new MenuLogic();
 		menuLogic.clicaFormulario();
-		
+
 	}
 }
