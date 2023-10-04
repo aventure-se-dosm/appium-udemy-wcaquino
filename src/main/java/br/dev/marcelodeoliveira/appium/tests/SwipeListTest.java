@@ -34,8 +34,6 @@ public class SwipeListTest extends CTAppiumBaseTestVersionable{
 
 	@Override
 	protected void setupLogic() {
-		// TODO Auto-generated method stub
-		
 		this.menuLogic = new MenuLogic();
 		this.swipeListLogic = new SwipeListLogic();
 

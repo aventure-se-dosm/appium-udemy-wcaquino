@@ -1,9 +1,6 @@
 package br.dev.marcelodeoliveira.appium.tests;
 
-import static br.dev.marcelodeoliveira.appium.core.DriverFactory.addCapability;
-import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setDefaultCapabilities;
-import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setupDriver;
-
+import static br.dev.marcelodeoliveira.appium.core.DriverFactory.*;
 import java.net.MalformedURLException;
 
 import org.junit.Assert;
@@ -22,10 +19,10 @@ public class CalculadoraTest extends BaseTest {
 	}
 
 	@Before
+	@Override
 	public void setupTest() {
-		setDefaultCapabilities();
-		addCapability("appPackage", "com.google.android.calculator");
-		addCapability("appActivity", "com.android.calculator2.Calculator");
+		setDefaultCapabilitiesCalc();
+	
 		setupDriver();
 		this.calculadoraLogic = new CalculadoraLogic();
 

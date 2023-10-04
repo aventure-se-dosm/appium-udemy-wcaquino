@@ -13,7 +13,7 @@ public abstract class BaseTest {
 	public TestName testName = new TestName();
 
 	@Before 
-	public abstract void setupTest();
+	protected abstract void setupTest();
 
 	@After
 	public  void finishTest() {

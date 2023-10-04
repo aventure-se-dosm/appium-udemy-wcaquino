@@ -19,7 +19,6 @@ public abstract class CTAppiumBaseTestVersionable {
 
 		setDefaultCapabilities();
 		setupCTAppProperCapabilities();
-		;
 		setupLogic();
 	};
 

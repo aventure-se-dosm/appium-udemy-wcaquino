@@ -10,7 +10,6 @@ public class AccordionTest extends CTAppiumBaseTestVersionable {
 	private AccordionLogic accordionLogic;
 	private MenuLogic menuLogic;
 
-
 	@Test
 	public void deveIteragirComAccordionOpcao1() {
 		menuLogic.clicaAccordion();
@@ -23,7 +22,7 @@ public class AccordionTest extends CTAppiumBaseTestVersionable {
 	protected void setupLogic() {
 		this.accordionLogic = new AccordionLogic();
 		this.menuLogic = new MenuLogic();
-		
+
 	}
 
 }

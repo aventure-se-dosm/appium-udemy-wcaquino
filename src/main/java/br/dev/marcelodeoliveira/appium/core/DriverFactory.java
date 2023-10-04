@@ -1,5 +1,7 @@
 package br.dev.marcelodeoliveira.appium.core;
 
+import static br.dev.marcelodeoliveira.appium.core.DriverFactory.addCapability;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
@@ -40,6 +42,16 @@ public class DriverFactory {
 		desiredCapabilities.setCapability("fullReset", true);
 		desiredCapabilities.setCapability("noReset", false);
 	}
+	public static void setDefaultCapabilitiesCalc() {
+		desiredCapabilities = new DesiredCapabilities();
+		desiredCapabilities.setCapability("platformName", "Android");
+		desiredCapabilities.setCapability("deviceName", "emulator-5554");
+		desiredCapabilities.setCapability("automationName", "uiautomator2");
+		addCapability("appPackage", "com.google.android.calculator");
+		addCapability("appActivity", "com.android.calculator2.Calculator");
+//		desiredCapabilities.setCapability("fullReset", true);
+//		desiredCapabilities.setCapability("noReset", false);
+	}
 
 	public static void setAppAndAllowAppPermissionCapabilities() {
 		addCapability(MobileCapabilityType.APP,
@@ -49,13 +61,13 @@ public class DriverFactory {
 	}
 
 	public static void setAppAndAllowAppPermissionCapabilities(String version) {
-	version = 				"C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_"
-	+(version.replace(".","_")
-	+".apk"
-	);
-		addCapability(MobileCapabilityType.APP,version);
-		addCapability("appWaitPackage", "com.google.android.permissioncontroller");
-		addCapability("appWaitActivity", "com.android.packageinstaller.permission.ui.ReviewPermissionsActivity");
+		version = "C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_"
+				+ (version.replace(".", "_") + ".apk");
+		addCapability(MobileCapabilityType.APP, version);
+		if (version.equals("1.2")) {
+			addCapability("appWaitPackage", "com.google.android.permissioncontroller");
+			addCapability("appWaitActivity", "com.android.packageinstaller.permission.ui.ReviewPermissionsActivity");
+		}
 	}
 
 	private static boolean isDriverNull() {
