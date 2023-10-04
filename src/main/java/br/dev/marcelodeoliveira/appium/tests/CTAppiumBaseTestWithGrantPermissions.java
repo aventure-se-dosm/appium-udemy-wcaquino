@@ -14,7 +14,7 @@ import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.By;
 
-public abstract class CTAppiumBaseTest {
+public abstract class CTAppiumBaseTestWithGrantPermissions {
 
 	@Rule
 	public TestName testName = new TestName();
@@ -23,8 +23,7 @@ public abstract class CTAppiumBaseTest {
 	public static void setupTest() {
 
 		setDefaultCapabilities();
-//		setupCTAppProperCapabilities();
-//		setupLogic();
+		setupCTAppProperCapabilities();
 	};
 
 	@Before
@@ -33,17 +32,15 @@ public abstract class CTAppiumBaseTest {
 		setupLogic();
 	}
 
-	private void setupCTAppProperCapabilities() {
+	private static void setupCTAppProperCapabilities() {
 
-		setAppAndAllowAppPermissionCapabilities();
+		setAppAndAllowAppPermissionCapabilities("1.2");
 		try {
-			//Thread.sleep(3000);
-
 			getDriver().findElement(By.xpath("//*[@resource-id='com.android.permissioncontroller:id/continue_button']"))
 					.click();
 			getDriver().findElement(By.xpath("//*[@resource-id='android:id/button1']")).click();
 		} catch (Exception e) {
-			getDriver().manage().timeouts().implicitlyWait(15l, TimeUnit.SECONDS);
+
 			return;
 		}
 	}

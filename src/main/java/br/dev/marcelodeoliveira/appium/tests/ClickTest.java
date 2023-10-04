@@ -7,7 +7,7 @@ import br.dev.marcelodeoliveira.appium.tests.logic.ClickLogic;
 import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
 
 
-public class ClickTest extends CTAppiumBaseTest {
+public class ClickTest extends CTAppiumBaseTestVersionable{
 
 	private MenuLogic menuLogic;
 	private ClickLogic clickLogic;

@@ -9,7 +9,7 @@ import org.junit.Test;
 import br.dev.marcelodeoliveira.appium.tests.logic.DatePickerLogic;
 import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
 
-public class DatePickerTest extends CTAppiumBaseTest {
+public class DatePickerTest extends CTAppiumBaseTestVersionable{
 	MenuLogic menuLogic;
 	DatePickerLogic datePickerLogic;
 

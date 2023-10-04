@@ -10,7 +10,7 @@ import org.junit.Test;
 import br.dev.marcelodeoliveira.appium.tests.logic.FormularioLogic;
 import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
 
-public class FormularioTest extends CTAppiumBaseTest {
+public class FormularioTest extends CTAppiumBaseTestVersionable{
 
 	MenuLogic menuLogic;
 	FormularioLogic formularioLogic;

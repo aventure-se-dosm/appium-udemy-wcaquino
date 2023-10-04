@@ -8,9 +8,9 @@ public class SeekBarPage extends BasePage {
 	@AndroidFindBy(accessibility = "slid")
 	private MobileElement seekBar;
 
-	@AndroidFindBy(accessibility = "//*[@content-desc='slid']//android.view.ViewGroup[@index='1']")
+	@AndroidFindBy(xpath = "//*[@content-desc='slid']//android.view.ViewGroup[@index='1']")
 	private MobileElement barCursor;
-	@AndroidFindBy(accessibility = "//*[@content-desc='slid']//android.view.ViewGroup[@index='3']")
+	@AndroidFindBy(xpath = "//*[@content-desc='slid']//android.view.ViewGroup[@index='3']")
 	private MobileElement currentExtentionBar;
 	
 	

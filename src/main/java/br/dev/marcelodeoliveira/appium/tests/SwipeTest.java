@@ -6,7 +6,7 @@ import org.junit.Test;
 import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
 import br.dev.marcelodeoliveira.appium.tests.logic.SwipeLogic;
 
-public class SwipeTest extends CTAppiumBaseTest {
+public class SwipeTest extends CTAppiumBaseTestVersionable{
 
 	private MenuLogic menuLogic;
 	private SwipeLogic swipeLogic;

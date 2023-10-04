@@ -9,7 +9,7 @@ import org.junit.Test;
 import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
 import br.dev.marcelodeoliveira.appium.tests.logic.TimePickerLogic;
 
-public class TimePickerTest extends CTAppiumBaseTest {
+public class TimePickerTest extends CTAppiumBaseTestVersionable{
 	private TimePickerLogic timePickerLogic;
 	private MenuLogic menuLogic;
 

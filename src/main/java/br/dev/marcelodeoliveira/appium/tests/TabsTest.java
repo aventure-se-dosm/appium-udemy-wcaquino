@@ -6,7 +6,7 @@ import org.junit.Test;
 import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
 import br.dev.marcelodeoliveira.appium.tests.logic.TabsLogic;
 
-public class TabsTest extends CTAppiumBaseTest {
+public class TabsTest extends CTAppiumBaseTestVersionable{
 
 	MenuLogic menuLogic;
 	TabsLogic tabsPage;
@@ -33,8 +33,8 @@ public class TabsTest extends CTAppiumBaseTest {
 	}
 
 	@Override
-	protected void setupLogic() {
-		// TODO Auto-generated method stub
+	public void setupLogic() {
+
 		
 		this.menuLogic = new MenuLogic();
 		this.tabsPage = new TabsLogic();

@@ -19,27 +19,11 @@ public class WebViewLogic extends BaseLogic {
 	protected WebDriverWait wait;
 	private WebViewPage page;
 
-	public WebViewLogic() {
-		PageFactory.initElements(new AppiumFieldDecorator(getDriver()), this);
-		wait = new WebDriverWait(getDriver(), 15L);
-		permissionContinue();
-		clickOkPopUp();
-	}
-
-	private void clickOkPopUp() {
-		click(page.getOkPopUp());
-		getDriver().findElement(By.xpath("//*[@resource-id='android:id/button1']")).click();
-	}
-
-	private void permissionContinue() {
-		getDriver().findElement(By.xpath("//*[@resource-id='com.android.permissioncontroller:id/continue_button']"))
-				.click();
-	}
 
 	public void switchToWebContext() {
-		Set<String> contextSet = getDriver().getContextHandles();
-		contextSet.stream().forEach(System.out::println);
-		getDriver().context((String) contextSet.toArray()[1]);
+	//	Set<String> contextSet = getDriver().getContextHandles();
+		//contextSet.stream().forEach(System.out::println);
+		getDriver().context((String) getDriver().getContextHandles().toArray()[1]);
 	}
 
 	public void setEmail(String email) {

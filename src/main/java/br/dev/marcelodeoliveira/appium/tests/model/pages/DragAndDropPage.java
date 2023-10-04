@@ -18,11 +18,11 @@ public class DragAndDropPage extends BasePage {
 	public DragAndDropPage() {
 		PageFactory.initElements(new AppiumFieldDecorator(getDriver()), this);
 		wait = new WebDriverWait(getDriver(), 15L);
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			Thread.sleep(1000);
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
 	}
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Esta']")

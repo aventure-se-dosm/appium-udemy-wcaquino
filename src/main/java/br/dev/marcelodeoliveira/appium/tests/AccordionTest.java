@@ -6,7 +6,7 @@ import org.junit.Test;
 import br.dev.marcelodeoliveira.appium.tests.logic.AccordionLogic;
 import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
 
-public class AccordionTest extends CTAppiumBaseTest {
+public class AccordionTest extends CTAppiumBaseTestVersionable {
 	private AccordionLogic accordionLogic;
 	private MenuLogic menuLogic;
 

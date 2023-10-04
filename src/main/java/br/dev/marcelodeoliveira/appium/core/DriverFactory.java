@@ -37,11 +37,13 @@ public class DriverFactory {
 		desiredCapabilities.setCapability("platformName", "Android");
 		desiredCapabilities.setCapability("deviceName", "emulator-5554");
 		desiredCapabilities.setCapability("automationName", "uiautomator2");
+		desiredCapabilities.setCapability("fullReset", true);
+		desiredCapabilities.setCapability("noReset", false);
 	}
 
 	public static void setAppAndAllowAppPermissionCapabilities() {
 		addCapability(MobileCapabilityType.APP,
-				"C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_1_2.apk");
+				"C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_2_0.apk");
 		addCapability("appWaitPackage", "com.google.android.permissioncontroller");
 		addCapability("appWaitActivity", "com.android.packageinstaller.permission.ui.ReviewPermissionsActivity");
 	}

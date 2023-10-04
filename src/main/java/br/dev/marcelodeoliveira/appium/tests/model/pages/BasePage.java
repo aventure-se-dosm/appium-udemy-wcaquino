@@ -17,13 +17,13 @@ public abstract class BasePage {
 
 	public BasePage() {
 		PageFactory.initElements(new AppiumFieldDecorator(getDriver()), this);
-		wait = new WebDriverWait(getDriver(), 15L);
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		wait = new WebDriverWait(getDriver(), 10L);
+//		try {
+//			Thread.sleep(1000);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
 	}
 	

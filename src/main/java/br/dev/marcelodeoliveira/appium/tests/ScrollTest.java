@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
 
-public class ScrollTest extends CTAppiumBaseTest {
+public class ScrollTest extends CTAppiumBaseTestVersionable {
 
 	private MenuLogic menuLogic;
 

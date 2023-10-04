@@ -6,7 +6,7 @@ import org.junit.Test;
 import br.dev.marcelodeoliveira.appium.tests.logic.AlertLogic;
 import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;;
 
-public class AlertTest extends CTAppiumBaseTest {
+public class AlertTest extends CTAppiumBaseTestVersionable {
 
 	private AlertLogic alertLogic;
 	private MenuLogic menuLogic;
