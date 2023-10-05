@@ -2,7 +2,6 @@ package br.dev.marcelodeoliveira.appium.tests.model.pages;
 
 import java.util.List;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -26,23 +25,23 @@ public class TimePickerPage extends BasePage {
 	@AndroidFindBy(id = "android:id/input_minute")
 	private MobileElement txtMinute;
 
-	private MobileElement getBtnOk() {
+	public MobileElement getBtnOk() {
 		return btnOk;
 	}
 
-	private MobileElement getLblTime() {
+	public MobileElement getLblTime() {
 		return lblTime;
 	}
 
-	private MobileElement getBtnKeyboardInput() {
+	public MobileElement getBtnKeyboardInput() {
 		return btnKeyboardInput;
 	}
 
-	private MobileElement getTxtHour() {
+	public MobileElement getTxtHour() {
 		return txtHour;
 	}
 
-	private MobileElement getTxtMinute() {
+	public MobileElement getTxtMinute() {
 		return txtMinute;
 	}
 
@@ -66,45 +65,45 @@ public class TimePickerPage extends BasePage {
 		return getMobileElementTextByAttribute(getListRdbHourMinute(), MobileElementAttribute.CONTENT_DESC, minuto);
 	}
 
-	public Object getHoraTxt(Integer hora) {
-		return super.getText(getHora(hora));
-	}
-
-	public Object getMinutoTxt(Integer minuto) {
-		return super.getText(getMinuto(minuto));
-	}
-
-	public void selecionaHora(Integer hour, Integer minute) {
-		click(getLblTime());
-		click(getBtnKeyboardInput());
-		writeText(getTxtHour(), hour.toString());
-		writeText(getTxtMinute(), minute.toString());
-
-	}
-
-	public void selecionaHoraSimples(Integer hour, Integer minute) {
-		int roundMinute = roundBy5(minute);
-		System.out.println(minute);
-		Assert.assertTrue(super.getAssertionMessage(50, roundMinute), 50 == roundMinute);
-		click(getLblTime());
-		click(getHora(hour));
-		click(getMinuto(minute));
-
-	}
-
-	private Integer roundBy5(Integer integer) {
-		if (integer % 5 != 0) {
-			integer = integer + (integer % 5 < 3 ? -integer % 5 : 5 - integer % 5);
-		}
-		return integer;
-	}
-
-	public String getHoraTxt() {
-		return getText(getLblTime());
-	}
-
-	public void clicaOk() {
-		click(getBtnOk());
-	}
+//	public Object getHoraTxt(Integer hora) {
+//		return super.getText(getHora(hora));
+//	}
+//
+//	public Object getMinutoTxt(Integer minuto) {
+//		return super.getText(getMinuto(minuto));
+//	}
+//
+//	public void selecionaHora(Integer hour, Integer minute) {
+//		click(getLblTime());
+//		click(getBtnKeyboardInput());
+//		writeText(getTxtHour(), hour.toString());
+//		writeText(getTxtMinute(), minute.toString());
+//
+//	}
+//
+//	public void selecionaHoraSimples(Integer hour, Integer minute) {
+//		int roundMinute = roundBy5(minute);
+//		System.out.println(minute);
+//		Assert.assertTrue(super.getAssertionMessage(50, roundMinute), 50 == roundMinute);
+//		click(getLblTime());
+//		click(getHora(hour));
+//		click(getMinuto(minute));
+//
+//	}
+//
+//	private Integer roundBy5(Integer integer) {
+//		if (integer % 5 != 0) {
+//			integer = integer + (integer % 5 < 3 ? -integer % 5 : 5 - integer % 5);
+//		}
+//		return integer;
+//	}
+//
+//	public String getHoraTxt() {
+//		return getText(getLblTime());
+//	}
+//
+//	public void clicaOk() {
+//		click(getBtnOk());
+//	}
 
 }

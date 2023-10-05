@@ -49,35 +49,35 @@ public class MenuPage extends BasePage {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='SeuBarriga Híbrido']")
 	private WebElement seuBarrigaHibrido;
 
-	private MobileElement getAlertMessage() {
+	public MobileElement getAlertMessage() {
 		return alertMessage;
 	}
 
-	private MobileElement getAlertTitle() {
+	public MobileElement getAlertTitle() {
 		return alertTitle;
 	}
 
-	private MobileElement getAbas() {
+	public MobileElement getAbas() {
 		return abas;
 	}
 
-	private WebElement getAccordion() {
+	public WebElement getAccordion() {
 		return accordion;
 	}
 
-	private WebElement getAlertas() {
+	public WebElement getAlertas() {
 		return alertas;
 	}
 
-	private MobileElement getBtnOk() {
+	public MobileElement getBtnOk() {
 		return btnOk;
 	}
 
-	private WebElement getCliques() {
+	public WebElement getCliques() {
 		return cliques;
 	}
 
-	private WebElement getDragAndDrop() {
+	public WebElement getDragAndDrop() {
 		return this.dragAndDrop;
 	}
 
@@ -85,11 +85,11 @@ public class MenuPage extends BasePage {
 		return formulario;
 	}
 
-	private MobileElement getOpcaoEscondida() {
+	public MobileElement getOpcaoEscondida() {
 		return opcaoEscondida;
 	}
-	
- 	private WebElement getSeuBarrigaHibrido() {
+
+	public WebElement getSeuBarrigaHibrido() {
 		return seuBarrigaHibrido;
 	}
 
@@ -97,75 +97,12 @@ public class MenuPage extends BasePage {
 		return splash;
 	}
 
-	private WebElement getSwipe() {
+	public WebElement getSwipe() {
 		return swipe;
 	}
 
-	private WebElement getSwipeList() {
+	public WebElement getSwipeList() {
 		return swipeList;
 	}
 
-	public void clicaFormulario() {
-		click(getFormulario());
-	}
-
-	public void clicaSplash() {
-		click(getSplash());
-	}
-
-	public boolean isMenuVisible() {
-		return isElementVisible(getFormulario());
-	}
-
-	public void clicaAbas() {
-		click(getAbas());
-	}
-
-	public void clicaAlertas() {
-		click(getAlertas());
-	}
-
-	public void clicaAccordion() {
-		click(getAccordion());
-	}
-
-	public void clicaCliques() {
-		click(getCliques());
-	}
-
-	public void clicaOpcaoEscondida() {
-		waitUntilWebElementToBeVisibleAndItsNotNull(getFormulario());
-		scrollDown();
-		click(getOpcaoEscondida());
-	}
-
-	public String getAlertMessageTxt() {
-		return getText(getAlertMessage());
-	}
-
-	public String getAlertTitleTxt() {
-		return getText(getAlertTitle());
-	}
-
-	public void clicaAlertOk() {
-		click(getBtnOk());
-	}
-
-	public void clickSwipe() {
-		click(getSwipe());
-	}
-
-	public void clicaSwipeList() {
-		scrollDown();
-		click(getSwipeList());
-	}
-
-	public void clicaDragAndDrop() {
-		scrollDown();
-		click(getDragAndDrop());
-	}
-
-	public void acessarSeuBarrigaHibrido() {
-		click(getSeuBarrigaHibrido());		
-	}
 }

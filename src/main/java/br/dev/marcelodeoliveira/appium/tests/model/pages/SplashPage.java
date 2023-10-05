@@ -1,7 +1,5 @@
 package br.dev.marcelodeoliveira.appium.tests.model.pages;
 
-import org.openqa.selenium.TimeoutException;
-
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 
@@ -14,25 +12,25 @@ public class SplashPage extends BasePage {
 		return txtSplash;
 	}
 
-	public Object getSplashText() {
-		return getTxtSplash().getText();
-	}
-
-	public boolean isSplashExibido() {
-		try {
-			waitUntilWebElementToBeVisibleAndItsNotNull(getTxtSplash());
-			return true;
-		} catch (TimeoutException e) {
-			return false;
-		}
-	}
-
-	public boolean aguardaSplashSumir() {
-		try {
-			waitUntilMobileElementToBeInvisible(getTxtSplash());
-			return true;
-		} catch (TimeoutException e) {
-			return false;
-		}
-	}
+//	public Object getSplashText() {
+//		return getTxtSplash().getText();
+//	}
+//
+//	public boolean isSplashExibido() {
+//		try {
+//			waitUntilWebElementToBeVisibleAndItsNotNull(getTxtSplash());
+//			return true;
+//		} catch (TimeoutException e) {
+//			return false;
+//		}
+//	}
+//
+//	public boolean aguardaSplashSumir() {
+//		try {
+//			waitUntilMobileElementToBeInvisible(getTxtSplash());
+//			return true;
+//		} catch (TimeoutException e) {
+//			return false;
+//		}
+//	}
 }

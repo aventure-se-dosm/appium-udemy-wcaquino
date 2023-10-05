@@ -1,9 +1,6 @@
 package br.dev.marcelodeoliveira.appium.tests.model.pages;
 
 import java.util.List;
-import java.util.stream.Collectors;
-
-import org.junit.Assert;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidBy;
@@ -12,11 +9,10 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 
 public class FormularioPage extends BasePage {
 
-
 	@AndroidFindBy(xpath = "//android.widget.TextView[starts-with(@text, 'Nome: ')]")
 	private MobileElement lblName;
 
-	private MobileElement getLblName() {
+	public MobileElement getLblName() {
 		return lblName;
 	}
 
@@ -31,6 +27,12 @@ public class FormularioPage extends BasePage {
 
 	@AndroidFindBy(accessibility = "switch")
 	private MobileElement switchHour;
+	@AndroidFindBy(id = "android:id/hours")
+	private MobileElement lblHours;
+	@AndroidFindBy(id = "android:id/minutes")
+	private MobileElement lblMinutes;
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, ':00')]")
+	private MobileElement lblHourAndMinutes;
 
 	@AndroidFindBy(xpath = "//android.widget.CheckedTextView")
 	private List<MobileElement> menuGameConsoles;
@@ -44,13 +46,15 @@ public class FormularioPage extends BasePage {
 	@AndroidFindAll(value = { @AndroidBy(xpath = "//android.widget.TextView") })
 	List<MobileElement> listAllTextView;
 
-	private MobileElement getBtnSalvarDemorado() {
+	public MobileElement getBtnSalvarDemorado() {
 		return btnSalvarDemorado;
 	}
 
-
 	public MobileElement getTxtName() {
 		return txtName;
+	}
+	public MobileElement getLblHourAndMinutes() {
+		return lblHourAndMinutes;
 	}
 
 	public MobileElement getSpinner() {
@@ -69,7 +73,7 @@ public class FormularioPage extends BasePage {
 		return getMenuGameConsoles().stream().filter(e -> e.getText().equalsIgnoreCase(console)).findFirst().get();
 	}
 
-	private List<MobileElement> getMenuGameConsoles() {
+	public List<MobileElement> getMenuGameConsoles() {
 
 		return menuGameConsoles;
 	}
@@ -83,53 +87,5 @@ public class FormularioPage extends BasePage {
 	}
 
 
-	public void escreveNome(String txtNameString) {
-		writeText(getTxtName(), txtNameString);
-	}
-
-	public void mudaSwitch(boolean status) {
-		changeElementState(getSwitchHour(), status);
-		Assert.assertEquals(true, isSwitchSelected());
-
-	}
-
-	public void mudaCheckbox(boolean status) {
-		changeElementState(getChkDate(), status);
-	}
-
-	public boolean isCheckboxSelected() {
-		return isElementChecked(getChkDate());
-	}
-
-	public boolean isSwitchSelected() {
-		return isElementChecked(getSwitchHour());
-	}
-
-	public void salvarForm() {
-
-		click(getBtnSalvar());
-		waitUntilWebElementToBeVisibleAndItsNotNull(getLblName());
-	}
-
-	public void salvarFormDemorado() {
-		click(getBtnSalvarDemorado());
-		waitUntilWebElementToBeVisibleAndItsNotNull(getLblName());
-
-	}
-
-	public void selecionaConsole(String selectedGameConsole) {
-		click(getSpinner());
-		click(getMenuGame(selectedGameConsole));
-	}
-
-	public List<String> getAllFormResponse() {
-		return getListAllTextView().stream().map(elem -> elem.getText()).filter(s -> ((String) s).contains(": "))
-				.collect(Collectors.toList());
-	}
-	public String getFormResponseAttribute(String attribute) {
-		return getAllFormResponse() .stream().map(s -> s.toLowerCase()).filter(s -> ((String) s).contains(attribute.toLowerCase()+": "))
-				.findAny().get();
-				
-	}
 
 }

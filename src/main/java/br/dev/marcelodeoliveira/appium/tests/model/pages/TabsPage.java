@@ -14,34 +14,34 @@ public class TabsPage extends BasePage {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text = 'Este é o conteúdo da Aba 2']")
 	private MobileElement lblAba2;
 
-	private MobileElement getAba1() {
+	public MobileElement getAba1() {
 		return aba1;
 	}
 
-	private MobileElement getAba2() {
+	public MobileElement getAba2() {
 		return aba2;
 	}
 
-	private MobileElement getLblAba1() {
+	public MobileElement getLblAba1() {
 		return lblAba1;
 	}
 
-	private MobileElement getLblAba2() {
+	public MobileElement getLblAba2() {
 		return lblAba2;
 	}
-
-	public String getlblAba1Txt() {
-		return selectAndReturnTabContent(getAba1(), getLblAba1());
-	}
-
-	public String getlblAba2Txt() {
-		return selectAndReturnTabContent(getAba2(), getLblAba2());
-	}
-
-	private String selectAndReturnTabContent(MobileElement tab, MobileElement content) {
-		if (!isElementSelected(tab))
-			click(tab);
-		return getText(content);
-	}
+//
+//	public String getlblAba1Txt() {
+//		return selectAndReturnTabContent(getAba1(), getLblAba1());
+//	}
+//
+//	public String getlblAba2Txt() {
+//		return selectAndReturnTabContent(getAba2(), getLblAba2());
+//	}
+//
+//	private String selectAndReturnTabContent(MobileElement tab, MobileElement content) {
+//		if (!isElementSelected(tab))
+//			click(tab);
+//		return getText(content);
+//	}
 
 }

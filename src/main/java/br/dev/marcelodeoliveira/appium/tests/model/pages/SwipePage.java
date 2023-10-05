@@ -26,28 +26,28 @@ public class SwipePage extends BasePage {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='›']")
 	private MobileElement icoSlideToTheRight;
 
-	private MobileElement getIcoSlideToTheLeft() {
+	public MobileElement getIcoSlideToTheLeft() {
 		return icoSlideToTheLeft;
 	}
 
-	private MobileElement getIcoSlideToTheRight() {
+	public MobileElement getIcoSlideToTheRight() {
 		return icoSlideToTheRight;
 	}
-
-	public void swipeToTheRight() {
-		swipeLeft();
-	}
-
-	public void swipeToTheLeft() {
-		swipeRight();
-	}
-
-	public void clicaBtnDir() {
-		click(getIcoSlideToTheRight());
-	}
-
-	public void clicaBtnEsq() {
-		click(getIcoSlideToTheLeft());
-	}
+//
+//	public void swipeToTheRight() {
+//		swipeLeft();
+//	}
+//
+//	public void swipeToTheLeft() {
+//		swipeRight();
+//	}
+//
+//	public void clicaBtnDir() {
+//		click(getIcoSlideToTheRight());
+//	}
+//
+//	public void clicaBtnEsq() {
+//		click(getIcoSlideToTheLeft());
+//	}
 
 }

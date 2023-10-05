@@ -1,4 +1,4 @@
-package br.dev.marcelodeoliveira.appium.tests;
+package br.dev.marcelodeoliveira.appium.tests.tests;
 
 import static br.dev.marcelodeoliveira.appium.core.DriverFactory.killDriver;
 
@@ -12,8 +12,8 @@ public abstract class BaseTest {
 	@Rule
 	public TestName testName = new TestName();
 
-	@Before ()
-	public abstract void setupTest();
+	@Before 
+	protected abstract void setupTest();
 
 	@After
 	public  void finishTest() {
