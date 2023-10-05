@@ -31,8 +31,6 @@ public class DragAndDropTest extends CTAppiumBaseTestVersionable{
 
 	@Override
 	protected void setupLogic() {
-		// TODO Auto-generated method stub
-		
 		this.menuLogic = new MenuLogic();
 		this.dragAndDropLogic = new DragAndDropLogic();
 		menuLogic.clicaDragAndDrop();

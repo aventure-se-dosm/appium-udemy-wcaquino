@@ -63,6 +63,7 @@ public class MenuLogic extends BaseLogic {
 	}
 
 	public void clicaDragAndDrop() {
+		waitUntilElementListToBeVisible(page.getFormulario());
 		scrollDown();
 		click(page.getDragAndDrop());
 	}
