@@ -7,10 +7,13 @@ public class TabsPage extends BasePage {
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text = 'Aba 1']")
 	private MobileElement aba1;
+
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text = 'Aba 2']")
 	private MobileElement aba2;
+
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text = 'Este é o conteúdo da Aba 1']")
 	private MobileElement lblAba1;
+
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text = 'Este é o conteúdo da Aba 2']")
 	private MobileElement lblAba2;
 
@@ -29,19 +32,4 @@ public class TabsPage extends BasePage {
 	public MobileElement getLblAba2() {
 		return lblAba2;
 	}
-//
-//	public String getlblAba1Txt() {
-//		return selectAndReturnTabContent(getAba1(), getLblAba1());
-//	}
-//
-//	public String getlblAba2Txt() {
-//		return selectAndReturnTabContent(getAba2(), getLblAba2());
-//	}
-//
-//	private String selectAndReturnTabContent(MobileElement tab, MobileElement content) {
-//		if (!isElementSelected(tab))
-//			click(tab);
-//		return getText(content);
-//	}
-
 }

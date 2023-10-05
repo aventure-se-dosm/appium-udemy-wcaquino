@@ -11,8 +11,6 @@ public class AlertTest extends CTAppiumBaseTestVersionable {
 	private AlertLogic alertLogic;
 	private MenuLogic menuLogic;
 
-
-
 	@Test
 	public void deveTestarAlertaConfirmNegar() {
 		menuLogic.clicaAlertas();
@@ -42,6 +40,7 @@ public class AlertTest extends CTAppiumBaseTestVersionable {
 		Assert.assertEquals("Pode clicar no OK ou fora da caixa para sair", msg);
 		Assert.assertTrue(alertLogic.isAlertInvisibleOrAbsent());
 	}
+
 	@Test
 	public void deveClicarForaDoAlertRestritivoEMensagemPermanecer() {
 		menuLogic.clicaAlertas();
@@ -53,10 +52,10 @@ public class AlertTest extends CTAppiumBaseTestVersionable {
 
 	@Override
 	protected void setupLogic() {
-		// TODO Auto-generated method stub
+
 		this.alertLogic = new AlertLogic();
 		this.menuLogic = new MenuLogic();
-		
+
 	}
 
 }

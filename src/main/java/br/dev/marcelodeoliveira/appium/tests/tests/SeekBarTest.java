@@ -9,8 +9,8 @@ import br.dev.marcelodeoliveira.appium.tests.logic.SeekBarLogic;
 
 public class SeekBarTest extends CTAppiumBaseTestVersionable {
 
-	MenuLogic menuLogic;
-	SeekBarLogic seekBarLogic;
+	private MenuLogic menuLogic;
+	private SeekBarLogic seekBarLogic;
 	private FormularioLogic formularioLogic;
 
 	@Test
@@ -25,7 +25,7 @@ public class SeekBarTest extends CTAppiumBaseTestVersionable {
 
 	@Override
 	protected void setupLogic() {
-		// TODO Auto-generated method stub
+
 		this.menuLogic = new MenuLogic();
 		this.formularioLogic = new FormularioLogic();
 		this.seekBarLogic = new SeekBarLogic();

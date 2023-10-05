@@ -22,11 +22,10 @@ public class FormularioLogic extends BaseLogic {
 		writeText(page.getTxtName(), txtNameString);
 	}
 
-	public boolean getResponseTuplesIfPresent(String ... values) {
-		return getAllFormResponse().containsAll(
-				Arrays.asList(values));
+	public boolean getResponseTuplesIfPresent(String... values) {
+		return getAllFormResponse().containsAll(Arrays.asList(values));
 	}
-	
+
 	public void mudaSwitch(boolean status) {
 		changeElementState(page.getSwitchHour(), status);
 		Assert.assertEquals(true, isSwitchSelected());
@@ -63,13 +62,15 @@ public class FormularioLogic extends BaseLogic {
 	}
 
 	public List<String> getAllFormResponse() {
-		//TODO: stream processings should be better on BaseLogic as proper individual methods!
+		// TODO: stream processings should be better on BaseLogic as proper individual
+		// methods!
 		return page.getListAllTextView().stream().map(elem -> elem.getText()).filter(s -> ((String) s).contains(": "))
 				.collect(Collectors.toList());
 	}
 
 	public String getFormResponseAttribute(String attribute) {
-		//TODO: stream processings should be better on BaseLogic as proper individual methods!
+		// TODO: stream processings should be better on BaseLogic as proper individual
+		// methods!
 		return getAllFormResponse().stream().map(s -> s.toLowerCase())
 				.filter(s -> ((String) s).contains(attribute.toLowerCase() + ": ")).findAny().get();
 	}

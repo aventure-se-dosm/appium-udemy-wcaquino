@@ -12,9 +12,9 @@ import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
 
 public class FormularioTest extends CTAppiumBaseTestVersionable {
 
-	MenuLogic menuLogic;
-	FormularioLogic formularioLogic;
-	final String TXT_USER_NAME = "Wagnão";
+	private MenuLogic menuLogic;
+	private FormularioLogic formularioLogic;
+	private final String TXT_USER_NAME = "Wagnão";
 
 	@Test
 	public void devePreencherCampoTeste() throws MalformedURLException {
@@ -62,21 +62,13 @@ public class FormularioTest extends CTAppiumBaseTestVersionable {
 		formularioLogic.salvarForm();
 
 		Assert.assertTrue(formularioLogic.getAllFormResponse()
-				.containsAll(Arrays.asList(
-						"Nome: ".concat(TXT_USER_NAME), 
-						"Console: switch",
-						"Slider: 25",
-						"Switch: On",
-						"Checkbox: Desabilitado",
-						"Data: 01/01/2000",
-						"Hora: ".concat(formularioLogic.getCurrentHourLabel()))
-				)
-		);
+				.containsAll(Arrays.asList("Nome: ".concat(TXT_USER_NAME), "Console: switch", "Slider: 25",
+						"Switch: On", "Checkbox: Desabilitado", "Data: 01/01/2000",
+						"Hora: ".concat(formularioLogic.getCurrentHourLabel()))));
 	}
 
 	@Override
 	protected void setupLogic() {
-		// TODO Auto-generated method stub
 
 		this.formularioLogic = new FormularioLogic();
 		this.menuLogic = new MenuLogic();

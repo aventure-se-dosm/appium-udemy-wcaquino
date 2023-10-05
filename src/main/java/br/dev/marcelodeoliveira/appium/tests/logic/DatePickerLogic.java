@@ -14,13 +14,11 @@ public class DatePickerLogic extends BaseLogic {
 	public void clicaData() {
 		click(page.getBtnDate());
 	}
-	
+
 	public void atualizaData() {
 		clicaData();
 		clicaOk();
 	}
-	
-	
 
 	public void clicaOk() {
 		click(page.getBtnOk());

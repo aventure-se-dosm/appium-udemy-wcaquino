@@ -6,7 +6,6 @@ import br.dev.marcelodeoliveira.appium.tests.model.pages.MenuPage;
 public class MenuLogic extends BaseLogic {
 	private MenuPage page;
 
-
 	public void clicaFormulario() {
 		click(page.getFormulario());
 	}

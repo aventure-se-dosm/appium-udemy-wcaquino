@@ -11,26 +11,4 @@ public class SplashPage extends BasePage {
 	public MobileElement getTxtSplash() {
 		return txtSplash;
 	}
-
-//	public Object getSplashText() {
-//		return getTxtSplash().getText();
-//	}
-//
-//	public boolean isSplashExibido() {
-//		try {
-//			waitUntilWebElementToBeVisibleAndItsNotNull(getTxtSplash());
-//			return true;
-//		} catch (TimeoutException e) {
-//			return false;
-//		}
-//	}
-//
-//	public boolean aguardaSplashSumir() {
-//		try {
-//			waitUntilMobileElementToBeInvisible(getTxtSplash());
-//			return true;
-//		} catch (TimeoutException e) {
-//			return false;
-//		}
-//	}
 }

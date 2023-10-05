@@ -7,18 +7,13 @@ import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import br.dev.marcelodeoliveira.appium.tests.model.pages.BasePage;
-import br.dev.marcelodeoliveira.appium.tests.model.pages.WebViewPage;
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
 public class WebViewLogic extends BaseLogic {
 
 	protected WebDriverWait wait;
-	private WebViewPage page;
-
 
 	public void switchToWebContext() {
 		Set<String> contextSet = getDriver().getContextHandles();
@@ -48,6 +43,6 @@ public class WebViewLogic extends BaseLogic {
 
 	@Override
 	protected void setupPages(BasePage... pages) {
-		this.page = new WebViewPage();
+		;
 	}
 }

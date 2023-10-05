@@ -6,7 +6,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 public class SwipePage extends BasePage {
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Mova a tela para']")
-	public MobileElement txtTela1_1;
+	private MobileElement txtTela1_1;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='a esquerda']")
 	private MobileElement txtTela1_2;
@@ -33,21 +33,5 @@ public class SwipePage extends BasePage {
 	public MobileElement getIcoSlideToTheRight() {
 		return icoSlideToTheRight;
 	}
-//
-//	public void swipeToTheRight() {
-//		swipeLeft();
-//	}
-//
-//	public void swipeToTheLeft() {
-//		swipeRight();
-//	}
-//
-//	public void clicaBtnDir() {
-//		click(getIcoSlideToTheRight());
-//	}
-//
-//	public void clicaBtnEsq() {
-//		click(getIcoSlideToTheLeft());
-//	}
 
 }

@@ -1,7 +1,5 @@
 package br.dev.marcelodeoliveira.appium.core;
 
-import static br.dev.marcelodeoliveira.appium.core.DriverFactory.addCapability;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
@@ -42,6 +40,7 @@ public class DriverFactory {
 		desiredCapabilities.setCapability("fullReset", true);
 		desiredCapabilities.setCapability("noReset", false);
 	}
+
 	public static void setDefaultCapabilitiesCalc() {
 		desiredCapabilities = new DesiredCapabilities();
 		desiredCapabilities.setCapability("platformName", "Android");

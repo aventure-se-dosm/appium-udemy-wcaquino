@@ -6,19 +6,10 @@ import org.junit.Test;
 import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
 import br.dev.marcelodeoliveira.appium.tests.logic.SwipeLogic;
 
-public class SwipeTest extends CTAppiumBaseTestVersionable{
+public class SwipeTest extends CTAppiumBaseTestVersionable {
 
 	private MenuLogic menuLogic;
 	private SwipeLogic swipeLogic;
-
-//	@Override
-//	public void setupTest() {
-//		setDefaultCapabilities();
-//		addCapability(MobileCapabilityType.APP,
-//				"C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_2_0.apk");
-//		setupDriver();
-//
-//	}
 
 	@Test
 	public void deveTestarSwipe() {
@@ -42,7 +33,7 @@ public class SwipeTest extends CTAppiumBaseTestVersionable{
 
 	@Override
 	protected void setupLogic() {
-		// TODO Auto-generated method stub
+
 		this.menuLogic = new MenuLogic();
 		this.swipeLogic = new SwipeLogic();
 		menuLogic.clickSwipe();

@@ -14,14 +14,19 @@ public class TimePickerPage extends BasePage {
 
 	@AndroidFindBy(xpath = "//*[@content-desc='switch']/following-sibling::*[2]/android.widget.TextView")
 	private MobileElement lblTime;
+	
 	@AndroidFindBy(id = "android:id/button1")
 	private MobileElement btnOk;
+
 	@AndroidFindBy(id = "android:id/button2")
 	private MobileElement btnCancel;
+
 	@AndroidFindBy(id = "android:id/toggle_mode")
 	private MobileElement btnKeyboardInput;
+
 	@AndroidFindBy(id = "android:id/input_hour")
 	private MobileElement txtHour;
+
 	@AndroidFindBy(id = "android:id/input_minute")
 	private MobileElement txtMinute;
 

@@ -18,18 +18,13 @@ public class DragAndDropPage extends BasePage {
 	public DragAndDropPage() {
 		PageFactory.initElements(new AppiumFieldDecorator(getDriver()), this);
 		wait = new WebDriverWait(getDriver(), 15L);
-//		try {
-//			Thread.sleep(1000);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
 	}
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Esta']")
-	MobileElement flagElement;
+	private MobileElement flagElement;
 
 	@AndroidFindAll(@AndroidBy(xpath = "//android.widget.TextView[contains(text(),'')]"))
-	List<WebElement> ListAllMovableTxt;
+	private List<WebElement> ListAllMovableTxt;
 
 	public String[] getExpectedInitialState() {
 		String[] a = { "Esta", "é uma lista", "Drag em Drop!", "Faça um clique longo,", "e arraste para",
@@ -55,9 +50,9 @@ public class DragAndDropPage extends BasePage {
 	public MobileElement getFlagElementBy() {
 		return this.flagElement;
 	}
-	
+
 	public List<WebElement> getListAllMovableElements() {
-	
+
 		return ListAllMovableTxt;
 	}
 
@@ -75,8 +70,6 @@ public class DragAndDropPage extends BasePage {
 //	public void drag(String elemOriginTxt, String elemDestinationTxt) {
 //		drag(getMovableElement(elemOriginTxt), getMovableElement(elemDestinationTxt));
 //	}
-
-
 
 //	public By getFlagElementBy() {
 //		// TODO Auto-generated method stub

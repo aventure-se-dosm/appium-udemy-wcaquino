@@ -9,23 +9,15 @@ import org.junit.Test;
 import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
 import br.dev.marcelodeoliveira.appium.tests.logic.TimePickerLogic;
 
-public class TimePickerTest extends CTAppiumBaseTestVersionable{
+public class TimePickerTest extends CTAppiumBaseTestVersionable {
 	private TimePickerLogic timePickerLogic;
 	private MenuLogic menuLogic;
-
-//	@Before
-//	public void setupTest() {
-//		setDefaultCapabilities();
-//		addCapability(MobileCapabilityType.APP,
-//				"C:/Users/MarcelodeOliveiraSan/Workspace/APPIUM/CursoAppium/src/main/resources/apks/CTAppium_2_0.apk");
-//		setupDriver();
-//	}
 
 	@Test
 	public void deveAlterarHoraEMinutoPorClique() {
 
-		final Integer hour = 15;
-		final Integer minute = 50;
+		Integer hour = 15;
+		Integer minute = 50;
 		Assert.assertTrue(minute % 5 == 0);
 		menuLogic.clicaFormulario();
 		timePickerLogic.selecionaHoraSimples(hour, minute);
@@ -37,8 +29,8 @@ public class TimePickerTest extends CTAppiumBaseTestVersionable{
 	@Test
 	public void deveAlterarHoraEMinutoPorValorInserido() {
 
-		final Integer hour = 15;
-		final Integer minute = 39;
+		Integer hour = 15;
+		Integer minute = 39;
 
 		menuLogic.clicaFormulario();
 		timePickerLogic.selecionaHora(hour, minute);
@@ -48,7 +40,7 @@ public class TimePickerTest extends CTAppiumBaseTestVersionable{
 	}
 
 	@Override
-	protected void setupLogic() {		
+	protected void setupLogic() {
 		this.menuLogic = new MenuLogic();
 		this.timePickerLogic = new TimePickerLogic();
 	}

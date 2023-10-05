@@ -16,18 +16,20 @@ public class WebViewPage extends BasePage {
 	public WebViewPage() {
 		PageFactory.initElements(new AppiumFieldDecorator(getDriver()), this);
 		wait = new WebDriverWait(getDriver(), 15L);
-//		permissionContinue();
-//		clickOkPopUp();
 	}
 
 	@FindBy(xpath = "//*[@resource-id='android:id/button1']")
 	private WebElement okPopUp;
+
 	@FindBy(xpath = "//*[@resource-id='com.android.permissioncontroller:id/continue_button']")
 	private WebElement btnContinue;
+
 	@FindBy(id = "email")
 	private WebElement txtEmail;
+
 	@FindBy(id = "senha")
 	private WebElement txtSenha;
+
 	@FindBy(xpath = "//*[text()='Entrar']")
 	private WebElement btnEntrar;
 
@@ -54,6 +56,5 @@ public class WebViewPage extends BasePage {
 	public WebElement getBtnEntrar() {
 		return btnEntrar;
 	}
-
 
 }

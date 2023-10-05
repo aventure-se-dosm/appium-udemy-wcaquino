@@ -13,7 +13,7 @@ import br.dev.marcelodeoliveira.appium.tests.logic.CalculadoraLogic;
 
 public class CalculadoraTest extends BaseTest {
 
-	CalculadoraLogic calculadoraLogic;
+	private CalculadoraLogic calculadoraLogic;
 	private final String APP_NEGATIVE_SIGN_CHAR = "−";
 
 	private String negative(String number) {
@@ -24,7 +24,7 @@ public class CalculadoraTest extends BaseTest {
 	@Override
 	public void setupTest() {
 		setDefaultCapabilitiesCalc();
-	
+
 		setupDriver();
 		this.calculadoraLogic = new CalculadoraLogic();
 

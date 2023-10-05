@@ -9,8 +9,6 @@ public class ScrollTest extends CTAppiumBaseTestVersionable {
 
 	private MenuLogic menuLogic;
 
-
-
 	@Test
 	public void deveEncontrarOpcaoEscondidaNoMenuPorScroll() {
 		menuLogic.clicaOpcaoEscondida();
@@ -21,7 +19,7 @@ public class ScrollTest extends CTAppiumBaseTestVersionable {
 
 	@Override
 	protected void setupLogic() {
-		// TODO Auto-generated method stub
+
 		this.menuLogic = new MenuLogic();
 	}
 }

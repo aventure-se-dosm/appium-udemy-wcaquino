@@ -47,8 +47,7 @@ public abstract class BaseLogic {
 	}
 
 	private void waitUntilWebElementToBeVisibleAndItsNotNullForClick(WebElement element) {
-		wait.withTimeout(Duration.ofSeconds(10))
-		.until(ExpectedConditions.visibilityOf(element));
+		wait.withTimeout(Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(element));
 	}
 
 	public void tap(Integer x, Integer y) {

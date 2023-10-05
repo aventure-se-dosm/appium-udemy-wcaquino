@@ -9,9 +9,9 @@ import org.junit.Test;
 import br.dev.marcelodeoliveira.appium.tests.logic.DatePickerLogic;
 import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
 
-public class DatePickerTest extends CTAppiumBaseTestVersionable{
-	MenuLogic menuLogic;
-	DatePickerLogic datePickerLogic;
+public class DatePickerTest extends CTAppiumBaseTestVersionable {
+	private MenuLogic menuLogic;
+	private DatePickerLogic datePickerLogic;
 
 	@Test
 	public void deveMudarDataDoDiaParaDiaSelecionado() {
@@ -25,23 +25,19 @@ public class DatePickerTest extends CTAppiumBaseTestVersionable{
 		datePickerLogic.clicaData();
 		datePickerLogic.escolheDia(diaSelecionado);
 		datePickerLogic.clicaOk();
-		Assert.assertTrue(
-				(
-						LocalDate.of(oldDate.getYear(), oldDate.getMonth(), diaSelecionado).format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
-						.equals(datePickerLogic.getLblDateText()))
-				|| 
-				
-				(LocalDate.of(oldDate.getYear(), oldDate.getMonth(), diaSelecionado).format(DateTimeFormatter.ofPattern("d/M/yyyy"))
-				.equals(datePickerLogic.getLblDateText()))				
-				
-				);
-	
+		Assert.assertTrue((LocalDate.of(oldDate.getYear(), oldDate.getMonth(), diaSelecionado)
+				.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")).equals(datePickerLogic.getLblDateText())) ||
+
+				(LocalDate.of(oldDate.getYear(), oldDate.getMonth(), diaSelecionado)
+						.format(DateTimeFormatter.ofPattern("d/M/yyyy")).equals(datePickerLogic.getLblDateText()))
+
+		);
 
 	}
 
 	@Override
 	protected void setupLogic() {
-		// TODO Auto-generated method stub
+
 		this.menuLogic = new MenuLogic();
 		this.datePickerLogic = new DatePickerLogic();
 

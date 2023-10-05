@@ -12,10 +12,6 @@ public class FormularioPage extends BasePage {
 	@AndroidFindBy(xpath = "//android.widget.TextView[starts-with(@text, 'Nome: ')]")
 	private MobileElement lblName;
 
-	public MobileElement getLblName() {
-		return lblName;
-	}
-
 	@AndroidFindBy(accessibility = "nome")
 	private MobileElement txtName;
 
@@ -27,10 +23,13 @@ public class FormularioPage extends BasePage {
 
 	@AndroidFindBy(accessibility = "switch")
 	private MobileElement switchHour;
+	
 	@AndroidFindBy(id = "android:id/hours")
 	private MobileElement lblHours;
+	
 	@AndroidFindBy(id = "android:id/minutes")
 	private MobileElement lblMinutes;
+	
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, ':00')]")
 	private MobileElement lblHourAndMinutes;
 
@@ -44,15 +43,20 @@ public class FormularioPage extends BasePage {
 	private MobileElement btnSalvarDemorado;
 
 	@AndroidFindAll(value = { @AndroidBy(xpath = "//android.widget.TextView") })
-	List<MobileElement> listAllTextView;
+	private List<MobileElement> listAllTextView;
 
 	public MobileElement getBtnSalvarDemorado() {
 		return btnSalvarDemorado;
 	}
 
+	public MobileElement getLblName() {
+		return lblName;
+	}
+
 	public MobileElement getTxtName() {
 		return txtName;
 	}
+
 	public MobileElement getLblHourAndMinutes() {
 		return lblHourAndMinutes;
 	}
@@ -85,7 +89,5 @@ public class FormularioPage extends BasePage {
 	public List<MobileElement> getListAllTextView() {
 		return listAllTextView;
 	}
-
-
 
 }

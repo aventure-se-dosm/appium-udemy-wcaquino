@@ -7,12 +7,10 @@ import org.junit.Test;
 import br.dev.marcelodeoliveira.appium.tests.logic.DragAndDropLogic;
 import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
 
-public class DragAndDropTest extends CTAppiumBaseTestVersionable{
+public class DragAndDropTest extends CTAppiumBaseTestVersionable {
 
 	private DragAndDropLogic dragAndDropLogic;
 	private MenuLogic menuLogic;
-
-
 
 	@Test
 	public void deveEfetuarDragAndDrop() {

@@ -6,12 +6,10 @@ import org.junit.Test;
 import br.dev.marcelodeoliveira.appium.tests.logic.MenuLogic;
 import br.dev.marcelodeoliveira.appium.tests.logic.SplashLogic;
 
-public class SplashTest extends CTAppiumBaseTestVersionable{
+public class SplashTest extends CTAppiumBaseTestVersionable {
 
 	private SplashLogic splashLogic;
 	private MenuLogic menuLogic;
-
-
 
 	@Test
 	public void deveAguardarSplashSumir() {

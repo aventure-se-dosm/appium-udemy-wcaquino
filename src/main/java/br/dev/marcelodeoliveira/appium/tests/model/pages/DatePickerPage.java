@@ -26,6 +26,7 @@ public class DatePickerPage extends BasePage {
 	public WebElement getBtnOk() {
 		return btnOk;
 	}
+
 //
 	public MobileElement getBtnDate() {
 		return btnDate;

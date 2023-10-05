@@ -7,6 +7,7 @@ public class AccordionPage extends BasePage {
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Opção 1']")
 	private MobileElement btnOpcao1;
+
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Opção 1']/../../following-sibling::android.view.ViewGroup//android.widget.TextView")
 	private MobileElement txtOpcao1;
 

@@ -12,11 +12,11 @@ public abstract class BaseTest {
 	@Rule
 	public TestName testName = new TestName();
 
-	@Before 
+	@Before
 	protected abstract void setupTest();
 
 	@After
-	public  void finishTest() {
+	public void finishTest() {
 		killDriver();
 	}
 
