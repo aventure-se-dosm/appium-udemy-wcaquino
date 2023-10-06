@@ -36,7 +36,7 @@ public class DatePickerTest extends CTAppiumBaseTestVersionable {
 	}
 
 	@Override
-	protected void setupLogic() {
+	protected void setupBaseLogic() {
 
 		this.menuLogic = new MenuLogic();
 		this.datePickerLogic = new DatePickerLogic();

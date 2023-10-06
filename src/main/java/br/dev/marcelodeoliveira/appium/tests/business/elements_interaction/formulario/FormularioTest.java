@@ -68,7 +68,7 @@ public class FormularioTest extends CTAppiumBaseTestVersionable {
 	}
 
 	@Override
-	protected void setupLogic() {
+	protected void setupBaseLogic() {
 
 		this.formularioLogic = new FormularioLogic();
 		this.menuLogic = new MenuLogic();

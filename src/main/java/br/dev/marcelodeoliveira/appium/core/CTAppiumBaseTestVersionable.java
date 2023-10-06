@@ -19,14 +19,14 @@ public abstract class CTAppiumBaseTestVersionable {
 
 		setDefaultCapabilities();
 		setupCTAppProperCapabilities();
-		setupLogic();
+		setupBaseLogic();
 	};
 
 	private void setupCTAppProperCapabilities() {
 		setAppAndAllowAppPermissionCapabilities("2.0");
 	}
 
-	protected abstract void setupLogic();
+	protected abstract void setupBaseLogic();
 
 	@After
 	public void finishTest() {

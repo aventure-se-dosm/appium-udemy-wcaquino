@@ -24,7 +24,7 @@ public class SeekBarTest extends CTAppiumBaseTestVersionable {
 	}
 
 	@Override
-	protected void setupLogic() {
+	protected void setupBaseLogic() {
 
 		this.menuLogic = new MenuLogic();
 		this.formularioLogic = new FormularioLogic();

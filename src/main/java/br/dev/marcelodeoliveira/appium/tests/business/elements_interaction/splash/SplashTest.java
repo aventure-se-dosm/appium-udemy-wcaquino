@@ -22,7 +22,7 @@ public class SplashTest extends CTAppiumBaseTestVersionable {
 	}
 
 	@Override
-	protected void setupLogic() {
+	protected void setupBaseLogic() {
 		menuLogic = new MenuLogic();
 		splashLogic = new SplashLogic();
 	}

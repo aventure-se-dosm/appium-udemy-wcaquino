@@ -32,7 +32,7 @@ public class SwipeTest extends CTAppiumBaseTestVersionable {
 	}
 
 	@Override
-	protected void setupLogic() {
+	protected void setupBaseLogic() {
 
 		this.menuLogic = new MenuLogic();
 		this.swipeLogic = new SwipeLogic();
