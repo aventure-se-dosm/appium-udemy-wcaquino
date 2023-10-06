@@ -28,7 +28,7 @@ public class DragAndDropTest extends CTAppiumBaseTestVersionable {
 	}
 
 	@Override
-	protected void setupLogic() {
+	protected void setupBaseLogic() {
 		this.menuLogic = new MenuLogic();
 		this.dragAndDropLogic = new DragAndDropLogic();
 		menuLogic.clicaDragAndDrop();

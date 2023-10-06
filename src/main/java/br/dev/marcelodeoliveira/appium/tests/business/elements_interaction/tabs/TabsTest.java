@@ -22,7 +22,7 @@ public class TabsTest extends CTAppiumBaseTestVersionable {
 	}
 
 	@Override
-	public void setupLogic() {
+	public void setupBaseLogic() {
 
 		this.menuLogic = new MenuLogic();
 		this.tabsPage = new TabsLogic();

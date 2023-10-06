@@ -51,7 +51,7 @@ public class AlertTest extends CTAppiumBaseTestVersionable {
 	}
 
 	@Override
-	protected void setupLogic() {
+	protected void setupBaseLogic() {
 
 		this.alertLogic = new AlertLogic();
 		this.menuLogic = new MenuLogic();

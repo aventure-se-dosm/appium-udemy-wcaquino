@@ -27,7 +27,7 @@ public class SwipeListTest extends CTAppiumBaseTestVersionable {
 	}
 
 	@Override
-	protected void setupLogic() {
+	protected void setupBaseLogic() {
 		this.menuLogic = new MenuLogic();
 		this.swipeListLogic = new SwipeListLogic();
 

@@ -19,7 +19,7 @@ public class AccordionTest extends CTAppiumBaseTestVersionable {
 	}
 
 	@Override
-	protected void setupLogic() {
+	protected void setupBaseLogic() {
 		this.accordionLogic = new AccordionLogic();
 		this.menuLogic = new MenuLogic();
 	}

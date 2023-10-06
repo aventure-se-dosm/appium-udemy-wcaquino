@@ -1,27 +1,24 @@
 package br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app;
 
-import org.junit.Test;
-
 import br.dev.marcelodeoliveira.appium.core.CTAppiumBaseTestVersionable;
 import br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.menu.MenuLogic;
+import br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.login.LoginLogic;
 
-public class SeuBarrigaNativoTest extends CTAppiumBaseTestVersionable {
+public abstract class SeuBarrigaNativoTest extends CTAppiumBaseTestVersionable {
 
-	private SeuBarrigaNativoLogic sbLogic;
 	private MenuLogic menuLogic;
+	private LoginLogic loginLogic;
 
-	@Test
-	public void deveCadastrarContaComSucesso() {
-
-	}
+	protected abstract void setupLogic();
 
 	@Override
-	protected void setupLogic() {
-		this.sbLogic = new SeuBarrigaNativoLogic();
+	protected void setupBaseLogic() {
+		this.loginLogic = new LoginLogic();
 		this.menuLogic = new MenuLogic();
+		setupLogic();
 		menuLogic.clicaSeuBarrigaNativo();
-		sbLogic.login();
-		sbLogic.defaultTestSetUpReset();
+		loginLogic.login();
+		loginLogic.defaultTestSetUpReset();
 
 	}
 
