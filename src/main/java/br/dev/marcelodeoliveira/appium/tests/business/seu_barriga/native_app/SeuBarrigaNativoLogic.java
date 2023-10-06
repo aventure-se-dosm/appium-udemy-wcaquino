@@ -38,4 +38,18 @@ public class SeuBarrigaNativoLogic extends BaseLogic {
 		this.page = new SeuBarrigaNativoPage();
 	}
 
+	public void defaultTestSetUpReset() {
+		click(page.getbtnReset());
+	}
+
+	public void wipeAllReset() {
+		// TODO Auto-generated method stub
+		// All data are wiped out (accounts, transactions, &c&al@all!
+
+	}
+
+	public void reset() {
+		click(page.getbtnReset());
+	}
+
 }

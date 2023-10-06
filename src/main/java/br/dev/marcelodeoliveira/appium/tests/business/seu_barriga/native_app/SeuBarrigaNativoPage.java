@@ -1,5 +1,7 @@
 package br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app;
 
+import org.openqa.selenium.WebElement;
+
 import br.dev.marcelodeoliveira.appium.core.BasePage;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
@@ -12,6 +14,8 @@ public class SeuBarrigaNativoPage extends BasePage {
 	private MobileElement txtLoginPassword;
 	@AndroidFindBy(xpath = "//*[@text='ENTRAR']/ancestor::android.widget.Button")
 	private MobileElement btnEntrar;
+	@AndroidFindBy(xpath = "//*[@text='RESET']/ancestor::android.widget.Button")
+	private MobileElement btnReset;
 
 	public MobileElement getTxtLoginEmail() {
 		// TODO Auto-generated method stub
@@ -26,6 +30,11 @@ public class SeuBarrigaNativoPage extends BasePage {
 	public MobileElement getBtnEntrar() {
 		// TODO Auto-generated method stub
 		return btnEntrar;
+	}
+
+	public WebElement getbtnReset() {
+		// TODO Auto-generated method stub
+		return btnReset;
 	}
 
 }

@@ -37,8 +37,8 @@ public class DriverFactory {
 		desiredCapabilities.setCapability("platformName", "Android");
 		desiredCapabilities.setCapability("deviceName", "emulator-5554");
 		desiredCapabilities.setCapability("automationName", "uiautomator2");
-		desiredCapabilities.setCapability("fullReset", true);
-		desiredCapabilities.setCapability("noReset", false);
+		desiredCapabilities.setCapability("fullReset", false);
+		desiredCapabilities.setCapability("noReset", true);
 	}
 
 	public static void setDefaultCapabilitiesCalc() {
