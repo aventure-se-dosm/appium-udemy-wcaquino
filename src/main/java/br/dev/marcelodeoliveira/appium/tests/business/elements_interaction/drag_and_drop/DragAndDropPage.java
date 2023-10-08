@@ -57,24 +57,4 @@ public class DragAndDropPage extends BasePage {
 		return ListAllMovableTxt;
 	}
 
-//	public String[] getCurrentState() {
-//
-//		waitUntilWebElementToBeVisible(flagElementBy);
-//
-//		ArrayList<String> labels = (ArrayList<String>) waitUntilElementListToBeVisible(getListAllMovableElements())
-//				.stream().map(elem -> getText(elem).toString()).collect(Collectors.toList());
-//
-//		Assert.assertTrue(labels.size() > 0);
-//		return labels.toArray(new String[labels.size()]);
-//	}
-
-//	public void drag(String elemOriginTxt, String elemDestinationTxt) {
-//		drag(getMovableElement(elemOriginTxt), getMovableElement(elemDestinationTxt));
-//	}
-
-//	public By getFlagElementBy() {
-//		// TODO Auto-generated method stub
-//		return this.flagElementBy;
-//	}
-
 }

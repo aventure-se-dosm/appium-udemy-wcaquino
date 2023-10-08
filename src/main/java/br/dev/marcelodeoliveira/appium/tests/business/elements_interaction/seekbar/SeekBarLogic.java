@@ -45,17 +45,8 @@ public class SeekBarLogic extends BaseLogic {
 	public MobileElement getBarCursor() {
 		MobileElement a = waitUntilElementToBeVisible(page.getBarCursor());
 		return a;
-		/// .findElement(By.xpath("self:://android.view.ViewGroup[@index='1']"));
 	}
 
-	// TODO: Use baseLogic methods for cetting nested elements from another one.
-//	public MobileElement getFullExtentionBar() {
-//
-//		MobileElement m = (MobileElement) getNestedElement(page.getSeekBar(),
-//				By.xpath(".//android.view.ViewGroup[@index='2']"));
-//		Assert.assertEquals(m.getSize().width, 1080);
-//		return m;
-//	}
 
 	public WebElement getFullExtentionBar() {
 

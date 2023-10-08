@@ -37,7 +37,6 @@ public class DragAndDropLogic extends BaseLogic {
 
 	public String[] getCurrentState() {
 
-		// page.getFlagElementBy();
 
 		ArrayList<String> labels = (ArrayList<String>) waitUntilElementListToBeVisible(getListAllMovableElements())
 				.stream().map(elem -> getText(elem).toString()).collect(Collectors.toList());
@@ -61,16 +60,9 @@ public class DragAndDropLogic extends BaseLogic {
 
 		// TODO: stream processings should be better on BaseLogic as proper individual
 		// methods!
-
 		return page.getListAllMovableElements().stream().filter(elem -> elem.getAttribute("text").equals(elemName))
 				.findAny().get();
 	}
-
-//	private WebElement getMovableElement(String elemName) {
-//
-//		return getListAllMovableElements().stream().filter(elem -> elem.getAttribute("text").equals(elemName)).findAny()
-//				.get();
-//	}
 
 	@Override
 	protected void setupPages(BasePage... pages) {

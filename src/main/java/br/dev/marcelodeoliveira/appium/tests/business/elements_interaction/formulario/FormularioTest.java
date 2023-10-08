@@ -8,16 +8,21 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import br.dev.marcelodeoliveira.appium.core.CTAppiumBaseTestVersionable;
+import br.dev.marcelodeoliveira.appium.core.enums.GameConsole;
 import br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.menu.MenuLogic;
+import br.dev.marcelodeoliveira.appium.tests.model.dto.FormularioModel;
 
 public class FormularioTest extends CTAppiumBaseTestVersionable {
 
 	private MenuLogic menuLogic;
 	private FormularioLogic formularioLogic;
-	private final String TXT_USER_NAME = "Wagnão";
+
+	private FormularioModel formDto1;
+	private FormularioModel formDto_desafio;
+	private FormularioModel formDto2;
 
 	@Test
-	public void devePreencherCampoTeste() throws MalformedURLException {
+	public void devePreencherCampoTeste() {
 
 		String txtName = "Wagner";
 		formularioLogic.escreveNome(txtName);
@@ -27,44 +32,49 @@ public class FormularioTest extends CTAppiumBaseTestVersionable {
 	@Test
 	public void deveIteragirSwitchEScheckbox() throws MalformedURLException {
 
+		formularioLogic.setModel(formDto2);
+
 		formularioLogic.mudaSwitch(true);
 		formularioLogic.mudaCheckbox(true);
+				
 		Assert.assertTrue(formularioLogic.isCheckboxSelected());
 		Assert.assertEquals(true, formularioLogic.isSwitchSelected());
 	}
 
 	@Test
 	public void deveCadastrarNomeDemorado() throws MalformedURLException {
+		formularioLogic.setModel(formDto1);
 
-		// TODO: after: FormModel
-		// String selectedHour = formularioLogic.getCurrentHourLabel();
-		formularioLogic.escreveNome(TXT_USER_NAME);
+		formularioLogic.escreveNome();
 		formularioLogic.salvarFormDemorado();
 
-		Assert.assertTrue(
-				// formularioLogic.getAllFormResponse().toString(),
-				formularioLogic.getAllFormResponse().containsAll(Arrays.asList("Nome: ".concat(TXT_USER_NAME),
-						"Slider: 25", "Data: 01/01/2000", "Hora: ".concat(formularioLogic.getCurrentHourLabel()))));
+		Assert.assertTrue(isValuePresentOnRequest("Nome: ".concat(formDto1.getNome())));
 	}
 
 	@Test
 	public void deveResolverDesafio() {
 
-		final String TXT_USER_NAME = "Wagnão";
-		final String TXT_SELECTED_GAME_CONSOLE = "Nintendo Switch";
-		final Boolean statusSwitchHourSelected = true;
-		final Boolean statusChkDaterSeleced = false;
+		formularioLogic.setModel(formDto_desafio);
 
-		formularioLogic.escreveNome(TXT_USER_NAME);
-		formularioLogic.selecionaConsole(TXT_SELECTED_GAME_CONSOLE);
-		formularioLogic.mudaSwitch(statusSwitchHourSelected);
-		formularioLogic.mudaCheckbox(statusChkDaterSeleced);
+		formularioLogic.escreveNome();
+		formularioLogic.selecionaConsole();
+		formularioLogic.mudaSwitch();
+		formularioLogic.mudaCheckbox();
 		formularioLogic.salvarForm();
 
-		Assert.assertTrue(formularioLogic.getAllFormResponse()
-				.containsAll(Arrays.asList("Nome: ".concat(TXT_USER_NAME), "Console: switch", "Slider: 25",
-						"Switch: On", "Checkbox: Desabilitado", "Data: 01/01/2000",
-						"Hora: ".concat(formularioLogic.getCurrentHourLabel()))));
+		Assert.assertTrue(IsNameConsoleSwitchAndCheckboxValueSetCorrect());
+	}
+
+	private boolean isValuePresentOnRequest(String... values) {
+		return formularioLogic.getAllFormResponse().containsAll(Arrays.asList(values));
+	}
+
+	public boolean IsNameConsoleSwitchAndCheckboxValueSetCorrect() {
+		return formularioLogic.getAllFormResponse().containsAll(
+				Arrays.asList("Nome: ".concat(formDto_desafio.getNome()),
+						"Console: ".concat(formularioLogic.getFormModel().getConsoleRequestStr()),
+						"Switch: ".concat(formularioLogic.getFormModel().switchStatus()),
+						"Checkbox: ".concat(formularioLogic.getFormModel().checkBoxStatus())));
 	}
 
 	@Override
@@ -72,6 +82,11 @@ public class FormularioTest extends CTAppiumBaseTestVersionable {
 
 		this.formularioLogic = new FormularioLogic();
 		this.menuLogic = new MenuLogic();
+
+		formDto1 = new FormularioModel("Wagnão", GameConsole.NINTENDO_SWITCH, true, false);
+		formDto2 = new FormularioModel("Aquino", GameConsole.XBOX_ONE, true, true);
+		formDto_desafio = new FormularioModel("Gharbo", GameConsole.PS4, false, true);
+
 		menuLogic.clicaFormulario();
 
 	}

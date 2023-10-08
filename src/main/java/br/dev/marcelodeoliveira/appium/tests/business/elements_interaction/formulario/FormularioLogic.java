@@ -4,15 +4,19 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.junit.Assert;
-
 import br.dev.marcelodeoliveira.appium.core.BaseLogic;
 import br.dev.marcelodeoliveira.appium.core.BasePage;
+import br.dev.marcelodeoliveira.appium.tests.model.dto.FormularioModel;
 import io.appium.java_client.MobileElement;
 
 public class FormularioLogic extends BaseLogic {
 
 	private FormularioPage page;
+	private FormularioModel formModel;
+
+	FormularioModel getFormModel() {
+		return formModel;
+	}
 
 	public MobileElement getMenuGame(String console) {
 		return page.getMenuGameConsoles().stream().filter(e -> e.getText().equalsIgnoreCase(console)).findFirst().get();
@@ -22,14 +26,16 @@ public class FormularioLogic extends BaseLogic {
 		writeText(page.getTxtName(), txtNameString);
 	}
 
+	public void escreveNome() {
+		escreveNome(formModel.getNome());
+	}
+
 	public boolean getResponseTuplesIfPresent(String... values) {
 		return getAllFormResponse().containsAll(Arrays.asList(values));
 	}
 
 	public void mudaSwitch(boolean status) {
 		changeElementState(page.getSwitchHour(), status);
-		Assert.assertEquals(true, isSwitchSelected());
-
 	}
 
 	public void mudaCheckbox(boolean status) {
@@ -56,9 +62,9 @@ public class FormularioLogic extends BaseLogic {
 
 	}
 
-	public void selecionaConsole(String selectedGameConsole) {
+	public void selecionaConsole(String console) {
 		click(page.getSpinner());
-		click(page.getMenuGame(selectedGameConsole));
+		click(page.getMenuGame(console));
 	}
 
 	public List<String> getAllFormResponse() {
@@ -84,9 +90,31 @@ public class FormularioLogic extends BaseLogic {
 		return getText(page.getTxtName());
 	}
 
-	public String getCurrentHourLabel() {
+	public String getLblHourStr() {
 		return getText(page.getLblHourAndMinutes());
 	}
 
+	public void setModel(FormularioModel formModel) {
+		if (isNull(getFormModel()))
+			this.formModel = formModel;
+
+	}
+
+	public void selecionaConsole() {
+		selecionaConsole(formModel.getConsoleComboStr());
+	}
+
+	public void mudaSwitch() {
+		mudaSwitch(formModel.isSwitchSelected());
+
+	}
+
+	public void mudaCheckbox() {
+		mudaCheckbox(formModel.isCheckBoxSelected());
+	}
+
+	public String getLblDateStr() {
+		return getText(page.getLblDate());
+	}
 
 }

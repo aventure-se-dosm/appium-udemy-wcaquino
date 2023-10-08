@@ -36,35 +36,19 @@ public class ContaPage extends BasePage {
 		return btnExcluir;
 	}
 
-//	public void setAlertMessage(MobileElement alertSuccessMessage) {
-//		this.alertMessage = alertSuccessMessage;
-//	}
-//
-//	public void setTxtNomeConta(MobileElement txtNomeConta) {
-//		this.txtNomeConta = txtNomeConta;
-//	}
-//
-//	public void setBtnConta(MobileElement btnConta) {
-//		this.btnConta = btnConta;
-//	}
-
 	public MobileElement getTxtNomeConta() {
-		// TODO Auto-generated method stub
 		return txtNomeConta;
 	}
 
 	public MobileElement getLblAlertSuccessMessage() {
-		// TODO Auto-generated method stub
 		return alertSuccessMessage;
 	}
 
 	public MobileElement getLblAlertFailMessage() {
-		// TODO Auto-generated method stub
 		return alertFailMessage;
 	}
 
 	public MobileElement getBtnConta() {
-		// TODO Auto-generated method stub
 		return btnConta;
 	}
 

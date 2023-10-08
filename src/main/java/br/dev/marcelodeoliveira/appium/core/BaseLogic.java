@@ -83,6 +83,10 @@ public abstract class BaseLogic {
 				.moveTo(PointOption.point(new Point(x, endY))).release().perform();
 	}
 
+	protected boolean isNull(Object o) {
+		return o == null;
+	}
+
 	protected void scrollUp(Float pctInicio, Float pctFim) {
 		if (pctInicio < pctFim) {
 			scroll(pctInicio, pctFim);
