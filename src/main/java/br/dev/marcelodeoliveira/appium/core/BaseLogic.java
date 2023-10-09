@@ -376,4 +376,16 @@ public abstract class BaseLogic {
 		return waitUntilElementListToBeVisible(Arrays.asList(elements));
 	}
 
+	public WebElement getElementByText(String text, String classElem) {
+		return waitUntilWebElementToBeVisible(By.xpath(String.format("//%s[@text='%s']", classElem, text)));
+	}
+
+	public WebElement getElementByText(String text) {
+		return waitUntilWebElementToBeVisible(By.xpath(String.format("//*[@text='%s']", text)));
+	}
+
+	public WebElement getElementContainingText(String text) {
+		return waitUntilWebElementToBeVisible(By.xpath(String.format("//*[contains(@text, '%s']", text)));
+	}
+
 }

@@ -18,10 +18,12 @@ public class ContaPage extends BasePage {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Contas']")
 	private MobileElement btnConta;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text='SALVAR']/ancestor::android.widget.Button")
+	 @AndroidFindBy(xpath = "//android.widget.TextView[@text='SALVAR']/ancestor::android.widget.Button")
+	//@AndroidFindBy(xpath = "//android.widget.Button/android.widget.TextView[@text='SALVAR']/ancestor::*")
 	private MobileElement btnSalvar;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text='EXCLUIR']/ancestor::android.widget.Button")
+	 @AndroidFindBy(xpath = "//android.widget.TextView[@text='EXCLUIR']/ancestor::android.widget.Button")
+	//@AndroidFindBy(xpath = "//android.widget.Button/android.widget.TextView[@text='EXCLUIR']/ancestor::*")
 	private MobileElement btnExcluir;
 
 	public MobileElement getAlertMessage() {

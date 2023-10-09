@@ -4,49 +4,4 @@ import br.dev.marcelodeoliveira.appium.core.BaseLogic;
 
 public abstract class SeuBarrigaNativoLogic extends BaseLogic {
 
-//	UserSignUpDTO usuarioDtoCadastro;
-//	UserLoginDTO usuarioLoginDto;
-//
-//	SeuBarrigaNativoPage page;
-
-//	private void setupDataMass() {
-//		usuarioDtoCadastro = new UserSignUpDTO("Ghrb", "magh@ri.bi", "!1234");
-//		usuarioLoginDto = usuarioDtoCadastro.getLoginUserDTO();
-//	}
-//
-//	public void login() {
-//		fillLoginForm();
-//		clickEnter();
-//	}
-//
-//	private void clickEnter() {
-//		click(page.getBtnEntrar());
-//		System.out.println("for debug purpouses");
-//	}
-//
-//	public void fillLoginForm() {
-//		writeText(page.getTxtLoginEmail(), usuarioLoginDto.getEmail());
-//		writeText(page.getTxtLoginPassword(), usuarioLoginDto.getPassword());
-//	}
-//
-//	@Override
-//	protected void setupPages(BasePage... pages) {
-//		setupDataMass();
-//		this.page = new SeuBarrigaNativoPage();
-//	}
-//
-//	public void defaultTestSetUpReset() {
-//		click(page.getbtnReset());
-//	}
-//
-//	public void wipeAllReset() {
-//		// TODO Auto-generated method stub
-//		// All data are wiped out (accounts, transactions, &c&al@all!
-//
-//	}
-//
-//	public void reset() {
-//		click(page.getbtnReset());
-//	}
-
 }

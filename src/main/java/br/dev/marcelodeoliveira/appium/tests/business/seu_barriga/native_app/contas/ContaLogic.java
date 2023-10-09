@@ -2,10 +2,12 @@ package br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.co
 
 import java.time.LocalDate;
 
-import br.dev.marcelodeoliveira.appium.core.BasePage;
-import br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.SeuBarrigaNativoLogic;
+import org.openqa.selenium.By;
 
-public class ContaLogic extends SeuBarrigaNativoLogic {
+import br.dev.marcelodeoliveira.appium.core.BaseLogic;
+import br.dev.marcelodeoliveira.appium.core.BasePage;
+
+public class ContaLogic extends BaseLogic {
 
 	private ContaPage page;
 	private final String ACCOUNT_NAME_PREFFIX = "Conta";
@@ -20,7 +22,7 @@ public class ContaLogic extends SeuBarrigaNativoLogic {
 		return String.join("_", ACCOUNT_NAME_PREFFIX, LocalDate.now().toString());
 	}
 
-	private void cadastraConta(String nomeConta) {
+	void cadastraConta(String nomeConta) {
 		writeText(page.getTxtNomeConta(), nomeConta);
 		click(page.getBtnSalvar());
 	}
@@ -44,6 +46,22 @@ public class ContaLogic extends SeuBarrigaNativoLogic {
 	@Override
 	protected void setupPages(BasePage... pages) {
 		this.page = new ContaPage();
+	}
+
+	public void excluiConta(String nomeConta) {
+
+		longClick(getElementCenter(getElement(
+				By.xpath(String.format("//android.view.ViewGroup/android.widget.TextView[@text='%s']", nomeConta)))));
+		click(page.getBtnExcluir());
+	}
+
+	public String getAlertContaSalva() {
+
+		return getText(getElementByText("Conta excluída com sucesso", "android.widget.TextView"));
+	}
+	public String getAlertErrorContaEmUso() {
+		
+		return getText(getElementByText("Conta em uso nas movimentações", "android.widget.TextView"));
 	}
 
 }
