@@ -231,6 +231,12 @@ public abstract class BaseLogic {
 		element.sendKeys(text.toString());
 	}
 
+	protected void clickAndWriteText(MobileElement element, Object text) {
+		waitUntilWebElementToBeVisibleAndItsNotNull(element);
+		//element.click();
+		element.sendKeys(text.toString());
+	}
+
 	protected String getText(WebElement elem) {
 		waitUntilWebElementToBeVisibleAndItsNotNull(elem);
 		return elem.getText();

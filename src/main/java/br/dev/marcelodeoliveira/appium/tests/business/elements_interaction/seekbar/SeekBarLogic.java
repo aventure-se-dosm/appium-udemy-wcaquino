@@ -47,7 +47,6 @@ public class SeekBarLogic extends BaseLogic {
 		return a;
 	}
 
-
 	public WebElement getFullExtentionBar() {
 
 		MobileElement m = (MobileElement) getNestedElement(page.getSeekBar(),
