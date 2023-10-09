@@ -37,7 +37,20 @@ public class MovTest extends SeuBarrigaNativoTest {
 	}
 
 	@Test
-	public void verificaAbertura() {
+	public void deveAtualizarSaldoAoExcluirMovimentacao() {
+
+		//verificar salfo "Conta para Saldo" = 534.00
+
+		//ir para resumo
+
+		//excluir mocimentacao 3
+
+		// validar a mensagem "Movimentação removida com sucesso"
+
+		//atualizar saldos
+
+		//verificar saldo = -1000.00 
+
 	}
 
 	@Override
