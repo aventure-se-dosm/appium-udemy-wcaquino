@@ -15,16 +15,23 @@ public class ContaPage extends BasePage {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Problemas de comunicação']")
 	private MobileElement alertFailMessage;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Contas']")
-	private MobileElement btnConta;
-
-	 @AndroidFindBy(xpath = "//android.widget.TextView[@text='SALVAR']/ancestor::android.widget.Button")
-	//@AndroidFindBy(xpath = "//android.widget.Button/android.widget.TextView[@text='SALVAR']/ancestor::*")
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='SALVAR']/ancestor::android.widget.Button")
 	private MobileElement btnSalvar;
 
-	 @AndroidFindBy(xpath = "//android.widget.TextView[@text='EXCLUIR']/ancestor::android.widget.Button")
-	//@AndroidFindBy(xpath = "//android.widget.Button/android.widget.TextView[@text='EXCLUIR']/ancestor::*")
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='EXCLUIR']/ancestor::android.widget.Button")
 	private MobileElement btnExcluir;
+
+//	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Contas']")
+//	private MobileElement btnConta;
+//
+//	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Mov...']")
+//	private MobileElement btnMov;
+//
+//	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Resumo']")
+//	private MobileElement btnHome;
+//
+//	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Home']")
+//	private MobileElement btnResumo;
 
 	public MobileElement getAlertMessage() {
 		return alertSuccessMessage;
@@ -50,8 +57,12 @@ public class ContaPage extends BasePage {
 		return alertFailMessage;
 	}
 
-	public MobileElement getBtnConta() {
-		return btnConta;
+	public MobileElement getAlertSuccessMessage() {
+		return alertSuccessMessage;
+	}
+
+	public MobileElement getAlertFailMessage() {
+		return alertFailMessage;
 	}
 
 }

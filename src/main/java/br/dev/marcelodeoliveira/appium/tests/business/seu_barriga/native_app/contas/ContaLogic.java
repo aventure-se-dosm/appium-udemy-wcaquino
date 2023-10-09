@@ -6,16 +6,17 @@ import org.openqa.selenium.By;
 
 import br.dev.marcelodeoliveira.appium.core.BaseLogic;
 import br.dev.marcelodeoliveira.appium.core.BasePage;
+import br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.menu.MenuPage;
 
 public class ContaLogic extends BaseLogic {
 
 	private ContaPage page;
+	private MenuPage menuPage;
 	private final String ACCOUNT_NAME_PREFFIX = "Conta";
 	private final String ACCOUNT_DUPLICATE_NAME = "Conta mesmo nome";
 
 	public void clickContas() {
-		click(page.getBtnConta());
-
+		click(menuPage.getBtnConta());
 	}
 
 	private String getUniqueAccountName() {
@@ -59,8 +60,9 @@ public class ContaLogic extends BaseLogic {
 
 		return getText(getElementByText("Conta excluída com sucesso", "android.widget.TextView"));
 	}
+
 	public String getAlertErrorContaEmUso() {
-		
+
 		return getText(getElementByText("Conta em uso nas movimentações", "android.widget.TextView"));
 	}
 

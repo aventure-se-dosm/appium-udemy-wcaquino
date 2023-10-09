@@ -42,6 +42,7 @@ public class ContaTest extends SeuBarrigaNativoTest {
 		logic.excluiConta(CONTA_COM_MOVIMENTACAO);
 		Assert.assertEquals("Conta em uso nas movimentações", logic.getAlertErrorContaEmUso());
 	}
+	
 
 	@Override
 	protected void setupLogic() {
