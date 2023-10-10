@@ -35,7 +35,7 @@ public class MenuLogic extends BaseLogic {
 	}
 
 	public void clicaOpcaoEscondida() {
-		waitUntilWebElementToBeVisibleAndItsNotNull(page.getFormulario());
+		waitUntilWebElementToBeVisibleAndNotNull(page.getFormulario());
 		scrollDown();
 		click(page.getOpcaoEscondida());
 	}

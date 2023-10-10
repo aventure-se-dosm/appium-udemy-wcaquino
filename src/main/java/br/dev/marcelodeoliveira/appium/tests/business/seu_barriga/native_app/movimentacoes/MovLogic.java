@@ -79,15 +79,9 @@ public class MovLogic extends BaseLogic {
 
 	public void excluiTransacaoChave() {
 		click(menuPage.getBtnResumo());
-		//try {
 		swipeLeft(waitUntilElementToBePresent(resumoPage.getTestTransactionToExclude()));
 		click(resumoPage.getDelButton());
-		try {
-			Thread.sleep(2000l);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
+		waitUntilWebElementToBeVisibleAndNotNull(resumoPage.getLblAlert());
 	}
 
 	public void clicaContas() {
@@ -97,19 +91,7 @@ public class MovLogic extends BaseLogic {
 
 	public void atualizaSaldo() {
 		click(menuPage.getBtnHome());
-		try {
-			Thread.sleep(1000l);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		scrollUp(0.98f, 0.10f);
-		try {
-			Thread.sleep(1000l);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	public Object getSaldoContaTarget() {

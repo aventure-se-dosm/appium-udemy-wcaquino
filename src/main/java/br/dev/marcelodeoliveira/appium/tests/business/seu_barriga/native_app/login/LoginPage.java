@@ -18,22 +18,22 @@ public class LoginPage extends BasePage {
 	private MobileElement btnReset;
 
 	public MobileElement getTxtLoginEmail() {
-		// TODO Auto-generated method stub
+	
 		return txtLoginEmail;
 	}
 
 	public MobileElement getTxtLoginPassword() {
-		// TODO Auto-generated method stub
+	
 		return txtLoginPassword;
 	}
 
 	public MobileElement getBtnEntrar() {
-		// TODO Auto-generated method stub
+	
 		return btnEntrar;
 	}
 
 	public WebElement getbtnReset() {
-		// TODO Auto-generated method stub
+	
 		return btnReset;
 	}
 

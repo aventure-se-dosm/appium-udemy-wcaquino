@@ -5,7 +5,6 @@ import static br.dev.marcelodeoliveira.appium.core.DriverFactory.getDriver;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import org.junit.Assert;
@@ -125,15 +124,7 @@ public abstract class BaseLogic {
 	}
 
 	protected void swipeOverElement(WebElement element, Float pctInicio, Float pctFim) {
-
 		swipe(waitUntilElementToBeVisible(element).getRect().y, pctInicio, pctFim);
-//		int y = getWindowCenter().getY();
-//		int startX = (int) (getWindowWidth() * pctInicio);
-//		int endX = (int) (getWindowWidth() * pctFim);
-//
-//		new TouchAction<>(getDriver()).press(PointOption.point(new Point(startX, y)))
-//				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
-//				.moveTo(PointOption.point(new Point(endX, y))).release().perform();
 	}
 
 	protected void swipeLeft(WebElement element) {
@@ -211,7 +202,7 @@ public abstract class BaseLogic {
 		return (MobileElement) waitUntilElementToBeVisible(element);
 	}
 
-	protected boolean waitUntilWebElementToBeVisibleAndItsNotNull(WebElement element) {
+	protected boolean waitUntilWebElementToBeVisibleAndNotNull(WebElement element) {
 		return wait.until(ExpectedConditions.visibilityOf(element)) != null;
 	}
 
@@ -226,8 +217,10 @@ public abstract class BaseLogic {
 	protected WebElement waitUntilElementToBeVisible(WebElement element) {
 		return wait.withTimeout(Duration.ofSeconds(15l)).until(ExpectedConditions.visibilityOf(element));
 	}
+
 	protected MobileElement waitUntilElementToBePresent(By by) {
-		return (MobileElement) wait.withTimeout(Duration.ofSeconds(15l)).until(ExpectedConditions.presenceOfElementLocated(by));
+		return (MobileElement) wait.withTimeout(Duration.ofSeconds(15l))
+				.until(ExpectedConditions.presenceOfElementLocated(by));
 	}
 
 	protected MobileElement waitUntilElementToBeVisible(MobileElement element) {
@@ -255,18 +248,17 @@ public abstract class BaseLogic {
 	}
 
 	protected void writeText(MobileElement element, Object text) {
-		waitUntilWebElementToBeVisibleAndItsNotNull(element);
+		waitUntilWebElementToBeVisibleAndNotNull(element);
 		element.sendKeys(text.toString());
 	}
 
 	protected void clickAndWriteText(MobileElement element, Object text) {
-		waitUntilWebElementToBeVisibleAndItsNotNull(element);
-		// element.click();
+		waitUntilWebElementToBeVisibleAndNotNull(element);
 		element.sendKeys(text.toString());
 	}
 
 	protected String getText(WebElement elem) {
-		waitUntilWebElementToBeVisibleAndItsNotNull(elem);
+		waitUntilWebElementToBeVisibleAndNotNull(elem);
 		return elem.getText();
 	}
 
@@ -275,19 +267,19 @@ public abstract class BaseLogic {
 	}
 
 	public void changeElementState(MobileElement element, boolean status) {
-		waitUntilWebElementToBeVisibleAndItsNotNull(element);
+		waitUntilWebElementToBeVisibleAndNotNull(element);
 		if (isElementChecked(element) != status) {
 			click(element);
 		}
 	}
 
 	public String getAttribute(MobileElement element, String attrubute) {
-		waitUntilWebElementToBeVisibleAndItsNotNull(element);
+		waitUntilWebElementToBeVisibleAndNotNull(element);
 		return element.getAttribute(attrubute);
 	}
 
 	public boolean isElementChecked(MobileElement element) {
-		waitUntilWebElementToBeVisibleAndItsNotNull(element);
+		waitUntilWebElementToBeVisibleAndNotNull(element);
 		String s = element.getAttribute("checked");
 		boolean b = Boolean.parseBoolean(s);
 		return b;

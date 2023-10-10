@@ -16,7 +16,7 @@ public class SplashLogic extends BaseLogic {
 
 	public boolean isSplashExibido() {
 		try {
-			waitUntilWebElementToBeVisibleAndItsNotNull(page.getTxtSplash());
+			waitUntilWebElementToBeVisibleAndNotNull(page.getTxtSplash());
 			return true;
 		} catch (TimeoutException e) {
 			return false;

@@ -10,30 +10,29 @@ public class SeuBarrigaNativoPage extends BasePage {
 
 	@AndroidFindBy(xpath = "//android.widget.EditText[1]")
 	private MobileElement txtLoginEmail;
+
 	@AndroidFindBy(xpath = "//android.widget.EditText[2]")
 	private MobileElement txtLoginPassword;
+
 	@AndroidFindBy(xpath = "//*[@text='ENTRAR']/ancestor::android.widget.Button")
 	private MobileElement btnEntrar;
+
 	@AndroidFindBy(xpath = "//*[@text='RESET']/ancestor::android.widget.Button")
 	private MobileElement btnReset;
 
 	public MobileElement getTxtLoginEmail() {
-		// TODO Auto-generated method stub
 		return txtLoginEmail;
 	}
 
 	public MobileElement getTxtLoginPassword() {
-		// TODO Auto-generated method stub
 		return txtLoginPassword;
 	}
 
 	public MobileElement getBtnEntrar() {
-		// TODO Auto-generated method stub
 		return btnEntrar;
 	}
 
 	public WebElement getbtnReset() {
-		// TODO Auto-generated method stub
 		return btnReset;
 	}
 

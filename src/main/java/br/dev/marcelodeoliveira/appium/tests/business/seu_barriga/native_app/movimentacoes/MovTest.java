@@ -39,37 +39,17 @@ public class MovTest extends SeuBarrigaNativoTest {
 	@Test
 	public void deveAtualizarSaldoAoExcluirMovimentacao() {
 
-		// verificar saldo "Conta para Saldo" = 534.00
 		Assert.assertEquals("534.00", logic.obterSaldoConta3Txt());
-
-		// logic.clicaContas();
-		// ir para resumo
-
 		logic.clicaResumo();
-		// excluir movimentacao 3
 		logic.excluiTransacaoChave();
-		// validar a mensagem "Movimentação removida com sucesso"
 		Assert.assertEquals("Movimentação removida com sucesso!", logic.getrResumoLblAlertMsg());
 		logic.atualizaSaldo();
-		// atualizar saldos
-//		logic.atualizaSaldo();
-
-		// entrar em contas e atualizar (scroll cima pra baixo)
-		//logic.clicaContas();
-		
-		Assert.assertEquals("1534.00", logic.getSaldoContaTarget());
-
-
-		// verificar saldo = -1000.00
-		
-
+		Assert.assertEquals("-1000.00", logic.getSaldoContaTarget());
 	}
 
 	@Override
 	protected void setupLogic() {
 		this.logic = new MovLogic();
-		// TODO Auto-generated method stub
-
 	}
 
 }

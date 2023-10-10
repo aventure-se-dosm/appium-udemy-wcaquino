@@ -68,7 +68,6 @@ public class ContasPage extends BasePage {
 	}
 
 	public WebElement getSaldoConta3() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

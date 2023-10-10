@@ -35,9 +35,6 @@ public class AlertLogic extends BaseLogic {
 	}
 
 	public Point getOuterAlertReasonablePoint() {
-
-		// provisory
-
 		return new Point(100, 100);
 	}
 
@@ -59,7 +56,7 @@ public class AlertLogic extends BaseLogic {
 	}
 
 	public boolean isAlertPresent() {
-		return waitUntilWebElementToBeVisibleAndItsNotNull(page.getAlertFrame());
+		return waitUntilWebElementToBeVisibleAndNotNull(page.getAlertFrame());
 	}
 
 	public boolean isAlertInvisibleOrAbsent() {

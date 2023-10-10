@@ -15,7 +15,6 @@ public class SeekBarLogic extends BaseLogic {
 
 	public void moveSeekBarParaPorcentagemEscolhida(Float porcentagem) {
 
-		// TODO: Further refactoring opportunity
 		int cursorSquareEdgeMeasure = getWidth(getBarCursor());
 
 		int maxCurrentBarLength = getWidth(getFullExtentionBar()) - cursorSquareEdgeMeasure;

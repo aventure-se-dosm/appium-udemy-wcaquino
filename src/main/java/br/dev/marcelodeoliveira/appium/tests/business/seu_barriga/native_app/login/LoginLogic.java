@@ -11,22 +11,6 @@ public class LoginLogic extends BaseLogic {
 	UserSignUpDTO usuarioDtoCadastro;
 	UserLoginDTO usuarioLoginDto;
 
-//	@Override
-//	protected void setupPages(BasePage... pages) {
-//		this.loginPage = new LoginPage();
-//
-//	}
-
-//	public void login() {
-//		// TODO Auto-generated method stub
-//
-//	}
-//
-//	public void defaultTestSetUpReset() {
-//		// TODO Auto-generated method stub
-//
-//	}
-
 	public void defaultTestSetUpReset() {
 		click(page.getbtnReset());
 	}
@@ -55,12 +39,6 @@ public class LoginLogic extends BaseLogic {
 	protected void setupPages(BasePage... pages) {
 		setupDataMass();
 		this.page = new LoginPage();
-	}
-
-	public void wipeAllReset() {
-		// TODO Auto-generated method stub
-		// All data are wiped out (accounts, transactions, &c&al@all!
-
 	}
 
 	public void reset() {

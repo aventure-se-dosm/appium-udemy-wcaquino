@@ -53,12 +53,12 @@ public class FormularioLogic extends BaseLogic {
 	public void salvarForm() {
 
 		click(page.getBtnSalvar());
-		waitUntilWebElementToBeVisibleAndItsNotNull(page.getLblName());
+		waitUntilWebElementToBeVisibleAndNotNull(page.getLblName());
 	}
 
 	public void salvarFormDemorado() {
 		click(page.getBtnSalvarDemorado());
-		waitUntilWebElementToBeVisibleAndItsNotNull(page.getLblName());
+		waitUntilWebElementToBeVisibleAndNotNull(page.getLblName());
 
 	}
 
@@ -68,15 +68,11 @@ public class FormularioLogic extends BaseLogic {
 	}
 
 	public List<String> getAllFormResponse() {
-		// TODO: stream processings should be better on BaseLogic as proper individual
-		// methods!
 		return page.getListAllTextView().stream().map(elem -> elem.getText()).filter(s -> ((String) s).contains(": "))
 				.collect(Collectors.toList());
 	}
 
 	public String getFormResponseAttribute(String attribute) {
-		// TODO: stream processings should be better on BaseLogic as proper individual
-		// methods!
 		return getAllFormResponse().stream().map(s -> s.toLowerCase())
 				.filter(s -> ((String) s).contains(attribute.toLowerCase() + ": ")).findAny().get();
 	}
