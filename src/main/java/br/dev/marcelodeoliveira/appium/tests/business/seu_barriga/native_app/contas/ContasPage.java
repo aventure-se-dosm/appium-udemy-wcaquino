@@ -1,10 +1,12 @@
 package br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.contas;
 
+import org.openqa.selenium.WebElement;
+
 import br.dev.marcelodeoliveira.appium.core.BasePage;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 
-public class ContaPage extends BasePage {
+public class ContasPage extends BasePage {
 
 	@AndroidFindBy(xpath = "//android.widget.EditText[@text='Conta']")
 	private MobileElement txtNomeConta;
@@ -63,6 +65,11 @@ public class ContaPage extends BasePage {
 
 	public MobileElement getAlertFailMessage() {
 		return alertFailMessage;
+	}
+
+	public WebElement getSaldoConta3() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

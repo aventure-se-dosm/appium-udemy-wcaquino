@@ -10,7 +10,7 @@ import br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.men
 
 public class ContaLogic extends BaseLogic {
 
-	private ContaPage page;
+	private ContasPage page;
 	private MenuPage menuPage;
 	private final String ACCOUNT_NAME_PREFFIX = "Conta";
 	private final String ACCOUNT_DUPLICATE_NAME = "Conta mesmo nome";
@@ -46,7 +46,7 @@ public class ContaLogic extends BaseLogic {
 
 	@Override
 	protected void setupPages(BasePage... pages) {
-		this.page = new ContaPage();
+		this.page = new ContasPage();
 	}
 
 	public void excluiConta(String nomeConta) {

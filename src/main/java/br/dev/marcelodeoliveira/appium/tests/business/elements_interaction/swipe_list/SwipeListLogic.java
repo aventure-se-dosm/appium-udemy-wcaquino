@@ -84,7 +84,7 @@ public class SwipeListLogic extends BaseLogic {
 
 	public MobileElement getOptElelmByXpath(String index) {
 
-		return getElement(getSwipeBarXpathByIndex(index));
+		return (MobileElement) getElement(getSwipeBarXpathByIndex(index));
 	}
 
 	public String getSwipeBarText(String index) {

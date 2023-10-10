@@ -2,12 +2,16 @@ package br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.mo
 
 import br.dev.marcelodeoliveira.appium.core.BaseLogic;
 import br.dev.marcelodeoliveira.appium.core.BasePage;
+import br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.home.HomePage;
 import br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.menu.MenuPage;
+import br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.resumo.ResumoPage;
 
 public class MovLogic extends BaseLogic {
 
+	private HomePage homePage;
 	private MovPage movPage;
 	private MenuPage menuPage;
+	private ResumoPage resumoPage;
 
 	public void salvar() {
 		click(movPage.getBtnSalvar());
@@ -17,8 +21,10 @@ public class MovLogic extends BaseLogic {
 	@Override
 	protected void setupPages(BasePage... pages) {
 
+		this.homePage = new HomePage();
 		this.movPage = new MovPage();
 		this.menuPage = new MenuPage();
+		this.resumoPage = new ResumoPage();
 
 	}
 
@@ -30,6 +36,9 @@ public class MovLogic extends BaseLogic {
 
 	public String getLblAlertMsg() {
 		return getText(movPage.getLblAlertMessage());
+	}
+	public String getrResumoLblAlertMsg() {
+		return getText(movPage.getLblResumoAlertMessage());
 	}
 
 	public String getLblAlertMsgSuccess() {
@@ -60,6 +69,51 @@ public class MovLogic extends BaseLogic {
 
 	}
 
+	public String obterSaldoConta3Txt() {
+		return getText(homePage.getLblTargetAccountBalance());
+	}
 
+	public void clicaResumo() {
+		click(menuPage.getBtnResumo());
+	}
+
+	public void excluiTransacaoChave() {
+		click(menuPage.getBtnResumo());
+		//try {
+		swipeLeft(waitUntilElementToBePresent(resumoPage.getTestTransactionToExclude()));
+		click(resumoPage.getDelButton());
+		try {
+			Thread.sleep(2000l);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	public void clicaContas() {
+		click(menuPage.getBtnConta());
+		scrollDown();
+	}
+
+	public void atualizaSaldo() {
+		click(menuPage.getBtnHome());
+		try {
+			Thread.sleep(1000l);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		scrollUp(0.98f, 0.10f);
+		try {
+			Thread.sleep(1000l);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public Object getSaldoContaTarget() {
+		return getText(homePage.getNovoSaldoContaTarget());
+	}
 
 }

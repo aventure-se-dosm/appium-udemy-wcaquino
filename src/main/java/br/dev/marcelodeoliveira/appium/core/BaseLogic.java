@@ -5,6 +5,7 @@ import static br.dev.marcelodeoliveira.appium.core.DriverFactory.getDriver;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import org.junit.Assert;
@@ -33,7 +34,7 @@ public abstract class BaseLogic {
 	protected static final Float MAX_AXIS_MOVING_VALUE = 0.9F;
 
 	public BaseLogic() {
-		wait = new WebDriverWait(getDriver(), 15l);
+		wait = new WebDriverWait(getDriver(), 30l);
 		setupPages();
 	}
 
@@ -78,7 +79,7 @@ public abstract class BaseLogic {
 		int startY = (int) (getWindowHeight() * pctInicio);
 		int endY = (int) (getWindowHeight() * pctFim);
 
-		new TouchAction<>(getDriver()).press(PointOption.point(new Point(x, startY)))
+		new TouchAction<>(getDriver()).longPress(PointOption.point(new Point(x, startY)))
 				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
 				.moveTo(PointOption.point(new Point(x, endY))).release().perform();
 	}
@@ -121,6 +122,26 @@ public abstract class BaseLogic {
 		new TouchAction<>(getDriver()).press(PointOption.point(new Point(startX, y)))
 				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
 				.moveTo(PointOption.point(new Point(endX, y))).release().perform();
+	}
+
+	protected void swipeOverElement(WebElement element, Float pctInicio, Float pctFim) {
+
+		swipe(waitUntilElementToBeVisible(element).getRect().y, pctInicio, pctFim);
+//		int y = getWindowCenter().getY();
+//		int startX = (int) (getWindowWidth() * pctInicio);
+//		int endX = (int) (getWindowWidth() * pctFim);
+//
+//		new TouchAction<>(getDriver()).press(PointOption.point(new Point(startX, y)))
+//				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
+//				.moveTo(PointOption.point(new Point(endX, y))).release().perform();
+	}
+
+	protected void swipeLeft(WebElement element) {
+		swipeOverElement(element, MAX_AXIS_MOVING_VALUE, MIN_AXIS_MOVING_VALUE);
+	}
+
+	protected void swipeRight(WebElement element) {
+		swipeOverElement(element, MIN_AXIS_MOVING_VALUE, MAX_AXIS_MOVING_VALUE);
 	}
 
 	protected void swipe(Integer middleY, Float pctInicio, Float pctFim) {
@@ -178,12 +199,16 @@ public abstract class BaseLogic {
 		return getDriver().findElementByXPath(String.format(formatXpath, value));
 	}
 
-	protected MobileElement getElement(By by) {
-		return (MobileElement) waitUntilWebElementToBeVisible(by);
+//	protected MobileElement getElement(By by) {
+//		return (MobileElement) waitUntilWebElementToBeVisible(by);
+//	}
+
+	protected WebElement getElement(By by) {
+		return waitUntilWebElementToBeVisible(by);
 	}
 
 	protected MobileElement getElement(MobileElement element) {
-		return waitUntilElementToBeVisible(element);
+		return (MobileElement) waitUntilElementToBeVisible(element);
 	}
 
 	protected boolean waitUntilWebElementToBeVisibleAndItsNotNull(WebElement element) {
@@ -199,7 +224,10 @@ public abstract class BaseLogic {
 	}
 
 	protected WebElement waitUntilElementToBeVisible(WebElement element) {
-		return wait.until(ExpectedConditions.visibilityOf(element));
+		return wait.withTimeout(Duration.ofSeconds(15l)).until(ExpectedConditions.visibilityOf(element));
+	}
+	protected MobileElement waitUntilElementToBePresent(By by) {
+		return (MobileElement) wait.withTimeout(Duration.ofSeconds(15l)).until(ExpectedConditions.presenceOfElementLocated(by));
 	}
 
 	protected MobileElement waitUntilElementToBeVisible(MobileElement element) {
@@ -233,7 +261,7 @@ public abstract class BaseLogic {
 
 	protected void clickAndWriteText(MobileElement element, Object text) {
 		waitUntilWebElementToBeVisibleAndItsNotNull(element);
-		//element.click();
+		// element.click();
 		element.sendKeys(text.toString());
 	}
 
@@ -291,16 +319,24 @@ public abstract class BaseLogic {
 
 	}
 
+	protected int getElementYAxisRange(MobileElement element) {
+		return getElementCenter(element).getY();
+
+	}
+
 	protected Point getLocation(MobileElement element) {
 		return element.getLocation();
 	}
 
 	protected Point getElementCenter(MobileElement element) {
-		return waitUntilElementToBeVisible(element).getCenter();
+		return (waitUntilElementToBeVisible(element)).getCenter();
+
 	}
 
 	protected Point getElementCenter(WebElement element) {
-		return getElementCenter((MobileElement) element);
+		WebElement elem = waitUntilElementToBeVisible(element);
+		MobileElement elem2 = (MobileElement) elem;
+		return elem2.getCenter();
 	}
 
 	protected int getHeight(WebElement element) {

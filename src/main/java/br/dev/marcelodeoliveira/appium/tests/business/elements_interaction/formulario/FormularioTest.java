@@ -55,7 +55,6 @@ public class FormularioTest extends CTAppiumBaseTestVersionable {
 	public void deveResolverDesafio() {
 
 		formularioLogic.setModel(formDto_desafio);
-
 		formularioLogic.escreveNome();
 		formularioLogic.selecionaConsole();
 		formularioLogic.mudaSwitch();

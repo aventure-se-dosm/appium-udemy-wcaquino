@@ -12,10 +12,10 @@ public class MenuPage extends BasePage {
 	private MobileElement btnMov;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Resumo']/../*")
-	private MobileElement btnHome;
+	private MobileElement btnResumo;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Home']/../*")
-	private MobileElement btnResumo;
+	private MobileElement  btnHome;
 
 	public MobileElement getBtnConta() {
 		return btnConta;

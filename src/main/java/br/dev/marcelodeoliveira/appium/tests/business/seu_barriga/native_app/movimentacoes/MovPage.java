@@ -51,6 +51,13 @@ public class MovPage extends BasePage {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='SALVAR']/../following-sibling::*")
 	private MobileElement lblAlertMessage;
 
+	public MobileElement getLblResumoAlertMessage() {
+		return lblResumoAlertMessage;
+	}
+
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='ATUALIZAR']/../following-sibling::*")
+	private MobileElement lblResumoAlertMessage;
+
 	public MobileElement getComboSpinner() {
 		return MovComboSpinner;
 	}

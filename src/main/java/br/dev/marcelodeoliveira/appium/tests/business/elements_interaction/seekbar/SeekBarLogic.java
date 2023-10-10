@@ -43,7 +43,7 @@ public class SeekBarLogic extends BaseLogic {
 	}
 
 	public MobileElement getBarCursor() {
-		MobileElement a = waitUntilElementToBeVisible(page.getBarCursor());
+		MobileElement a = (MobileElement) waitUntilElementToBeVisible(page.getBarCursor());
 		return a;
 	}
 
