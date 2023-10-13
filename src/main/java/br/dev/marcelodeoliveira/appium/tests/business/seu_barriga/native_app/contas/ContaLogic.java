@@ -47,12 +47,14 @@ public class ContaLogic extends BaseLogic {
 	@Override
 	protected void setupPages(BasePage... pages) {
 		this.page = new ContasPage();
+		menuPage = new MenuPage();
 	}
 
 	public void excluiConta(String nomeConta) {
 
 		longClick(getElementCenter(getElement(
 				By.xpath(String.format("//android.view.ViewGroup/android.widget.TextView[@text='%s']", nomeConta)))));
+
 		click(page.getBtnExcluir());
 	}
 

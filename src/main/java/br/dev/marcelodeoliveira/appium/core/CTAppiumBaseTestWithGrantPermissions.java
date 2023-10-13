@@ -1,6 +1,6 @@
 package br.dev.marcelodeoliveira.appium.core;
 
-import static br.dev.marcelodeoliveira.appium.core.DriverFactory.getDriver;
+import static br.dev.marcelodeoliveira.appium.core.DriverFactory.getWebDriver;
 import static br.dev.marcelodeoliveira.appium.core.DriverFactory.killDriver;
 import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setAppAndAllowAppPermissionCapabilities;
 import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setDefaultCapabilities;
@@ -27,6 +27,7 @@ public abstract class CTAppiumBaseTestWithGrantPermissions {
 	@Before
 	public void setupProperTestCapabilities() {
 		setupCTAppProperCapabilities();
+
 		setupLogic();
 	}
 
@@ -34,9 +35,11 @@ public abstract class CTAppiumBaseTestWithGrantPermissions {
 
 		setAppAndAllowAppPermissionCapabilities("1.2");
 		try {
-			getDriver().findElement(By.xpath("//*[@resource-id='com.android.permissioncontroller:id/continue_button']"))
+			Thread.sleep(2000l);
+			getWebDriver()
+					.findElement(By.xpath("//*[@resource-id='com.android.permissioncontroller:id/continue_button']"))
 					.click();
-			getDriver().findElement(By.xpath("//*[@resource-id='android:id/button1']")).click();
+			getWebDriver().findElement(By.xpath("//*[@resource-id='android:id/button1']")).click();
 		} catch (Exception e) {
 
 			return;

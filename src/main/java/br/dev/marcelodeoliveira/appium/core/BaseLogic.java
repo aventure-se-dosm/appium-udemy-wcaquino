@@ -203,19 +203,19 @@ public abstract class BaseLogic {
 	}
 
 	protected boolean waitUntilWebElementToBeVisibleAndNotNull(WebElement element) {
-		return wait.until(ExpectedConditions.visibilityOf(element)) != null;
+		return wait.withTimeout(Duration.ofSeconds(15L)).until(ExpectedConditions.visibilityOf(element)) != null;
 	}
 
 	protected boolean waitUntilWebElementToBeVisibleAndItsNotNull(By by) {
-		return wait.until(ExpectedConditions.visibilityOfElementLocated(by)) != null;
+		return wait.withTimeout(Duration.ofSeconds(15L)).until(ExpectedConditions.visibilityOfElementLocated(by)) != null;
 	}
 
 	protected WebElement waitUntilWebElementToBeVisible(By by) {
-		return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+		return wait.withTimeout(Duration.ofSeconds(15L)).until(ExpectedConditions.visibilityOfElementLocated(by));
 	}
 
 	protected WebElement waitUntilElementToBeVisible(WebElement element) {
-		return wait.withTimeout(Duration.ofSeconds(15l)).until(ExpectedConditions.visibilityOf(element));
+		return wait.withTimeout(Duration.ofSeconds(15L)).until(ExpectedConditions.visibilityOf(element));
 	}
 
 	protected MobileElement waitUntilElementToBePresent(By by) {
@@ -224,15 +224,15 @@ public abstract class BaseLogic {
 	}
 
 	protected MobileElement waitUntilElementToBeVisible(MobileElement element) {
-		return (MobileElement) wait.until(ExpectedConditions.visibilityOf(element));
+		return (MobileElement) wait.withTimeout(Duration.ofSeconds(15L)).until(ExpectedConditions.visibilityOf(element));
 	}
 
 	protected List<WebElement> waitUntilElementListToBeVisible(List<WebElement> listAllTextView) {
-		return wait.until(ExpectedConditions.visibilityOfAllElements(listAllTextView));
+		return wait.withTimeout(Duration.ofSeconds(15L)).until(ExpectedConditions.visibilityOfAllElements(listAllTextView));
 	}
 
 	protected boolean waitUntilElementListToBeVisibleAndNotNull(List<WebElement> listAllTextView) {
-		return wait.until(ExpectedConditions.visibilityOfAllElements(
+		return wait.withTimeout(Duration.ofSeconds(15L)).until(ExpectedConditions.visibilityOfAllElements(
 				listAllTextView.stream().map(elem -> (MobileElement) elem).collect(Collectors.toList()))) != null;
 	}
 
@@ -244,7 +244,7 @@ public abstract class BaseLogic {
 		} catch (NoSuchElementException exp) {
 			return true;
 		}
-		return wait.until(ExpectedConditions.invisibilityOf(element));
+		return wait.withTimeout(Duration.ofSeconds(15L)).until(ExpectedConditions.invisibilityOf(element));
 	}
 
 	protected void writeText(MobileElement element, Object text) {
@@ -294,7 +294,7 @@ public abstract class BaseLogic {
 	}
 
 	public List<WebElement> getMobileElements(By by) {
-		return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(by));
+		return wait.withTimeout(Duration.ofSeconds(15L)).until(ExpectedConditions.presenceOfAllElementsLocatedBy(by));
 	}
 
 	public String getAssertionMessage(Object expectedValue, Object actualValue) {
@@ -321,14 +321,13 @@ public abstract class BaseLogic {
 	}
 
 	protected Point getElementCenter(MobileElement element) {
-		return (waitUntilElementToBeVisible(element)).getCenter();
+		return (element).getCenter();
 
 	}
 
 	protected Point getElementCenter(WebElement element) {
-		WebElement elem = waitUntilElementToBeVisible(element);
-		MobileElement elem2 = (MobileElement) elem;
-		return elem2.getCenter();
+
+		return getElementCenter(((MobileElement) element));
 	}
 
 	protected int getHeight(WebElement element) {
@@ -419,7 +418,7 @@ public abstract class BaseLogic {
 	}
 
 	public WebElement getElementContainingText(String text) {
-		return waitUntilWebElementToBeVisible(By.xpath(String.format("//*[contains(@text, '%s']", text)));
+		return waitUntilWebElementToBeVisible(By.xpath(String.format("//*[contains(text(), '%s')]", text)));
 	}
 
 }

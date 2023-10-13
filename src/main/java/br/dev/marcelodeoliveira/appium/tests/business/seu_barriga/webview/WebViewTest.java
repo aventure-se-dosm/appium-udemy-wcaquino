@@ -3,6 +3,7 @@ package br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.webview;
 import org.junit.Assert;
 import org.junit.Test;
 
+import br.dev.marcelodeoliveira.appium.core.CTAppiumBaseTestVersionable;
 import br.dev.marcelodeoliveira.appium.core.CTAppiumBaseTestWithGrantPermissions;
 import br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.menu.MenuLogic;
 
@@ -22,12 +23,18 @@ public class WebViewTest extends CTAppiumBaseTestWithGrantPermissions {
 	@Override
 	protected void setupLogic() {
 
+
 		this.menuLogic = new MenuLogic();
 		this.webViewLogic = new WebViewLogic();
-
+		
 		menuLogic.acessarSeuBarrigaHibrido();
 		webViewLogic.switchToWebContext();
+	}
 
+	//@Override
+	protected void setupBaseLogic() {
+		setupLogic();
+		
 	}
 
 }
