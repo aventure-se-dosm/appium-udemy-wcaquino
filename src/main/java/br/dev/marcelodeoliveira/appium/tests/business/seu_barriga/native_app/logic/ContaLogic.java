@@ -1,4 +1,4 @@
-package br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.contas;
+package br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.logic;
 
 import java.time.LocalDate;
 
@@ -6,12 +6,13 @@ import org.openqa.selenium.By;
 
 import br.dev.marcelodeoliveira.appium.core.BaseLogic;
 import br.dev.marcelodeoliveira.appium.core.BasePage;
-import br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.menu.MenuPage;
+import br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.page.ContasPage;
+import br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.page.MenuSeuBarrigaPage;
 
 public class ContaLogic extends BaseLogic {
 
 	private ContasPage page;
-	private MenuPage menuPage;
+	private MenuSeuBarrigaPage menuPage;
 	private final String ACCOUNT_NAME_PREFFIX = "Conta";
 	private final String ACCOUNT_DUPLICATE_NAME = "Conta mesmo nome";
 
@@ -23,7 +24,7 @@ public class ContaLogic extends BaseLogic {
 		return String.join("_", ACCOUNT_NAME_PREFFIX, LocalDate.now().toString());
 	}
 
-	void cadastraConta(String nomeConta) {
+	public void cadastraConta(String nomeConta) {
 		writeText(page.getTxtNomeConta(), nomeConta);
 		click(page.getBtnSalvar());
 	}
@@ -47,7 +48,7 @@ public class ContaLogic extends BaseLogic {
 	@Override
 	protected void setupPages(BasePage... pages) {
 		this.page = new ContasPage();
-		menuPage = new MenuPage();
+		menuPage = new MenuSeuBarrigaPage();
 	}
 
 	public void excluiConta(String nomeConta) {

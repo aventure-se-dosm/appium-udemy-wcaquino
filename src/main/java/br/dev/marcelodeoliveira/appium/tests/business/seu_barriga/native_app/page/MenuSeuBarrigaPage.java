@@ -1,10 +1,10 @@
-package br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.menu;
+package br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.page;
 
 import br.dev.marcelodeoliveira.appium.core.BasePage;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 
-public class MenuPage extends BasePage {
+public class MenuSeuBarrigaPage extends BasePage {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Contas']/../*")
 	private MobileElement btnConta;
 

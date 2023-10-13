@@ -79,8 +79,11 @@ public abstract class BaseLogic {
 		int endY = (int) (getWindowHeight() * pctFim);
 
 		new TouchAction<>(getDriver()).longPress(PointOption.point(new Point(x, startY)))
-				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
+
+				 //.waitAction(WaitOptions.waitOptions(Duration.ofMillis(100)))
 				.moveTo(PointOption.point(new Point(x, endY))).release().perform();
+
+		System.out.println("for debug purpouses");
 	}
 
 	protected boolean isNull(Object o) {
@@ -104,7 +107,7 @@ public abstract class BaseLogic {
 	}
 
 	protected void scrollDown() {
-		scrollDown(MIN_AXIS_MOVING_VALUE, MAX_AXIS_MOVING_VALUE);
+		scrollDown(MAX_AXIS_MOVING_VALUE, MIN_AXIS_MOVING_VALUE);
 	}
 
 	protected void scrollUp() {
@@ -207,7 +210,8 @@ public abstract class BaseLogic {
 	}
 
 	protected boolean waitUntilWebElementToBeVisibleAndItsNotNull(By by) {
-		return wait.withTimeout(Duration.ofSeconds(15L)).until(ExpectedConditions.visibilityOfElementLocated(by)) != null;
+		return wait.withTimeout(Duration.ofSeconds(15L))
+				.until(ExpectedConditions.visibilityOfElementLocated(by)) != null;
 	}
 
 	protected WebElement waitUntilWebElementToBeVisible(By by) {
@@ -224,11 +228,13 @@ public abstract class BaseLogic {
 	}
 
 	protected MobileElement waitUntilElementToBeVisible(MobileElement element) {
-		return (MobileElement) wait.withTimeout(Duration.ofSeconds(15L)).until(ExpectedConditions.visibilityOf(element));
+		return (MobileElement) wait.withTimeout(Duration.ofSeconds(15L))
+				.until(ExpectedConditions.visibilityOf(element));
 	}
 
 	protected List<WebElement> waitUntilElementListToBeVisible(List<WebElement> listAllTextView) {
-		return wait.withTimeout(Duration.ofSeconds(15L)).until(ExpectedConditions.visibilityOfAllElements(listAllTextView));
+		return wait.withTimeout(Duration.ofSeconds(15L))
+				.until(ExpectedConditions.visibilityOfAllElements(listAllTextView));
 	}
 
 	protected boolean waitUntilElementListToBeVisibleAndNotNull(List<WebElement> listAllTextView) {

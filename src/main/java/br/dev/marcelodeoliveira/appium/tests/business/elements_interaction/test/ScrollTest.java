@@ -20,7 +20,6 @@ public class ScrollTest extends CTAppiumBaseTestVersionable {
 
 	@Override
 	protected void setupBaseLogic() {
-
 		this.menuLogic = new MenuLogic();
 	}
 }

@@ -1,4 +1,4 @@
-package br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.movimentacoes;
+package br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.page;
 
 import br.dev.marcelodeoliveira.appium.core.BasePage;
 import io.appium.java_client.MobileElement;

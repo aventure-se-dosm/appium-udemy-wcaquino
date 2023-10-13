@@ -1,16 +1,17 @@
-package br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.movimentacoes;
+package br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.logic;
 
 import br.dev.marcelodeoliveira.appium.core.BaseLogic;
 import br.dev.marcelodeoliveira.appium.core.BasePage;
-import br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.home.HomePage;
-import br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.menu.MenuPage;
-import br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.resumo.ResumoPage;
+import br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.page.HomePage;
+import br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.page.MenuSeuBarrigaPage;
+import br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.page.MovPage;
+import br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.page.ResumoPage;
 
 public class MovLogic extends BaseLogic {
 
 	private HomePage homePage;
 	private MovPage movPage;
-	private MenuPage menuPage;
+	private MenuSeuBarrigaPage menuPage;
 	private ResumoPage resumoPage;
 
 	public void salvar() {
@@ -23,7 +24,7 @@ public class MovLogic extends BaseLogic {
 
 		this.homePage = new HomePage();
 		this.movPage = new MovPage();
-		this.menuPage = new MenuPage();
+		this.menuPage = new MenuSeuBarrigaPage();
 		this.resumoPage = new ResumoPage();
 
 	}

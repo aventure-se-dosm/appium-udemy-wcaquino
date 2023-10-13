@@ -1,9 +1,10 @@
-package br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.movimentacoes;
+package br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.test;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 import br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.SeuBarrigaNativoTest;
+import br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.logic.MovLogic;
 
 public class MovTest extends SeuBarrigaNativoTest {
 

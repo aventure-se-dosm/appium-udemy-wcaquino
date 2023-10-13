@@ -1,4 +1,4 @@
-package br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.login;
+package br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.page;
 
 import org.openqa.selenium.WebElement;
 

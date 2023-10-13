@@ -1,7 +1,8 @@
-package br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.login;
+package br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.logic;
 
 import br.dev.marcelodeoliveira.appium.core.BaseLogic;
 import br.dev.marcelodeoliveira.appium.core.BasePage;
+import br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.native_app.page.LoginPage;
 import br.dev.marcelodeoliveira.appium.tests.model.dto.UserLoginDTO;
 import br.dev.marcelodeoliveira.appium.tests.model.dto.UserSignUpDTO;
 
