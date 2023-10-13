@@ -3,9 +3,8 @@ package br.dev.marcelodeoliveira.appium.tests.business.seu_barriga.webview;
 import org.junit.Assert;
 import org.junit.Test;
 
-import br.dev.marcelodeoliveira.appium.core.CTAppiumBaseTestVersionable;
 import br.dev.marcelodeoliveira.appium.core.CTAppiumBaseTestWithGrantPermissions;
-import br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.menu.MenuLogic;
+import br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.logic.MenuLogic;
 
 public class WebViewTest extends CTAppiumBaseTestWithGrantPermissions {
 
