@@ -197,8 +197,12 @@ public class DriverFactory {
 	public static void setDriverNull(WebDriver driver) {
 		driver = null;
 	}
+	public static void setDriverNull() {
+		setAndroidDriverNull();
+		setWebDriverNull();
+	}
 
-	private static void setDriverNull() {
+	private static void setAndroidDriverNull() {
 		androidDriver = null;
 	}
 

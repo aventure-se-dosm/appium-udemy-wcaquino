@@ -13,8 +13,6 @@ import br.dev.marcelodeoliveira.appium.core.BaseTest;
 
 public class SauceLabsTest extends BaseTest {
 
-//	@Rule
-//	public TestName testName = new TestName();
 	private SauceLabsLogic logic;
 
 	@Before
@@ -34,16 +32,11 @@ public class SauceLabsTest extends BaseTest {
 
 	@After
 	public void tearDown() {
-		//logic.sairContextoWeb();
 		killDriver();
 	}
 
 	public void setupLogic() {
 		this.logic = new SauceLabsLogic();
 	}
-
-//	@After
-//	public void finishTest() {
-//	}
 
 }
