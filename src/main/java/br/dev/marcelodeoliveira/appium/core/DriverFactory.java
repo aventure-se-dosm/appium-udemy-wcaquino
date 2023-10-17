@@ -27,7 +27,6 @@ public class DriverFactory {
 		if (isdesiredCapabilitiesNull()) {
 			setDefaultCapabilities();
 		}
-
 		return desiredCapabilities;
 	}
 
@@ -36,46 +35,47 @@ public class DriverFactory {
 	}
 
 	public static void setDefaultCapabilities() {
+		setBasicCapabilities();
+		desiredCapabilities.setCapability("fullReset", false);
+		desiredCapabilities.setCapability("noReset", true);
+	}
+
+	public static void setBasicCapabilities() {
 		desiredCapabilities = new DesiredCapabilities();
 		desiredCapabilities.setCapability("platformName", "Android");
 		desiredCapabilities.setCapability("deviceName", "emulator-5554");
 		desiredCapabilities.setCapability("automationName", "uiautomator2");
-		desiredCapabilities.setCapability("fullReset", false);
-		desiredCapabilities.setCapability("noReset", true);
 	}
 
 	public static void setTestDriverCapabilities() {
 
 		setTestCapsCapabilites();
-
 		setSouceTestCapabilites();
-
 		caps.setCapability("sauce:options", sauceOptions);
 	}
 
 	public static void setTestCapsCapabilites() {
-		caps = new DesiredCapabilities();
+		caps = new MutableCapabilities();
 		caps.setCapability("platformName", "Android");
 		caps.setCapability("appium:app", "storage:filename=CTAppium_2_0.apk"); // The filename of the mobile app
-		// caps.setCapability("appium:deviceName", "Android GoogleAPI Emulator");
-		// caps.setCapability("appium:platformVersion", "12.0");
-		caps.setCapability("appium:automationName", "UiAutomator2");
+		
+		
+		 caps.setCapability("deviceName", "Android GoogleAPI Emulator");
+		 caps.setCapability("platformVersion", "12.0");
+		caps.setCapability("automationName", "uiautomator2");
 	}
 
 	public static void setSouceTestCapabilites() {
-		sauceOptions = new DesiredCapabilities();
+		sauceOptions = new MutableCapabilities();
 		sauceOptions.setCapability("username", "oauth-markeepgoin-8443f");
 		sauceOptions.setCapability("accessKey", "9ba09152-a3ec-46b4-bf4b-96448a62a0ac");
 		sauceOptions.setCapability("build", "appium-build-T9BD9");
-		sauceOptions.setCapability("name", "<your test name>");
+		sauceOptions.setCapability("name", "CTAppium");
 		// sauceOptions.setCapability("deviceOrientation", "PORTRAIT");
 	}
 
 	public static void setDefaultCapabilitiesCalc() {
-		desiredCapabilities = new DesiredCapabilities();
-		desiredCapabilities.setCapability("platformName", "Android");
-		desiredCapabilities.setCapability("deviceName", "emulator-5554");
-		desiredCapabilities.setCapability("automationName", "uiautomator2");
+		setBasicCapabilities();
 		addCapability("appPackage", "com.google.android.calculator");
 		addCapability("appActivity", "com.android.calculator2.Calculator");
 //		desiredCapabilities.setCapability("fullReset", true);
@@ -128,24 +128,24 @@ public class DriverFactory {
 
 	public static void setupTestDriver() {
 
-		androidDriver = null;
+		testDriver = null;
 		setTestDriverCapabilities();
 		try {
-			androidDriver = new AndroidDriver<MobileElement>(
-					new URL("https://ondemand.us-west-1.saucelabs.com:443/wd/hub"), caps);
-			// androidDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+			testDriver = new AndroidDriver<MobileElement>(
+					new URL("https://oauth-markeepgoin-8443f:9ba09152-a3ec-46b4-bf4b-96448a62a0ac@ondemand.us-west-1.saucelabs.com:443/wd/hub"), getTestCapsCapabilities());
+			
+			 testDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
 	}
 
 	public static Capabilities getTestCapsCapabilities() {
-		// TODO Auto-generated method stub
+		boolean c = caps == null;
 		return caps;
 	}
 
 	public static Capabilities getTestSauceOptionCapabilities() {
-		// TODO Auto-generated method stub
 		return sauceOptions;
 	}
 
@@ -174,7 +174,6 @@ public class DriverFactory {
 		if (!isDriverNull())
 			androidDriver.quit();
 		setDriverNull(getDriver());
-
 	}
 
 	public static void killWebDriver() {
@@ -187,6 +186,12 @@ public class DriverFactory {
 		if (!isWebDriverNull())
 			webDriver.quit();
 		setDriverNull(getTestDriver());
+	}
+	
+	public static void killEveryDriver() {
+		killDriver();
+		killWebDriver();
+		killTestDriver();
 	}
 
 	public static void setDriverNull(WebDriver driver) {
