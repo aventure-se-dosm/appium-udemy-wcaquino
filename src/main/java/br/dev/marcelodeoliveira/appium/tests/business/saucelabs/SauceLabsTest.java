@@ -1,60 +1,49 @@
 package br.dev.marcelodeoliveira.appium.tests.business.saucelabs;
 
-import static br.dev.marcelodeoliveira.appium.core.DriverFactory.getTestDriver;
 import static br.dev.marcelodeoliveira.appium.core.DriverFactory.killDriver;
-import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setAppAndAllowAppPermissionCapabilities;
 import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setTestDriverCapabilities;
+import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setupTestDriver;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Rule;
-import org.junit.rules.TestName;
-import org.openqa.selenium.By;
+import org.junit.Test;
 
-public class SauceLabsTest {
+import br.dev.marcelodeoliveira.appium.core.BaseTest;
 
-	@Rule
-	public TestName testName = new TestName();
+public class SauceLabsTest extends BaseTest {
 
-	@BeforeClass
-	public static void setupTest() {
-
-		// setDefaultCapabilities();
-		// setupCTAppProperCapabilities();
-		setTestDriverCapabilities();
-	};
+//	@Rule
+//	public TestName testName = new TestName();
+	private SauceLabsLogic logic;
 
 	@Before
-	public void setupProperTestCapabilities() {
-		setupCTAppProperCapabilities();
-
+	public void setupTest() {
+		setTestDriverCapabilities();
+		setupTestDriver();
 		setupLogic();
-	}
+	};
 
-	private static void setupCTAppProperCapabilities() {
-
-		setAppAndAllowAppPermissionCapabilities("1.2");
-		try {
-			Thread.sleep(2000l);
-			getTestDriver()
-					.findElement(By.xpath("//*[@resource-id='com.android.permissioncontroller:id/continue_button']"))
-					.click();
-			getTestDriver().findElement(By.xpath("//*[@resource-id='android:id/button1']")).click();
-		} catch (Exception e) {
-
-			return;
-		}
-	}
-
-//	protected abstract void setupLogic();
-	protected void setupLogic() {
-		
+	@Test
+	public void deveFazerLoginTest() {
+		logic.setEmail("automation.mrkolv@gmail.com");
+		logic.setSenha("123!");
+		logic.entrar();
+		Assert.assertTrue(logic.getWelcomeLabel().contains("Bem vindo, "));
 	}
 
 	@After
-	public void finishTest() {
+	public void tearDown() {
+		//logic.sairContextoWeb();
 		killDriver();
 	}
+
+	public void setupLogic() {
+		this.logic = new SauceLabsLogic();
+	}
+
+//	@After
+//	public void finishTest() {
+//	}
 
 }
