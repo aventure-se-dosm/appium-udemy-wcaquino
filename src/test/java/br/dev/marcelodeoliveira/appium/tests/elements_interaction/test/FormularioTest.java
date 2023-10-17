@@ -1,5 +1,5 @@
 
-package br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.test;
+package br.dev.marcelodeoliveira.appium.tests.elements_interaction.test;
 
 import java.net.MalformedURLException;
 import java.util.Arrays;

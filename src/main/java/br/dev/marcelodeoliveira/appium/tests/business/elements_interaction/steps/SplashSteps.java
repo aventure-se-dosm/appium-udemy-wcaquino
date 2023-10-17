@@ -1,4 +1,4 @@
-package br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.test;
+package br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.steps;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -7,7 +7,7 @@ import br.dev.marcelodeoliveira.appium.core.CTAppiumBaseTestVersionable;
 import br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.logic.MenuLogic;
 import br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.logic.SplashLogic;
 
-public class SplashTest extends CTAppiumBaseTestVersionable {
+public class SplashSteps extends CTAppiumBaseTestVersionable {
 
 	private SplashLogic splashLogic;
 	private MenuLogic menuLogic;

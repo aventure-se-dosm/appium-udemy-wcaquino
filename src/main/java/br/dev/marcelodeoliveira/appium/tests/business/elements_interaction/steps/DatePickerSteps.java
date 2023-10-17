@@ -1,4 +1,4 @@
-package br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.test;
+package br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.steps;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -10,7 +10,7 @@ import br.dev.marcelodeoliveira.appium.core.CTAppiumBaseTestVersionable;
 import br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.logic.DatePickerLogic;
 import br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.logic.MenuLogic;
 
-public class DatePickerTest extends CTAppiumBaseTestVersionable {
+public class DatePickerSteps extends CTAppiumBaseTestVersionable {
 	private MenuLogic menuLogic;
 	private DatePickerLogic datePickerLogic;
 

@@ -1,4 +1,4 @@
-package br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.test;
+package br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.steps;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -8,7 +8,7 @@ import br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.logic
 import br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.logic.MenuLogic;
 import br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.logic.SeekBarLogic;
 
-public class SeekBarTest extends CTAppiumBaseTestVersionable {
+public class SeekBarSteps extends CTAppiumBaseTestVersionable {
 
 	private MenuLogic menuLogic;
 	private SeekBarLogic seekBarLogic;

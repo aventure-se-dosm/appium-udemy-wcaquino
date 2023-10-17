@@ -1,4 +1,4 @@
-package br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.test;
+package br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.steps;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -7,7 +7,7 @@ import br.dev.marcelodeoliveira.appium.core.CTAppiumBaseTestVersionable;
 import br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.logic.AlertLogic;
 import br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.logic.MenuLogic;;
 
-public class AlertTest extends CTAppiumBaseTestVersionable {
+public class AlertSteps {
 
 	private AlertLogic alertLogic;
 	private MenuLogic menuLogic;

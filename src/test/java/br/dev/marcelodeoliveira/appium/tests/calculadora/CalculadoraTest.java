@@ -1,4 +1,4 @@
-package br.dev.marcelodeoliveira.appium.tests.business.calculadora;
+package br.dev.marcelodeoliveira.appium.tests.calculadora;
 
 import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setDefaultCapabilitiesCalc;
 import static br.dev.marcelodeoliveira.appium.core.DriverFactory.setupDriver;
@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.dev.marcelodeoliveira.appium.core.BaseTest;
+import br.dev.marcelodeoliveira.appium.tests.business.calculadora.CalculadoraLogic;
 
 public class CalculadoraTest extends BaseTest {
 

@@ -1,4 +1,4 @@
-package br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.test;
+package br.dev.marcelodeoliveira.appium.tests.elements_interaction.test;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;

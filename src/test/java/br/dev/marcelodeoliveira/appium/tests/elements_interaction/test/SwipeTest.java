@@ -1,4 +1,4 @@
-package br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.test;
+package br.dev.marcelodeoliveira.appium.tests.elements_interaction.test;
 
 import org.junit.Assert;
 import org.junit.Test;

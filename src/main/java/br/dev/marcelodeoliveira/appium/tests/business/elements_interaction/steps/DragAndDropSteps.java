@@ -1,4 +1,4 @@
-package br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.test;
+package br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.steps;
 
 import static org.junit.Assert.assertArrayEquals;
 
@@ -8,7 +8,7 @@ import br.dev.marcelodeoliveira.appium.core.CTAppiumBaseTestVersionable;
 import br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.logic.DragAndDropLogic;
 import br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.logic.MenuLogic;
 
-public class DragAndDropTest extends CTAppiumBaseTestVersionable {
+public class DragAndDropSteps extends CTAppiumBaseTestVersionable {
 
 	private DragAndDropLogic dragAndDropLogic;
 	private MenuLogic menuLogic;
