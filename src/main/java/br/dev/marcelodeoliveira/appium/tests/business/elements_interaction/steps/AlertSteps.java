@@ -3,7 +3,6 @@ package br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.step
 import org.junit.Assert;
 import org.junit.Test;
 
-import br.dev.marcelodeoliveira.appium.core.CTAppiumBaseTestVersionable;
 import br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.logic.AlertLogic;
 import br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.logic.MenuLogic;;
 
@@ -51,12 +50,6 @@ public class AlertSteps {
 		alertLogic.clicaOk();
 	}
 
-	@Override
-	protected void setupBaseLogic() {
 
-		this.alertLogic = new AlertLogic();
-		this.menuLogic = new MenuLogic();
-
-	}
 
 }

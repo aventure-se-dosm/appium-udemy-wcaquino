@@ -3,7 +3,6 @@ package br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.step
 import org.junit.Assert;
 import org.junit.Test;
 
-import br.dev.marcelodeoliveira.appium.core.CTAppiumBaseTestVersionable;
 import br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.logic.AccordionLogic;
 import br.dev.marcelodeoliveira.appium.tests.business.elements_interaction.logic.MenuLogic;
 
